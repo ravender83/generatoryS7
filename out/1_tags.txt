@@ -1,0 +1,114 @@
+----------- VALVES -----------
+[1] BR IMITATION
+[2] BR FRAME HOLDFAST
+[3] BR BUMPER
+[4] BR CONTAINER LATCH
+[5] BR SWORD
+[6] ST1 STATION LOWERING
+[7] ST1 COVER GUIDE
+[8] ST1 COVER LOCK
+[9] ST1 TAU HOLDFAST MOVEMENT
+[10] ST1 TAU HOLDFAST
+[11] ST1 TAPE RELEASE MOVEMENT
+[12] ST1 TAPE RELEASE
+[13] ST1 TAPE OPEN
+[14] ST1 CAMERA MOVEMENT
+[15] ST1 BASE LOWERING
+[16] ST1 TAPE LOWERING
+[17] ST1 PINS LOWERING
+
+----------- ZAWORY -----------
+[1] BR IMITACJA
+[2] BR DOCISK RAMKI
+[3] BR ZDERZAK
+[4] BR ZATRZASK
+[5] BR MIECZ
+[6] ST1 OPUSZCZANIE STACJI
+[7] ST1 PROWADNICA POKRYWY
+[8] ST1 BLOKADA POKRYWY
+[9] ST1 PRZESUNIECIE DOCISKU TAU
+[10] ST1 DOCISK TAU
+[11] ST1 PRZESUNIECIE ZWALNIACZA TASMY
+[12] ST1 ZWALNIACZ TASMY
+[13] ST1 OTWARCIE TASMY
+[14] ST1 PRZESUNIECIE KAMERY
+[15] ST1 OPUSZCZANIE BAZY
+[16] ST1 OPUSZCZANIE TASMY
+[17] ST1 OPUSZCZANIE PINOW
+
+----------- IO TAGS -----------
+BR-vsen_imitation_HP_front	BOOL	%I20.5	False	True	True	True		#nc - [I20.5] czujnik BR-imitacja HP front
+BR-vsen_imitation_WP_back	BOOL	%I21.5	False	True	True	True		#no - [I21.5] czujnik BR-imitacja WP back
+BR-ez_imitation_HP_front	BOOL	%Q20.7	False	True	True	True		[1] BR-imitacja HP front [I20.5]
+BR-ez_imitation_WP_back	BOOL	%Q21.7	False	True	True	True		[1] BR-imitacja WP back [I21.5]
+BR-vsen_frame_holdfast_HP_open	BOOL	%I20.1	False	True	True	True		#nc - [I20.1] czujnik BR-docisk_ramki HP open
+BR-vsen_frame_holdfast_WP_close	BOOL	%I21.1	False	True	True	True		#no - [I21.1] czujnik BR-docisk_ramki WP close
+BR-ez_frame_holdfast_HP_open	BOOL	%Q1.0	False	True	True	True		[2] BR-docisk_ramki HP open [I20.1]
+BR-ez_frame_holdfast_WP_close	BOOL	%Q1.1	False	True	True	True		[2] BR-docisk_ramki WP close [I21.1]
+BR-vsen_bumper_HP_up	BOOL	%I10.1	False	True	True	True		#nc - [I10.1] czujnik BR-zderzak HP up
+BR-vsen_bumper_WP_down	BOOL	%I11.1	False	True	True	True		#no - [I11.1] czujnik BR-zderzak WP down
+BR-ez_bumper_HP_up	BOOL	%Q10.6	False	True	True	True		[3] BR-zderzak HP up [I10.1]
+BR-ez_bumper_WP_down	BOOL	%Q11.6	False	True	True	True		[3] BR-zderzak WP down [I11.1]
+BR-vsen_container_latch_HP_close	BOOL	%I10.2	False	True	True	True		#nc - [I10.2] czujnik BR-zatrzask HP close
+BR-vsen_container_latch_WP_open	BOOL	%I11.2	False	True	True	True		#no - [I11.2] czujnik BR-zatrzask WP open
+BR-ez_container_latch_HP_close	BOOL	%Q10.7	False	True	True	True		[4] BR-zatrzask HP close [I10.2]
+BR-ez_container_latch_WP_open	BOOL	%Q11.7	False	True	True	True		[4] BR-zatrzask WP open [I11.2]
+BR-vsen_sword_HP_back	BOOL	%I20.4	False	True	True	True		#nc - [I20.4] czujnik BR-miecz HP back
+BR-vsen_sword_WP_front	BOOL	%I21.4	False	True	True	True		#no - [I21.4] czujnik BR-miecz WP front
+BR-ez_sword_HP_back	BOOL	%Q20.6	False	True	True	True		[5] BR-miecz HP back [I20.4]
+BR-ez_sword_WP_front	BOOL	%Q21.6	False	True	True	True		[5] BR-miecz WP front [I21.4]
+ST1-vsen_station_lowering_HP_up	BOOL	%I10.0	False	True	True	True		#nc - [I10.0] czujnik ST1-opuszczanie_stacji HP up
+ST1-vsen_station_lowering_HP2_up	BOOL	%I55.0	False	True	True	True		#nc - [I55.0] czujnik ST1-opuszczanie_stacji HP up
+ST1-vsen_station_lowering_WP_down	BOOL	%I11.0	False	True	True	True		#no - [I11.0] czujnik ST1-opuszczanie_stacji WP down
+ST1-vsen_station_lowering_WP2_down	BOOL	%I56.0	False	True	True	True		#no - [I56.0] czujnik ST1-opuszczanie_stacji WP down
+ST1-ez_station_lowering_HP_up	BOOL	%Q10.4	False	True	True	True		[6] ST1-opuszczanie_stacji HP up [I10.0, I55.0]
+ST1-ez_station_lowering_WP_down	BOOL	%Q11.4	False	True	True	True		[6] ST1-opuszczanie_stacji WP down [I11.0, I56.0]
+ST1-ez_station_lowering_BRAKE_RELEASE	BOOL	%Q10.5	False	True	True	True		[6] ST1-opuszczanie_stacji BRAKE RELEASE
+ST1-vsen_cover_guide_HP_open	BOOL	%I30.0	False	True	True	True		#nc - [I30.0] czujnik ST1-prowadnica_pokrywy HP open
+ST1-vsen_cover_guide_WP_close	BOOL	%I31.0	False	True	True	True		#no - [I31.0] czujnik ST1-prowadnica_pokrywy WP close
+ST1-ez_cover_guide_HP_open	BOOL	%Q40.0	False	True	True	True		[7] ST1-prowadnica_pokrywy HP open [I30.0]
+ST1-ez_cover_guide_WP_close	BOOL	%Q41.0	False	True	True	True		[7] ST1-prowadnica_pokrywy WP close [I31.0]
+ST1-vsen_cover_lock_HP_left	BOOL	%I30.1	False	True	True	True		#nc - [I30.1] czujnik ST1-blokada_pokrywy HP left
+ST1-vsen_cover_lock_WP_right	BOOL	%I31.1	False	True	True	True		#no - [I31.1] czujnik ST1-blokada_pokrywy WP right
+ST1-ez_cover_lock_HP_left	BOOL	%Q40.1	False	True	True	True		[8] ST1-blokada_pokrywy HP left [I30.1]
+ST1-ez_cover_lock_WP_right	BOOL	%nan	False	True	True	True		[8] ST1-blokada_pokrywy WP right [I31.1]
+ST1-vsen_tau_holdfast_movement_HP_left	BOOL	%I30.2	False	True	True	True		#nc - [I30.2] czujnik ST1-przesuniecie_docisku_tau HP left
+ST1-vsen_tau_holdfast_movement_WP_right	BOOL	%I31.2	False	True	True	True		#no - [I31.2] czujnik ST1-przesuniecie_docisku_tau WP right
+ST1-ez_tau_holdfast_movement_HP_left	BOOL	%Q40.2	False	True	True	True		[9] ST1-przesuniecie_docisku_tau HP left [I30.2]
+ST1-ez_tau_holdfast_movement_WP_right	BOOL	%Q41.2	False	True	True	True		[9] ST1-przesuniecie_docisku_tau WP right [I31.2]
+ST1-ez_tau_holdfast_movement_IDLE	BOOL	%Q55.6	False	True	True	True		[9] ST1-przesuniecie_docisku_tau IDLE
+ST1-vsen_tau_holdfast_HP_up	BOOL	%I30.3	False	True	True	True		#nc - [I30.3] czujnik ST1-docisk_tau HP up
+ST1-vsen_tau_holdfast_WP_down	BOOL	%I31.3	False	True	True	True		#no - [I31.3] czujnik ST1-docisk_tau WP down
+ST1-ez_tau_holdfast_HP_up	BOOL	%Q40.3	False	True	True	True		[10] ST1-docisk_tau HP up [I30.3]
+ST1-ez_tau_holdfast_WP_down	BOOL	%Q41.3	False	True	True	True		[10] ST1-docisk_tau WP down [I31.3]
+ST1-vsen_tape_release_movement_HP_back	BOOL	%I50.2	False	True	True	True		#nc - [I50.2] czujnik ST1-przesuniecie_zwalniacza_tasmy HP back
+ST1-vsen_tape_release_movement_WP_front	BOOL	%I51.2	False	True	True	True		#no - [I51.2] czujnik ST1-przesuniecie_zwalniacza_tasmy WP front
+ST1-ez_tape_release_movement_HP_back	BOOL	%Q40.4	False	True	True	True		[11] ST1-przesuniecie_zwalniacza_tasmy HP back [I50.2]
+ST1-ez_tape_release_movement_WP_front	BOOL	%Q41.4	False	True	True	True		[11] ST1-przesuniecie_zwalniacza_tasmy WP front [I51.2]
+ST1-vsen_tape_release_HP_back	BOOL	%I50.3	False	True	True	True		#nc - [I50.3] czujnik ST1-zwalniacz_tasmy HP back
+ST1-vsen_tape_release_HP2_back	BOOL	%I55.3	False	True	True	True		#nc - [I55.3] czujnik ST1-zwalniacz_tasmy HP back
+ST1-vsen_tape_release_WP_front	BOOL	%I51.3	False	True	True	True		#no - [I51.3] czujnik ST1-zwalniacz_tasmy WP front
+ST1-vsen_tape_release_WP2_front	BOOL	%I56.3	False	True	True	True		#no - [I56.3] czujnik ST1-zwalniacz_tasmy WP front
+ST1-ez_tape_release_HP_back	BOOL	%Q40.5	False	True	True	True		[12] ST1-zwalniacz_tasmy HP back [I50.3, I55.3]
+ST1-ez_tape_release_WP_front	BOOL	%Q41.5	False	True	True	True		[12] ST1-zwalniacz_tasmy WP front [I51.3, I56.3]
+ST1-vsen_tape_open_HP_close	BOOL	%I50.4	False	True	True	True		#nc - [I50.4] czujnik ST1-otwarcie_tasmy HP close
+ST1-vsen_tape_open_WP_open	BOOL	%I51.4	False	True	True	True		#no - [I51.4] czujnik ST1-otwarcie_tasmy WP open
+ST1-ez_tape_open_HP_close	BOOL	%Q40.6	False	True	True	True		[13] ST1-otwarcie_tasmy HP close [I50.4]
+ST1-ez_tape_open_WP_open	BOOL	%Q41.6	False	True	True	True		[13] ST1-otwarcie_tasmy WP open [I51.4]
+ST1-vsen_camera_movement_HP_right	BOOL	%I30.4	False	True	True	True		#nc - [I30.4] czujnik ST1-przesuniecie_kamery HP right
+ST1-vsen_camera_movement_WP_left	BOOL	%I31.4	False	True	True	True		#no - [I31.4] czujnik ST1-przesuniecie_kamery WP left
+ST1-ez_camera_movement_HP_right	BOOL	%nan	False	True	True	True		[14] ST1-przesuniecie_kamery HP right [I30.4]
+ST1-ez_camera_movement_WP_left	BOOL	%Q41.7	False	True	True	True		[14] ST1-przesuniecie_kamery WP left [I31.4]
+ST1-vsen_base_lowering_HP_up	BOOL	%I60.0	False	True	True	True		#nc - [I60.0] czujnik ST1-opuszczanie_bazy HP up
+ST1-vsen_base_lowering_WP_down	BOOL	%nan	False	True	True	True		#no - [I1000.0] czujnik ST1-opuszczanie_bazy WP down
+ST1-ez_base_lowering_HP_up	BOOL	%Q60.5	False	True	True	True		[15] ST1-opuszczanie_bazy HP up [I60.0]
+ST1-ez_base_lowering_WP_down	BOOL	%Q61.5	False	True	True	True		[15] ST1-opuszczanie_bazy WP down [nan]
+ST1-vsen_tape_lowering_HP_up	BOOL	%I60.1	False	True	True	True		#nc - [I60.1] czujnik ST1-opuszczanie_tasmy HP up
+ST1-vsen_tape_lowering_WP_down	BOOL	%I61.1	False	True	True	True		#no - [I61.1] czujnik ST1-opuszczanie_tasmy WP down
+ST1-ez_tape_lowering_HP_up	BOOL	%Q60.6	False	True	True	True		[16] ST1-opuszczanie_tasmy HP up [I60.1]
+ST1-ez_tape_lowering_WP_down	BOOL	%Q61.6	False	True	True	True		[16] ST1-opuszczanie_tasmy WP down [I61.1]
+ST1-ez_tape_lowering_IDLE	BOOL	%Q44.4	False	True	True	True		[16] ST1-opuszczanie_tasmy IDLE
+ST1-vsen_pins_lowering_HP_up	BOOL	%I60.2	False	True	True	True		#nc - [I60.2] czujnik ST1-opuszczanie_pinow HP up
+ST1-vsen_pins_lowering_WP_down	BOOL	%I61.2	False	True	True	True		#no - [I61.2] czujnik ST1-opuszczanie_pinow WP down
+ST1-ez_pins_lowering_HP_up	BOOL	%Q60.7	False	True	True	True		[17] ST1-opuszczanie_pinow HP up [I60.2]
+ST1-ez_pins_lowering_WP_down	BOOL	%Q61.7	False	True	True	True		[17] ST1-opuszczanie_pinow WP down [I61.2]

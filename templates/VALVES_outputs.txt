@@ -1,0 +1,11 @@
+﻿FUNCTION "VALVES_outputs" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      nr : Int;
+   END_VAR
+   
+BEGIN
+	{VALVES}	
+END_FUNCTION
+
