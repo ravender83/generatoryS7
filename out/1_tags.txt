@@ -37,9 +37,8 @@
 [17] ST1 OPUSZCZANIE PINOW
 
 ----------- IO TAGS -----------
-BR-vsen_imitation_HP_front	BOOL	%I20.5	False	True	True	True		#nc - [I20.5] czujnik BR-imitacja HP front
 BR-vsen_imitation_WP_back	BOOL	%I21.5	False	True	True	True		#no - [I21.5] czujnik BR-imitacja WP back
-BR-ez_imitation_HP_front	BOOL	%Q20.7	False	True	True	True		[1] BR-imitacja HP front [I20.5]
+BR-ez_imitation_HP_front	BOOL	%Q20.7	False	True	True	True		[1] BR-imitacja HP front [an]
 BR-ez_imitation_WP_back	BOOL	%Q21.7	False	True	True	True		[1] BR-imitacja WP back [I21.5]
 BR-vsen_frame_holdfast_HP_open	BOOL	%I20.1	False	True	True	True		#nc - [I20.1] czujnik BR-docisk_ramki HP open
 BR-vsen_frame_holdfast_WP_close	BOOL	%I21.1	False	True	True	True		#no - [I21.1] czujnik BR-docisk_ramki WP close
@@ -71,7 +70,6 @@ ST1-ez_cover_guide_WP_close	BOOL	%Q41.0	False	True	True	True		[7] ST1-prowadnica
 ST1-vsen_cover_lock_HP_left	BOOL	%I30.1	False	True	True	True		#nc - [I30.1] czujnik ST1-blokada_pokrywy HP left
 ST1-vsen_cover_lock_WP_right	BOOL	%I31.1	False	True	True	True		#no - [I31.1] czujnik ST1-blokada_pokrywy WP right
 ST1-ez_cover_lock_HP_left	BOOL	%Q40.1	False	True	True	True		[8] ST1-blokada_pokrywy HP left [I30.1]
-ST1-ez_cover_lock_WP_right	BOOL	%nan	False	True	True	True		[8] ST1-blokada_pokrywy WP right [I31.1]
 ST1-vsen_tau_holdfast_movement_HP_left	BOOL	%I30.2	False	True	True	True		#nc - [I30.2] czujnik ST1-przesuniecie_docisku_tau HP left
 ST1-vsen_tau_holdfast_movement_WP_right	BOOL	%I31.2	False	True	True	True		#no - [I31.2] czujnik ST1-przesuniecie_docisku_tau WP right
 ST1-ez_tau_holdfast_movement_HP_left	BOOL	%Q40.2	False	True	True	True		[9] ST1-przesuniecie_docisku_tau HP left [I30.2]
@@ -97,12 +95,10 @@ ST1-ez_tape_open_HP_close	BOOL	%Q40.6	False	True	True	True		[13] ST1-otwarcie_ta
 ST1-ez_tape_open_WP_open	BOOL	%Q41.6	False	True	True	True		[13] ST1-otwarcie_tasmy WP open [I51.4]
 ST1-vsen_camera_movement_HP_right	BOOL	%I30.4	False	True	True	True		#nc - [I30.4] czujnik ST1-przesuniecie_kamery HP right
 ST1-vsen_camera_movement_WP_left	BOOL	%I31.4	False	True	True	True		#no - [I31.4] czujnik ST1-przesuniecie_kamery WP left
-ST1-ez_camera_movement_HP_right	BOOL	%nan	False	True	True	True		[14] ST1-przesuniecie_kamery HP right [I30.4]
 ST1-ez_camera_movement_WP_left	BOOL	%Q41.7	False	True	True	True		[14] ST1-przesuniecie_kamery WP left [I31.4]
 ST1-vsen_base_lowering_HP_up	BOOL	%I60.0	False	True	True	True		#nc - [I60.0] czujnik ST1-opuszczanie_bazy HP up
-ST1-vsen_base_lowering_WP_down	BOOL	%nan	False	True	True	True		#no - [I1000.0] czujnik ST1-opuszczanie_bazy WP down
 ST1-ez_base_lowering_HP_up	BOOL	%Q60.5	False	True	True	True		[15] ST1-opuszczanie_bazy HP up [I60.0]
-ST1-ez_base_lowering_WP_down	BOOL	%Q61.5	False	True	True	True		[15] ST1-opuszczanie_bazy WP down [nan]
+ST1-ez_base_lowering_WP_down	BOOL	%Q61.5	False	True	True	True		[15] ST1-opuszczanie_bazy WP down [an]
 ST1-vsen_tape_lowering_HP_up	BOOL	%I60.1	False	True	True	True		#nc - [I60.1] czujnik ST1-opuszczanie_tasmy HP up
 ST1-vsen_tape_lowering_WP_down	BOOL	%I61.1	False	True	True	True		#no - [I61.1] czujnik ST1-opuszczanie_tasmy WP down
 ST1-ez_tape_lowering_HP_up	BOOL	%Q60.6	False	True	True	True		[16] ST1-opuszczanie_tasmy HP up [I60.1]

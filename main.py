@@ -172,17 +172,21 @@ def generuj_tags_txt(_zawory):
         _oidle = f'{i.get_outputNameIDLE}\tBOOL\t{i.outputIDLE}{_tmp}\t{i.get_outputNameIDLEcomment}'
         _obrake = f'{i.get_outputNameBRAKE}\tBOOL\t{i.outputBRAKE}{_tmp}\t{i.get_outputNameBRAKEcomment}'
 
-        _txt = _txt + f'{_ihp}\n'
-        if i.sensorHP2 != '%nan':
+        if i.sensorHP != 'nan':
+            _txt = _txt + f'{_ihp}\n'
+        if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
             _txt = _txt + f'{_ihp2}\n'
-        _txt = _txt + f'{_iwp}\n'
-        if i.sensorWP2 != '%nan':
+        if i.sensorWP != 'nan':
+            _txt = _txt + f'{_iwp}\n'
+        if i.sensorWP2 != 'nan' and i.sensorWP2 != i.sensorWP:
             _txt = _txt + f'{_iwp2}\n'
-        _txt = _txt + f'{_ohp}\n'
-        _txt = _txt + f'{_owp}\n'
-        if i.outputIDLE != '%nan':
+        if i.outputHP != 'nan':
+            _txt = _txt + f'{_ohp}\n'
+        if i.outputWP != 'nan':
+            _txt = _txt + f'{_owp}\n'
+        if i.outputIDLE != 'nan':
             _txt = _txt + f'{_oidle}\n'
-        if i.outputBRAKE != '%nan':
+        if i.outputBRAKE != 'nan':
             _txt = _txt + f'{_obrake}\n'
     zapisz("1_tags.txt", _txt)
 
@@ -203,12 +207,8 @@ def generuj_dbvalves_txt(_df):
     zapisz("2_dbvalves.txt", _txt)
 
 
-def szablon_nan(aktualny_szablon, co, na_co, alternatywa, procent):
-    if procent:
-        _nan = '%nan'
-    else:
-        _nan = 'nan'
-    if na_co == _nan:
+def szablon_nan(aktualny_szablon, co, na_co, alternatywa):
+    if na_co == 'nan' or na_co == 'an':
         aktualny_szablon = aktualny_szablon.replace(co, alternatywa)
     else:
         aktualny_szablon = aktualny_szablon.replace(co, na_co)
@@ -225,19 +225,25 @@ def generuj_valves_outputs_scl(_zawory):
         _szablon = _szablon.replace('{DBVALVE_TITLE}', f'{i.prefix} {i.name.upper()}')
         _szablon = _szablon.replace('{DBVALVE}', f'{i.prefix}.{i.name.upper()}')
         _szablon = _szablon.replace('{INDEX}', f'{i.index}')
-        _szablon = szablon_nan(_szablon, '{in_sensor_hp}', i.sensorHP, 'I1000.0', True)
-        _szablon = szablon_nan(_szablon, '{in_sensor_hp2}', i.sensorHP2, i.sensorHP, True)
-        _szablon = szablon_nan(_szablon, '{in_sensor_wp}', i.sensorWP, 'I1000.0', True)
-        _szablon = szablon_nan(_szablon, '{in_sensor_wp2}', i.sensorWP2, i.sensorWP, True)
-        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.HP_DUMMY', True)
-        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.WP_DUMMY', True)
-        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.IDLE_DUMMY', True)
-        _szablon = szablon_nan(_szablon, '{in_Ipw1}', i.sensorHP[1:], ' ', False)
-        _szablon = szablon_nan(_szablon, '{in_Ipw2}', i.sensorHP2[1:], ' ', False)
-        _szablon = szablon_nan(_szablon, '{in_Ipr1}', i.sensorWP[1:], ' ', False)
-        _szablon = szablon_nan(_szablon, '{in_Ipr2}', i.sensorWP2[1:], ' ', False)
-        _szablon = szablon_nan(_szablon, '{in_Qpw}', i.outputHP[1:], ' ', False)
-        _szablon = szablon_nan(_szablon, '{in_Qpr}', i.outputWP[1:], ' ', False)
+        _szablon = szablon_nan(_szablon, '{in_sensor_hp}', i.sensorHP, 'nan')
+        _szablon = szablon_nan(_szablon, '{in_sensor_hp2}', i.sensorHP2, 'nan')
+        _szablon = szablon_nan(_szablon, '{in_sensor_wp}', i.sensorWP, 'nan')
+        _szablon = szablon_nan(_szablon, '{in_sensor_wp2}', i.sensorWP2, 'nan')
+        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.HP_DUMMY')
+        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.WP_DUMMY')
+        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.IDLE_DUMMY')
+        _szablon = szablon_nan(_szablon, '{in_Ipw1}', i.sensorHP[1:], ' ')
+        if i.sensorHP2 != i.sensorHP:
+            _szablon = szablon_nan(_szablon, '{in_Ipw2}', i.sensorHP2[1:], ' ')
+        else:
+            _szablon = _szablon.replace('{in_Ipw2}', ' ')
+        _szablon = szablon_nan(_szablon, '{in_Ipr1}', i.sensorWP[1:], ' ')
+        if i.sensorWP2 != i.sensorWP:
+            _szablon = szablon_nan(_szablon, '{in_Ipr2}', i.sensorWP2[1:], ' ')
+        else:
+            _szablon = _szablon.replace('{in_Ipr2}', ' ')
+        _szablon = szablon_nan(_szablon, '{in_Qpw}', i.outputHP[1:], ' ')
+        _szablon = szablon_nan(_szablon, '{in_Qpr}', i.outputWP[1:], ' ')
         _members_szablon += _szablon
 
     _valves_data = _valves_data.replace('{VALVES}', _members_szablon)
