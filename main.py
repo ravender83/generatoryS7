@@ -191,6 +191,41 @@ def generuj_tags_txt(_zawory):
     zapisz("1_tags.txt", _txt)
 
 
+def generuj_plc_tags_excel(_zawory):
+    _lista = []
+    _tmp = ['True', 'True', 'True', '', '', '']
+    for i in _zawory:
+        if i.sensorHP != 'nan':
+            _lista.append([i.get_sensorNameHP, 'io', 'Bool', i.sensorHP, i.get_sensorNameHPcomment]+_tmp)
+        if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
+            _lista.append([i.get_sensorNameHP2, 'io', 'Bool', i.sensorHP2, i.get_sensorNameHP2comment]+_tmp)
+        if i.sensorWP != 'nan':
+            _lista.append([i.get_sensorNameWP, 'io', 'Bool', i.sensorWP, i.get_sensorNameWPcomment]+_tmp)
+        if i.sensorWP2 != 'nan' and i.sensorWP2 != i.sensorWP:
+            _lista.append([i.get_sensorNameWP2, 'io', 'Bool', i.sensorWP2, i.get_sensorNameWP2comment]+_tmp)
+        if i.outputHP != 'nan':
+            _lista.append([i.get_outputNameHP, 'io', 'Bool', i.outputHP, i.get_outputNameHPcomment]+_tmp)
+        if i.outputWP != 'nan':
+            _lista.append([i.get_outputNameWP, 'io', 'Bool', i.outputWP, i.get_outputNameWPcomment]+_tmp)
+        if i.outputIDLE != 'nan':
+            _lista.append([i.get_outputNameIDLE, 'io', 'Bool', i.outputIDLE, i.get_outputNameIDLEcomment]+_tmp)
+        if i.outputBRAKE != 'nan':
+            _lista.append([i.get_outputNameBRAKE, 'io', 'Bool', i.outputBRAKE, i.get_outputNameBRAKEcomment]+_tmp)
+    _df = pd.DataFrame(_lista, columns=['Name', 'Path', 'Data Type', 'Logical Address', 'Comment', 'Hmi Visible',
+                                          'Hmi Accessible', 'Hmi Writeable', 'Typeobject ID', 'Version ID', 'BelongsToUnit'])
+    try:
+        _df.to_excel("out/1_PLCTags.xlsx", sheet_name='PLC Tags', index=False)
+        print(f'[OK] Wygenerowano PLCTags.xlsx')
+    except IOError as e:
+        print(f'[NOK] Nie wygenerowano PLCTags.xlsx')
+        print(f'I/O error({e.errno}): {e.strerror}')
+        return e
+    except:  # handle other exceptions such as attribute errors
+        print(f'[NOK] Nie wygenerowano PLCTags.xlsx')
+        print('Unexpected error:', sys.exc_info()[0])
+        return None
+
+
 def generuj_dbvalves_txt(_df):
     _txt = '----------- DBVALVES datablock structs-----------\n'
     _tmp = '\tStruct\t\tFalse\tTrue\tTrue\tTrue\tFalse\t\t'
@@ -261,6 +296,8 @@ def main(args):
         zawory.append(Zawor(index+1, row))
 
     generuj_tags_txt(zawory)
+    generuj_plc_tags_excel(zawory)
+
     generuj_dbvalves_txt(df)
 
     generuj_valves_outputs_scl(zawory)

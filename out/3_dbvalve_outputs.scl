@@ -3,7 +3,6 @@ TITLE = VALVES_outputs
 { S7_Optimized_Access := 'TRUE' }
 AUTHOR : PiotrSlezak
 FAMILY : Vorster
-NAME : '13'
 VERSION : 0.1
 //Funkcja obsługi elektrozaworów umożliwia diagnostykę obecności czujników PW i PR, wyświetlania alarmów i wysterowywania w ruchach ręcznych
    VAR_TEMP 
