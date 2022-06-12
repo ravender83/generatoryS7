@@ -274,22 +274,22 @@ def szablon_nan(aktualny_szablon, co, na_co, alternatywa):
 
 
 def generuj_valves_outputs_scl(_zawory):
-    _valves_data = otworz("VALVES_outputs.txt")
-    _members_data = otworz("VALVES_outputs_1.txt")
+    _valves_data = otworz("VALVES_outputs_scl.txt")
+    _members_data = otworz("VALVES_outputs_scl_1.txt")
 
     _members_szablon = ''
     for i in _zawory:
         _szablon = _members_data
         _szablon = _szablon.replace('{DBVALVE_TITLE}', f'{i.prefix} {i.name.upper()}')
-        _szablon = _szablon.replace('{DBVALVE}', f'{i.prefix}.{i.name.upper()}')
+        _szablon = _szablon.replace('{DBVALVE}', f'{i.prefix}.\ufeff{i.name.upper()}')
         _szablon = _szablon.replace('{INDEX}', f'{i.index}')
         _szablon = szablon_nan(_szablon, '{in_sensor_hp}', i.sensorHP, 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_hp2}', i.sensorHP2, 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_wp}', i.sensorWP, 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_wp2}', i.sensorWP2, 'nan')
-        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.dummy_HP')
-        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.dummy_WP')
-        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.dummy_IDLE')
+        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP, f'"DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.dummy_HP')
+        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP, f'"DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.dummy_WP')
+        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE, f'"DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.dummy_IDLE')
         _szablon = szablon_nan(_szablon, '{in_Ipw1}', i.sensorHP[1:], ' ')
         if i.sensorHP2 != i.sensorHP:
             _szablon = szablon_nan(_szablon, '{in_Ipw2}', i.sensorHP2[1:], ' ')
