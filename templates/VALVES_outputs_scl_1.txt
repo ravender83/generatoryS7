@@ -1,0 +1,67 @@
+﻿    REGION VALVE [{INDEX}] {DBVALVE_TITLE}
+        REGION HP
+            IF
+                "Log_0" OR
+                "A-Flags".STATION.IN_HP_STEP OR
+                "DBVALVES".{DBVALVE}.test.fp_HP
+            THEN "DBVALVES".{DBVALVE}.in.move_hp := True; ELSE "DBVALVES".{DBVALVE}.in.move_hp := False; END_IF;
+        END_REGION
+
+        REGION WP
+            IF
+                "Log_0" OR
+                "DBVALVES".{DBVALVE}.test.fp_WP
+            THEN "DBVALVES".{DBVALVE}.in.move_wp := True; ELSE "DBVALVES".{DBVALVE}.in.move_wp := False; END_IF;
+        END_REGION
+
+        REGION IDLE
+            IF
+                "Log_0" OR
+                "DBVALVES".{DBVALVE}.test.fp_IDLE
+            THEN "DBVALVES".{DBVALVE}.in.move_idle := True; ELSE "DBVALVES".{DBVALVE}.in.move_idle := False; END_IF;
+        END_REGION
+
+        REGION EZ [{INDEX}] {DBVALVE_TITLE}
+            #nr := {INDEX};
+
+            "inst {DBVALVE_TITLE}"(in_safety_on := "A-Flags".STATION.SAFETY_OK,
+                               in_curtain_on := "A-Flags".STATION.CURTAIN.OK,
+                               in_move_hp := "DBVALVES".{DBVALVE}.in.move_hp,
+                               in_move_wp := "DBVALVES".{DBVALVE}.in.move_wp,
+                               in_move_idle := "DBVALVES".{DBVALVE}.in.move_idle,
+                               in_sensor_hp := {in_sensor_hp},
+                               in_sensor_hp2 := {in_sensor_hp2},
+                               in_sensor_wp := {in_sensor_wp},
+                               in_sensor_wp2 := {in_sensor_wp2},
+                               out_in_hp => "DBVALVES".{DBVALVE}.out.in_hp,
+                               out_in_wp => "DBVALVES".{DBVALVE}.out.in_wp,
+                               out_idle => "DBVALVES".{DBVALVE}.out.in_idle,
+                               out_status => "DBVALVES".{DBVALVE}.out.status,
+                               out_alarm_hp => "DBVALVES".{DBVALVE}.out.alarm_hp,
+                               out_alarm_wp => "DBVALVES".{DBVALVE}.out.alarm_wp,
+                               out_diag_status => "DBVALVES".{DBVALVE}.out.diag_status,
+                               in_ez_hp := {in_ez_hp},
+                               in_ez_wp := {in_ez_wp},
+                               in_ez_idle := {in_ez_idle});
+
+            "A-status_diag"(in_diag_status := "DBVALVES".{DBVALVE}.out.diag_status,
+                            in_Ipw1 := '{in_Ipw1}',
+                            in_Ipw2 := '{in_Ipw2}',
+                            in_Ipr1 := '{in_Ipr1}',
+                            in_Ipr2 := '{in_Ipr2}',
+                            in_Qpw := '{in_Qpw}',
+                            in_Qpr := '{in_Qpr}',
+                            in_tio := "A-io".io[#nr]);
+
+            "A-TEST"(in_nr := #nr,
+                     out := "DBVALVES".{DBVALVE}.test);
+
+            IF "A-Doku_DB_OP".Manual_Functions <> #nr THEN
+                "DBVALVES".{DBVALVE}.test.fp_HP := False;
+                "DBVALVES".{DBVALVE}.test.fp_WP := False;
+                "DBVALVES".{DBVALVE}.test.fp_IDLE := False;
+            END_IF;
+
+        END_REGION
+
+    END_REGION
