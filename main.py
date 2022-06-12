@@ -265,6 +265,13 @@ def generuj_dbvalves_db(_df):
     zapisz("11_DBVALVES.db", _dbvalves_data)
 
 
+def generuj_aio_db(_zawory):
+    _aio_data = otworz("A-io_db.txt")
+    _nr = _zawory[-1].index
+    _aio_data = _aio_data.replace('{MAX_ZAWOROW}', str(_nr))
+    zapisz("12_A-io_db.db", _aio_data)
+
+
 def szablon_nan(aktualny_szablon, co, na_co, alternatywa):
     if na_co == 'nan' or na_co == 'an':
         aktualny_szablon = aktualny_szablon.replace(co, alternatywa)
@@ -305,7 +312,7 @@ def generuj_valves_outputs_scl(_zawory):
         _members_szablon += _szablon
 
     _valves_data = _valves_data.replace('{ALL_STRUCTS}', _members_szablon)
-    zapisz("12_valve_outputs.scl", _valves_data)
+    zapisz("19_valve_outputs.scl", _valves_data)
 
 
 def main(args):
@@ -323,6 +330,8 @@ def main(args):
 
     generuj_dbvalves_txt(df)
     generuj_dbvalves_db(df)
+
+    generuj_aio_db(zawory)
 
     generuj_valves_outputs_scl(zawory)
 

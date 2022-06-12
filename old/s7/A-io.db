@@ -1,5 +1,8 @@
 ﻿DATA_BLOCK "A-io"
+TITLE = A-io
 { S7_Optimized_Access := 'FALSE' }
+AUTHOR : PiotrSlezak
+FAMILY : Vorster
 VERSION : 0.1
    STRUCT 
       io { S7_SetPoint := 'False'} : Array[0..17] of "Tio";
