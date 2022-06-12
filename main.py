@@ -287,9 +287,9 @@ def generuj_valves_outputs_scl(_zawory):
         _szablon = szablon_nan(_szablon, '{in_sensor_hp2}', i.sensorHP2, 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_wp}', i.sensorWP, 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_wp2}', i.sensorWP2, 'nan')
-        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.HP_DUMMY')
-        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.WP_DUMMY')
-        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.IDLE_DUMMY')
+        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.dummy_HP')
+        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.dummy_WP')
+        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE, f'"DBVALVES".{i.prefix}.{i.name.upper()}.test.dummy_IDLE')
         _szablon = szablon_nan(_szablon, '{in_Ipw1}', i.sensorHP[1:], ' ')
         if i.sensorHP2 != i.sensorHP:
             _szablon = szablon_nan(_szablon, '{in_Ipw2}', i.sensorHP2[1:], ' ')
@@ -304,8 +304,8 @@ def generuj_valves_outputs_scl(_zawory):
         _szablon = szablon_nan(_szablon, '{in_Qpr}', i.outputWP[1:], ' ')
         _members_szablon += _szablon
 
-    _valves_data = _valves_data.replace('{VALVES}', _members_szablon)
-    zapisz("12_dbvalve_outputs.scl", _valves_data)
+    _valves_data = _valves_data.replace('{ALL_STRUCTS}', _members_szablon)
+    zapisz("12_valve_outputs.scl", _valves_data)
 
 
 def main(args):
