@@ -4,6 +4,7 @@ import sys
 
 zawory = []
 
+
 def zapisz(_plik, _txt):
     try:
         with open(f'out/{_plik}', "w", encoding="utf-8") as _f:
@@ -386,7 +387,6 @@ def main(args):
 
     licznik = generuj_hmialarms_excel(zawory)
     generuj_aio_db(zawory, licznik)
-
 
     generuj_valves_outputs_scl(zawory)
 
