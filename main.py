@@ -277,27 +277,26 @@ def generuj_hmialarms_excel(_zawory):
     _lista = []
     _tmp = ['<No value>', '0', '<No value>', '0', 'VALVE', 'True', 'none']
     _columns = ['Name', 'Alarm text [pl-PL], Alarm text', 'FieldInfo [Alarm text]', 'Class', 'Trigger tag', 'Trigger bit', 'Acknowledgement tag', 'Acknowledgement bit', 'PLC acknowledgement tag', 'PLC acknowledgement bit', 'Group', 'Report', 'Info text [pl-PL], Info text']
-    _txt = ['err0_0', 'polski', '', 'VALVE', 'IO_alarm{0}', '0']
     lduzy = 0
     lmaly = 0
     for i in _zawory:
         if i.sensorHP != 'nan':
-            _lista.append([f'err{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameHPcomment[6:]} ({i.index})', '', 'VALVE',
+            _lista.append([f'valve{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameHPcomment[6:]} ({i.index})', '', 'VALVE',
                            'IO_alarm{'+str(lduzy)+'}', f'{str(lmaly)}'] + _tmp)
             lduzy, lmaly = zliczaj(lduzy, lmaly)
 
         if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
-            _lista.append([f'err{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameHP2comment[6:]} ({i.index})', '', 'VALVE',
+            _lista.append([f'valve{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameHP2comment[6:]} ({i.index})', '', 'VALVE',
                            'IO_alarm{' + str(lduzy) + '}', f'{str(lmaly)}'] + _tmp)
             lduzy, lmaly = zliczaj(lduzy, lmaly)
 
         if i.sensorWP != 'nan':
-            _lista.append([f'err{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameWPcomment[6:]} ({i.index})', '', 'VALVE',
+            _lista.append([f'valve{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameWPcomment[6:]} ({i.index})', '', 'VALVE',
                            'IO_alarm{'+str(lduzy)+'}', f'{str(lmaly)}'] + _tmp)
             lduzy, lmaly = zliczaj(lduzy, lmaly)
 
         if i.sensorWP2 != 'nan' and i.sensorWP2 != i.sensorWP:
-            _lista.append([f'err{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameWP2comment[6:]} ({i.index})', '', 'VALVE',
+            _lista.append([f'valve{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameWP2comment[6:]} ({i.index})', '', 'VALVE',
                            'IO_alarm{' + str(lduzy) + '}', f'{str(lmaly)}'] + _tmp)
             lduzy, lmaly = zliczaj(lduzy, lmaly)
 
