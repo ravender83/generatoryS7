@@ -51,7 +51,7 @@
                             in_Ipr2 := '{in_Ipr2}',
                             in_Qpw := '{in_Qpw}',
                             in_Qpr := '{in_Qpr}',
-                            in_tio := "A-io".io[#nr]);
+                            in_tio := "IO".io[#nr]);
 
             "A-TEST"(in_nr := #nr,
                      out := "DBVALVES".{DBVALVE}.test);

@@ -4,7 +4,6 @@ import sys
 
 zawory = []
 
-
 def zapisz(_plik, _txt):
     try:
         with open(f'out/{_plik}', "w", encoding="utf-8") as _f:
@@ -265,11 +264,65 @@ def generuj_dbvalves_db(_df):
     zapisz("11_DBVALVES.db", _dbvalves_data)
 
 
-def generuj_aio_db(_zawory):
+def zliczaj(_lduzy, _lmaly):
+    _lmaly += 1
+    if _lmaly >= 16:
+        _lmaly = 0
+        _lduzy += 1
+    return _lduzy, _lmaly
+
+
+def generuj_hmialarms_excel(_zawory):
+    _lista = []
+    _tmp = ['<No value>', '0', '<No value>', '0', 'VALVE', 'True', 'none']
+    _columns = ['Name', 'Alarm text [pl-PL], Alarm text', 'FieldInfo [Alarm text]', 'Class', 'Trigger tag', 'Trigger bit', 'Acknowledgement tag', 'Acknowledgement bit', 'PLC acknowledgement tag', 'PLC acknowledgement bit', 'Group', 'Report', 'Info text [pl-PL], Info text']
+    _txt = ['err0_0', 'polski', '', 'VALVE', 'IO_alarm{0}', '0']
+    lduzy = 0
+    lmaly = 0
+    for i in _zawory:
+        if i.sensorHP != 'nan':
+            _lista.append([f'err{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameHPcomment[6:]} ({i.index})', '', 'VALVE',
+                           'IO_alarm{'+str(lduzy)+'}', f'{str(lmaly)}'] + _tmp)
+            lduzy, lmaly = zliczaj(lduzy, lmaly)
+
+        if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
+            _lista.append([f'err{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameHP2comment[6:]} ({i.index})', '', 'VALVE',
+                           'IO_alarm{' + str(lduzy) + '}', f'{str(lmaly)}'] + _tmp)
+            lduzy, lmaly = zliczaj(lduzy, lmaly)
+
+        if i.sensorWP != 'nan':
+            _lista.append([f'err{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameWPcomment[6:]} ({i.index})', '', 'VALVE',
+                           'IO_alarm{'+str(lduzy)+'}', f'{str(lmaly)}'] + _tmp)
+            lduzy, lmaly = zliczaj(lduzy, lmaly)
+
+        if i.sensorWP2 != 'nan' and i.sensorWP2 != i.sensorWP:
+            _lista.append([f'err{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameWP2comment[6:]} ({i.index})', '', 'VALVE',
+                           'IO_alarm{' + str(lduzy) + '}', f'{str(lmaly)}'] + _tmp)
+            lduzy, lmaly = zliczaj(lduzy, lmaly)
+
+    _df = pd.DataFrame(_lista, columns=_columns)
+    _df.index.name = 'ID'
+    _df.index += 1
+    try:
+        _df.to_excel("out/13_HMIAlarms.xlsx", sheet_name='DiscreteAlarms', index=True)
+        print(f'[OK] Wygenerowano HMIAlarms.xlsx')
+        return lduzy
+    except IOError as e:
+        print(f'[NOK] Nie wygenerowano HMIAlarms.xlsx')
+        print(f'I/O error({e.errno}): {e.strerror}')
+        return e
+    except:  # handle other exceptions such as attribute errors
+        print(f'[NOK] Nie wygenerowano HMIAlarms.xlsx')
+        print('Unexpected error:', sys.exc_info()[0])
+        return None
+
+
+def generuj_aio_db(_zawory, _licznik):
     _aio_data = otworz("A-io_db.txt")
     _nr = _zawory[-1].index
     _aio_data = _aio_data.replace('{MAX_ZAWOROW}', str(_nr))
-    zapisz("12_A-io_db.db", _aio_data)
+    _aio_data = _aio_data.replace('{MAX_ALARMOW}', str(_licznik))
+    zapisz("13_A-io_db.db", _aio_data)
 
 
 def szablon_nan(aktualny_szablon, co, na_co, alternatywa):
@@ -331,7 +384,9 @@ def main(args):
     generuj_dbvalves_txt(df)
     generuj_dbvalves_db(df)
 
-    generuj_aio_db(zawory)
+    licznik = generuj_hmialarms_excel(zawory)
+    generuj_aio_db(zawory, licznik)
+
 
     generuj_valves_outputs_scl(zawory)
 
