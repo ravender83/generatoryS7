@@ -1,0 +1,29 @@
+﻿TYPE "3state"
+VERSION : 0.1
+   STRUCT
+      in : Struct
+         move_hp : Bool;
+         move_wp : Bool;
+         move_idle : Bool;
+      END_STRUCT;
+      out : Struct
+         in_hp : Bool;
+         in_wp : Bool;
+         in_idle : Bool;
+         status : Int;
+         alarm_hp : Bool;
+         alarm_wp : Bool;
+         diag_status : Byte;
+      END_STRUCT;
+      test { S7_SetPoint := 'False'} : "Ttest";
+      interlock : Struct
+         active : Bool;
+         hp_active : Bool;
+         wp_active : Bool;
+         hp : UInt;
+         wp : UInt;
+      END_STRUCT;
+   END_STRUCT;
+
+END_TYPE
+

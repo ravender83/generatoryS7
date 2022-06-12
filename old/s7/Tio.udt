@@ -1,0 +1,22 @@
+﻿TYPE "Tio"
+VERSION : 0.1
+   STRUCT
+      Qpw : String[6] := ' ';
+      Ipw1 : String[6] := ' ';
+      Ipw2 : String[6] := ' ';
+      Qpr : String[6] := ' ';
+      Ipr1 : String[6] := ' ';
+      Ipr2 : String[6] := ' ';
+      Qpw_bit : Bool;
+      Ipw1_bit : Bool;
+      Ipw2_bit : Bool;
+      Qpr_bit : Bool;
+      Ipr1_bit : Bool;
+      Ipr2_bit : Bool;
+      Ipw2_vis : Bool;
+      Ipr2_vis : Bool;
+      interlock_vis : Bool;
+   END_STRUCT;
+
+END_TYPE
+

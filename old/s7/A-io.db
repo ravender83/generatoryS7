@@ -1,0 +1,48 @@
+﻿DATA_BLOCK "A-io"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+   STRUCT 
+      io { S7_SetPoint := 'False'} : Array[0..17] of "Tio";
+   END_STRUCT;
+
+
+BEGIN
+   io[0].Qpw := ' ';
+   io[0].Ipw1 := ' ';
+   io[0].Ipw2 := ' ';
+   io[0].Qpr := ' ';
+   io[0].Ipr1 := ' ';
+   io[0].Ipr2 := ' ';
+   io[1].Qpw := 'Q10.7';
+   io[1].Ipw1 := 'I10.0';
+   io[1].Ipw2 := ' ';
+   io[1].Qpr := 'Q11.7';
+   io[1].Ipr1 := 'I11.0';
+   io[1].Ipr2 := ' ';
+   io[2].Qpw := 'Q10.6';
+   io[2].Ipw1 := 'I10.1';
+   io[2].Ipw2 := 'I10.2';
+   io[2].Qpr := 'Q11.6';
+   io[2].Ipr1 := 'I11.1';
+   io[2].Ipr2 := 'I11.2';
+   io[3].Qpw := 'Q30.6';
+   io[3].Ipw1 := 'I30.5';
+   io[3].Ipw2 := ' ';
+   io[3].Qpr := 'Q31.6';
+   io[3].Ipr1 := 'I31.5';
+   io[3].Ipr2 := ' ';
+   io[4].Qpw := 'Q30.7';
+   io[4].Ipw1 := 'I30.3';
+   io[4].Ipw2 := ' ';
+   io[4].Qpr := 'Q31.7';
+   io[4].Ipr1 := 'I31.3';
+   io[4].Ipr2 := ' ';
+   io[5].Qpw := ' ';
+   io[5].Ipw1 := ' ';
+   io[5].Ipw2 := ' ';
+   io[5].Qpr := 'Q1.0';
+   io[5].Ipr1 := ' ';
+   io[5].Ipr2 := ' ';
+
+END_DATA_BLOCK
+
