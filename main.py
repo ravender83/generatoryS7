@@ -188,7 +188,7 @@ def generuj_tags_txt(_zawory):
             _txt = _txt + f'{_oidle}\n'
         if i.outputBRAKE != 'nan':
             _txt = _txt + f'{_obrake}\n'
-    zapisz("1_tags.txt", _txt)
+    zapisz("10_tags.txt", _txt)
 
 
 def generuj_plc_tags_excel(_zawory):
@@ -214,7 +214,7 @@ def generuj_plc_tags_excel(_zawory):
     _df = pd.DataFrame(_lista, columns=['Name', 'Path', 'Data Type', 'Logical Address', 'Comment', 'Hmi Visible',
                                           'Hmi Accessible', 'Hmi Writeable', 'Typeobject ID', 'Version ID', 'BelongsToUnit'])
     try:
-        _df.to_excel("out/1_PLCTags.xlsx", sheet_name='PLC Tags', index=False)
+        _df.to_excel("out/10_PLCTags.xlsx", sheet_name='PLC Tags', index=False)
         print(f'[OK] Wygenerowano PLCTags.xlsx')
     except IOError as e:
         print(f'[NOK] Nie wygenerowano PLCTags.xlsx')
@@ -236,10 +236,33 @@ def generuj_dbvalves_txt(_df):
     for i in _prefixy:
         _pre = _df.loc[_df.PREFIX == i]
         _txt = _txt + f'\n--- {i} ---\n'
-        _tmp = '\t"3state"\t\tFalse\tTrue\tTrue\tTrue\tFalse\t\t'
+        _tmp = '\t"Tstate"\t\tFalse\tTrue\tTrue\tTrue\tFalse\t\t'
         for index, row in _pre.iterrows():
             _txt = _txt + f'{row.NAME.upper()}{_tmp}[{index+1}] {row.PREFIX}-{row.NAMEPL}\n'
-    zapisz("2_dbvalves.txt", _txt)
+    zapisz("11_dbvalves.txt", _txt)
+
+
+def generuj_dbvalves_db(_df):
+    _dbvalves_data = otworz("DBVALVES_db.txt")
+    _valve_data = otworz("DBVALVES_db_1_1.txt")
+    _prefixy = sorted(set(_df.PREFIX))
+
+    _txt = ''
+    for i in _prefixy:
+        _pre = _df.loc[_df.PREFIX == i]
+        _txt = _txt + f'{i} : Struct\n'
+
+        for index, row in _pre.iterrows():
+            _valve_szablon = _valve_data
+            _valve_szablon = _valve_szablon.replace('{PREFIX}', str(i))
+            _valve_szablon = _valve_szablon.replace('{DBVALVE}', row.NAME.upper())
+            _valve_szablon = _valve_szablon.replace('{DBVALVEPL}', row.NAMEPL)
+            _valve_szablon = _valve_szablon.replace('{INDEX}', str(index+1))
+            _txt += '\t' + _valve_szablon + '\n'
+        _txt = _txt + 'END_STRUCT;\n'
+
+    _dbvalves_data = _dbvalves_data.replace('{STRUCT}', _txt)
+    zapisz("11_DBVALVES.db", _dbvalves_data)
 
 
 def szablon_nan(aktualny_szablon, co, na_co, alternatywa):
@@ -252,7 +275,7 @@ def szablon_nan(aktualny_szablon, co, na_co, alternatywa):
 
 def generuj_valves_outputs_scl(_zawory):
     _valves_data = otworz("VALVES_outputs.txt")
-    _members_data = otworz("VALVES_outputs_interior.txt")
+    _members_data = otworz("VALVES_outputs_1.txt")
 
     _members_szablon = ''
     for i in _zawory:
@@ -282,7 +305,7 @@ def generuj_valves_outputs_scl(_zawory):
         _members_szablon += _szablon
 
     _valves_data = _valves_data.replace('{VALVES}', _members_szablon)
-    zapisz("3_dbvalve_outputs.scl", _valves_data)
+    zapisz("12_dbvalve_outputs.scl", _valves_data)
 
 
 def main(args):
@@ -299,6 +322,7 @@ def main(args):
     generuj_plc_tags_excel(zawory)
 
     generuj_dbvalves_txt(df)
+    generuj_dbvalves_db(df)
 
     generuj_valves_outputs_scl(zawory)
 
