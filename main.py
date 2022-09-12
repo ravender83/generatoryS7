@@ -1,9 +1,13 @@
 import pandas as pd
 from tag import Zawor
+from sensor import Sensor
 import sys
 
 zawory = []
-
+sensory = []
+safety = []
+przyciski = []
+inne = []
 
 def zapisz(_plik, _txt):
     try:
@@ -35,7 +39,7 @@ def otworz(_plik):
         return None
 
 
-def datas_parsing(_df):
+def df_datas_parsing(_df):
     # Zmiana nazw na male litery. Sprawdzenie braku duplikatów
     _df.PREFIX = _df.PREFIX.dropna().astype(str).str.upper()
     _df.PREFIX = _df.PREFIX.dropna().astype(str).str.strip()
@@ -66,7 +70,7 @@ def datas_parsing(_df):
     print('[OK] Parsowanie tekstu')
 
 
-def io_parsing(_df):
+def df_parsing(_df):
     if (_df.SENSOR_HP.dropna().astype(str).str[0] != 'I').any():
         print('[NOK] Parsowanie io kolumny SENSOR_HP')
         print(_df.SENSOR_HP.dropna())
@@ -121,7 +125,7 @@ def io_parsing(_df):
     print('[OK] Parsowanie io')
 
 
-def check_duplicates(_df):
+def df_check_duplicates(_df):
     if _df.NAME.is_unique:
         print('[OK] Nazwy NAME są unikalne')
     else:
@@ -151,7 +155,58 @@ def check_duplicates(_df):
         exit()
 
 
-def generuj_tags_txt(_zawory):
+def io_datas_parsing(_df):
+    # Zmiana nazw na male litery. Sprawdzenie braku duplikatów
+    #_df.PREFIX = _df.PREFIX.dropna().astype(str).str.upper()
+    _df.PREFIX = _df.PREFIX.dropna().astype(str).str.strip()
+    _df.NAME = _df.NAME.dropna().astype(str).str.lower()
+    _df.NAME = _df.NAME.dropna().astype(str).str.strip()
+    _df.NAMEPL = _df.NAMEPL.dropna().astype(str).str.lower()
+    _df.NAMEPL = _df.NAMEPL.dropna().astype(str).str.strip() 
+    _df.ADRES = _df.ADRES.dropna().astype(str).str.strip()
+    _df.ADRES = _df.ADRES.dropna().astype(str).str.upper()
+    print('[OK] Parsowanie sensorów')
+
+
+def io_parsing(_df):
+    if (_df.ADRES.dropna().astype(str).str[0] != 'I').any():
+        print('[NOK] Parsowanie io kolumny ADRES')
+        print(_df.ADRES.dropna())
+        input('Press enter to exit...')
+        exit() 
+    print('[OK] Parsowanie io')
+
+
+def io_check_duplicates(_df):
+    if _df.NAME.is_unique:
+        print('[OK] Nazwy NAME są unikalne')
+    else:
+        print('[NOK] Nazwy NAME nie są unikalne')
+        print(_df[_df.duplicated(subset=['NAME'], keep=False)].NAME)
+        input('Press enter to exit...')
+        exit()
+
+    if _df.NAMEPL.is_unique:
+        print('[OK] Nazwy NAMEPL są unikalne')
+    else:
+        print('[NOK] Nazwy NAMEPL nie są unikalne')
+        print(_df[_df.duplicated(subset=['NAMEPL'
+                                         ''], keep=False)].NAMEPL)
+        input('Press enter to exit...')
+        exit()
+
+    # Pobiera listę wszystkich adresów i sprawdza, czy nie ma błędów duplikatów
+    _dfio = (_df[['ADRES']].stack())
+    if _dfio.is_unique:
+        print('[OK] Adresy I/Q są unikalne')
+    else:
+        print('[NOK] Adresy I/Q nie są unikalne')
+        print(_dfio[_dfio.duplicated(keep=False)])
+        input('Press enter to exit...')
+        exit()
+
+
+def generuj_tags_txt(_zawory, _sensory, _safety, _przyciski, _inne):
     _txt = '----------- VALVES -----------\n'
     for i in _zawory:
         _txt = _txt + f'{i.get_name}\n'
@@ -188,10 +243,28 @@ def generuj_tags_txt(_zawory):
             _txt = _txt + f'{_oidle}\n'
         if i.outputBRAKE != 'nan':
             _txt = _txt + f'{_obrake}\n'
+
+    for i in _sensory:
+        _i = f'{i.get_sensorName}\tBOOL\t{i.adres}{_tmp}\t{i.get_sensorNameComment}'
+        if i.adres != 'nan':
+            _txt = _txt + f'{_i}\n'        
+    for i in _safety:
+        _i = f'{i.get_sensorName}\tBOOL\t{i.adres}{_tmp}\t{i.get_sensorNameComment}'  
+        if i.adres != 'nan':
+            _txt = _txt + f'{_i}\n'          
+    for i in _przyciski:
+        _i = f'{i.get_sensorName}\tBOOL\t{i.adres}{_tmp}\t{i.get_sensorNameComment}'            
+        if i.adres != 'nan':
+            _txt = _txt + f'{_i}\n'
+    for i in _inne:
+        _i = f'{i.get_sensorName}\tBOOL\t{i.adres}{_tmp}\t{i.get_sensorNameComment}'            
+        if i.adres != 'nan':
+            _txt = _txt + f'{_i}\n'
+
     zapisz("10_tags.txt", _txt)
 
 
-def generuj_plc_tags_excel(_zawory):
+def generuj_plc_tags_excel(_zawory, _sensory, _safety, _przyciski, _inne):
     _lista = []
     _tmp = ['True', 'True', 'True', '', '', '']
     for i in _zawory:
@@ -211,17 +284,31 @@ def generuj_plc_tags_excel(_zawory):
             _lista.append([i.get_outputNameIDLE, 'io', 'Bool', i.outputIDLE, i.get_outputNameIDLEcomment]+_tmp)
         if i.outputBRAKE != 'nan':
             _lista.append([i.get_outputNameBRAKE, 'io', 'Bool', i.outputBRAKE, i.get_outputNameBRAKEcomment]+_tmp)
+
+    for i in _sensory:
+        if i.adres != 'nan':
+            _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp)
+    for i in _safety:
+        if i.adres != 'nan':
+            _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp)
+    for i in _przyciski:
+        if i.adres != 'nan':
+            _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp)            
+    for i in _inne:
+        if i.adres != 'nan':
+            _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp)                  
+
     _df = pd.DataFrame(_lista, columns=['Name', 'Path', 'Data Type', 'Logical Address', 'Comment', 'Hmi Visible',
                                           'Hmi Accessible', 'Hmi Writeable', 'Typeobject ID', 'Version ID', 'BelongsToUnit'])
     try:
-        _df.to_excel("out/10_PLCTags.xlsx", sheet_name='PLC Tags', index=False)
-        print(f'[OK] Wygenerowano PLCTags.xlsx')
+        _df.to_excel("out/10_Tags.xlsx", sheet_name='PLC Tags', index=False)
+        print(f'[OK] Wygenerowano Tags.xlsx')
     except IOError as e:
-        print(f'[NOK] Nie wygenerowano PLCTags.xlsx')
+        print(f'[NOK] Nie wygenerowano Tags.xlsx')
         print(f'I/O error({e.errno}): {e.strerror}')
         return e
     except:  # handle other exceptions such as attribute errors
-        print(f'[NOK] Nie wygenerowano PLCTags.xlsx')
+        print(f'[NOK] Nie wygenerowano Tags.xlsx')
         print('Unexpected error:', sys.exc_info()[0])
         return None
 
@@ -273,40 +360,57 @@ def zliczaj(_lduzy, _lmaly):
     return _lduzy, _lmaly
 
 
-def generuj_hmialarms_excel(_zawory):
+def generuj_hmialarms_excel(_zawory, _sensory):
     _lista = []
+    # ===== Mechanizmy =======
     _tmp = ['<No value>', '0', '<No value>', '0', 'VALVE', 'True', 'none']
     _columns = ['Name', 'Alarm text [pl-PL], Alarm text', 'FieldInfo [Alarm text]', 'Class', 'Trigger tag', 'Trigger bit', 'Acknowledgement tag', 'Acknowledgement bit', 'PLC acknowledgement tag', 'PLC acknowledgement bit', 'Group', 'Report', 'Info text [pl-PL], Info text']
     lduzy = 0
     lmaly = 0
     for i in _zawory:
         if i.sensorHP != 'nan':
-            _lista.append([f'valve{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameHPcomment[6:]} ({i.index})', '', 'VALVE',
+            _lista.append([f'valve_{i.sensorHP[1:]}_hp', f'{i.get_sensorNameHPcomment[6:]} ({i.index})', '', 'VALVE',
                            'IO_alarm{'+str(lduzy)+'}', f'{str(lmaly)}'] + _tmp)
             lduzy, lmaly = zliczaj(lduzy, lmaly)
 
         if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
-            _lista.append([f'valve{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameHP2comment[6:]} ({i.index})', '', 'VALVE',
+            _lista.append([f'valve_{i.sensorHP2[1:]}_hp2', f'{i.get_sensorNameHP2comment[6:]} ({i.index})', '', 'VALVE',
                            'IO_alarm{' + str(lduzy) + '}', f'{str(lmaly)}'] + _tmp)
             lduzy, lmaly = zliczaj(lduzy, lmaly)
 
         if i.sensorWP != 'nan':
-            _lista.append([f'valve{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameWPcomment[6:]} ({i.index})', '', 'VALVE',
+            _lista.append([f'valve_{i.sensorWP[1:]}_wp', f'{i.get_sensorNameWPcomment[6:]} ({i.index})', '', 'VALVE',
                            'IO_alarm{'+str(lduzy)+'}', f'{str(lmaly)}'] + _tmp)
             lduzy, lmaly = zliczaj(lduzy, lmaly)
 
         if i.sensorWP2 != 'nan' and i.sensorWP2 != i.sensorWP:
-            _lista.append([f'valve{str(lduzy)}_{str(lmaly)}', f'{i.get_sensorNameWP2comment[6:]} ({i.index})', '', 'VALVE',
+            _lista.append([f'valve_{i.sensorWP2[1:]}_wp2', f'{i.get_sensorNameWP2comment[6:]} ({i.index})', '', 'VALVE',
                            'IO_alarm{' + str(lduzy) + '}', f'{str(lmaly)}'] + _tmp)
-            lduzy, lmaly = zliczaj(lduzy, lmaly)
+            lduzy, lmaly = zliczaj(lduzy, lmaly)    
+
+    # ===== Sensory =======
+    _tmp = ['<No value>', '0', '<No value>', '0', 'SENSOR', 'True', 'none']
+    _columns = ['Name', 'Alarm text [pl-PL], Alarm text', 'FieldInfo [Alarm text]', 'Class', 'Trigger tag', 'Trigger bit', 'Acknowledgement tag', 'Acknowledgement bit', 'PLC acknowledgement tag', 'PLC acknowledgement bit', 'Group', 'Report', 'Info text [pl-PL], Info text']
+    lduzy_sensor = 0
+    lmaly_sensor = 0
+    for i in _sensory:
+        if i.adres != 'nan':
+            _lista.append([f'sen_{i.adres[1:]}_hp', f'{i.get_sensorNameComment} nieaktywny', '', 'SENSOR',
+                           'IO_alarm{'+str(lduzy_sensor)+'}', f'{str(lmaly_sensor)}'] + _tmp)
+            lduzy_sensor, lmaly_sensor = zliczaj(lduzy_sensor, lmaly_sensor)
+        if i.adres != 'nan':
+            _lista.append([f'sen_{i.adres[1:]}_wp', f'{i.get_sensorNameComment} aktywny', '', 'SENSOR',
+                           'IO_alarm{'+str(lduzy_sensor)+'}', f'{str(lmaly_sensor)}'] + _tmp)
+            lduzy_sensor, lmaly_sensor = zliczaj(lduzy_sensor, lmaly_sensor)
+
 
     _df = pd.DataFrame(_lista, columns=_columns)
     _df.index.name = 'ID'
     _df.index += 1
     try:
-        _df.to_excel("out/13_HMIAlarms.xlsx", sheet_name='DiscreteAlarms', index=True)
+        _df.to_excel("out/14_HMIAlarms.xlsx", sheet_name='DiscreteAlarms', index=True)
         print(f'[OK] Wygenerowano HMIAlarms.xlsx')
-        return lduzy
+        return [lduzy, lduzy_sensor]
     except IOError as e:
         print(f'[NOK] Nie wygenerowano HMIAlarms.xlsx')
         print(f'I/O error({e.errno}): {e.strerror}')
@@ -315,6 +419,34 @@ def generuj_hmialarms_excel(_zawory):
         print(f'[NOK] Nie wygenerowano HMIAlarms.xlsx')
         print('Unexpected error:', sys.exc_info()[0])
         return None
+
+
+def generuj_alarms_db(_licznik, _zawory, _sensory):
+    _dbvalves_data = otworz("A-ALARMS_db.txt")
+    _valve_data = otworz("A-ALARMS_db_1.txt")
+
+    # --- Valves ---
+    _txt = ''
+    for i in range(_licznik[0]+1):
+        _txt = _txt + f'err{i} : UInt;\n'
+    _dbvalves_data = _dbvalves_data.replace('{VALVES_STRUCT}', _txt)
+
+    # --- Sensors ---
+    _txt = ''
+    for i in range(_licznik[1]+1):
+        _txt = _txt + f'sen{i} : UInt;\n'
+    _dbvalves_data = _dbvalves_data.replace('{SENSORS_STRUCT}', _txt)
+
+    _txt = ''
+    for i in _sensory:
+        _valve_szablon = _valve_data
+        _valve_szablon = _valve_szablon.replace('{SENSOR}', i.get_sensorName)
+        _valve_szablon = _valve_szablon.replace('{COMMENT}', i.get_sensorNameCommentSmall)
+        _txt += _valve_szablon + '\n'
+    _dbvalves_data = _dbvalves_data.replace('{SENSORS2_STRUCT}', _txt)
+
+    _dbvalves_data = _dbvalves_data.replace('{DRIVES_STRUCT}', 'drv0 : UInt;\n')
+    zapisz("13_ALARMS.db", _dbvalves_data)
 
 
 def generuj_aio_db(_zawory, _licznik):
@@ -367,25 +499,61 @@ def generuj_valves_outputs_scl(_zawory):
     _valves_data = _valves_data.replace('{ALL_STRUCTS}', _members_szablon)
     zapisz("19_valve_outputs.scl", _valves_data)
 
+def generuj_hmialarms_class():
+    _txt = 'VALVE\n'
+    _txt = _txt + 'SENSOR\n'
+    _txt = _txt + 'SAFETY\n'
+    zapisz("12_alarm_class.txt", _txt)
+
 
 def main(args):
-    df = pd.read_excel(args, header=0)
-    datas_parsing(df)   # Zmiana tekstu na małe/duże litery, usuwanie białych spacji
-    io_parsing(df)  # Sprawdzenie, czy kolumny zawierają prawidłowe I oraz Q
-    check_duplicates(df)    # Sprawdzenie duplikatów adresów
+    df = pd.read_excel(args, header=0, sheet_name='Mechanizmy')
+    df_datas_parsing(df)   # Zmiana tekstu na małe/duże litery, usuwanie białych spacji
+    df_parsing(df)  # Sprawdzenie, czy kolumny zawierają prawidłowe I oraz Q
+    df_check_duplicates(df)    # Sprawdzenie duplikatów adresów
+    io = pd.read_excel(args, header=0, sheet_name='Sensory')
+    io_datas_parsing(io)   # Zmiana tekstu na małe/duże litery, usuwanie białych spacji
+    io_parsing(io)  # Sprawdzenie, czy kolumny zawierają prawidłowe I oraz Q
+    io_check_duplicates(io)    # Sprawdzenie duplikatów adresów
+    sft = pd.read_excel(args, header=0, sheet_name='Safety')
+    io_datas_parsing(sft)   # Zmiana tekstu na małe/duże litery, usuwanie białych spacji
+    io_parsing(sft)  # Sprawdzenie, czy kolumny zawierają prawidłowe I oraz Q
+    io_check_duplicates(sft)    # Sprawdzenie duplikatów adresów
+    btn = pd.read_excel(args, header=0, sheet_name='Przyciski')
+    io_datas_parsing(btn)   # Zmiana tekstu na małe/duże litery, usuwanie białych spacji
+    io_parsing(btn)  # Sprawdzenie, czy kolumny zawierają prawidłowe I oraz Q
+    io_check_duplicates(btn)    # Sprawdzenie duplikatów adresów    
+    iq = pd.read_excel(args, header=0, sheet_name='IQ')
+    io_datas_parsing(iq)   # Zmiana tekstu na małe/duże litery, usuwanie białych spacji
+    #TUTAJ DODAC PARSOWANIE DLA I oraz Q
+    #CHECK powinno uwzględniać też prefix
+    #io_check_duplicates(iq)    # Sprawdzenie duplikatów adresów      
 
     # Generowanie listy obiektów mechanizmow
     for index, row in df.iterrows():
         zawory.append(Zawor(index+1, row))
 
-    generuj_tags_txt(zawory)
-    generuj_plc_tags_excel(zawory)
+    # Generowanie listy obiektów sensorów
+    for index, row in io.iterrows():
+        sensory.append(Sensor(row, 'czujnik'))    
+    for index, row in sft.iterrows():
+        safety.append(Sensor(row, ''))   
+    for index, row in btn.iterrows():
+        przyciski.append(Sensor(row, 'przycisk')) 
+    for index, row in iq.iterrows():
+        inne.append(Sensor(row, ''))       
+
+    generuj_tags_txt(zawory, sensory, safety, przyciski, inne)
+    generuj_plc_tags_excel(zawory, sensory, safety, przyciski, inne)
 
     generuj_dbvalves_txt(df)
     generuj_dbvalves_db(df)
 
-    licznik = generuj_hmialarms_excel(zawory)
-    generuj_aio_db(zawory, licznik)
+    generuj_hmialarms_class()
+
+    licznik = generuj_hmialarms_excel(zawory, sensory)
+    generuj_alarms_db(licznik, zawory, sensory)
+    #generuj_aio_db(zawory, licznik)
 
     generuj_valves_outputs_scl(zawory)
 
@@ -394,6 +562,6 @@ def main(args):
 
 
 if __name__ == '__main__':
-    main('PZ03.xlsx')
+    main('LK01.xlsx')
     # main(sys.argv)
 

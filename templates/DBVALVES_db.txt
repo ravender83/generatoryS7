@@ -3,7 +3,7 @@ TITLE = DBVALVES
 { S7_Optimized_Access := 'TRUE' }
 AUTHOR : PiotrSlezak
 FAMILY : Vorster
-VERSION : 0.1
+VERSION : 0.2
 NON_RETAIN
 //Blok danych stanowiący interface obsługi, diagnostyki i wizualizacji elektrozaworów i siłowników
    VAR 
