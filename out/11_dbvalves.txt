@@ -1,24 +1,10 @@
 ----------- DBVALVES datablock structs-----------
-BR	Struct		False	True	True	True	False		
+GN	Struct		False	True	True	True	False		
 ST1	Struct		False	True	True	True	False		
 
---- BR ---
-IMITATION	"Tstate"		False	True	True	True	False		[1] BR-imitacja
-FRAME_HOLDFAST	"Tstate"		False	True	True	True	False		[2] BR-docisk_ramki
-BUMPER	"Tstate"		False	True	True	True	False		[3] BR-zderzak
-CONTAINER_LATCH	"Tstate"		False	True	True	True	False		[4] BR-zatrzask
-SWORD	"Tstate"		False	True	True	True	False		[5] BR-miecz
+--- GN ---
+HOLDFACE	"Tstate"		False	True	True	True	False		[1] GN-docisk
 
 --- ST1 ---
-STATION_LOWERING	"Tstate"		False	True	True	True	False		[6] ST1-opuszczanie_stacji
-COVER_GUIDE	"Tstate"		False	True	True	True	False		[7] ST1-prowadnica_pokrywy
-COVER_LOCK	"Tstate"		False	True	True	True	False		[8] ST1-blokada_pokrywy
-TAU_HOLDFAST_MOVEMENT	"Tstate"		False	True	True	True	False		[9] ST1-przesuniecie_docisku_tau
-TAU_HOLDFAST	"Tstate"		False	True	True	True	False		[10] ST1-docisk_tau
-TAPE_RELEASE_MOVEMENT	"Tstate"		False	True	True	True	False		[11] ST1-przesuniecie_zwalniacza_tasmy
-TAPE_RELEASE	"Tstate"		False	True	True	True	False		[12] ST1-zwalniacz_tasmy
-TAPE_OPEN	"Tstate"		False	True	True	True	False		[13] ST1-otwarcie_tasmy
-CAMERA_MOVEMENT	"Tstate"		False	True	True	True	False		[14] ST1-przesuniecie_kamery
-BASE_LOWERING	"Tstate"		False	True	True	True	False		[15] ST1-opuszczanie_bazy
-TAPE_LOWERING	"Tstate"		False	True	True	True	False		[16] ST1-opuszczanie_tasmy
-PINS_LOWERING	"Tstate"		False	True	True	True	False		[17] ST1-opuszczanie_pinow
+BLOCKADE_LEFT	"Tstate"		False	True	True	True	False		[2] ST1-blokada_lewa
+BLOCKADE_RIGHT	"Tstate"		False	True	True	True	False		[3] ST1-blokada_prawa

@@ -1,0 +1,32 @@
+﻿DATA_BLOCK "A-ALARMS"
+TITLE = ALARMS
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : PiotrSlezak
+FAMILY : Vorster
+VERSION : 0.1
+NON_RETAIN
+//Blok zawierajacy dane alarmowe, komunikaty diagnostyczne wyswietlane na HMI
+   VAR 
+      VALVES : Struct
+{VALVES_STRUCT}
+      END_STRUCT;
+      SENSORS : Struct
+{SENSORS_STRUCT}
+         //sen0 : UInt;
+{SENSORS2_STRUCT}	
+         //"BR-sen_LH_on" { S7_SetPoint := 'False'} : "Tsensor";   // I1.0 - BR-sen_LH_on
+      END_STRUCT;
+      SAFETY : Struct	  
+         sft0 : UInt;
+         sft1 : UInt;
+      END_STRUCT;
+      DRIVES : Struct
+{DRIVES_STRUCT}	  
+      END_STRUCT;
+   END_VAR
+
+
+BEGIN
+
+END_DATA_BLOCK
+

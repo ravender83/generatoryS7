@@ -3,31 +3,17 @@ TITLE = DBVALVES
 { S7_Optimized_Access := 'TRUE' }
 AUTHOR : PiotrSlezak
 FAMILY : Vorster
-VERSION : 0.1
+VERSION : 0.2
 NON_RETAIN
 //Blok danych stanowiący interface obsługi, diagnostyki i wizualizacji elektrozaworów i siłowników
    VAR 
       LAMP_TEST { S7_SetPoint := 'False'} : Bool;
-BR : Struct
-	﻿IMITATION { S7_SetPoint := 'False'} : "Tstate";   // [1] BR imitacja
-	﻿FRAME_HOLDFAST { S7_SetPoint := 'False'} : "Tstate";   // [2] BR docisk_ramki
-	﻿BUMPER { S7_SetPoint := 'False'} : "Tstate";   // [3] BR zderzak
-	﻿CONTAINER_LATCH { S7_SetPoint := 'False'} : "Tstate";   // [4] BR zatrzask
-	﻿SWORD { S7_SetPoint := 'False'} : "Tstate";   // [5] BR miecz
+GN : Struct
+	﻿HOLDFACE { S7_SetPoint := 'False'} : "Tstate";   // [1] GN docisk
 END_STRUCT;
 ST1 : Struct
-	﻿STATION_LOWERING { S7_SetPoint := 'False'} : "Tstate";   // [6] ST1 opuszczanie_stacji
-	﻿COVER_GUIDE { S7_SetPoint := 'False'} : "Tstate";   // [7] ST1 prowadnica_pokrywy
-	﻿COVER_LOCK { S7_SetPoint := 'False'} : "Tstate";   // [8] ST1 blokada_pokrywy
-	﻿TAU_HOLDFAST_MOVEMENT { S7_SetPoint := 'False'} : "Tstate";   // [9] ST1 przesuniecie_docisku_tau
-	﻿TAU_HOLDFAST { S7_SetPoint := 'False'} : "Tstate";   // [10] ST1 docisk_tau
-	﻿TAPE_RELEASE_MOVEMENT { S7_SetPoint := 'False'} : "Tstate";   // [11] ST1 przesuniecie_zwalniacza_tasmy
-	﻿TAPE_RELEASE { S7_SetPoint := 'False'} : "Tstate";   // [12] ST1 zwalniacz_tasmy
-	﻿TAPE_OPEN { S7_SetPoint := 'False'} : "Tstate";   // [13] ST1 otwarcie_tasmy
-	﻿CAMERA_MOVEMENT { S7_SetPoint := 'False'} : "Tstate";   // [14] ST1 przesuniecie_kamery
-	﻿BASE_LOWERING { S7_SetPoint := 'False'} : "Tstate";   // [15] ST1 opuszczanie_bazy
-	﻿TAPE_LOWERING { S7_SetPoint := 'False'} : "Tstate";   // [16] ST1 opuszczanie_tasmy
-	﻿PINS_LOWERING { S7_SetPoint := 'False'} : "Tstate";   // [17] ST1 opuszczanie_pinow
+	﻿BLOCKADE_LEFT { S7_SetPoint := 'False'} : "Tstate";   // [2] ST1 blokada_lewa
+	﻿BLOCKADE_RIGHT { S7_SetPoint := 'False'} : "Tstate";   // [3] ST1 blokada_prawa
 END_STRUCT;
 
    END_VAR
