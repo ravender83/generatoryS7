@@ -119,28 +119,28 @@ class Zawor:
     def get_sensorNameHPcomment(self):
         #nc - [I20.5] czujnik BR IMITACJA HP front
         #return f'#nc - [{self.sensorHP[1:]}] czujnik {self.prefix}-{self.namepl} HP {self.sideHP}'
-        return f'[{self.sensorHP[1:]}] czujnik {self.prefix}-{self.namepl} HP {self.sideHP}'
+        return f'[{self.sensorHP[1:]}] czujnik "{self.prefix}-{self.namepl}" HP {self.sideHP}'
 
 
     @property
     def get_sensorNameHP2comment(self):
         #nc - [I20.5] czujnik BR IMITACJA HP front
         #return f'#nc - [{self.sensorHP2[1:]}] czujnik {self.prefix}-{self.namepl} HP {self.sideHP}'
-        return f'[{self.sensorHP2[1:]}] czujnik {self.prefix}-{self.namepl} HP {self.sideHP}'
+        return f'[{self.sensorHP2[1:]}] czujnik "{self.prefix}-{self.namepl}" HP {self.sideHP}'
 
 
     @property
     def get_sensorNameWPcomment(self):
         #nc - [I20.5] czujnik BR IMITACJA WP front
         #return f'#no - [{self.sensorWP[1:]}] czujnik {self.prefix}-{self.namepl} WP {self.sideWP}'
-        return f'[{self.sensorWP[1:]}] czujnik {self.prefix}-{self.namepl} WP {self.sideWP}'
+        return f'[{self.sensorWP[1:]}] czujnik "{self.prefix}-{self.namepl}" WP {self.sideWP}'
 
 
     @property
     def get_sensorNameWP2comment(self):
         #nc - [I20.5] czujnik BR IMITACJA WP front
         #return f'#no - [{self.sensorWP2[1:]}] czujnik {self.prefix}-{self.namepl} WP {self.sideWP}'
-        return f'[{self.sensorWP2[1:]}] czujnik {self.prefix}-{self.namepl} WP {self.sideWP}'
+        return f'[{self.sensorWP2[1:]}] czujnik "{self.prefix}-{self.namepl}" WP {self.sideWP}'
 
 
     @property
