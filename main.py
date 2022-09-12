@@ -9,6 +9,7 @@ safety = []
 przyciski = []
 inne = []
 
+
 def zapisz(_plik, _txt):
     try:
         with open(f'out/{_plik}', "w", encoding="utf-8") as _f:
