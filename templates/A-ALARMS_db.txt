@@ -12,16 +12,14 @@ NON_RETAIN
       END_STRUCT;
       SENSORS : Struct
 {SENSORS_STRUCT}
-         //sen0 : UInt;
-{SENSORS2_STRUCT}	
-         //"BR-sen_LH_on" { S7_SetPoint := 'False'} : "Tsensor";   // I1.0 - BR-sen_LH_on
+{SENSORS2_STRUCT}
       END_STRUCT;
-      SAFETY : Struct	  
+      SAFETY : Struct
          sft0 : UInt;
          sft1 : UInt;
       END_STRUCT;
       DRIVES : Struct
-{DRIVES_STRUCT}	  
+{DRIVES_STRUCT}
       END_STRUCT;
    END_VAR
 

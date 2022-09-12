@@ -12,18 +12,33 @@ err0 : UInt;
 
       END_STRUCT;
       SENSORS : Struct
-{SENSORS_STRUCT}
-         //sen0 : UInt;
-{SENSORS2_STRUCT}	
-         //"BR-sen_LH_on" { S7_SetPoint := 'False'} : "Tsensor";   // I1.0 - BR-sen_LH_on
+sen0 : UInt;
+sen1 : UInt;
+
+"A-sen_scanner_left" { S7_SetPoint := 'False'} : "Tsensor";   // [I1.3] A-sen_skaner_lewo
+"A-sen_scanner_right" { S7_SetPoint := 'False'} : "Tsensor";   // [I1.4] A-sen_skaner_prawo
+"GN-sen_frame_screw_left" { S7_SetPoint := 'False'} : "Tsensor";   // [I10.0] GN-sen_stelaz_sruba_lewa
+"GN-sen_frame_screw_right" { S7_SetPoint := 'False'} : "Tsensor";   // [I11.0] GN-sen_stelaz_sruba_prawa
+"GN-sen_generator_screw" { S7_SetPoint := 'False'} : "Tsensor";   // [I10.3] GN-sen_generator_sruba
+"OETIKER_position_hp" { S7_SetPoint := 'False'} : "Tsensor";   // [I20.0] OETIKER_pozycja_hp
+"OETIKER_position_2mm" { S7_SetPoint := 'False'} : "Tsensor";   // [I10.2] OETIKER_pozycja_2mm
+"OETIKER_position_4mm" { S7_SetPoint := 'False'} : "Tsensor";   // [I11.2] OETIKER_pozycja_4mm
+"OETIKER_position_tensometer" { S7_SetPoint := 'False'} : "Tsensor";   // [I21.0] OETIKER_pozycja_tensometr
+"OETIKER_position_band_left_hp" { S7_SetPoint := 'False'} : "Tsensor";   // [I20.1] OETIKER_pozycja_opaska_lewa_hp
+"OETIKER_position_band_right_hp" { S7_SetPoint := 'False'} : "Tsensor";   // [I21.1] OETIKER_pozycja_opaska_prawa_hp
+"OETIKER_position_band_left_wp" { S7_SetPoint := 'False'} : "Tsensor";   // [I20.2] OETIKER_pozycja_opaska_lewa_wp
+"OETIKER_position_band_right_wp" { S7_SetPoint := 'False'} : "Tsensor";   // [I21.2] OETIKER_pozycja_opaska_prawa_wp
+"ST1-sen_latch_left" { S7_SetPoint := 'False'} : "Tsensor";   // [I20.3] ST1-sen_zasuwka_lewo
+"ST1-sen_latch_right" { S7_SetPoint := 'False'} : "Tsensor";   // [I21.3] ST1-sen_zasuwka_prawo
+
       END_STRUCT;
-      SAFETY : Struct	  
+      SAFETY : Struct
          sft0 : UInt;
          sft1 : UInt;
       END_STRUCT;
       DRIVES : Struct
 drv0 : UInt;
-	  
+
       END_STRUCT;
    END_VAR
 

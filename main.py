@@ -9,7 +9,6 @@ safety = []
 przyciski = []
 inne = []
 
-
 def zapisz(_plik, _txt):
     try:
         with open(f'out/{_plik}', "w", encoding="utf-8") as _f:
@@ -361,8 +360,9 @@ def zliczaj(_lduzy, _lmaly):
     return _lduzy, _lmaly
 
 
-def generuj_hmialarms_excel(_zawory):
+def generuj_hmialarms_excel(_zawory, _sensory):
     _lista = []
+    # ===== Mechanizmy =======
     _tmp = ['<No value>', '0', '<No value>', '0', 'VALVE', 'True', 'none']
     _columns = ['Name', 'Alarm text [pl-PL], Alarm text', 'FieldInfo [Alarm text]', 'Class', 'Trigger tag', 'Trigger bit', 'Acknowledgement tag', 'Acknowledgement bit', 'PLC acknowledgement tag', 'PLC acknowledgement bit', 'Group', 'Report', 'Info text [pl-PL], Info text']
     lduzy = 0
@@ -388,13 +388,29 @@ def generuj_hmialarms_excel(_zawory):
                            'IO_alarm{' + str(lduzy) + '}', f'{str(lmaly)}'] + _tmp)
             lduzy, lmaly = zliczaj(lduzy, lmaly)    
 
+    # ===== Sensory =======
+    _tmp = ['<No value>', '0', '<No value>', '0', 'SENSOR', 'True', 'none']
+    _columns = ['Name', 'Alarm text [pl-PL], Alarm text', 'FieldInfo [Alarm text]', 'Class', 'Trigger tag', 'Trigger bit', 'Acknowledgement tag', 'Acknowledgement bit', 'PLC acknowledgement tag', 'PLC acknowledgement bit', 'Group', 'Report', 'Info text [pl-PL], Info text']
+    lduzy_sensor = 0
+    lmaly_sensor = 0
+    for i in _sensory:
+        if i.adres != 'nan':
+            _lista.append([f'sen_{i.adres[1:]}_hp', f'{i.get_sensorNameComment} nieaktywny', '', 'SENSOR',
+                           'IO_alarm{'+str(lduzy_sensor)+'}', f'{str(lmaly_sensor)}'] + _tmp)
+            lduzy_sensor, lmaly_sensor = zliczaj(lduzy_sensor, lmaly_sensor)
+        if i.adres != 'nan':
+            _lista.append([f'sen_{i.adres[1:]}_wp', f'{i.get_sensorNameComment} aktywny', '', 'SENSOR',
+                           'IO_alarm{'+str(lduzy_sensor)+'}', f'{str(lmaly_sensor)}'] + _tmp)
+            lduzy_sensor, lmaly_sensor = zliczaj(lduzy_sensor, lmaly_sensor)
+
+
     _df = pd.DataFrame(_lista, columns=_columns)
     _df.index.name = 'ID'
     _df.index += 1
     try:
         _df.to_excel("out/14_HMIAlarms.xlsx", sheet_name='DiscreteAlarms', index=True)
         print(f'[OK] Wygenerowano HMIAlarms.xlsx')
-        return lduzy
+        return [lduzy, lduzy_sensor]
     except IOError as e:
         print(f'[NOK] Nie wygenerowano HMIAlarms.xlsx')
         print(f'I/O error({e.errno}): {e.strerror}')
@@ -405,33 +421,31 @@ def generuj_hmialarms_excel(_zawory):
         return None
 
 
-def generuj_alarms_db(_licznik, _zawory):
+def generuj_alarms_db(_licznik, _zawory, _sensory):
     _dbvalves_data = otworz("A-ALARMS_db.txt")
-    #_valve_data = otworz("DBVALVES_db_1_1.txt")
+    _valve_data = otworz("A-ALARMS_db_1.txt")
 
+    # --- Valves ---
     _txt = ''
-    for i in range(_licznik+1):
-        _txt = _txt + f'err{_licznik} : UInt;\n'
+    for i in range(_licznik[0]+1):
+        _txt = _txt + f'err{i} : UInt;\n'
     _dbvalves_data = _dbvalves_data.replace('{VALVES_STRUCT}', _txt)
 
-    _dbvalves_data = _dbvalves_data.replace('{DRIVES_STRUCT}', 'drv0 : UInt;\n')
-    '''
+    # --- Sensors ---
     _txt = ''
-    for i in _prefixy:
-        _pre = _df.loc[_df.PREFIX == i]
-        _txt = _txt + f'{i} : Struct\n'
+    for i in range(_licznik[1]+1):
+        _txt = _txt + f'sen{i} : UInt;\n'
+    _dbvalves_data = _dbvalves_data.replace('{SENSORS_STRUCT}', _txt)
 
-        for index, row in _pre.iterrows():
-            _valve_szablon = _valve_data
-            _valve_szablon = _valve_szablon.replace('{PREFIX}', str(i))
-            _valve_szablon = _valve_szablon.replace('{DBVALVE}', row.NAME.upper())
-            _valve_szablon = _valve_szablon.replace('{DBVALVEPL}', row.NAMEPL)
-            _valve_szablon = _valve_szablon.replace('{INDEX}', str(index+1))
-            _txt += '\t' + _valve_szablon + '\n'
-        _txt = _txt + 'END_STRUCT;\n'
+    _txt = ''
+    for i in _sensory:
+        _valve_szablon = _valve_data
+        _valve_szablon = _valve_szablon.replace('{SENSOR}', i.get_sensorName)
+        _valve_szablon = _valve_szablon.replace('{COMMENT}', i.get_sensorNameCommentSmall)
+        _txt += _valve_szablon + '\n'
+    _dbvalves_data = _dbvalves_data.replace('{SENSORS2_STRUCT}', _txt)
 
-    _dbvalves_data = _dbvalves_data.replace('{STRUCT}', _txt)
-    '''
+    _dbvalves_data = _dbvalves_data.replace('{DRIVES_STRUCT}', 'drv0 : UInt;\n')
     zapisz("13_ALARMS.db", _dbvalves_data)
 
 
@@ -537,8 +551,8 @@ def main(args):
 
     generuj_hmialarms_class()
 
-    licznik = generuj_hmialarms_excel(zawory)
-    generuj_alarms_db(licznik, zawory)
+    licznik = generuj_hmialarms_excel(zawory, sensory)
+    generuj_alarms_db(licznik, zawory, sensory)
     #generuj_aio_db(zawory, licznik)
 
     generuj_valves_outputs_scl(zawory)

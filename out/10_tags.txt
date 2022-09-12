@@ -22,40 +22,40 @@ ST1-vsen_blockade_right_HP_down	BOOL	%I20.5	False	True	True	True		[I20.5] czujni
 ST1-vsen_blockade_right_WP_up	BOOL	%I21.5	False	True	True	True		[I21.5] czujnik ST1-blokada_prawa WP up
 ST1-ez_blockade_right_HP_down	BOOL	%Q20.7	False	True	True	True		[3] ST1-blokada_prawa HP down [I20.5]
 ST1-ez_blockade_right_WP_up	BOOL	%Q21.7	False	True	True	True		[3] ST1-blokada_prawa WP up [I21.5]
-A-sen_scanner_left	BOOL	%I1.3	False	True	True	True		[I1.3] czujnik A-sen-skaner_lewo
-A-sen_scanner_right	BOOL	%I1.4	False	True	True	True		[I1.4] czujnik A-sen-skaner_prawo
-GN-sen_frame_screw_left	BOOL	%I10.0	False	True	True	True		[I10.0] czujnik GN-sen-stelaz_sruba_lewa
-GN-sen_frame_screw_right	BOOL	%I11.0	False	True	True	True		[I11.0] czujnik GN-sen-stelaz_sruba_prawa
-GN-sen_generator_screw	BOOL	%I10.3	False	True	True	True		[I10.3] czujnik GN-sen-generator_sruba
-OETIKER_position_hp	BOOL	%I20.0	False	True	True	True		[I20.0] czujnik OETIKER-pozycja_hp
-OETIKER_position_2mm	BOOL	%I10.2	False	True	True	True		[I10.2] czujnik OETIKER-pozycja_2mm
-OETIKER_position_4mm	BOOL	%I11.2	False	True	True	True		[I11.2] czujnik OETIKER-pozycja_4mm
-OETIKER_position_tensometer	BOOL	%I21.0	False	True	True	True		[I21.0] czujnik OETIKER-pozycja_tensometr
-OETIKER_position_band_left_hp	BOOL	%I20.1	False	True	True	True		[I20.1] czujnik OETIKER-pozycja_opaska_lewa_hp
-OETIKER_position_band_right_hp	BOOL	%I21.1	False	True	True	True		[I21.1] czujnik OETIKER-pozycja_opaska_prawa_hp
-OETIKER_position_band_left_wp	BOOL	%I20.2	False	True	True	True		[I20.2] czujnik OETIKER-pozycja_opaska_lewa_wp
-OETIKER_position_band_right_wp	BOOL	%I21.2	False	True	True	True		[I21.2] czujnik OETIKER-pozycja_opaska_prawa_wp
-ST1-sen_latch_left	BOOL	%I20.3	False	True	True	True		[I20.3] czujnik ST1-sen-zasuwka_lewo
-ST1-sen_latch_right	BOOL	%I21.3	False	True	True	True		[I21.3] czujnik ST1-sen-zasuwka_prawo
-SAFETY_pressure_ok	BOOL	%I0.1	False	True	True	True		[I0.1]  SAFETY-cisnienie_ok
-SAFETY_blockade	BOOL	%I0.4	False	True	True	True		[I0.4]  SAFETY-blokada
-SAFETY_estop_ok	BOOL	%I0.5	False	True	True	True		[I0.5]  SAFETY-estop_ok
-A-btn_start	BOOL	%I0.0	False	True	True	True		[I0.0] przycisk A-btn-start
-A-btn_panel_green	BOOL	%I0.6	False	True	True	True		[I0.6] przycisk A-btn-panel_zielony
-A-btn_panel_red	BOOL	%I0.7	False	True	True	True		[I0.7] przycisk A-btn-panel_czerwony
-A-btn_start_on_grip	BOOL	%I1.2	False	True	True	True		[I1.2] przycisk A-btn-start_na_uchwycie
-A-led_panel_white	BOOL	%Q0.0	False	True	True	True		[Q0.0]  A-led-panel_bialy
-A-led_panel_green	BOOL	%Q0.1	False	True	True	True		[Q0.1]  A-led-panel_zielony
-A-led_panel_red	BOOL	%Q0.2	False	True	True	True		[Q0.2]  A-led-panel_czerwony
-A-led_start	BOOL	%Q0.3	False	True	True	True		[Q0.3]  A-led-start
-A-led_column_green	BOOL	%Q0.4	False	True	True	True		[Q0.4]  A-led-kolumna_zielony
-A-led_column_red	BOOL	%Q0.5	False	True	True	True		[Q0.5]  A-led-kolumna_czerwony
-A-led_column_yellow	BOOL	%Q0.6	False	True	True	True		[Q0.6]  A-led-kolumna_zolty
-A-rel_light	BOOL	%Q0.7	False	True	True	True		[Q0.7]  A-rel-oswietlenie
-Oetiker_clamping_ok	BOOL	%I1.0	False	True	True	True		[I1.0]  Oetiker-zaciskanie_ok
-Oetiker_clamping_nok	BOOL	%I1.1	False	True	True	True		[I1.1]  Oetiker-zaciskanie_nok
-Oetiker_start	BOOL	%Q1.0	False	True	True	True		[Q1.0]  Oetiker-start
-Oetiker_program_00	BOOL	%Q1.1	False	True	True	True		[Q1.1]  Oetiker-program_00
-Oetiker_program_01	BOOL	%Q1.2	False	True	True	True		[Q1.2]  Oetiker-program_01
-Oetiker_program_02	BOOL	%Q1.3	False	True	True	True		[Q1.3]  Oetiker-program_02
-Oetiker_program_03	BOOL	%Q1.4	False	True	True	True		[Q1.4]  Oetiker-program_03
+A-sen_scanner_left	BOOL	%I1.3	False	True	True	True		[I1.3] czujnik A-sen_skaner_lewo
+A-sen_scanner_right	BOOL	%I1.4	False	True	True	True		[I1.4] czujnik A-sen_skaner_prawo
+GN-sen_frame_screw_left	BOOL	%I10.0	False	True	True	True		[I10.0] czujnik GN-sen_stelaz_sruba_lewa
+GN-sen_frame_screw_right	BOOL	%I11.0	False	True	True	True		[I11.0] czujnik GN-sen_stelaz_sruba_prawa
+GN-sen_generator_screw	BOOL	%I10.3	False	True	True	True		[I10.3] czujnik GN-sen_generator_sruba
+OETIKER_position_hp	BOOL	%I20.0	False	True	True	True		[I20.0] czujnik OETIKER_pozycja_hp
+OETIKER_position_2mm	BOOL	%I10.2	False	True	True	True		[I10.2] czujnik OETIKER_pozycja_2mm
+OETIKER_position_4mm	BOOL	%I11.2	False	True	True	True		[I11.2] czujnik OETIKER_pozycja_4mm
+OETIKER_position_tensometer	BOOL	%I21.0	False	True	True	True		[I21.0] czujnik OETIKER_pozycja_tensometr
+OETIKER_position_band_left_hp	BOOL	%I20.1	False	True	True	True		[I20.1] czujnik OETIKER_pozycja_opaska_lewa_hp
+OETIKER_position_band_right_hp	BOOL	%I21.1	False	True	True	True		[I21.1] czujnik OETIKER_pozycja_opaska_prawa_hp
+OETIKER_position_band_left_wp	BOOL	%I20.2	False	True	True	True		[I20.2] czujnik OETIKER_pozycja_opaska_lewa_wp
+OETIKER_position_band_right_wp	BOOL	%I21.2	False	True	True	True		[I21.2] czujnik OETIKER_pozycja_opaska_prawa_wp
+ST1-sen_latch_left	BOOL	%I20.3	False	True	True	True		[I20.3] czujnik ST1-sen_zasuwka_lewo
+ST1-sen_latch_right	BOOL	%I21.3	False	True	True	True		[I21.3] czujnik ST1-sen_zasuwka_prawo
+SAFETY_pressure_ok	BOOL	%I0.1	False	True	True	True		[I0.1]  SAFETY_cisnienie_ok
+SAFETY_blockade	BOOL	%I0.4	False	True	True	True		[I0.4]  SAFETY_blokada
+SAFETY_estop_ok	BOOL	%I0.5	False	True	True	True		[I0.5]  SAFETY_estop_ok
+A-btn_start	BOOL	%I0.0	False	True	True	True		[I0.0] przycisk A-btn_start
+A-btn_panel_green	BOOL	%I0.6	False	True	True	True		[I0.6] przycisk A-btn_panel_zielony
+A-btn_panel_red	BOOL	%I0.7	False	True	True	True		[I0.7] przycisk A-btn_panel_czerwony
+A-btn_start_on_grip	BOOL	%I1.2	False	True	True	True		[I1.2] przycisk A-btn_start_na_uchwycie
+A-led_panel_white	BOOL	%Q0.0	False	True	True	True		[Q0.0]  A-led_panel_bialy
+A-led_panel_green	BOOL	%Q0.1	False	True	True	True		[Q0.1]  A-led_panel_zielony
+A-led_panel_red	BOOL	%Q0.2	False	True	True	True		[Q0.2]  A-led_panel_czerwony
+A-led_start	BOOL	%Q0.3	False	True	True	True		[Q0.3]  A-led_start
+A-led_column_green	BOOL	%Q0.4	False	True	True	True		[Q0.4]  A-led_kolumna_zielony
+A-led_column_red	BOOL	%Q0.5	False	True	True	True		[Q0.5]  A-led_kolumna_czerwony
+A-led_column_yellow	BOOL	%Q0.6	False	True	True	True		[Q0.6]  A-led_kolumna_zolty
+A-rel_light	BOOL	%Q0.7	False	True	True	True		[Q0.7]  A-rel_oswietlenie
+Oetiker_clamping_ok	BOOL	%I1.0	False	True	True	True		[I1.0]  Oetiker_zaciskanie_ok
+Oetiker_clamping_nok	BOOL	%I1.1	False	True	True	True		[I1.1]  Oetiker_zaciskanie_nok
+Oetiker_start	BOOL	%Q1.0	False	True	True	True		[Q1.0]  Oetiker_start
+Oetiker_program_00	BOOL	%Q1.1	False	True	True	True		[Q1.1]  Oetiker_program_00
+Oetiker_program_01	BOOL	%Q1.2	False	True	True	True		[Q1.2]  Oetiker_program_01
+Oetiker_program_02	BOOL	%Q1.3	False	True	True	True		[Q1.3]  Oetiker_program_02
+Oetiker_program_03	BOOL	%Q1.4	False	True	True	True		[Q1.4]  Oetiker_program_03
