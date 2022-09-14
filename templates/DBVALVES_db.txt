@@ -1,4 +1,4 @@
-﻿DATA_BLOCK "DBVALVES"
+﻿DATA_BLOCK "A-DBVALVES"
 TITLE = DBVALVES
 { S7_Optimized_Access := 'TRUE' }
 AUTHOR : PiotrSlezak
@@ -9,6 +9,7 @@ NON_RETAIN
    VAR 
       LAMP_TEST { S7_SetPoint := 'False'} : Bool;
 {STRUCT}
+   io : Array[0..{ILOSC}] of "Tio";
    END_VAR
 
 

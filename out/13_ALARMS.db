@@ -7,11 +7,14 @@ VERSION : 0.1
 NON_RETAIN
 //Blok zawierajacy dane alarmowe, komunikaty diagnostyczne wyswietlane na HMI
    VAR 
+      error : Bool;
       VALVES : Struct
+	  error : Bool;
 err0 : UInt;
 
       END_STRUCT;
       SENSORS : Struct
+	  error : Bool;
 sen0 : UInt;
 sen1 : UInt;
 
@@ -23,7 +26,7 @@ sen1 : UInt;
 "OETIKER_position_hp" { S7_SetPoint := 'False'} : "Tsensor";   // [I20.0] OETIKER_pozycja_hp
 "OETIKER_position_2mm" { S7_SetPoint := 'False'} : "Tsensor";   // [I10.2] OETIKER_pozycja_2mm
 "OETIKER_position_4mm" { S7_SetPoint := 'False'} : "Tsensor";   // [I11.2] OETIKER_pozycja_4mm
-"OETIKER_position_tensometer" { S7_SetPoint := 'False'} : "Tsensor";   // [I21.0] OETIKER_pozycja_tensometr
+"OETIKER_position_tensometer" { S7_SetPoint := 'False'} : "Tsensor";   // [I11.3] OETIKER_pozycja_tensometr
 "OETIKER_position_band_left_hp" { S7_SetPoint := 'False'} : "Tsensor";   // [I20.1] OETIKER_pozycja_opaska_lewa_hp
 "OETIKER_position_band_right_hp" { S7_SetPoint := 'False'} : "Tsensor";   // [I21.1] OETIKER_pozycja_opaska_prawa_hp
 "OETIKER_position_band_left_wp" { S7_SetPoint := 'False'} : "Tsensor";   // [I20.2] OETIKER_pozycja_opaska_lewa_wp
@@ -33,13 +36,22 @@ sen1 : UInt;
 
       END_STRUCT;
       SAFETY : Struct
+		 error : Bool;
          sft0 : UInt;
-         sft1 : UInt;
       END_STRUCT;
+      BUTTONS : Struct
+		 error : Bool;
+         btn0 : UInt;
+      END_STRUCT;	  
       DRIVES : Struct
+		error : Bool;
 drv0 : UInt;
 
       END_STRUCT;
+      OTHER : Struct
+		error : Bool;
+		oth0 : UInt;
+      END_STRUCT;	  
    END_VAR
 
 

@@ -8,6 +8,7 @@ sensory = []
 safety = []
 przyciski = []
 inne = []
+lista_tagow = []
 
 
 def zapisz(_plik, _txt):
@@ -350,6 +351,7 @@ def generuj_dbvalves_db(_df):
         _txt = _txt + 'END_STRUCT;\n'
 
     _dbvalves_data = _dbvalves_data.replace('{STRUCT}', _txt)
+    _dbvalves_data = _dbvalves_data.replace('{ILOSC}', str(len(_df)))
     zapisz("11_DBVALVES.db", _dbvalves_data)
 
 
@@ -363,6 +365,7 @@ def zliczaj(_lduzy, _lmaly):
 
 def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
     _lista = []
+    _lista_tagow = []
     # ===== Mechanizmy =======
     _tmp = ['<No value>', '0', '<No value>', '0', 'VALVE', 'True', 'none']
     _columns = ['Name', 'Alarm text [pl-PL], Alarm text', 'FieldInfo [Alarm text]', 'Class', 'Trigger tag', 'Trigger bit', 'Acknowledgement tag', 'Acknowledgement bit', 'PLC acknowledgement tag', 'PLC acknowledgement bit', 'Group', 'Report', 'Info text [pl-PL], Info text']
@@ -371,23 +374,35 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
     for i in _zawory:
         if i.sensorHP != 'nan':
             _lista.append([f'valve_{i.sensorHP[1:]}_hp', f'{i.get_sensorNameHPcomment[0:]} ({i.index}) jest nieaktywny', '', 'VALVE',
-                           'IO_alarm{'+str(lduzy)+'}', f'{str(lmaly)}'] + _tmp)
+                           'A-ALARMS_VALVES_err'+str(lduzy), f'{str(lmaly)}'] + _tmp)
+            i.byteHP = lduzy
+            i.bitHP = lmaly
             lduzy, lmaly = zliczaj(lduzy, lmaly)
+            _lista_tagow.append('A-ALARMS_VALVES_err'+str(lduzy))
 
         if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
             _lista.append([f'valve_{i.sensorHP2[1:]}_hp2', f'{i.get_sensorNameHP2comment[0:]} ({i.index}) jest nieaktywny', '', 'VALVE',
-                           'IO_alarm{' + str(lduzy) + '}', f'{str(lmaly)}'] + _tmp)
+                           'A-ALARMS_VALVES_err' + str(lduzy), f'{str(lmaly)}'] + _tmp)
+            i.byteHP2 = lduzy
+            i.bitHP2 = lmaly            
             lduzy, lmaly = zliczaj(lduzy, lmaly)
+            _lista_tagow.append('A-ALARMS_VALVES_err'+str(lduzy))
 
         if i.sensorWP != 'nan':
             _lista.append([f'valve_{i.sensorWP[1:]}_wp', f'{i.get_sensorNameWPcomment[0:]} ({i.index}) jest nieaktywny', '', 'VALVE',
-                           'IO_alarm{'+str(lduzy)+'}', f'{str(lmaly)}'] + _tmp)
+                           'A-ALARMS_VALVES_err'+str(lduzy), f'{str(lmaly)}'] + _tmp)
+            i.byteWP = lduzy
+            i.bitWP = lmaly            
             lduzy, lmaly = zliczaj(lduzy, lmaly)
+            _lista_tagow.append('A-ALARMS_VALVES_err'+str(lduzy))
 
         if i.sensorWP2 != 'nan' and i.sensorWP2 != i.sensorWP:
             _lista.append([f'valve_{i.sensorWP2[1:]}_wp2', f'{i.get_sensorNameWP2comment[0:]} ({i.index}) jest nieaktywny', '', 'VALVE',
-                           'IO_alarm{' + str(lduzy) + '}', f'{str(lmaly)}'] + _tmp)
-            lduzy, lmaly = zliczaj(lduzy, lmaly)    
+                           'A-ALARMS_VALVES_err' + str(lduzy), f'{str(lmaly)}'] + _tmp)
+            i.byteWP2 = lduzy
+            i.bitWP2 = lmaly            
+            lduzy, lmaly = zliczaj(lduzy, lmaly)  
+            _lista_tagow.append('A-ALARMS_VALVES_err'+str(lduzy))  
 
     # ===== Sensory =======
     _tmp = ['<No value>', '0', '<No value>', '0', 'SENSOR', 'True', 'none']
@@ -397,12 +412,19 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
     for i in _sensory:
         if i.adres != 'nan':
             _lista.append([f'sen_{i.adres[1:]}_hp', f'{i.get_sensorNameComment} jest aktywny', '', 'SENSOR',
-                           'IO_alarm{'+str(lduzy_sensor)+'}', f'{str(lmaly_sensor)}'] + _tmp)
+                           'A-ALARMS_SENSORS_sen'+str(lduzy_sensor), f'{str(lmaly_sensor)}'] + _tmp)
+            i.byteHP = lduzy_sensor
+            i.bitHP = lmaly_sensor            
             lduzy_sensor, lmaly_sensor = zliczaj(lduzy_sensor, lmaly_sensor)
+            _lista_tagow.append('A-ALARMS_SENSORS_sen'+str(lduzy_sensor))
+
         if i.adres != 'nan':
             _lista.append([f'sen_{i.adres[1:]}_wp', f'{i.get_sensorNameComment} jest nieaktywny', '', 'SENSOR',
-                           'IO_alarm{'+str(lduzy_sensor)+'}', f'{str(lmaly_sensor)}'] + _tmp)
+                           'A-ALARMS_SENSORS_sen'+str(lduzy_sensor), f'{str(lmaly_sensor)}'] + _tmp)
+            i.byteWP = lduzy_sensor
+            i.bitWP = lmaly_sensor              
             lduzy_sensor, lmaly_sensor = zliczaj(lduzy_sensor, lmaly_sensor)
+            _lista_tagow.append('A-ALARMS_SENSORS_sen'+str(lduzy_sensor))
 
     # ===== Safety =======
     _tmp = ['<No value>', '0', '<No value>', '0', 'SAFETY', 'True', 'none']
@@ -412,8 +434,11 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
     for i in _safety:
         if i.adres != 'nan':
             _lista.append([f'safe_{i.adres[1:]}_hp', f'{i.get_sensorNameComment} jest nieaktywny', '', 'SAFETY',
-                           'IO_alarm{'+str(lduzy_safety)+'}', f'{str(lmaly_safety)}'] + _tmp)
+                           'A-ALARMS_SAFETY_sft'+str(lduzy_safety), f'{str(lmaly_safety)}'] + _tmp)
+            i.byteWP = lduzy_safety
+            i.bitWP = lmaly_safety              
             lduzy_safety, lmaly_safety = zliczaj(lduzy_safety, lmaly_safety)
+            _lista_tagow.append('A-ALARMS_SAFETY_sft'+str(lduzy_safety))
 
     # ===== Przyciski =======
     _tmp = ['<No value>', '0', '<No value>', '0', 'BUTTON', 'True', 'none']
@@ -423,18 +448,27 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
     for i in _przyciski:
         if i.adres != 'nan':
             _lista.append([f'btn_{i.adres[1:]}_hp', f'{i.get_sensorNameComment} jest aktywny', '', 'BUTTON',
-                           'IO_alarm{'+str(lduzy_button)+'}', f'{str(lmaly_button)}'] + _tmp)
+                           'A-ALARMS_BUTTONS_btn'+str(lduzy_button), f'{str(lmaly_button)}'] + _tmp)
+            i.byteHP = lduzy_button
+            i.bitHP = lmaly_button               
             lduzy_button, lmaly_button = zliczaj(lduzy_button, lmaly_button)
+            _lista_tagow.append('A-ALARMS_BUTTONS_btn'+str(lduzy_button))
+
         if i.adres != 'nan':
             _lista.append([f'btn_{i.adres[1:]}_wp', f'{i.get_sensorNameComment} jest nieaktywny', '', 'BUTTON',
-                           'IO_alarm{'+str(lduzy_button)+'}', f'{str(lmaly_button)}'] + _tmp)
+                           'A-ALARMS_BUTTONS_btn'+str(lduzy_button), f'{str(lmaly_button)}'] + _tmp)
+            i.byteWP = lduzy_button
+            i.bitWP = lmaly_button              
             lduzy_button, lmaly_button = zliczaj(lduzy_button, lmaly_button)
+            _lista_tagow.append('A-ALARMS_BUTTONS_btn'+str(lduzy_button))
 
     _df = pd.DataFrame(_lista, columns=_columns)
     _df.index.name = 'ID'
     _df.index += 1
+    _lista_tagow = list(set(_lista_tagow))
+    lista_tagow.extend(_lista_tagow)
     try:
-        _df.to_excel("out/14_HMIAlarms.xlsx", sheet_name='DiscreteAlarms', index=True)
+        _df.to_excel("out/15_HMIAlarms.xlsx", sheet_name='DiscreteAlarms', index=True)
         print(f'[OK] Wygenerowano HMIAlarms.xlsx')
         return [lduzy, lduzy_sensor]
     except IOError as e:
@@ -445,6 +479,16 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
         print(f'[NOK] Nie wygenerowano HMIAlarms.xlsx')
         print('Unexpected error:', sys.exc_info()[0])
         return None
+
+
+def generuj_hmialarms_tagi_excel(_lista):
+    _lista_gotowa = []
+    _tmp = ['UInt', '2', 'Binary', 'Symbolic access', '<No Value>', 'False', '<No Value>', '<No Value>', '0', '<No Value>', '<No Value>', 'Continuous', '1 s', 'None', '<No Value>', 'None', '<No Value>', 'None', '<No Value>', 'None', '<No Value>', 'False', '10', '0', '100', '0', 'False', 'None', 'False']
+    _columns = ['Name', 'Path', 'Connection', 'PLC tag', 'DataType', 'Length', 'Coding', 'Access Method', 'Address', 'Indirect addressing', 'Index tag', 'Start value', 'ID tag', 'Display name [pl-PL]', 'Comment [pl-PL]', 'Acquisition mode', 'Acquisition cycle', 'Limit Upper 2 Type', 'Limit Upper 2', 'Limit Upper 1 Type', 'Limit Upper 1', 'Limit Lower 1 Type', 'Limit Lower 1', 'Limit Lower 2 Type', 'Limit Lower 2', 'Linear scaling', 'End value PLC', 'Start value PLC', 'End value HMI', 'Start value HMI', 'Gmp relevant', 'Confirmation Type', 'Mandatory Commenting']
+    for i in (_lista):
+        _txt = i[8:].replace('_', '.')
+        _lista_gotowa.append([f'A-ALARMS{i[8:]}', 'Default tag table', 'PLC', f'"A-ALARMS"{_txt}'] + _tmp)
+    print(_lista_gotowa)
 
 
 def generuj_alarms_db(_licznik, _zawory, _sensory):
@@ -530,6 +574,9 @@ def generuj_hmialarms_class():
     _txt = 'VALVE\n'
     _txt = _txt + 'SENSOR\n'
     _txt = _txt + 'SAFETY\n'
+    _txt = _txt + 'BUTTON\n'
+    _txt = _txt + 'OTHER\n'
+    _txt = _txt + 'DRIVES\n'
     zapisz("12_alarm_class.txt", _txt)
 
 
@@ -579,6 +626,7 @@ def main(args):
     generuj_hmialarms_class()
 
     licznik = generuj_hmialarms_excel(zawory, sensory, safety, przyciski)
+    generuj_hmialarms_tagi_excel(lista_tagow)
     generuj_alarms_db(licznik, zawory, sensory)
     #generuj_aio_db(zawory, licznik)
 

@@ -52,17 +52,17 @@ BEGIN
                                out_alarm_hp => "DBVALVES".GN.﻿HOLDFACE.out.alarm_hp,
                                out_alarm_wp => "DBVALVES".GN.﻿HOLDFACE.out.alarm_wp,
                                out_diag_status => "DBVALVES".GN.﻿HOLDFACE.out.diag_status,
-                               in_ez_hp := %Q2.0,
-                               in_ez_wp := %Q2.1,
-                               in_ez_idle := %Q1.7);
+                               in_ez_hp := %Q10.7,
+                               in_ez_wp := %Q1.7,
+                               in_ez_idle := %Q11.7);
 
             "A-status_diag"(in_diag_status := "DBVALVES".GN.﻿HOLDFACE.out.diag_status,
                             in_Ipw1 := 'I10.1',
                             in_Ipw2 := ' ',
                             in_Ipr1 := 'I11.1',
                             in_Ipr2 := ' ',
-                            in_Qpw := 'Q2.0',
-                            in_Qpr := 'Q2.1',
+                            in_Qpw := 'Q10.7',
+                            in_Qpr := 'Q1.7',
                             in_tio := "IO".io[#nr]);
 
             "A-TEST"(in_nr := #nr,

@@ -1,4 +1,4 @@
-﻿DATA_BLOCK "DBVALVES"
+﻿DATA_BLOCK "A-DBVALVES"
 TITLE = DBVALVES
 { S7_Optimized_Access := 'TRUE' }
 AUTHOR : PiotrSlezak
@@ -16,6 +16,7 @@ ST1 : Struct
 	﻿BLOCKADE_RIGHT { S7_SetPoint := 'False'} : "Tstate";   // [3] ST1 blokada_prawa
 END_STRUCT;
 
+   io : Array[0..3] of "Tio";
    END_VAR
 
 

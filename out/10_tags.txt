@@ -11,9 +11,9 @@
 ----------- IO TAGS -----------
 GN-vsen_holdface_HP_open	BOOL	%I10.1	False	True	True	True		[I10.1] czujnik "GN-docisk" HP open
 GN-vsen_holdface_WP_close	BOOL	%I11.1	False	True	True	True		[I11.1] czujnik "GN-docisk" WP close
-GN-ez_holdface_HP_open	BOOL	%Q2.0	False	True	True	True		[1] GN-docisk HP open [I10.1]
-GN-ez_holdface_WP_close	BOOL	%Q2.1	False	True	True	True		[1] GN-docisk WP close [I11.1]
-GN-ez_holdface_IDLE	BOOL	%Q1.7	False	True	True	True		[1] GN-docisk IDLE
+GN-ez_holdface_HP_open	BOOL	%Q10.7	False	True	True	True		[1] GN-docisk HP open [I10.1]
+GN-ez_holdface_WP_close	BOOL	%Q1.7	False	True	True	True		[1] GN-docisk WP close [I11.1]
+GN-ez_holdface_IDLE	BOOL	%Q11.7	False	True	True	True		[1] GN-docisk IDLE
 ST1-vsen_blockade_left_HP_down	BOOL	%I20.4	False	True	True	True		[I20.4] czujnik "ST1-blokada_lewa" HP down
 ST1-vsen_blockade_left_WP_up	BOOL	%I21.4	False	True	True	True		[I21.4] czujnik "ST1-blokada_lewa" WP up
 ST1-ez_blockade_left_HP_down	BOOL	%Q20.6	False	True	True	True		[2] ST1-blokada_lewa HP down [I20.4]
@@ -30,7 +30,7 @@ GN-sen_generator_screw	BOOL	%I10.3	False	True	True	True		[I10.3] czujnik "GN-sen
 OETIKER_position_hp	BOOL	%I20.0	False	True	True	True		[I20.0] czujnik "OETIKER_pozycja_hp"
 OETIKER_position_2mm	BOOL	%I10.2	False	True	True	True		[I10.2] czujnik "OETIKER_pozycja_2mm"
 OETIKER_position_4mm	BOOL	%I11.2	False	True	True	True		[I11.2] czujnik "OETIKER_pozycja_4mm"
-OETIKER_position_tensometer	BOOL	%I21.0	False	True	True	True		[I21.0] czujnik "OETIKER_pozycja_tensometr"
+OETIKER_position_tensometer	BOOL	%I11.3	False	True	True	True		[I11.3] czujnik "OETIKER_pozycja_tensometr"
 OETIKER_position_band_left_hp	BOOL	%I20.1	False	True	True	True		[I20.1] czujnik "OETIKER_pozycja_opaska_lewa_hp"
 OETIKER_position_band_right_hp	BOOL	%I21.1	False	True	True	True		[I21.1] czujnik "OETIKER_pozycja_opaska_prawa_hp"
 OETIKER_position_band_left_wp	BOOL	%I20.2	False	True	True	True		[I20.2] czujnik "OETIKER_pozycja_opaska_lewa_wp"

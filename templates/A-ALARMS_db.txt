@@ -7,20 +7,32 @@ VERSION : 0.1
 NON_RETAIN
 //Blok zawierajacy dane alarmowe, komunikaty diagnostyczne wyswietlane na HMI
    VAR 
+      error : Bool;
       VALVES : Struct
+	  error : Bool;
 {VALVES_STRUCT}
       END_STRUCT;
       SENSORS : Struct
+	  error : Bool;
 {SENSORS_STRUCT}
 {SENSORS2_STRUCT}
       END_STRUCT;
       SAFETY : Struct
+		 error : Bool;
          sft0 : UInt;
-         sft1 : UInt;
       END_STRUCT;
+      BUTTONS : Struct
+		 error : Bool;
+         btn0 : UInt;
+      END_STRUCT;	  
       DRIVES : Struct
+		error : Bool;
 {DRIVES_STRUCT}
       END_STRUCT;
+      OTHER : Struct
+		error : Bool;
+		oth0 : UInt;
+      END_STRUCT;	  
    END_VAR
 
 

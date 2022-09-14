@@ -7,6 +7,14 @@ class Zawor:
         self.prefix = str(_zawor.PREFIX)
         self.name = str(_zawor.NAME)
         self.namepl = str(_zawor.NAMEPL)
+        self.byteHP = 0
+        self.bitHP = 0
+        self.byteHP2 = 0
+        self.bitHP2 = 0        
+        self.byteWP = 0
+        self.bitWP = 0  
+        self.byteWP2 = 0
+        self.bitWP2 = 0 
 
         if str(_zawor.SENSOR_HP) != 'nan':
             self.sensorHP = '%'+str(_zawor.SENSOR_HP)
