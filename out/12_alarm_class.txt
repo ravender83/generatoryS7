@@ -1,6 +1,6 @@
-VALVE
-SENSOR
-SAFETY
-BUTTON
-OTHER
-DRIVES
+VALVE	VALVE	Alarm without acknowledgment
+SENSOR	SENSOR	Alarm without acknowledgment
+SAFETY	SAFETY	Alarm without acknowledgment
+BUTTON	BUTTON	Alarm without acknowledgment
+OTHER	OTHER	Alarm without acknowledgment
+DRIVES	DRIVES	Alarm without acknowledgment

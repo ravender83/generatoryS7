@@ -488,8 +488,19 @@ def generuj_hmialarms_tagi_excel(_lista):
     for i in (_lista):
         _txt = i[8:].replace('_', '.')
         _lista_gotowa.append([f'A-ALARMS{i[8:]}', 'Default tag table', 'PLC', f'"A-ALARMS"{_txt}'] + _tmp)
-    print(_lista_gotowa)
-
+    #print(_lista_gotowa)
+    _df = pd.DataFrame(_lista_gotowa, columns=_columns)
+    try:
+        _df.to_excel("out/14_HMIAlarmsTags.xlsx", sheet_name='Hmi Tags', index=False)
+        print(f'[OK] Wygenerowano HMIAlarmsTags.xlsx')
+    except IOError as e:
+        print(f'[NOK] Nie wygenerowano HMIAlarmsTags.xlsx')
+        print(f'I/O error({e.errno}): {e.strerror}')
+        return e
+    except:  # handle other exceptions such as attribute errors
+        print(f'[NOK] Nie wygenerowano HMIAlarmsTags.xlsx')
+        print('Unexpected error:', sys.exc_info()[0])
+        return None
 
 def generuj_alarms_db(_licznik, _zawory, _sensory):
     _dbvalves_data = otworz("A-ALARMS_db.txt")
@@ -571,12 +582,12 @@ def generuj_valves_outputs_scl(_zawory):
 
 
 def generuj_hmialarms_class():
-    _txt = 'VALVE\n'
-    _txt = _txt + 'SENSOR\n'
-    _txt = _txt + 'SAFETY\n'
-    _txt = _txt + 'BUTTON\n'
-    _txt = _txt + 'OTHER\n'
-    _txt = _txt + 'DRIVES\n'
+    _txt = 'VALVE\tVALVE\tAlarm without acknowledgment\n'
+    _txt = _txt + 'SENSOR\tSENSOR\tAlarm without acknowledgment\n'
+    _txt = _txt + 'SAFETY\tSAFETY\tAlarm without acknowledgment\n'
+    _txt = _txt + 'BUTTON\tBUTTON\tAlarm without acknowledgment\n'
+    _txt = _txt + 'OTHER\tOTHER\tAlarm without acknowledgment\n'
+    _txt = _txt + 'DRIVES\tDRIVES\tAlarm without acknowledgment\n'
     zapisz("12_alarm_class.txt", _txt)
 
 
