@@ -502,6 +502,7 @@ def generuj_hmialarms_tagi_excel(_lista):
         print('Unexpected error:', sys.exc_info()[0])
         return None
 
+
 def generuj_alarms_db(_licznik, _zawory, _sensory):
     _dbvalves_data = otworz("A-ALARMS_db.txt")
     _valve_data = otworz("A-ALARMS_db_1.txt")
@@ -528,14 +529,6 @@ def generuj_alarms_db(_licznik, _zawory, _sensory):
 
     _dbvalves_data = _dbvalves_data.replace('{DRIVES_STRUCT}', 'drv0 : UInt;\n')
     zapisz("13_ALARMS.db", _dbvalves_data)
-
-
-def generuj_aio_db(_zawory, _licznik):
-    _aio_data = otworz("A-io_db.txt")
-    _nr = _zawory[-1].index
-    _aio_data = _aio_data.replace('{MAX_ZAWOROW}', str(_nr))
-    _aio_data = _aio_data.replace('{MAX_ALARMOW}', str(_licznik))
-    zapisz("13_A-io_db.db", _aio_data)
 
 
 def szablon_nan(aktualny_szablon, co, na_co, alternatywa):
@@ -639,7 +632,6 @@ def main(args):
     licznik = generuj_hmialarms_excel(zawory, sensory, safety, przyciski)
     generuj_hmialarms_tagi_excel(lista_tagow)
     generuj_alarms_db(licznik, zawory, sensory)
-    #generuj_aio_db(zawory, licznik)
 
     generuj_valves_outputs_scl(zawory)
 
