@@ -13,41 +13,67 @@ TITLE = VALVES error
 {VALVES_error}      NOT;
       AN "A-Flags".MODE._NONE;
       = "A-ALARMS".VALVES.error;
+	  
+	  A     "A-ALARMS".VALVES.error;
+      L     s5t#5s;
+      SD    "A-T_del_msg_valves_error";
 NETWORK
 TITLE = SENSORS error
 {SENSORS_error}      NOT;
       AN "A-Flags".MODE._NONE;
       = "A-ALARMS".SENSORS.error;
+	  
+	  A     "A-ALARMS".SENSORS.error;
+      L     s5t#5s;
+      SD    "A-T_del_msg_sensors_error";	  
 NETWORK
 TITLE = SAFETY error
 {SAFETY_error}      NOT;
       AN "A-Flags".MODE._NONE;
       = "A-ALARMS".SAFETY.error;
+	  
+	  A     "A-ALARMS".SAFETY.error;
+      L     s5t#5s;
+      SD    "A-T_del_msg_safety_error";
 NETWORK
 TITLE = BUTTONS error
 {BUTTONS_error}      NOT;
       AN "A-Flags".MODE._NONE;
       = "A-ALARMS".BUTTONS.error;
+	  
+	  A     "A-ALARMS".BUTTONS.error;
+      L     s5t#5s;
+      SD    "A-T_del_msg_buttons_error";
 NETWORK
 TITLE = DRIVES error
 //{DRIVES_error}
 //      NOT;
-//      AN "A-Flags".MODE._NONE;
-//      = "A-ALARMS".DRIVES.error;
+      A "Log_0";
+      AN "A-Flags".MODE._NONE;
+      = "A-ALARMS".DRIVES.error;
+
+      A     "A-ALARMS".DRIVES.error;
+      L     s5t#5s;
+      SD    "A-T_del_msg_drives_error";
 NETWORK
 TITLE = OTHER error
 //{OTHER_error}
 //      NOT;
-//      AN "A-Flags".MODE._NONE;
-//      = "A-ALARMS".OTHER.error;
+      A "Log_0";
+      AN "A-Flags".MODE._NONE;
+      = "A-ALARMS".OTHER.error;
+	  
+      A     "A-ALARMS".OTHER.error;
+      L     s5t#5s;
+      SD    "A-T_del_msg_other_error";	  
 NETWORK
 TITLE = GLOBAL ERROR
       O "A-ALARMS".VALVES.error;
       O "A-ALARMS".SENSORS.error;
       O "A-ALARMS".SAFETY.error;
       O "A-ALARMS".BUTTONS.error;
-//      O "A-ALARMS".DRIVES.error;
-//      O "A-ALARMS".OTHER.error;
+      O "A-ALARMS".DRIVES.error;
+      O "A-ALARMS".OTHER.error;
       = "A-ALARMS".error;
 {SIGNALS}
 END_FUNCTION

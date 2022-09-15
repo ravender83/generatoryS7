@@ -371,7 +371,7 @@ def zliczaj(_lduzy, _lmaly):
 
 def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
     _txt_hp = ''
-    _msg = 200
+    _msg = 1000
     _index = 1
 
     _lista = []

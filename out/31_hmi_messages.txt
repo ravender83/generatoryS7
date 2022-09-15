@@ -1,47 +1,47 @@
-201	[I10.1] czujnik "GN-docisk" HP (1) jest nieaktywny
-202	[I11.1] czujnik "GN-docisk" WP (1) jest nieaktywny
-203	[I20.4] czujnik "ST1-blokada_lewa" HP (2) jest nieaktywny
-204	[I21.4] czujnik "ST1-blokada_lewa" WP (2) jest nieaktywny
-205	[I20.5] czujnik "ST1-blokada_prawa" HP (3) jest nieaktywny
-206	[I21.5] czujnik "ST1-blokada_prawa" WP (3) jest nieaktywny
-207	[I1.3] czujnik "A-sen_skaner_lewo" jest aktywny
-208	[I1.3] czujnik "A-sen_skaner_lewo" jest nieaktywny
-209	[I1.4] czujnik "A-sen_skaner_prawo" jest aktywny
-210	[I1.4] czujnik "A-sen_skaner_prawo" jest nieaktywny
-211	[I10.0] czujnik "GN-sen_stelaz_sruba_lewa" jest aktywny
-212	[I10.0] czujnik "GN-sen_stelaz_sruba_lewa" jest nieaktywny
-213	[I11.0] czujnik "GN-sen_stelaz_sruba_prawa" jest aktywny
-214	[I11.0] czujnik "GN-sen_stelaz_sruba_prawa" jest nieaktywny
-215	[I10.3] czujnik "GN-sen_generator_sruba" jest aktywny
-216	[I10.3] czujnik "GN-sen_generator_sruba" jest nieaktywny
-217	[I20.0] czujnik "OETIKER_pozycja_hp" jest aktywny
-218	[I20.0] czujnik "OETIKER_pozycja_hp" jest nieaktywny
-219	[I10.2] czujnik "OETIKER_pozycja_2mm" jest aktywny
-220	[I10.2] czujnik "OETIKER_pozycja_2mm" jest nieaktywny
-221	[I11.2] czujnik "OETIKER_pozycja_4mm" jest aktywny
-222	[I11.2] czujnik "OETIKER_pozycja_4mm" jest nieaktywny
-223	[I11.3] czujnik "OETIKER_pozycja_tensometr" jest aktywny
-224	[I11.3] czujnik "OETIKER_pozycja_tensometr" jest nieaktywny
-225	[I20.1] czujnik "OETIKER_pozycja_opaska_lewa_hp" jest aktywny
-226	[I20.1] czujnik "OETIKER_pozycja_opaska_lewa_hp" jest nieaktywny
-227	[I21.1] czujnik "OETIKER_pozycja_opaska_prawa_hp" jest aktywny
-228	[I21.1] czujnik "OETIKER_pozycja_opaska_prawa_hp" jest nieaktywny
-229	[I20.2] czujnik "OETIKER_pozycja_opaska_lewa_wp" jest aktywny
-230	[I20.2] czujnik "OETIKER_pozycja_opaska_lewa_wp" jest nieaktywny
-231	[I21.2] czujnik "OETIKER_pozycja_opaska_prawa_wp" jest aktywny
-232	[I21.2] czujnik "OETIKER_pozycja_opaska_prawa_wp" jest nieaktywny
-233	[I20.3] czujnik "ST1-sen_zasuwka_lewo" jest aktywny
-234	[I20.3] czujnik "ST1-sen_zasuwka_lewo" jest nieaktywny
-235	[I21.3] czujnik "ST1-sen_zasuwka_prawo" jest aktywny
-236	[I21.3] czujnik "ST1-sen_zasuwka_prawo" jest nieaktywny
-237	[I0.1]  "SAFETY_cisnienie_ok" jest nieaktywny
-238	[I0.4]  "SAFETY_blokada" jest nieaktywny
-239	[I0.5]  "SAFETY_estop_ok" jest nieaktywny
-240	[I0.0] przycisk "A-btn_start" jest aktywny
-241	[I0.0] przycisk "A-btn_start" jest nieaktywny
-242	[I0.6] przycisk "A-btn_panel_zielony" jest aktywny
-243	[I0.6] przycisk "A-btn_panel_zielony" jest nieaktywny
-244	[I0.7] przycisk "A-btn_panel_czerwony" jest aktywny
-245	[I0.7] przycisk "A-btn_panel_czerwony" jest nieaktywny
-246	[I1.2] przycisk "A-btn_start_na_uchwycie" jest aktywny
-247	[I1.2] przycisk "A-btn_start_na_uchwycie" jest nieaktywny
+1001	[I10.1] czujnik "GN-docisk" HP (1) jest nieaktywny
+1002	[I11.1] czujnik "GN-docisk" WP (1) jest nieaktywny
+1003	[I20.4] czujnik "ST1-blokada_lewa" HP (2) jest nieaktywny
+1004	[I21.4] czujnik "ST1-blokada_lewa" WP (2) jest nieaktywny
+1005	[I20.5] czujnik "ST1-blokada_prawa" HP (3) jest nieaktywny
+1006	[I21.5] czujnik "ST1-blokada_prawa" WP (3) jest nieaktywny
+1007	[I1.3] czujnik "A-sen_skaner_lewo" jest aktywny
+1008	[I1.3] czujnik "A-sen_skaner_lewo" jest nieaktywny
+1009	[I1.4] czujnik "A-sen_skaner_prawo" jest aktywny
+1010	[I1.4] czujnik "A-sen_skaner_prawo" jest nieaktywny
+1011	[I10.0] czujnik "GN-sen_stelaz_sruba_lewa" jest aktywny
+1012	[I10.0] czujnik "GN-sen_stelaz_sruba_lewa" jest nieaktywny
+1013	[I11.0] czujnik "GN-sen_stelaz_sruba_prawa" jest aktywny
+1014	[I11.0] czujnik "GN-sen_stelaz_sruba_prawa" jest nieaktywny
+1015	[I10.3] czujnik "GN-sen_generator_sruba" jest aktywny
+1016	[I10.3] czujnik "GN-sen_generator_sruba" jest nieaktywny
+1017	[I20.0] czujnik "OETIKER_pozycja_hp" jest aktywny
+1018	[I20.0] czujnik "OETIKER_pozycja_hp" jest nieaktywny
+1019	[I10.2] czujnik "OETIKER_pozycja_2mm" jest aktywny
+1020	[I10.2] czujnik "OETIKER_pozycja_2mm" jest nieaktywny
+1021	[I11.2] czujnik "OETIKER_pozycja_4mm" jest aktywny
+1022	[I11.2] czujnik "OETIKER_pozycja_4mm" jest nieaktywny
+1023	[I11.3] czujnik "OETIKER_pozycja_tensometr" jest aktywny
+1024	[I11.3] czujnik "OETIKER_pozycja_tensometr" jest nieaktywny
+1025	[I20.1] czujnik "OETIKER_pozycja_opaska_lewa_hp" jest aktywny
+1026	[I20.1] czujnik "OETIKER_pozycja_opaska_lewa_hp" jest nieaktywny
+1027	[I21.1] czujnik "OETIKER_pozycja_opaska_prawa_hp" jest aktywny
+1028	[I21.1] czujnik "OETIKER_pozycja_opaska_prawa_hp" jest nieaktywny
+1029	[I20.2] czujnik "OETIKER_pozycja_opaska_lewa_wp" jest aktywny
+1030	[I20.2] czujnik "OETIKER_pozycja_opaska_lewa_wp" jest nieaktywny
+1031	[I21.2] czujnik "OETIKER_pozycja_opaska_prawa_wp" jest aktywny
+1032	[I21.2] czujnik "OETIKER_pozycja_opaska_prawa_wp" jest nieaktywny
+1033	[I20.3] czujnik "ST1-sen_zasuwka_lewo" jest aktywny
+1034	[I20.3] czujnik "ST1-sen_zasuwka_lewo" jest nieaktywny
+1035	[I21.3] czujnik "ST1-sen_zasuwka_prawo" jest aktywny
+1036	[I21.3] czujnik "ST1-sen_zasuwka_prawo" jest nieaktywny
+1037	[I0.1]  "SAFETY_cisnienie_ok" jest nieaktywny
+1038	[I0.4]  "SAFETY_blokada" jest nieaktywny
+1039	[I0.5]  "SAFETY_estop_ok" jest nieaktywny
+1040	[I0.0] przycisk "A-btn_start" jest aktywny
+1041	[I0.0] przycisk "A-btn_start" jest nieaktywny
+1042	[I0.6] przycisk "A-btn_panel_zielony" jest aktywny
+1043	[I0.6] przycisk "A-btn_panel_zielony" jest nieaktywny
+1044	[I0.7] przycisk "A-btn_panel_czerwony" jest aktywny
+1045	[I0.7] przycisk "A-btn_panel_czerwony" jest nieaktywny
+1046	[I1.2] przycisk "A-btn_start_na_uchwycie" jest aktywny
+1047	[I1.2] przycisk "A-btn_start_na_uchwycie" jest nieaktywny
