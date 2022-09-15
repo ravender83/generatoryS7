@@ -15,6 +15,7 @@ class Zawor:
         self.bitWP = 0  
         self.byteWP2 = 0
         self.bitWP2 = 0 
+        self.msg = 0
 
         if str(_zawor.SENSOR_HP) != 'nan':
             self.sensorHP = '%'+str(_zawor.SENSOR_HP)
@@ -150,6 +151,32 @@ class Zawor:
         #return f'#no - [{self.sensorWP2[1:]}] czujnik {self.prefix}-{self.namepl} WP {self.sideWP}'
         return f'[{self.sensorWP2[1:]}] czujnik "{self.prefix}-{self.namepl}" WP {self.sideWP}'
 
+    @property
+    def get_sensorNameHPcommentSmall(self):
+        #nc - [I20.5] czujnik BR IMITACJA HP
+        #return f'#nc - [{self.sensorHP[1:]}] czujnik {self.prefix}-{self.namepl} HP {self.sideHP}'
+        return f'[{self.sensorHP[1:]}] czujnik "{self.prefix}-{self.namepl}" HP'
+
+
+    @property
+    def get_sensorNameHP2commentSmall(self):
+        #nc - [I20.5] czujnik BR IMITACJA HP
+        #return f'#nc - [{self.sensorHP2[1:]}] czujnik {self.prefix}-{self.namepl} HP {self.sideHP}'
+        return f'[{self.sensorHP2[1:]}] czujnik "{self.prefix}-{self.namepl}" HP'
+
+
+    @property
+    def get_sensorNameWPcommentSmall(self):
+        #nc - [I20.5] czujnik BR IMITACJA WP
+        #return f'#no - [{self.sensorWP[1:]}] czujnik {self.prefix}-{self.namepl} WP {self.sideWP}'
+        return f'[{self.sensorWP[1:]}] czujnik "{self.prefix}-{self.namepl}" WP'
+
+
+    @property
+    def get_sensorNameWP2commentSmall(self):
+        #nc - [I20.5] czujnik BR IMITACJA WP
+        #return f'#no - [{self.sensorWP2[1:]}] czujnik {self.prefix}-{self.namepl} WP {self.sideWP}'
+        return f'[{self.sensorWP2[1:]}] czujnik "{self.prefix}-{self.namepl}" WP'
 
     @property
     def get_outputNameHPcomment(self):
