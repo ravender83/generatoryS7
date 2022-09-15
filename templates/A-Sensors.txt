@@ -10,48 +10,44 @@ VERSION : 0.1
 BEGIN
 NETWORK
 TITLE = VALVES error
-{VALVES_error}
-      NOT;
+{VALVES_error}      NOT;
       AN "A-Flags".MODE._NONE;
       = "A-ALARMS".VALVES.error;
 NETWORK
 TITLE = SENSORS error
-{SENSORS_error}
-      NOT;
+{SENSORS_error}      NOT;
       AN "A-Flags".MODE._NONE;
       = "A-ALARMS".SENSORS.error;
 NETWORK
 TITLE = SAFETY error
-{SAFETY_error}
-      NOT;
+{SAFETY_error}      NOT;
       AN "A-Flags".MODE._NONE;
       = "A-ALARMS".SAFETY.error;
 NETWORK
 TITLE = BUTTONS error
-{BUTTONS_error}
-      NOT;
+{BUTTONS_error}      NOT;
       AN "A-Flags".MODE._NONE;
       = "A-ALARMS".BUTTONS.error;
 NETWORK
 TITLE = DRIVES error
-{DRIVES_error}
-      NOT;
-      AN "A-Flags".MODE._NONE;
-      = "A-ALARMS".DRIVES.error;
+//{DRIVES_error}
+//      NOT;
+//      AN "A-Flags".MODE._NONE;
+//      = "A-ALARMS".DRIVES.error;
 NETWORK
 TITLE = OTHER error
-{OTHER_error}
-      NOT;
-      AN "A-Flags".MODE._NONE;
-      = "A-ALARMS".OTHER.error;
+//{OTHER_error}
+//      NOT;
+//      AN "A-Flags".MODE._NONE;
+//      = "A-ALARMS".OTHER.error;
 NETWORK
 TITLE = GLOBAL ERROR
       O "A-ALARMS".VALVES.error;
       O "A-ALARMS".SENSORS.error;
       O "A-ALARMS".SAFETY.error;
       O "A-ALARMS".BUTTONS.error;
-      O "A-ALARMS".DRIVES.error;
-      O "A-ALARMS".OTHER.error;
+//      O "A-ALARMS".DRIVES.error;
+//      O "A-ALARMS".OTHER.error;
       = "A-ALARMS".error;
 {SIGNALS}
 END_FUNCTION

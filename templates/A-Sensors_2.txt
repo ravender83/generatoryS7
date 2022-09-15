@@ -1,8 +1,6 @@
 ﻿NETWORK
-TITLE = ======== {TITLE} =========
-NETWORK
 TITLE = {TITLE_PL}
-//{TITLE_EN
+//{TITLE_EN}
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;

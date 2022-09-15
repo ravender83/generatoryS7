@@ -1,0 +1,30 @@
+// Przyciski
+{BUTTONS_HP}
+// Mechanizmy
+O "A-DBVALVES".GN.holdface.out.in_hp
+O "A-DBVALVES".ST1.blockade_left.out.in_hp
+O "A-DBVALVES".ST1.blockade_right.out.in_hp
+
+// Czujniki
+O "A-ALARMS".SENSORS."A-sen_scanner_left".ok
+O "A-ALARMS".SENSORS."A-sen_scanner_right".ok
+O "A-ALARMS".SENSORS."GN-sen_frame_screw_left".ok
+O "A-ALARMS".SENSORS."GN-sen_frame_screw_right".ok
+O "A-ALARMS".SENSORS."GN-sen_generator_screw".ok
+O "A-ALARMS".SENSORS."OETIKER_position_hp".ok
+O "A-ALARMS".SENSORS."OETIKER_position_2mm".ok
+O "A-ALARMS".SENSORS."OETIKER_position_4mm".ok
+O "A-ALARMS".SENSORS."OETIKER_position_tensometer".ok
+O "A-ALARMS".SENSORS."OETIKER_position_band_left_hp".ok
+O "A-ALARMS".SENSORS."OETIKER_position_band_right_hp".ok
+O "A-ALARMS".SENSORS."OETIKER_position_band_left_wp".ok
+O "A-ALARMS".SENSORS."OETIKER_position_band_right_wp".ok
+O "A-ALARMS".SENSORS."ST1-sen_latch_left".ok
+O "A-ALARMS".SENSORS."ST1-sen_latch_right".ok
+
+// Napędy
+{DRIVES_HP}
+// Inne
+{OTHERS_HP}
+O     "Log_1"
+=     "A-Flags".STATION.IN_HP

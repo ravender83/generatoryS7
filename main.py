@@ -11,9 +11,9 @@ inne = []
 lista_tagow = []
 
 
-def zapisz(_plik, _txt):
+def zapisz(_plik, _txt, _fold):
     try:
-        with open(f'out/{_plik}', "w", encoding="utf-8") as _f:
+        with open(f'{_fold}/{_plik}', "w", encoding="utf-8") as _f:
             _f.write(_txt)
             print(f'[OK] Wygenerowano {_plik}')
     except IOError as e:
@@ -26,9 +26,9 @@ def zapisz(_plik, _txt):
         return None
 
 
-def otworz(_plik):
+def otworz(_plik, _fold):
     try:
-        with open(f'templates/{_plik}', "r", encoding="utf-8-sig") as _f:
+        with open(f'{_fold}/{_plik}', "r", encoding="utf-8-sig") as _f:
             print(f'[OK] Wczytano szablon {_plik}')
             return _f.read()
     except IOError as e:
@@ -263,13 +263,16 @@ def generuj_tags_txt(_zawory, _sensory, _safety, _przyciski, _inne):
         if i.adres != 'nan':
             _txt = _txt + f'{_i}\n'
 
-    zapisz("10_tags.txt", _txt)
+    zapisz("10_tags.txt", _txt, 'out')
 
 
 def generuj_plc_tags_excel(_zawory, _sensory, _safety, _przyciski, _inne):
+    _preparation_file = otworz("30_preparation.txt", 'out')
+    _txt_hp = ''    
     _lista = []
     _tmp = ['True', 'True', 'True', '', '', '']
     for i in _zawory:
+        _txt_hp += f'O "A-DBVALVES".{i.prefix}.{i.name}.out.in_hp\n'  
         if i.sensorHP != 'nan':
             _lista.append([i.get_sensorNameHP, 'io', 'Bool', i.sensorHP, i.get_sensorNameHPcomment]+_tmp)
         if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
@@ -286,6 +289,9 @@ def generuj_plc_tags_excel(_zawory, _sensory, _safety, _przyciski, _inne):
             _lista.append([i.get_outputNameIDLE, 'io', 'Bool', i.outputIDLE, i.get_outputNameIDLEcomment]+_tmp)
         if i.outputBRAKE != 'nan':
             _lista.append([i.get_outputNameBRAKE, 'io', 'Bool', i.outputBRAKE, i.get_outputNameBRAKEcomment]+_tmp)
+
+    _preparation_file = _preparation_file.replace('{VALVES_HP}', _txt_hp) 
+    zapisz("30_preparation.txt", _preparation_file, 'out') 
 
     for i in _sensory:
         if i.adres != 'nan':
@@ -328,12 +334,12 @@ def generuj_dbvalves_txt(_df):
         _tmp = '\t"Tstate"\t\tFalse\tTrue\tTrue\tTrue\tFalse\t\t'
         for index, row in _pre.iterrows():
             _txt = _txt + f'{row.NAME.upper()}{_tmp}[{index+1}] {row.PREFIX}-{row.NAMEPL}\n'
-    zapisz("11_dbvalves.txt", _txt)
+    zapisz("11_dbvalves.txt", _txt, 'out')
 
 
 def generuj_dbvalves_db(_df):
-    _dbvalves_data = otworz("DBVALVES_db.txt")
-    _valve_data = otworz("DBVALVES_db_1_1.txt")
+    _dbvalves_data = otworz("DBVALVES_db.txt", 'templates')
+    _valve_data = otworz("DBVALVES_db_1_1.txt", 'templates')
     _prefixy = sorted(set(_df.PREFIX))
 
     _txt = ''
@@ -352,7 +358,7 @@ def generuj_dbvalves_db(_df):
 
     _dbvalves_data = _dbvalves_data.replace('{STRUCT}', _txt)
     _dbvalves_data = _dbvalves_data.replace('{ILOSC}', str(len(_df)))
-    zapisz("11_DBVALVES.db", _dbvalves_data)
+    zapisz("11_DBVALVES.db", _dbvalves_data, 'out')
 
 
 def zliczaj(_lduzy, _lmaly):
@@ -470,7 +476,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
     try:
         _df.to_excel("out/15_HMIAlarms.xlsx", sheet_name='DiscreteAlarms', index=True)
         print(f'[OK] Wygenerowano HMIAlarms.xlsx')
-        return [lduzy, lduzy_sensor]
+        return [lduzy, lduzy_sensor, lduzy_safety, lduzy_button]
     except IOError as e:
         print(f'[NOK] Nie wygenerowano HMIAlarms.xlsx')
         print(f'I/O error({e.errno}): {e.strerror}')
@@ -511,8 +517,8 @@ def generuj_hmialarms_tagi_excel(_lista):
 
 
 def generuj_alarms_db(_licznik, _zawory, _sensory):
-    _dbvalves_data = otworz("A-ALARMS_db.txt")
-    _valve_data = otworz("A-ALARMS_db_1.txt")
+    _dbvalves_data = otworz("A-ALARMS_db.txt", 'templates')
+    _valve_data = otworz("A-ALARMS_db_1.txt", 'templates')
 
     # --- Valves ---
     _txt = ''
@@ -535,7 +541,7 @@ def generuj_alarms_db(_licznik, _zawory, _sensory):
     _dbvalves_data = _dbvalves_data.replace('{SENSORS2_STRUCT}', _txt)
 
     _dbvalves_data = _dbvalves_data.replace('{DRIVES_STRUCT}', 'drv0 : UInt;\n')
-    zapisz("13_ALARMS.db", _dbvalves_data)
+    zapisz("13_ALARMS.db", _dbvalves_data, 'out')
 
 
 def szablon_nan(aktualny_szablon, co, na_co, alternatywa):
@@ -547,8 +553,8 @@ def szablon_nan(aktualny_szablon, co, na_co, alternatywa):
 
 
 def generuj_valves_outputs_scl(_zawory):
-    _valves_data = otworz("VALVES_outputs_scl.txt")
-    _members_data = otworz("VALVES_outputs_scl_1.txt")
+    _valves_data = otworz("VALVES_outputs_scl.txt", 'templates')
+    _members_data = otworz("VALVES_outputs_scl_1.txt", 'templates')
 
     _members_szablon = ''
     for i in _zawory:
@@ -578,12 +584,12 @@ def generuj_valves_outputs_scl(_zawory):
         _members_szablon += _szablon
 
     _valves_data = _valves_data.replace('{ALL_STRUCTS}', _members_szablon)
-    zapisz("19_valve_outputs.scl", _valves_data)
+    zapisz("19_valve_outputs.scl", _valves_data, 'out')
 
 
 def generuj_valves_outputs_stl(_zawory):
-    _valves_data = otworz("A-Outputs_valves.txt")
-    _members_data = otworz("A-Outputs_valves_1.txt")
+    _valves_data = otworz("A-Outputs_valves.txt", 'templates')
+    _members_data = otworz("A-Outputs_valves_1.txt", 'templates')
 
     _members_szablon = ''
     for i in _zawory:
@@ -619,11 +625,11 @@ def generuj_valves_outputs_stl(_zawory):
         _members_szablon += _szablon
 
     _valves_data = _valves_data.replace('{ALL_STRUCTS}', _members_szablon)
-    zapisz("19_valve_outputs.awl", _valves_data)
+    zapisz("19_valve_outputs.awl", _valves_data, 'out')
 
 
 def generuj_valves_instances(_zawory):
-    _valves_data = otworz("DBVALVES_INST.db")
+    _valves_data = otworz("DBVALVES_INST.db", 'templates')
 
     _members_szablon = ''
     for i in _zawory:
@@ -632,7 +638,7 @@ def generuj_valves_instances(_zawory):
         #_members_szablon += _szablon
         _members_szablon="{}{}".format(_members_szablon,_szablon)
 
-    zapisz("20_valve_instance.db", _members_szablon)    
+    zapisz("20_valve_instance.db", _members_szablon, 'out')    
 
 
 def generuj_hmialarms_class():
@@ -642,7 +648,68 @@ def generuj_hmialarms_class():
     _txt = _txt + 'BUTTON\tBUTTON\tAlarm without acknowledgment\n'
     _txt = _txt + 'OTHER\tOTHER\tAlarm without acknowledgment\n'
     _txt = _txt + 'DRIVES\tDRIVES\tAlarm without acknowledgment\n'
-    zapisz("12_alarm_class.txt", _txt)
+    zapisz("12_alarm_class.txt", _txt, 'out')
+
+
+def generuj_sensors(_licznik, _sensory, _safety, _przyciski):
+    _preparation_file = otworz("30_preparation.txt", 'out')
+    _txt_hp = ''
+    _sensors_data = otworz("A-Sensors.txt", 'templates')
+    _sensors1_data = otworz("A-Sensors_1.txt", 'templates')
+    _sensors2_data = otworz("A-Sensors_2.txt", 'templates')  
+
+    # VALVES 0
+    _error_szablon = ''
+    for i in range(_licznik[0]+1):
+        _szablon = _sensors1_data
+        _szablon = _szablon.replace('{bytebit}', f'"A-ALARMS".VALVES.err{str(i)}')
+        _error_szablon += _szablon + '\n'
+    _sensors_data = _sensors_data.replace('{VALVES_error}', _error_szablon)
+
+    # SENSORS 1
+    _error_szablon = ''
+    for i in range(_licznik[1]+1):
+        _szablon = _sensors1_data
+        _szablon = _szablon.replace('{bytebit}', f'"A-ALARMS".SENSORS.sen{str(i)}')
+        _error_szablon += _szablon + '\n'
+    _sensors_data = _sensors_data.replace('{SENSORS_error}', _error_szablon)    
+
+    # SAFETY 2
+    _error_szablon = ''
+    for i in range(_licznik[2]+1):
+        _szablon = _sensors1_data
+        _szablon = _szablon.replace('{bytebit}', f'"A-ALARMS".SAFETY.sft{str(i)}')
+        _error_szablon += _szablon + '\n'
+    _sensors_data = _sensors_data.replace('{SAFETY_error}', _error_szablon)      
+
+    # BUTTONS 3
+    _error_szablon = ''
+    for i in range(_licznik[3]+1):
+        _szablon = _sensors1_data
+        _szablon = _szablon.replace('{bytebit}', f'"A-ALARMS".BUTTONS.btn{str(i)}')
+        _error_szablon += _szablon + '\n'
+    _sensors_data = _sensors_data.replace('{BUTTONS_error}', _error_szablon)     
+
+    # Generowanie networków sensorów
+    _signals_szablon = 'NETWORK\nTITLE = ======== SENSORS =========\n'    
+    for i in _sensory:
+        _szablon = _sensors2_data
+        _szablon = _szablon.replace('{TYP}', 'SENSORS')
+        _szablon = _szablon.replace('{TITLE_PL}', i.get_sensorNameCommentSmall)
+        _szablon = _szablon.replace('{TITLE_EN}', i.get_sensorNameCommentSmallEN)   
+        _szablon = _szablon.replace('{ADRES}', i.adres)  
+        _szablon = _szablon.replace('{SENSOR_EN}', i.get_sensorName)   
+        _szablon = _szablon.replace('{byteHP}', str(i.byteHP))  
+        _szablon = _szablon.replace('{bitHP}', str(i.bitHP))  
+        _szablon = _szablon.replace('{byteWP}', str(i.byteWP))  
+        _szablon = _szablon.replace('{bitWP}', str(i.bitWP))   
+        _txt_hp += f'O "A-ALARMS".SENSORS."{i.get_sensorName}".ok\n'      
+        _signals_szablon += _szablon + '\n'
+
+    _sensors_data = _sensors_data.replace('{SIGNALS}', _signals_szablon)  
+    _preparation_file = _preparation_file.replace('{SENSORS_HP}', _txt_hp) 
+    zapisz("21_sensors.awl", _sensors_data, 'out')
+    zapisz("30_preparation.txt", _preparation_file, 'out')  
 
 
 def main(args):
@@ -682,6 +749,9 @@ def main(args):
     for index, row in iq.iterrows():
         inne.append(Sensor(row, ''))       
 
+    _preparation_file = otworz("30_preparation.txt", 'templates')
+    zapisz("30_preparation.txt", _preparation_file, 'out') 
+
     generuj_tags_txt(zawory, sensory, safety, przyciski, inne)
     generuj_plc_tags_excel(zawory, sensory, safety, przyciski, inne)
 
@@ -697,6 +767,8 @@ def main(args):
     #generuj_valves_outputs_scl(zawory)
     generuj_valves_outputs_stl(zawory)
     generuj_valves_instances(zawory)
+
+    generuj_sensors(licznik, sensory, safety, przyciski)
 
     print('===== Koniec =====')
     return 0
