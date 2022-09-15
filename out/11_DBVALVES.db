@@ -1,4 +1,4 @@
-﻿DATA_BLOCK "A-DBVALVES"
+DATA_BLOCK "A-DBVALVES"
 TITLE = DBVALVES
 { S7_Optimized_Access := 'TRUE' }
 AUTHOR : PiotrSlezak
@@ -9,11 +9,11 @@ NON_RETAIN
    VAR 
       LAMP_TEST { S7_SetPoint := 'False'} : Bool;
 GN : Struct
-	﻿HOLDFACE { S7_SetPoint := 'False'} : "Tstate";   // [1] GN docisk
+	HOLDFACE { S7_SetPoint := 'False'} : "Tstate";   // [1] GN docisk
 END_STRUCT;
 ST1 : Struct
-	﻿BLOCKADE_LEFT { S7_SetPoint := 'False'} : "Tstate";   // [2] ST1 blokada_lewa
-	﻿BLOCKADE_RIGHT { S7_SetPoint := 'False'} : "Tstate";   // [3] ST1 blokada_prawa
+	BLOCKADE_LEFT { S7_SetPoint := 'False'} : "Tstate";   // [2] ST1 blokada_lewa
+	BLOCKADE_RIGHT { S7_SetPoint := 'False'} : "Tstate";   // [3] ST1 blokada_prawa
 END_STRUCT;
 
    io : Array[0..3] of "Tio";

@@ -28,7 +28,7 @@ def zapisz(_plik, _txt):
 
 def otworz(_plik):
     try:
-        with open(f'templates/{_plik}', "r", encoding="utf-8") as _f:
+        with open(f'templates/{_plik}', "r", encoding="utf-8-sig") as _f:
             print(f'[OK] Wczytano szablon {_plik}')
             return _f.read()
     except IOError as e:
@@ -554,15 +554,15 @@ def generuj_valves_outputs_scl(_zawory):
     for i in _zawory:
         _szablon = _members_data
         _szablon = _szablon.replace('{DBVALVE_TITLE}', f'{i.prefix} {i.namepl.upper()}')
-        _szablon = _szablon.replace('{DBVALVE}', f'{i.prefix}.\ufeff{i.namepl.upper()}')
+        _szablon = _szablon.replace('{DBVALVE}', f'{i.prefix}.{i.namepl.upper()}')
         _szablon = _szablon.replace('{INDEX}', f'{i.index}')
         _szablon = szablon_nan(_szablon, '{in_sensor_hp}', i.sensorHP, 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_hp2}', i.sensorHP2, 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_wp}', i.sensorWP, 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_wp2}', i.sensorWP2, 'nan')
-        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP, f'"DBVALVES".{i.prefix}.\ufeff{i.namepl.upper()}.test.dummy_HP')
-        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP, f'"DBVALVES".{i.prefix}.\ufeff{i.namepl.upper()}.test.dummy_WP')
-        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE, f'"DBVALVES".{i.prefix}.\ufeff{i.namepl.upper()}.test.dummy_IDLE')
+        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP, f'"DBVALVES".{i.prefix}.{i.namepl.upper()}.test.dummy_HP')
+        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP, f'"DBVALVES".{i.prefix}.{i.namepl.upper()}.test.dummy_WP')
+        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE, f'"DBVALVES".{i.prefix}.{i.namepl.upper()}.test.dummy_IDLE')
         _szablon = szablon_nan(_szablon, '{in_Ipw1}', i.sensorHP[1:], ' ')
         if i.sensorHP2 != i.sensorHP:
             _szablon = szablon_nan(_szablon, '{in_Ipw2}', i.sensorHP2[1:], ' ')
@@ -589,15 +589,16 @@ def generuj_valves_outputs_stl(_zawory):
     for i in _zawory:
         _szablon = _members_data
         _szablon = _szablon.replace('{DBVALVE_TITLE}', f'{i.prefix} {i.namepl.upper()}')
-        _szablon = _szablon.replace('{DBVALVE}', f'{i.prefix}.\ufeff{i.name.upper()}')
+        _szablon = _szablon.replace('{DBVALVE_TITLE_EN}', f'{i.prefix} {i.name.upper()}')
+        _szablon = _szablon.replace('{DBVALVE}', f'{i.prefix}.{i.name.upper()}')
         _szablon = _szablon.replace('{INDEX}', f'{i.index}')
         _szablon = szablon_nan(_szablon, '{in_sensor_hp}', i.sensorHP[1:], 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_hp2}', i.sensorHP2[1:], 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_wp}', i.sensorWP[1:], 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_wp2}', i.sensorWP2[1:], 'nan')
-        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP[1:], f'"A-DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.HP_DUMMY')
-        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP[1:], f'"A-DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.WP_DUMMY')
-        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE[1:], f'"A-DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.IDLE_DUMMY')
+        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP[1:], f'"A-DBVALVES".{i.prefix}.{i.name.upper()}.test.HP_DUMMY')
+        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP[1:], f'"A-DBVALVES".{i.prefix}.{i.name.upper()}.test.WP_DUMMY')
+        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE[1:], f'"A-DBVALVES".{i.prefix}.{i.name.upper()}.test.IDLE_DUMMY')
         _szablon = szablon_nan(_szablon, '{brake}', i.outputBRAKE[1:], '#brake')
         _szablon = szablon_nan(_szablon, '{in_Ipw1}', i.sensorHP[1:], ' ')
         _szablon = _szablon.replace('{byteHP}', str(i.byteHP))
@@ -619,6 +620,19 @@ def generuj_valves_outputs_stl(_zawory):
 
     _valves_data = _valves_data.replace('{ALL_STRUCTS}', _members_szablon)
     zapisz("19_valve_outputs.awl", _valves_data)
+
+
+def generuj_valves_instances(_zawory):
+    _valves_data = otworz("DBVALVES_INST.db")
+
+    _members_szablon = ''
+    for i in _zawory:
+        _szablon = _valves_data
+        _szablon = _szablon.replace('{DBVALVE_TITLE}', f'{i.prefix} {i.namepl.upper()}')
+        #_members_szablon += _szablon
+        _members_szablon="{}{}".format(_members_szablon,_szablon)
+
+    zapisz("20_valve_instance.db", _members_szablon)    
 
 
 def generuj_hmialarms_class():
@@ -682,6 +696,7 @@ def main(args):
 
     #generuj_valves_outputs_scl(zawory)
     generuj_valves_outputs_stl(zawory)
+    generuj_valves_instances(zawory)
 
     print('===== Koniec =====')
     return 0
