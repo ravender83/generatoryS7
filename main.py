@@ -272,7 +272,7 @@ def generuj_plc_tags_excel(_zawory, _sensory, _safety, _przyciski, _inne):
     _lista = []
     _tmp = ['True', 'True', 'True', '', '', '']
     for i in _zawory:
-        _txt_hp += f'O "A-DBVALVES".{i.prefix}.{i.name}.out.in_hp\n'  
+        _txt_hp += f'A "A-DBVALVES".{i.prefix}.{i.name}.out.in_hp\n'  
         if i.sensorHP != 'nan':
             _lista.append([i.get_sensorNameHP, 'io', 'Bool', i.sensorHP, i.get_sensorNameHPcomment]+_tmp)
         if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
@@ -732,7 +732,7 @@ def generuj_sensors(_licznik, _sensory, _safety, _buttons):
         _szablon = _szablon.replace('{byteWP}', str(i.byteWP))  
         _szablon = _szablon.replace('{bitWP}', str(i.bitWP))   
         _szablon = _szablon.replace('{typ}', 'sen') 
-        _txt_hp += f'O "A-ALARMS".SENSORS."{i.get_sensorName}".ok\n'      
+        _txt_hp += f'A "A-ALARMS".SENSORS."{i.get_sensorName}".ok\n'      
         _signals_szablon += _szablon + '\n'
     _signals_szablon = _signals_szablon + '\n' 
     _preparation_file = _preparation_file.replace('{SENSORS_HP}', _txt_hp) 
