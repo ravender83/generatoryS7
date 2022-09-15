@@ -1,30 +1,30 @@
 // Przyciski
-O "A-ALARMS".BUTTONS."A-btn_start".ok
-O "A-ALARMS".BUTTONS."A-btn_panel_green".ok
-O "A-ALARMS".BUTTONS."A-btn_panel_red".ok
-O "A-ALARMS".BUTTONS."A-btn_start_on_grip".ok
+A "A-ALARMS".BUTTONS."A-btn_start".ok
+A "A-ALARMS".BUTTONS."A-btn_panel_green".ok
+A "A-ALARMS".BUTTONS."A-btn_panel_red".ok
+A "A-ALARMS".BUTTONS."A-btn_start_on_grip".ok
 
 // Mechanizmy
-O "A-DBVALVES".GN.holdface.out.in_hp
-O "A-DBVALVES".ST1.blockade_left.out.in_hp
-O "A-DBVALVES".ST1.blockade_right.out.in_hp
+A "A-DBVALVES".GN.holdface.out.in_hp
+A "A-DBVALVES".ST1.blockade_left.out.in_hp
+A "A-DBVALVES".ST1.blockade_right.out.in_hp
 
 // Czujniki
-O "A-ALARMS".SENSORS."A-sen_scanner_left".ok
-O "A-ALARMS".SENSORS."A-sen_scanner_right".ok
-O "A-ALARMS".SENSORS."GN-sen_frame_screw_left".ok
-O "A-ALARMS".SENSORS."GN-sen_frame_screw_right".ok
-O "A-ALARMS".SENSORS."GN-sen_generator_screw".ok
-O "A-ALARMS".SENSORS."OETIKER_position_hp".ok
-O "A-ALARMS".SENSORS."OETIKER_position_2mm".ok
-O "A-ALARMS".SENSORS."OETIKER_position_4mm".ok
-O "A-ALARMS".SENSORS."OETIKER_position_tensometer".ok
-O "A-ALARMS".SENSORS."OETIKER_position_band_left_hp".ok
-O "A-ALARMS".SENSORS."OETIKER_position_band_right_hp".ok
-O "A-ALARMS".SENSORS."OETIKER_position_band_left_wp".ok
-O "A-ALARMS".SENSORS."OETIKER_position_band_right_wp".ok
-O "A-ALARMS".SENSORS."ST1-sen_latch_left".ok
-O "A-ALARMS".SENSORS."ST1-sen_latch_right".ok
+A "A-ALARMS".SENSORS."A-sen_scanner_left".ok
+A "A-ALARMS".SENSORS."A-sen_scanner_right".ok
+A "A-ALARMS".SENSORS."GN-sen_frame_screw_left".ok
+A "A-ALARMS".SENSORS."GN-sen_frame_screw_right".ok
+A "A-ALARMS".SENSORS."GN-sen_generator_screw".ok
+A "A-ALARMS".SENSORS."OETIKER_position_hp".ok
+A "A-ALARMS".SENSORS."OETIKER_position_2mm".ok
+A "A-ALARMS".SENSORS."OETIKER_position_4mm".ok
+A "A-ALARMS".SENSORS."OETIKER_position_tensometer".ok
+A "A-ALARMS".SENSORS."OETIKER_position_band_left_hp".ok
+A "A-ALARMS".SENSORS."OETIKER_position_band_right_hp".ok
+A "A-ALARMS".SENSORS."OETIKER_position_band_left_wp".ok
+A "A-ALARMS".SENSORS."OETIKER_position_band_right_wp".ok
+A "A-ALARMS".SENSORS."ST1-sen_latch_left".ok
+A "A-ALARMS".SENSORS."ST1-sen_latch_right".ok
 
 // Napędy
 // 

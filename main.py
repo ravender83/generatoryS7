@@ -755,7 +755,7 @@ def generuj_sensors(_licznik, _sensory, _safety, _buttons):
         _szablon = _szablon.replace('{byteWP}', str(i.byteWP))  
         _szablon = _szablon.replace('{bitWP}', str(i.bitWP))   
         _szablon = _szablon.replace('{typ}', 'btn')
-        _txt_hp += f'O "A-ALARMS".BUTTONS."{i.get_sensorName}".ok\n'      
+        _txt_hp += f'A "A-ALARMS".BUTTONS."{i.get_sensorName}".ok\n'      
         _signals_szablon += _szablon + '\n'      
     _preparation_file = _preparation_file.replace('{BUTTONS_HP}', _txt_hp) 
 
