@@ -1,0 +1,74 @@
+NETWORK
+TITLE = [{INDEX}] {DBVALVE_TITLE} - HP
+//[{INDEX}] {DBVALVE_TITLE} - HP
+      O "A-DBVALVES".{DBVALVE}.test.fp_HP;
+//    O     "A-Flags".STATION.IN_HP_STEP
+      = "A-DBVALVES".{DBVALVE}.in.move_hp;
+NETWORK
+TITLE = [{INDEX}] {DBVALVE_TITLE} - WP
+//[{INDEX}] {DBVALVE_TITLE} - WP
+      O "A-DBVALVES".{DBVALVE}.test.fp_WP;
+      = "A-DBVALVES".{DBVALVE}.in.move_wp;
+NETWORK
+TITLE = [{INDEX}] {DBVALVE_TITLE} - IDLE
+//[{INDEX}] {DBVALVE_TITLE} - IDLE
+      O "A-DBVALVES".{DBVALVE}.test.fp_IDLE;
+      = "A-DBVALVES".{DBVALVE}.in.move_idle;
+NETWORK
+TITLE = [{INDEX}] {DBVALVE_TITLE}
+      CALL "3STATE_PISTON_with_brake", "INST_{DBVALVE_TITLE}"
+      (  in_safety_on                := "A-Flags".STATION.SAFETY_OK , 
+         in_curtain_on               := "A-Flags".STATION.CURTAIN.OK , 
+         in_move_hp                  := "A-DBVALVES".{DBVALVE}.in.move_hp , 
+         in_move_wp                  := "A-DBVALVES".{DBVALVE}.in.move_wp , 
+         in_move_idle                := "A-DBVALVES".{DBVALVE}.in.move_idle , 
+         in_sensor_hp1               := {in_sensor_hp} , 
+         in_sensor_hp2               := {in_sensor_hp2} , 
+         in_sensor_wp1               := {in_sensor_wp} , 
+         in_sensor_wp2               := {in_sensor_wp2} , 
+         out_in_hp                   := "A-DBVALVES".{DBVALVE}.out.in_hp , 
+         out_in_wp                   := "A-DBVALVES".{DBVALVE}.out.in_wp , 
+         out_idle                    := "A-DBVALVES".{DBVALVE}.out.in_idle , 
+         out_status                  := "A-DBVALVES".{DBVALVE}.out.status , 
+         out_brake                   := {brake} , 
+         out_alarm_hp                := "A-DBVALVES".{DBVALVE}.out.alarm_hp , 
+         out_alarm_wp                := "A-DBVALVES".{DBVALVE}.out.alarm_wp , 
+         out_diag_status             := "A-DBVALVES".{DBVALVE}.out.diag_status , 
+         in_ez_hp                    := {in_ez_hp} , 
+         in_ez_wp                    := {in_ez_wp} , 
+         in_ez_idle                  := {in_ez_idle}
+      );
+
+      CALL "3STATE_DIAG"
+      (  in_diag_status              := "A-DBVALVES".{DBVALVE}.out.diag_status , 
+         in_Ipw1                     := '{in_sensor_hp}' , 
+         in_Ipw2                     := '{in_sensor_hp2}' , 
+         in_Ipr1                     := '{in_sensor_wp}' , 
+         in_Ipr2                     := '{in_sensor_wp2}' , 
+         in_Qpw                      := '{in_ez_hp}' , 
+         in_Qpr                      := '{in_ez_wp}' , 
+         in_tio                      := "A-DBVALVES".io[{INDEX}]
+      );
+
+      A "A-DBVALVES".{DBVALVE}.out.alarm_hp;
+      = "A-ALARMS".VALVES.err{byteHP}.%X{bitHP};
+
+      A "A-DBVALVES".{DBVALVE}.out.alarm_wp;
+      = "A-ALARMS".VALVES.err{byteWP}.%X{bitWP};
+
+      CALL "A-TESTSCL"
+      (  in_nr                       := {INDEX} , 
+         out                         := "A-DBVALVES".{DBVALVE}.test
+      );
+
+      A(;
+      L "A-Doku_DB_OP".HMI.Manual_Functions;
+      L {INDEX};
+      <>I;
+      );
+      R "A-DBVALVES".{DBVALVE}.test.fp_HP;
+      R "A-DBVALVES".{DBVALVE}.test.fp_WP;
+      R "A-DBVALVES".{DBVALVE}.test.fp_IDLE;
+NETWORK
+TITLE = -
+

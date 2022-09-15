@@ -488,7 +488,14 @@ def generuj_hmialarms_tagi_excel(_lista):
     for i in (_lista):
         _txt = i[8:].replace('_', '.')
         _lista_gotowa.append([f'A-ALARMS{i[8:]}', 'Default tag table', 'PLC', f'"A-ALARMS"{_txt}'] + _tmp)
-    #print(_lista_gotowa)
+    _tmp = ['Bool', '1', 'Binary', 'Symbolic access', '<No Value>', 'False', '<No Value>', '<No Value>', '0', '<No Value>', '<No Value>', 'Cyclic in operation', '1 s', 'None', '<No Value>', 'None', '<No Value>', 'None', '<No Value>', 'None', '<No Value>', 'False', '10', '0', '100', '0', 'False', 'None', 'False']
+    _lista_gotowa.append(['A-ALARMS_error', 'Default tag table', 'PLC', '"A-ALARMS.error"'] + _tmp)
+    _lista_gotowa.append(['A-ALARMS_OTHER_error', 'Default tag table', 'PLC', '"A-ALARMS.OTHER.error"'] + _tmp)
+    _lista_gotowa.append(['A-ALARMS_DRIVES_error', 'Default tag table', 'PLC', '"A-ALARMS.DRIVES.error"'] + _tmp)
+    _lista_gotowa.append(['A-ALARMS_SAFETY_error', 'Default tag table', 'PLC', '"A-ALARMS.SAFETY.error"'] + _tmp)
+    _lista_gotowa.append(['A-ALARMS_SENSORS_error', 'Default tag table', 'PLC', '"A-ALARMS.SENSORS.error"'] + _tmp)
+    _lista_gotowa.append(['A-ALARMS_VALVES_error', 'Default tag table', 'PLC', '"A-ALARMS.VALVES.error"'] + _tmp)
+
     _df = pd.DataFrame(_lista_gotowa, columns=_columns)
     try:
         _df.to_excel("out/14_HMIAlarmsTags.xlsx", sheet_name='Hmi Tags', index=False)
@@ -546,16 +553,16 @@ def generuj_valves_outputs_scl(_zawory):
     _members_szablon = ''
     for i in _zawory:
         _szablon = _members_data
-        _szablon = _szablon.replace('{DBVALVE_TITLE}', f'{i.prefix} {i.name.upper()}')
-        _szablon = _szablon.replace('{DBVALVE}', f'{i.prefix}.\ufeff{i.name.upper()}')
+        _szablon = _szablon.replace('{DBVALVE_TITLE}', f'{i.prefix} {i.namepl.upper()}')
+        _szablon = _szablon.replace('{DBVALVE}', f'{i.prefix}.\ufeff{i.namepl.upper()}')
         _szablon = _szablon.replace('{INDEX}', f'{i.index}')
         _szablon = szablon_nan(_szablon, '{in_sensor_hp}', i.sensorHP, 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_hp2}', i.sensorHP2, 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_wp}', i.sensorWP, 'nan')
         _szablon = szablon_nan(_szablon, '{in_sensor_wp2}', i.sensorWP2, 'nan')
-        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP, f'"DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.dummy_HP')
-        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP, f'"DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.dummy_WP')
-        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE, f'"DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.dummy_IDLE')
+        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP, f'"DBVALVES".{i.prefix}.\ufeff{i.namepl.upper()}.test.dummy_HP')
+        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP, f'"DBVALVES".{i.prefix}.\ufeff{i.namepl.upper()}.test.dummy_WP')
+        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE, f'"DBVALVES".{i.prefix}.\ufeff{i.namepl.upper()}.test.dummy_IDLE')
         _szablon = szablon_nan(_szablon, '{in_Ipw1}', i.sensorHP[1:], ' ')
         if i.sensorHP2 != i.sensorHP:
             _szablon = szablon_nan(_szablon, '{in_Ipw2}', i.sensorHP2[1:], ' ')
@@ -572,6 +579,46 @@ def generuj_valves_outputs_scl(_zawory):
 
     _valves_data = _valves_data.replace('{ALL_STRUCTS}', _members_szablon)
     zapisz("19_valve_outputs.scl", _valves_data)
+
+
+def generuj_valves_outputs_stl(_zawory):
+    _valves_data = otworz("A-Outputs_valves.txt")
+    _members_data = otworz("A-Outputs_valves_1.txt")
+
+    _members_szablon = ''
+    for i in _zawory:
+        _szablon = _members_data
+        _szablon = _szablon.replace('{DBVALVE_TITLE}', f'{i.prefix} {i.namepl.upper()}')
+        _szablon = _szablon.replace('{DBVALVE}', f'{i.prefix}.\ufeff{i.name.upper()}')
+        _szablon = _szablon.replace('{INDEX}', f'{i.index}')
+        _szablon = szablon_nan(_szablon, '{in_sensor_hp}', i.sensorHP[1:], 'nan')
+        _szablon = szablon_nan(_szablon, '{in_sensor_hp2}', i.sensorHP2[1:], 'nan')
+        _szablon = szablon_nan(_szablon, '{in_sensor_wp}', i.sensorWP[1:], 'nan')
+        _szablon = szablon_nan(_szablon, '{in_sensor_wp2}', i.sensorWP2[1:], 'nan')
+        _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP[1:], f'"A-DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.HP_DUMMY')
+        _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP[1:], f'"A-DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.WP_DUMMY')
+        _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE[1:], f'"A-DBVALVES".{i.prefix}.\ufeff{i.name.upper()}.test.IDLE_DUMMY')
+        _szablon = szablon_nan(_szablon, '{brake}', i.outputBRAKE[1:], '#brake')
+        _szablon = szablon_nan(_szablon, '{in_Ipw1}', i.sensorHP[1:], ' ')
+        _szablon = _szablon.replace('{byteHP}', str(i.byteHP))
+        _szablon = _szablon.replace('{bitHP}', str(i.bitHP))
+        _szablon = _szablon.replace('{byteWP}', str(i.byteWP))
+        _szablon = _szablon.replace('{bitWP}', str(i.bitWP))        
+        if i.sensorHP2 != i.sensorHP:
+            _szablon = szablon_nan(_szablon, '{in_Ipw2}', i.sensorHP2[1:], ' ')
+        else:
+            _szablon = _szablon.replace('{in_Ipw2}', ' ')
+        _szablon = szablon_nan(_szablon, '{in_Ipr1}', i.sensorWP[1:], ' ')
+        if i.sensorWP2 != i.sensorWP:
+            _szablon = szablon_nan(_szablon, '{in_Ipr2}', i.sensorWP2[1:], ' ')
+        else:
+            _szablon = _szablon.replace('{in_Ipr2}', ' ')
+        _szablon = szablon_nan(_szablon, '{in_Qpw}', i.outputHP[1:], ' ')
+        _szablon = szablon_nan(_szablon, '{in_Qpr}', i.outputWP[1:], ' ')
+        _members_szablon += _szablon
+
+    _valves_data = _valves_data.replace('{ALL_STRUCTS}', _members_szablon)
+    zapisz("19_valve_outputs.awl", _valves_data)
 
 
 def generuj_hmialarms_class():
@@ -633,7 +680,8 @@ def main(args):
     generuj_hmialarms_tagi_excel(lista_tagow)
     generuj_alarms_db(licznik, zawory, sensory)
 
-    generuj_valves_outputs_scl(zawory)
+    #generuj_valves_outputs_scl(zawory)
+    generuj_valves_outputs_stl(zawory)
 
     print('===== Koniec =====')
     return 0

@@ -1,0 +1,239 @@
+﻿FUNCTION "A-Outputs_valves" : Void
+TITLE = Output_valves
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : PiotrSlezak
+FAMILY : Vorster
+VERSION : 0.1
+//Funkcja sterująca mechanizmami. Diagnostyka czujników, luzowanie, obsługa hamulca i wizualizacja stanów
+   VAR_TEMP 
+      dummy : Bool;
+      brake : Bool;
+   END_VAR
+
+
+BEGIN
+NETWORK
+TITLE = [1] GN DOCISK - HP
+//[1] GN DOCISK - HP
+      O "A-DBVALVES".GN.﻿HOLDFACE.test.fp_HP;
+//    O     "A-Flags".STATION.IN_HP_STEP
+      = "A-DBVALVES".GN.﻿HOLDFACE.in.move_hp;
+NETWORK
+TITLE = [1] GN DOCISK - WP
+//[1] GN DOCISK - WP
+      O "A-DBVALVES".GN.﻿HOLDFACE.test.fp_WP;
+      = "A-DBVALVES".GN.﻿HOLDFACE.in.move_wp;
+NETWORK
+TITLE = [1] GN DOCISK - IDLE
+//[1] GN DOCISK - IDLE
+      O "A-DBVALVES".GN.﻿HOLDFACE.test.fp_IDLE;
+      = "A-DBVALVES".GN.﻿HOLDFACE.in.move_idle;
+NETWORK
+TITLE = Func [1] GN DOCISK
+      CALL "3STATE_PISTON_with_brake", "INST_GN DOCISK"
+      (  in_safety_on                := "A-Flags".STATION.SAFETY_OK , 
+         in_curtain_on               := "A-Flags".STATION.CURTAIN.OK , 
+         in_move_hp                  := "A-DBVALVES".GN.﻿HOLDFACE.in.move_hp , 
+         in_move_wp                  := "A-DBVALVES".GN.﻿HOLDFACE.in.move_wp , 
+         in_move_idle                := "A-DBVALVES".GN.﻿HOLDFACE.in.move_idle , 
+         in_sensor_hp1               := I10.1 , 
+         in_sensor_hp2               := I10.1 , 
+         in_sensor_wp1               := I11.1 , 
+         in_sensor_wp2               := I11.1 , 
+         out_in_hp                   := "A-DBVALVES".GN.﻿HOLDFACE.out.in_hp , 
+         out_in_wp                   := "A-DBVALVES".GN.﻿HOLDFACE.out.in_wp , 
+         out_idle                    := "A-DBVALVES".GN.﻿HOLDFACE.out.in_idle , 
+         out_status                  := "A-DBVALVES".GN.﻿HOLDFACE.out.status , 
+         out_brake                   := #brake , 
+         out_alarm_hp                := "A-DBVALVES".GN.﻿HOLDFACE.out.alarm_hp , 
+         out_alarm_wp                := "A-DBVALVES".GN.﻿HOLDFACE.out.alarm_wp , 
+         out_diag_status             := "A-DBVALVES".GN.﻿HOLDFACE.out.diag_status , 
+         in_ez_hp                    := Q10.7 , 
+         in_ez_wp                    := Q1.7 , 
+         in_ez_idle                  := Q11.7
+      );
+
+      CALL "3STATE_DIAG"
+      (  in_diag_status              := "A-DBVALVES".GN.﻿HOLDFACE.out.diag_status , 
+         in_Ipw1                     := 'I10.1' , 
+         in_Ipw2                     := 'I10.1' , 
+         in_Ipr1                     := 'I11.1' , 
+         in_Ipr2                     := 'I11.1' , 
+         in_Qpw                      := 'Q10.7' , 
+         in_Qpr                      := 'Q1.7' , 
+         in_tio                      := "A-DBVALVES".io[1]
+      );
+
+      A "A-DBVALVES".GN.﻿HOLDFACE.out.alarm_hp;
+      = "A-ALARMS".VALVES.err0.%X0;
+
+      A "A-DBVALVES".GN.﻿HOLDFACE.out.alarm_wp;
+      = "A-ALARMS".VALVES.err0.%X1;
+
+      CALL "A-TESTSCL"
+      (  in_nr                       := 1 , 
+         out                         := "A-DBVALVES".GN.﻿HOLDFACE.test
+      );
+
+      A(;
+      L "A-Doku_DB_OP".HMI.Manual_Functions;
+      L 1;
+      <>I;
+      );
+      R "A-DBVALVES".GN.﻿HOLDFACE.test.fp_HP;
+      R "A-DBVALVES".GN.﻿HOLDFACE.test.fp_WP;
+      R "A-DBVALVES".GN.﻿HOLDFACE.test.fp_IDLE;
+NETWORK
+TITLE = -
+
+NETWORK
+TITLE = [2] ST1 BLOKADA_LEWA - HP
+//[2] ST1 BLOKADA_LEWA - HP
+      O "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.test.fp_HP;
+//    O     "A-Flags".STATION.IN_HP_STEP
+      = "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.in.move_hp;
+NETWORK
+TITLE = [2] ST1 BLOKADA_LEWA - WP
+//[2] ST1 BLOKADA_LEWA - WP
+      O "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.test.fp_WP;
+      = "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.in.move_wp;
+NETWORK
+TITLE = [2] ST1 BLOKADA_LEWA - IDLE
+//[2] ST1 BLOKADA_LEWA - IDLE
+      O "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.test.fp_IDLE;
+      = "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.in.move_idle;
+NETWORK
+TITLE = Func [2] ST1 BLOKADA_LEWA
+      CALL "3STATE_PISTON_with_brake", "INST_ST1 BLOKADA_LEWA"
+      (  in_safety_on                := "A-Flags".STATION.SAFETY_OK , 
+         in_curtain_on               := "A-Flags".STATION.CURTAIN.OK , 
+         in_move_hp                  := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.in.move_hp , 
+         in_move_wp                  := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.in.move_wp , 
+         in_move_idle                := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.in.move_idle , 
+         in_sensor_hp1               := I20.4 , 
+         in_sensor_hp2               := I20.4 , 
+         in_sensor_wp1               := I21.4 , 
+         in_sensor_wp2               := I21.4 , 
+         out_in_hp                   := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.out.in_hp , 
+         out_in_wp                   := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.out.in_wp , 
+         out_idle                    := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.out.in_idle , 
+         out_status                  := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.out.status , 
+         out_brake                   := #brake , 
+         out_alarm_hp                := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.out.alarm_hp , 
+         out_alarm_wp                := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.out.alarm_wp , 
+         out_diag_status             := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.out.diag_status , 
+         in_ez_hp                    := Q20.6 , 
+         in_ez_wp                    := Q21.6 , 
+         in_ez_idle                  := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.test.IDLE_DUMMY
+      );
+
+      CALL "3STATE_DIAG"
+      (  in_diag_status              := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.out.diag_status , 
+         in_Ipw1                     := 'I20.4' , 
+         in_Ipw2                     := 'I20.4' , 
+         in_Ipr1                     := 'I21.4' , 
+         in_Ipr2                     := 'I21.4' , 
+         in_Qpw                      := 'Q20.6' , 
+         in_Qpr                      := 'Q21.6' , 
+         in_tio                      := "A-DBVALVES".io[2]
+      );
+
+      A "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.out.alarm_hp;
+      = "A-ALARMS".VALVES.err0.%X2;
+
+      A "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.out.alarm_wp;
+      = "A-ALARMS".VALVES.err0.%X3;
+
+      CALL "A-TESTSCL"
+      (  in_nr                       := 2 , 
+         out                         := "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.test
+      );
+
+      A(;
+      L "A-Doku_DB_OP".HMI.Manual_Functions;
+      L 2;
+      <>I;
+      );
+      R "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.test.fp_HP;
+      R "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.test.fp_WP;
+      R "A-DBVALVES".ST1.﻿BLOCKADE_LEFT.test.fp_IDLE;
+NETWORK
+TITLE = -
+
+NETWORK
+TITLE = [3] ST1 BLOKADA_PRAWA - HP
+//[3] ST1 BLOKADA_PRAWA - HP
+      O "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.test.fp_HP;
+//    O     "A-Flags".STATION.IN_HP_STEP
+      = "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.in.move_hp;
+NETWORK
+TITLE = [3] ST1 BLOKADA_PRAWA - WP
+//[3] ST1 BLOKADA_PRAWA - WP
+      O "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.test.fp_WP;
+      = "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.in.move_wp;
+NETWORK
+TITLE = [3] ST1 BLOKADA_PRAWA - IDLE
+//[3] ST1 BLOKADA_PRAWA - IDLE
+      O "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.test.fp_IDLE;
+      = "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.in.move_idle;
+NETWORK
+TITLE = Func [3] ST1 BLOKADA_PRAWA
+      CALL "3STATE_PISTON_with_brake", "INST_ST1 BLOKADA_PRAWA"
+      (  in_safety_on                := "A-Flags".STATION.SAFETY_OK , 
+         in_curtain_on               := "A-Flags".STATION.CURTAIN.OK , 
+         in_move_hp                  := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.in.move_hp , 
+         in_move_wp                  := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.in.move_wp , 
+         in_move_idle                := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.in.move_idle , 
+         in_sensor_hp1               := I20.5 , 
+         in_sensor_hp2               := I20.5 , 
+         in_sensor_wp1               := I21.5 , 
+         in_sensor_wp2               := I21.5 , 
+         out_in_hp                   := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.out.in_hp , 
+         out_in_wp                   := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.out.in_wp , 
+         out_idle                    := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.out.in_idle , 
+         out_status                  := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.out.status , 
+         out_brake                   := #brake , 
+         out_alarm_hp                := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.out.alarm_hp , 
+         out_alarm_wp                := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.out.alarm_wp , 
+         out_diag_status             := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.out.diag_status , 
+         in_ez_hp                    := Q20.7 , 
+         in_ez_wp                    := Q21.7 , 
+         in_ez_idle                  := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.test.IDLE_DUMMY
+      );
+
+      CALL "3STATE_DIAG"
+      (  in_diag_status              := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.out.diag_status , 
+         in_Ipw1                     := 'I20.5' , 
+         in_Ipw2                     := 'I20.5' , 
+         in_Ipr1                     := 'I21.5' , 
+         in_Ipr2                     := 'I21.5' , 
+         in_Qpw                      := 'Q20.7' , 
+         in_Qpr                      := 'Q21.7' , 
+         in_tio                      := "A-DBVALVES".io[3]
+      );
+
+      A "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.out.alarm_hp;
+      = "A-ALARMS".VALVES.err0.%X4;
+
+      A "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.out.alarm_wp;
+      = "A-ALARMS".VALVES.err0.%X5;
+
+      CALL "A-TESTSCL"
+      (  in_nr                       := 3 , 
+         out                         := "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.test
+      );
+
+      A(;
+      L "A-Doku_DB_OP".HMI.Manual_Functions;
+      L 3;
+      <>I;
+      );
+      R "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.test.fp_HP;
+      R "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.test.fp_WP;
+      R "A-DBVALVES".ST1.﻿BLOCKADE_RIGHT.test.fp_IDLE;
+NETWORK
+TITLE = -
+
+
+END_FUNCTION
+
