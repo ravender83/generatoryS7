@@ -1,0 +1,24 @@
+﻿NETWORK
+TITLE = ======== {TITLE} =========
+NETWORK
+TITLE = {TITLE_PL}
+//{TITLE_EN
+      A "Log_0";
+//    O     "A-Flags".STATION.IN_HP_STEP
+      O "A-Flags".MODE._NONE;
+      = #an;
+
+      A "Log_0";
+      = #a;
+
+      CALL "vor_Sensor"
+      (  in_a                        := #a , 
+         in_an                       := #an , 
+         in_sensor                   := {ADRES} , 
+         in_show                     := False , 
+         out_ok                      := "A-ALARMS".{TYP}."{SENSOR_EN}".ok , 
+         out_show                    := "A-ALARMS".{TYP}."{SENSOR_EN}".show , 
+         out_led                     := "A-ALARMS".{TYP}."{SENSOR_EN}".led , 
+         out_error_hp                := "A-ALARMS".{TYP}.sen{byteHP}.%X{bitHP} , 
+         out_error_wp                := "A-ALARMS".{TYP}.sen{byteWP}.%X{bitWP}
+      );
