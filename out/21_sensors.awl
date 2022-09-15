@@ -407,5 +407,96 @@ TITLE = [I21.3] ST1-sen_zasuwka_prawo
          out_error_wp                := "A-ALARMS".SENSORS.sen1.%X13
       );
 
+NETWORK
+TITLE = ======== BUTTONS =========
+NETWORK
+TITLE = [I0.0] A-btn_start
+//[I0.0] A-btn_start
+      A "Log_0";
+//    O     "A-Flags".STATION.IN_HP_STEP
+      O "A-Flags".MODE._NONE;
+      = #an;
+
+      A "Log_0";
+      = #a;
+
+      CALL "vor_Sensor"
+      (  in_a                        := #a , 
+         in_an                       := #an , 
+         in_sensor                   := %I0.0 , 
+         in_show                     := False , 
+         out_ok                      := "A-ALARMS".BUTTONS."A-btn_start".ok , 
+         out_show                    := "A-ALARMS".BUTTONS."A-btn_start".show , 
+         out_led                     := "A-ALARMS".BUTTONS."A-btn_start".led , 
+         out_error_hp                := "A-ALARMS".BUTTONS.btn0.%X0 , 
+         out_error_wp                := "A-ALARMS".BUTTONS.btn0.%X1
+      );
+NETWORK
+TITLE = [I0.6] A-btn_panel_zielony
+//[I0.6] A-btn_panel_green
+      A "Log_0";
+//    O     "A-Flags".STATION.IN_HP_STEP
+      O "A-Flags".MODE._NONE;
+      = #an;
+
+      A "Log_0";
+      = #a;
+
+      CALL "vor_Sensor"
+      (  in_a                        := #a , 
+         in_an                       := #an , 
+         in_sensor                   := %I0.6 , 
+         in_show                     := False , 
+         out_ok                      := "A-ALARMS".BUTTONS."A-btn_panel_green".ok , 
+         out_show                    := "A-ALARMS".BUTTONS."A-btn_panel_green".show , 
+         out_led                     := "A-ALARMS".BUTTONS."A-btn_panel_green".led , 
+         out_error_hp                := "A-ALARMS".BUTTONS.btn0.%X2 , 
+         out_error_wp                := "A-ALARMS".BUTTONS.btn0.%X3
+      );
+NETWORK
+TITLE = [I0.7] A-btn_panel_czerwony
+//[I0.7] A-btn_panel_red
+      A "Log_0";
+//    O     "A-Flags".STATION.IN_HP_STEP
+      O "A-Flags".MODE._NONE;
+      = #an;
+
+      A "Log_0";
+      = #a;
+
+      CALL "vor_Sensor"
+      (  in_a                        := #a , 
+         in_an                       := #an , 
+         in_sensor                   := %I0.7 , 
+         in_show                     := False , 
+         out_ok                      := "A-ALARMS".BUTTONS."A-btn_panel_red".ok , 
+         out_show                    := "A-ALARMS".BUTTONS."A-btn_panel_red".show , 
+         out_led                     := "A-ALARMS".BUTTONS."A-btn_panel_red".led , 
+         out_error_hp                := "A-ALARMS".BUTTONS.btn0.%X4 , 
+         out_error_wp                := "A-ALARMS".BUTTONS.btn0.%X5
+      );
+NETWORK
+TITLE = [I1.2] A-btn_start_na_uchwycie
+//[I1.2] A-btn_start_on_grip
+      A "Log_0";
+//    O     "A-Flags".STATION.IN_HP_STEP
+      O "A-Flags".MODE._NONE;
+      = #an;
+
+      A "Log_0";
+      = #a;
+
+      CALL "vor_Sensor"
+      (  in_a                        := #a , 
+         in_an                       := #an , 
+         in_sensor                   := %I1.2 , 
+         in_show                     := False , 
+         out_ok                      := "A-ALARMS".BUTTONS."A-btn_start_on_grip".ok , 
+         out_show                    := "A-ALARMS".BUTTONS."A-btn_start_on_grip".show , 
+         out_led                     := "A-ALARMS".BUTTONS."A-btn_start_on_grip".led , 
+         out_error_hp                := "A-ALARMS".BUTTONS.btn0.%X6 , 
+         out_error_wp                := "A-ALARMS".BUTTONS.btn0.%X7
+      );
+
 END_FUNCTION
 

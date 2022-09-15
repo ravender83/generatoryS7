@@ -19,11 +19,13 @@ NON_RETAIN
       END_STRUCT;
       SAFETY : Struct
 		 error : Bool;
-         sft0 : UInt;
+{SAFETY_STRUCT}
+{SAFETY2_STRUCT}
       END_STRUCT;
       BUTTONS : Struct
 		 error : Bool;
-         btn0 : UInt;
+{BUTTONS_STRUCT}
+{BUTTONS2_STRUCT}		 
       END_STRUCT;	  
       DRIVES : Struct
 		error : Bool;

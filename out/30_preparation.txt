@@ -1,5 +1,9 @@
 // Przyciski
-{BUTTONS_HP}
+O "A-ALARMS".BUTTONS."A-btn_start".ok
+O "A-ALARMS".BUTTONS."A-btn_panel_green".ok
+O "A-ALARMS".BUTTONS."A-btn_panel_red".ok
+O "A-ALARMS".BUTTONS."A-btn_start_on_grip".ok
+
 // Mechanizmy
 O "A-DBVALVES".GN.holdface.out.in_hp
 O "A-DBVALVES".ST1.blockade_left.out.in_hp
@@ -23,8 +27,8 @@ O "A-ALARMS".SENSORS."ST1-sen_latch_left".ok
 O "A-ALARMS".SENSORS."ST1-sen_latch_right".ok
 
 // Napędy
-{DRIVES_HP}
+// 
 // Inne
-{OTHERS_HP}
+// 
 O     "Log_1"
 =     "A-Flags".STATION.IN_HP

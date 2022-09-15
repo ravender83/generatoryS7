@@ -37,11 +37,22 @@ sen1 : UInt;
       END_STRUCT;
       SAFETY : Struct
 		 error : Bool;
-         sft0 : UInt;
+sft0 : UInt;
+
+"SAFETY_pressure_ok" { S7_SetPoint := 'False'} : "Tsensor";   // [I0.1] SAFETY_cisnienie_ok
+"SAFETY_blockade" { S7_SetPoint := 'False'} : "Tsensor";   // [I0.4] SAFETY_blokada
+"SAFETY_estop_ok" { S7_SetPoint := 'False'} : "Tsensor";   // [I0.5] SAFETY_estop_ok
+
       END_STRUCT;
       BUTTONS : Struct
 		 error : Bool;
-         btn0 : UInt;
+btn0 : UInt;
+
+"A-btn_start" { S7_SetPoint := 'False'} : "Tsensor";   // [I0.0] A-btn_start
+"A-btn_panel_green" { S7_SetPoint := 'False'} : "Tsensor";   // [I0.6] A-btn_panel_zielony
+"A-btn_panel_red" { S7_SetPoint := 'False'} : "Tsensor";   // [I0.7] A-btn_panel_czerwony
+"A-btn_start_on_grip" { S7_SetPoint := 'False'} : "Tsensor";   // [I1.2] A-btn_start_na_uchwycie
+		 
       END_STRUCT;	  
       DRIVES : Struct
 		error : Bool;

@@ -17,6 +17,6 @@ TITLE = {TITLE_PL}
          out_ok                      := "A-ALARMS".{TYP}."{SENSOR_EN}".ok , 
          out_show                    := "A-ALARMS".{TYP}."{SENSOR_EN}".show , 
          out_led                     := "A-ALARMS".{TYP}."{SENSOR_EN}".led , 
-         out_error_hp                := "A-ALARMS".{TYP}.sen{byteHP}.%X{bitHP} , 
-         out_error_wp                := "A-ALARMS".{TYP}.sen{byteWP}.%X{bitWP}
+         out_error_hp                := "A-ALARMS".{TYP}.{typ}{byteHP}.%X{bitHP} , 
+         out_error_wp                := "A-ALARMS".{TYP}.{typ}{byteWP}.%X{bitWP}
       );

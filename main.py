@@ -516,21 +516,33 @@ def generuj_hmialarms_tagi_excel(_lista):
         return None
 
 
-def generuj_alarms_db(_licznik, _zawory, _sensory):
+def generuj_alarms_db(_licznik, _zawory, _sensory, _safety, _buttons):
     _dbvalves_data = otworz("A-ALARMS_db.txt", 'templates')
     _valve_data = otworz("A-ALARMS_db_1.txt", 'templates')
 
-    # --- Valves ---
+    # --- Valves 0 ---
     _txt = ''
     for i in range(_licznik[0]+1):
         _txt = _txt + f'err{i} : UInt;\n'
     _dbvalves_data = _dbvalves_data.replace('{VALVES_STRUCT}', _txt)
 
-    # --- Sensors ---
+    # --- Sensors 1 ---
     _txt = ''
     for i in range(_licznik[1]+1):
         _txt = _txt + f'sen{i} : UInt;\n'
     _dbvalves_data = _dbvalves_data.replace('{SENSORS_STRUCT}', _txt)
+
+    # --- Safety 2 ---
+    _txt = ''
+    for i in range(_licznik[2]+1):
+        _txt = _txt + f'sft{i} : UInt;\n'
+    _dbvalves_data = _dbvalves_data.replace('{SAFETY_STRUCT}', _txt)
+
+    # --- Buttons 2 ---
+    _txt = ''
+    for i in range(_licznik[3]+1):
+        _txt = _txt + f'btn{i} : UInt;\n'
+    _dbvalves_data = _dbvalves_data.replace('{BUTTONS_STRUCT}', _txt)
 
     _txt = ''
     for i in _sensory:
@@ -539,6 +551,22 @@ def generuj_alarms_db(_licznik, _zawory, _sensory):
         _valve_szablon = _valve_szablon.replace('{COMMENT}', i.get_sensorNameCommentSmall)
         _txt += _valve_szablon + '\n'
     _dbvalves_data = _dbvalves_data.replace('{SENSORS2_STRUCT}', _txt)
+
+    _txt = ''
+    for i in _safety:
+        _valve_szablon = _valve_data
+        _valve_szablon = _valve_szablon.replace('{SENSOR}', i.get_sensorName)
+        _valve_szablon = _valve_szablon.replace('{COMMENT}', i.get_sensorNameCommentSmall)
+        _txt += _valve_szablon + '\n'
+    _dbvalves_data = _dbvalves_data.replace('{SAFETY2_STRUCT}', _txt)    
+
+    _txt = ''
+    for i in _buttons:
+        _valve_szablon = _valve_data
+        _valve_szablon = _valve_szablon.replace('{SENSOR}', i.get_sensorName)
+        _valve_szablon = _valve_szablon.replace('{COMMENT}', i.get_sensorNameCommentSmall)
+        _txt += _valve_szablon + '\n'
+    _dbvalves_data = _dbvalves_data.replace('{BUTTONS2_STRUCT}', _txt)       
 
     _dbvalves_data = _dbvalves_data.replace('{DRIVES_STRUCT}', 'drv0 : UInt;\n')
     zapisz("13_ALARMS.db", _dbvalves_data, 'out')
@@ -651,9 +679,7 @@ def generuj_hmialarms_class():
     zapisz("12_alarm_class.txt", _txt, 'out')
 
 
-def generuj_sensors(_licznik, _sensory, _safety, _przyciski):
-    _preparation_file = otworz("30_preparation.txt", 'out')
-    _txt_hp = ''
+def generuj_sensors(_licznik, _sensory, _safety, _buttons):
     _sensors_data = otworz("A-Sensors.txt", 'templates')
     _sensors1_data = otworz("A-Sensors_1.txt", 'templates')
     _sensors2_data = otworz("A-Sensors_2.txt", 'templates')  
@@ -691,6 +717,8 @@ def generuj_sensors(_licznik, _sensory, _safety, _przyciski):
     _sensors_data = _sensors_data.replace('{BUTTONS_error}', _error_szablon)     
 
     # Generowanie networków sensorów
+    _preparation_file = otworz("30_preparation.txt", 'out')
+    _txt_hp = ''
     _signals_szablon = 'NETWORK\nTITLE = ======== SENSORS =========\n'    
     for i in _sensory:
         _szablon = _sensors2_data
@@ -703,13 +731,41 @@ def generuj_sensors(_licznik, _sensory, _safety, _przyciski):
         _szablon = _szablon.replace('{bitHP}', str(i.bitHP))  
         _szablon = _szablon.replace('{byteWP}', str(i.byteWP))  
         _szablon = _szablon.replace('{bitWP}', str(i.bitWP))   
+        _szablon = _szablon.replace('{typ}', 'sen') 
         _txt_hp += f'O "A-ALARMS".SENSORS."{i.get_sensorName}".ok\n'      
         _signals_szablon += _szablon + '\n'
-
-    _sensors_data = _sensors_data.replace('{SIGNALS}', _signals_szablon)  
+    _signals_szablon = _signals_szablon + '\n' 
     _preparation_file = _preparation_file.replace('{SENSORS_HP}', _txt_hp) 
-    zapisz("21_sensors.awl", _sensors_data, 'out')
     zapisz("30_preparation.txt", _preparation_file, 'out')  
+
+    # Generowanie networków przyciskow
+    _preparation_file = otworz("30_preparation.txt", 'out')
+    _txt_hp = ''
+    _signals_szablon += 'NETWORK\nTITLE = ======== BUTTONS =========\n'    
+    for i in _buttons:
+        print(i.get_sensorName)
+        _szablon = _sensors2_data
+        _szablon = _szablon.replace('{TYP}', 'BUTTONS')
+        _szablon = _szablon.replace('{TITLE_PL}', i.get_sensorNameCommentSmall)
+        _szablon = _szablon.replace('{TITLE_EN}', i.get_sensorNameCommentSmallEN)   
+        _szablon = _szablon.replace('{ADRES}', i.adres)  
+        _szablon = _szablon.replace('{SENSOR_EN}', i.get_sensorName)   
+        _szablon = _szablon.replace('{byteHP}', str(i.byteHP))  
+        _szablon = _szablon.replace('{bitHP}', str(i.bitHP))  
+        _szablon = _szablon.replace('{byteWP}', str(i.byteWP))  
+        _szablon = _szablon.replace('{bitWP}', str(i.bitWP))   
+        _szablon = _szablon.replace('{typ}', 'btn')
+        _txt_hp += f'O "A-ALARMS".BUTTONS."{i.get_sensorName}".ok\n'      
+        _signals_szablon += _szablon + '\n'      
+    _preparation_file = _preparation_file.replace('{BUTTONS_HP}', _txt_hp) 
+
+    _preparation_file = _preparation_file.replace('{DRIVES_HP}', '// ')
+    _preparation_file = _preparation_file.replace('{OTHERS_HP}', '// ')
+
+    zapisz("30_preparation.txt", _preparation_file, 'out')  
+
+    _sensors_data = _sensors_data.replace('{SIGNALS}', _signals_szablon)
+    zapisz("21_sensors.awl", _sensors_data, 'out')
 
 
 def main(args):
@@ -762,7 +818,7 @@ def main(args):
 
     licznik = generuj_hmialarms_excel(zawory, sensory, safety, przyciski)
     generuj_hmialarms_tagi_excel(lista_tagow)
-    generuj_alarms_db(licznik, zawory, sensory)
+    generuj_alarms_db(licznik, zawory, sensory, safety, przyciski)
 
     #generuj_valves_outputs_scl(zawory)
     generuj_valves_outputs_stl(zawory)
