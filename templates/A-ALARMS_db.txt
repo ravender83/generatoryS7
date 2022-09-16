@@ -34,11 +34,56 @@ NON_RETAIN
       OTHER : Struct
 		error : Bool;
 		oth0 : UInt;
-      END_STRUCT;	  
+      END_STRUCT;
+      diagin_ctrn : Struct
+         screen : Int;
+         max : Int;
+         b0 : Int; // {CIN_B0}
+         b1 : Int; // {CIN_B1}
+         b2 : Int; // {CIN_B2}
+         b3 : Int; // {CIN_B3}
+         b4 : Int; // {CIN_B4}
+         b5 : Int; // {CIN_B5}
+         b6 : Int; // {CIN_B6}
+         b7 : Int; // {CIN_B7}
+      END_STRUCT;
+      diagin : Array[0..{IN}] of SInt;
+      diagout_ctrn : Struct
+         screen : Int;
+         max : Int;
+         b0 : Int; // {COUT_B0}
+         b1 : Int; // {COUT_B1}
+         b2 : Int; // {COUT_B2}
+         b3 : Int; // {COUT_B3}
+         b4 : Int; // {COUT_B4}
+         b5 : Int; // {COUT_B5}
+         b6 : Int; // {COUT_B6}
+         b7 : Int; // {COUT_B7}
+      END_STRUCT;
+      diagout : Array[0..{OUT}] of SInt;	  
    END_VAR
 
 
 BEGIN
-
+   diagin_ctrn.screen := 0;
+   diagin_ctrn.max := {IN_MAX};
+   diagin_ctrn.b0 := 1;
+   diagin_ctrn.b1 := 2;
+   diagin_ctrn.b2 := 3;
+   diagin_ctrn.b3 := 4;
+   diagin_ctrn.b4 := 5;
+   diagin_ctrn.b5 := 6;
+   diagin_ctrn.b6 := 7;
+   diagin_ctrn.b7 := 8;
+   diagout_ctrn.screen := 0;   
+   diagout_ctrn.max := {OUT_MAX};
+   diagout_ctrn.b0 := 1;
+   diagout_ctrn.b1 := 2;
+   diagout_ctrn.b2 := 3;
+   diagout_ctrn.b3 := 4;
+   diagout_ctrn.b4 := 5;
+   diagout_ctrn.b5 := 6;
+   diagout_ctrn.b6 := 7;
+   diagout_ctrn.b7 := 8;   
 END_DATA_BLOCK
 

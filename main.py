@@ -9,6 +9,8 @@ safety = []
 przyciski = []
 inne = []
 lista_tagow = []
+adresyI = []
+adresyQ = []
 
 
 def zapisz(_plik, _txt, _fold):
@@ -270,25 +272,35 @@ def generuj_plc_tags_excel(_zawory, _sensory, _safety, _przyciski, _inne):
     _preparation_file = otworz("30_preparation.txt", 'out')
     _txt_hp = ''    
     _lista = []
+    _adresyI = []
+    _adresyQ = []
     _tmp = ['True', 'True', 'True', '', '', '']
     for i in _zawory:
         _txt_hp += f'A "A-DBVALVES".{i.prefix}.{i.name}.out.in_hp\n'  
         if i.sensorHP != 'nan':
             _lista.append([i.get_sensorNameHP, 'io', 'Bool', i.sensorHP, i.get_sensorNameHPcomment]+_tmp)
+            _adresyI.append(int(i.sensorHP[2:-2:]))
         if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
             _lista.append([i.get_sensorNameHP2, 'io', 'Bool', i.sensorHP2, i.get_sensorNameHP2comment]+_tmp)
+            _adresyI.append(int(i.sensorHP2[2:-2:]))
         if i.sensorWP != 'nan':
             _lista.append([i.get_sensorNameWP, 'io', 'Bool', i.sensorWP, i.get_sensorNameWPcomment]+_tmp)
+            _adresyI.append(int(i.sensorWP[2:-2:]))
         if i.sensorWP2 != 'nan' and i.sensorWP2 != i.sensorWP:
             _lista.append([i.get_sensorNameWP2, 'io', 'Bool', i.sensorWP2, i.get_sensorNameWP2comment]+_tmp)
+            _adresyI.append(int(i.sensorWP2[2:-2:]))
         if i.outputHP != 'nan':
             _lista.append([i.get_outputNameHP, 'io', 'Bool', i.outputHP, i.get_outputNameHPcomment]+_tmp)
+            _adresyQ.append(int(i.outputHP[2:-2:]))
         if i.outputWP != 'nan':
             _lista.append([i.get_outputNameWP, 'io', 'Bool', i.outputWP, i.get_outputNameWPcomment]+_tmp)
+            _adresyQ.append(int(i.outputWP[2:-2:]))
         if i.outputIDLE != 'nan':
             _lista.append([i.get_outputNameIDLE, 'io', 'Bool', i.outputIDLE, i.get_outputNameIDLEcomment]+_tmp)
+            _adresyQ.append(int(i.outputIDLE[2:-2:]))
         if i.outputBRAKE != 'nan':
             _lista.append([i.get_outputNameBRAKE, 'io', 'Bool', i.outputBRAKE, i.get_outputNameBRAKEcomment]+_tmp)
+            _adresyQ.append(int(i.outputBRAKE[2:-2:]))
 
     _preparation_file = _preparation_file.replace('{VALVES_HP}', _txt_hp) 
     zapisz("30_preparation.txt", _preparation_file, 'out') 
@@ -296,21 +308,36 @@ def generuj_plc_tags_excel(_zawory, _sensory, _safety, _przyciski, _inne):
     for i in _sensory:
         if i.adres != 'nan':
             _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp)
+            _adresyI.append(int(i.adres[2:-2:]))
     for i in _safety:
         if i.adres != 'nan':
             _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp)
+            _adresyI.append(int(i.adres[2:-2:]))
     for i in _przyciski:
         if i.adres != 'nan':
-            _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp)            
+            _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp) 
+            _adresyI.append(int(i.adres[2:-2:]))         
     for i in _inne:
         if i.adres != 'nan':
-            _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp)                  
+            _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp) 
+            if i.adres[1] == 'I':
+                _adresyI.append(int(i.adres[2:-2:]))      
+            elif i.adres[1] == 'Q':
+                _adresyQ.append(int(i.adres[2:-2:]))      
+    _adresyI = sorted(set(_adresyI), key=int)
+    _adresyQ = sorted(set(_adresyQ), key=int)
+
+    for i in _adresyI:
+        _lista.append([f'I{str(i)}', 'Default tag table', 'Byte', f'IB{str(i)}', f'IB{str(i)}']+_tmp) 
+    for i in _adresyQ:
+        _lista.append([f'Q{str(i)}', 'Default tag table', 'Byte', f'QB{str(i)}', f'QB{str(i)}']+_tmp)         
 
     _df = pd.DataFrame(_lista, columns=['Name', 'Path', 'Data Type', 'Logical Address', 'Comment', 'Hmi Visible',
                                           'Hmi Accessible', 'Hmi Writeable', 'Typeobject ID', 'Version ID', 'BelongsToUnit'])
     try:
         _df.to_excel("out/10_Tags.xlsx", sheet_name='PLC Tags', index=False)
         print(f'[OK] Wygenerowano Tags.xlsx')
+        return _adresyI, _adresyQ
     except IOError as e:
         print(f'[NOK] Nie wygenerowano Tags.xlsx')
         print(f'I/O error({e.errno}): {e.strerror}')
@@ -545,7 +572,7 @@ def generuj_hmialarms_tagi_excel(_lista):
         return None
 
 
-def generuj_alarms_db(_licznik, _zawory, _sensory, _safety, _buttons):
+def generuj_alarms_db(_licznik, _zawory, _sensory, _safety, _buttons, _adresyI, _adresyQ):
     _dbvalves_data = otworz("A-ALARMS_db.txt", 'templates')
     _valve_data = otworz("A-ALARMS_db_1.txt", 'templates')
 
@@ -598,6 +625,11 @@ def generuj_alarms_db(_licznik, _zawory, _sensory, _safety, _buttons):
     _dbvalves_data = _dbvalves_data.replace('{BUTTONS2_STRUCT}', _txt)       
 
     _dbvalves_data = _dbvalves_data.replace('{DRIVES_STRUCT}', 'drv0 : UInt;\n')
+
+    _dbvalves_data = _dbvalves_data.replace('{IN}', str(len(_adresyI)))
+    _dbvalves_data = _dbvalves_data.replace('{OUT}', str(len(_adresyQ)))
+    _dbvalves_data = _dbvalves_data.replace('{IN_MAX}', str(int(len(_adresyI) / 9)))
+    _dbvalves_data = _dbvalves_data.replace('{OUT_MAX}', str(int(len(_adresyQ) / 9)))    
     zapisz("13_ALARMS.db", _dbvalves_data, 'out')
 
 
@@ -925,8 +957,8 @@ def main(args):
     _preparation_file = otworz("30_preparation.txt", 'templates')
     zapisz("30_preparation.txt", _preparation_file, 'out') 
 
-    generuj_tags_txt(zawory, sensory, safety, przyciski, inne)
-    generuj_plc_tags_excel(zawory, sensory, safety, przyciski, inne)
+    #generuj_tags_txt(zawory, sensory, safety, przyciski, inne)
+    adresyI, adresyQ = generuj_plc_tags_excel(zawory, sensory, safety, przyciski, inne)
 
     generuj_dbvalves_txt(df)
     generuj_dbvalves_db(df)
@@ -935,7 +967,7 @@ def main(args):
 
     licznik = generuj_hmialarms_excel(zawory, sensory, safety, przyciski)
     generuj_hmialarms_tagi_excel(lista_tagow)
-    generuj_alarms_db(licznik, zawory, sensory, safety, przyciski)
+    generuj_alarms_db(licznik, zawory, sensory, safety, przyciski, adresyI, adresyQ)
 
     #generuj_valves_outputs_scl(zawory)
     generuj_valves_outputs_stl(zawory)
