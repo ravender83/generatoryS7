@@ -15,7 +15,10 @@ class Zawor:
         self.bitWP = 0  
         self.byteWP2 = 0
         self.bitWP2 = 0 
-        self.msg = 0
+        self.msg_hp = 0
+        self.msg_hp2 = 0
+        self.msg_wp = 0
+        self.msg_wp2 = 0
 
         if str(_zawor.SENSOR_HP) != 'nan':
             self.sensorHP = '%'+str(_zawor.SENSOR_HP)

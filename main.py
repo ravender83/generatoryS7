@@ -389,8 +389,8 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             i.bitHP = lmaly
             lduzy, lmaly = zliczaj(lduzy, lmaly)
             _lista_tagow.append('A-ALARMS_VALVES_err'+str(lduzy))
-            _txt_hp += f'{str(_msg + _index)}\t{_lista[-1:][0][1]}\n'
-            i.msg = _index
+            i.msg_hp = _msg + _index
+            _txt_hp += f'{str(i.msg_hp)}\t{_lista[-1:][0][1]}\n'            
             _index += 1
 
         if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
@@ -400,8 +400,8 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             i.bitHP2 = lmaly            
             lduzy, lmaly = zliczaj(lduzy, lmaly)
             _lista_tagow.append('A-ALARMS_VALVES_err'+str(lduzy))
-            _txt_hp += f'{str(_msg + _index)}\t{_lista[-1:][0][1]}\n'
-            i.msg = _index
+            i.msg_hp2 = _msg + _index
+            _txt_hp += f'{str(i.msg_hp2)}\t{_lista[-1:][0][1]}\n'            
             _index += 1        
 
         if i.sensorWP != 'nan':
@@ -411,8 +411,8 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             i.bitWP = lmaly            
             lduzy, lmaly = zliczaj(lduzy, lmaly)
             _lista_tagow.append('A-ALARMS_VALVES_err'+str(lduzy))
-            _txt_hp += f'{str(_msg + _index)}\t{_lista[-1:][0][1]}\n'
-            i.msg = _index
+            i.msg_wp = _msg + _index
+            _txt_hp += f'{str(i.msg_wp)}\t{_lista[-1:][0][1]}\n'            
             _index += 1            
 
         if i.sensorWP2 != 'nan' and i.sensorWP2 != i.sensorWP:
@@ -422,8 +422,8 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             i.bitWP2 = lmaly            
             lduzy, lmaly = zliczaj(lduzy, lmaly)  
             _lista_tagow.append('A-ALARMS_VALVES_err'+str(lduzy))  
-            _txt_hp += f'{str(_msg + _index)}\t{_lista[-1:][0][1]}\n'
-            i.msg = _index
+            i.msg_wp2 = _msg + _index
+            _txt_hp += f'{str(i.msg_wp2)}\t{_lista[-1:][0][1]}\n'            
             _index += 1            
     # ===== Sensory =======
     _tmp = ['<No value>', '0', '<No value>', '0', 'SENSOR', 'True', 'none']
@@ -438,8 +438,8 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             i.bitHP = lmaly_sensor            
             lduzy_sensor, lmaly_sensor = zliczaj(lduzy_sensor, lmaly_sensor)
             _lista_tagow.append('A-ALARMS_SENSORS_sen'+str(lduzy_sensor))
-            _txt_hp += f'{str(_msg + _index)}\t{_lista[-1:][0][1]}\n'
-            i.msg = _index
+            i.msg_hp = _msg + _index
+            _txt_hp += f'{str(i.msg_hp)}\t{_lista[-1:][0][1]}\n'
             _index += 1                
 
         if i.adres != 'nan':
@@ -449,8 +449,8 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             i.bitWP = lmaly_sensor              
             lduzy_sensor, lmaly_sensor = zliczaj(lduzy_sensor, lmaly_sensor)
             _lista_tagow.append('A-ALARMS_SENSORS_sen'+str(lduzy_sensor))
-            _txt_hp += f'{str(_msg + _index)}\t{_lista[-1:][0][1]}\n'
-            i.msg = _index
+            i.msg_wp = _msg + _index
+            _txt_hp += f'{str(i.msg_wp)}\t{_lista[-1:][0][1]}\n'            
             _index += 1 
 
     # ===== Safety =======
@@ -466,8 +466,8 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             i.bitWP = lmaly_safety              
             lduzy_safety, lmaly_safety = zliczaj(lduzy_safety, lmaly_safety)
             _lista_tagow.append('A-ALARMS_SAFETY_sft'+str(lduzy_safety))
-            _txt_hp += f'{str(_msg + _index)}\t{_lista[-1:][0][1]}\n'
-            i.msg = _index
+            i.msg_hp = _msg + _index
+            _txt_hp += f'{str(i.msg_hp)}\t{_lista[-1:][0][1]}\n'            
             _index += 1 
     # ===== Przyciski =======
     _tmp = ['<No value>', '0', '<No value>', '0', 'BUTTON', 'True', 'none']
@@ -482,8 +482,8 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             i.bitHP = lmaly_button               
             lduzy_button, lmaly_button = zliczaj(lduzy_button, lmaly_button)
             _lista_tagow.append('A-ALARMS_BUTTONS_btn'+str(lduzy_button))
-            _txt_hp += f'{str(_msg + _index)}\t{_lista[-1:][0][1]}\n'
-            i.msg = _index
+            i.msg_hp = _msg + _index
+            _txt_hp += f'{str(i.msg_hp)}\t{_lista[-1:][0][1]}\n'            
             _index += 1 
         if i.adres != 'nan':
             _lista.append([f'btn_{i.adres[1:]}_wp', f'{i.get_sensorNameComment} jest nieaktywny', '', 'BUTTON',
@@ -492,8 +492,8 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             i.bitWP = lmaly_button              
             lduzy_button, lmaly_button = zliczaj(lduzy_button, lmaly_button)
             _lista_tagow.append('A-ALARMS_BUTTONS_btn'+str(lduzy_button))
-            _txt_hp += f'{str(_msg + _index)}\t{_lista[-1:][0][1]}\n'
-            i.msg = _index
+            i.msg_wp = _msg + _index
+            _txt_hp += f'{str(i.msg_wp)}\t{_lista[-1:][0][1]}\n'            
             _index += 1 
     zapisz("31_hmi_messages.txt", _txt_hp, 'out')            
     _df = pd.DataFrame(_lista, columns=_columns)
@@ -795,6 +795,29 @@ def generuj_sensors(_licznik, _sensory, _safety, _buttons):
     zapisz("21_sensors.awl", _sensors_data, 'out')
 
 
+def generuj_hp_messages(_licznik, _sensory, _safety, _przyciski):
+    _messages_data = otworz("A-HP_Messages.txt", 'templates')
+    _message = otworz("A-HP_Messages_1.txt", 'templates')
+
+    # SENSORS 1
+    _msg_szablon = ''
+    for i in _sensory:
+        _szablon = _message
+        _szablon = _szablon.replace('{NR_HP}', str(i.msg_hp))
+        _szablon = _szablon.replace('{NR_WP}', str(i.msg_wp))
+        _szablon = _szablon.replace('{TYP}', 'SENSORS')
+        _szablon = _szablon.replace('{TYP2}', 'sen')
+        _szablon = _szablon.replace('{BYTE_HP}', str(i.byteHP))
+        _szablon = _szablon.replace('{BIT_HP}', str(i.bitHP))
+        _szablon = _szablon.replace('{BYTE_WP}', str(i.byteWP))
+        _szablon = _szablon.replace('{BIT_WP}', str(i.bitWP))  
+        _szablon = _szablon.replace('{MESSAGE_HP}', f'{i.get_sensorNameComment} jest aktywny')  
+        _szablon = _szablon.replace('{MESSAGE_WP}', f'{i.get_sensorNameComment} jest nieaktywny')        
+        _msg_szablon += _szablon + '\n'
+    _messages_data = _messages_data.replace('{MSG}', _msg_szablon)
+    zapisz("32_messages.awl", _messages_data, 'out')
+
+
 def main(args):
     df = pd.read_excel(args, header=0, sheet_name='Mechanizmy')
     df_datas_parsing(df)   # Zmiana tekstu na małe/duże litery, usuwanie białych spacji
@@ -852,6 +875,7 @@ def main(args):
     generuj_valves_instances(zawory)
 
     generuj_sensors(licznik, sensory, safety, przyciski)
+    generuj_hp_messages(licznik, sensory, safety, przyciski)    
 
     print('===== Koniec =====')
     return 0

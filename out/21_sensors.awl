@@ -73,7 +73,7 @@ NETWORK
 TITLE = DRIVES error
 //{DRIVES_error}
 //      NOT;
-	  A log_0;
+      A "Log_0";
       AN "A-Flags".MODE._NONE;
       = "A-ALARMS".DRIVES.error;
 
@@ -84,7 +84,7 @@ NETWORK
 TITLE = OTHER error
 //{OTHER_error}
 //      NOT;
-      A log_0;
+      A "Log_0";
       AN "A-Flags".MODE._NONE;
       = "A-ALARMS".OTHER.error;
 	  

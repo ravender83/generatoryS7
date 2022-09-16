@@ -1,0 +1,13 @@
+﻿NETWORK
+TITLE = {NR_HP} - {MESSAGE_HP}
+      A "A-ALARMS".{TYP}.{TYP2}{BYTE_HP}.%X{BIT_HP};
+      A "A-T_del_msg_sensors_error";
+      L {NR_HP};
+      JC kom;
+	  
+NETWORK
+TITLE = {NR_WP} - {MESSAGE_WP}
+      A "A-ALARMS".{TYP}.{TYP2}{BYTE_WP}.%X{BIT_WP};
+      A "A-T_del_msg_sensors_error";
+      L {NR_WP};
+      JC kom;

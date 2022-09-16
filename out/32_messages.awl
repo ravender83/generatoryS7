@@ -1,0 +1,218 @@
+FUNCTION "A-HP_Messages" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+NETWORK
+TITLE = 1007 - [I1.3] czujnik "A-sen_skaner_lewo" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X0;
+      A "A-T_del_msg_sensors_error";
+      L 1007;
+      JC kom;
+	  
+NETWORK
+TITLE = 1008 - [I1.3] czujnik "A-sen_skaner_lewo" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X1;
+      A "A-T_del_msg_sensors_error";
+      L 1008;
+      JC kom;
+
+NETWORK
+TITLE = 1009 - [I1.4] czujnik "A-sen_skaner_prawo" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X2;
+      A "A-T_del_msg_sensors_error";
+      L 1009;
+      JC kom;
+	  
+NETWORK
+TITLE = 1010 - [I1.4] czujnik "A-sen_skaner_prawo" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X3;
+      A "A-T_del_msg_sensors_error";
+      L 1010;
+      JC kom;
+
+NETWORK
+TITLE = 1011 - [I10.0] czujnik "GN-sen_stelaz_sruba_lewa" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X4;
+      A "A-T_del_msg_sensors_error";
+      L 1011;
+      JC kom;
+	  
+NETWORK
+TITLE = 1012 - [I10.0] czujnik "GN-sen_stelaz_sruba_lewa" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X5;
+      A "A-T_del_msg_sensors_error";
+      L 1012;
+      JC kom;
+
+NETWORK
+TITLE = 1013 - [I11.0] czujnik "GN-sen_stelaz_sruba_prawa" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X6;
+      A "A-T_del_msg_sensors_error";
+      L 1013;
+      JC kom;
+	  
+NETWORK
+TITLE = 1014 - [I11.0] czujnik "GN-sen_stelaz_sruba_prawa" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X7;
+      A "A-T_del_msg_sensors_error";
+      L 1014;
+      JC kom;
+
+NETWORK
+TITLE = 1015 - [I10.3] czujnik "GN-sen_generator_sruba" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X8;
+      A "A-T_del_msg_sensors_error";
+      L 1015;
+      JC kom;
+	  
+NETWORK
+TITLE = 1016 - [I10.3] czujnik "GN-sen_generator_sruba" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X9;
+      A "A-T_del_msg_sensors_error";
+      L 1016;
+      JC kom;
+
+NETWORK
+TITLE = 1017 - [I20.0] czujnik "OETIKER_pozycja_hp" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X10;
+      A "A-T_del_msg_sensors_error";
+      L 1017;
+      JC kom;
+	  
+NETWORK
+TITLE = 1018 - [I20.0] czujnik "OETIKER_pozycja_hp" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X11;
+      A "A-T_del_msg_sensors_error";
+      L 1018;
+      JC kom;
+
+NETWORK
+TITLE = 1019 - [I10.2] czujnik "OETIKER_pozycja_2mm" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X12;
+      A "A-T_del_msg_sensors_error";
+      L 1019;
+      JC kom;
+	  
+NETWORK
+TITLE = 1020 - [I10.2] czujnik "OETIKER_pozycja_2mm" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X13;
+      A "A-T_del_msg_sensors_error";
+      L 1020;
+      JC kom;
+
+NETWORK
+TITLE = 1021 - [I11.2] czujnik "OETIKER_pozycja_4mm" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X14;
+      A "A-T_del_msg_sensors_error";
+      L 1021;
+      JC kom;
+	  
+NETWORK
+TITLE = 1022 - [I11.2] czujnik "OETIKER_pozycja_4mm" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X15;
+      A "A-T_del_msg_sensors_error";
+      L 1022;
+      JC kom;
+
+NETWORK
+TITLE = 1023 - [I11.3] czujnik "OETIKER_pozycja_tensometr" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X0;
+      A "A-T_del_msg_sensors_error";
+      L 1023;
+      JC kom;
+	  
+NETWORK
+TITLE = 1024 - [I11.3] czujnik "OETIKER_pozycja_tensometr" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X1;
+      A "A-T_del_msg_sensors_error";
+      L 1024;
+      JC kom;
+
+NETWORK
+TITLE = 1025 - [I20.1] czujnik "OETIKER_pozycja_opaska_lewa_hp" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X2;
+      A "A-T_del_msg_sensors_error";
+      L 1025;
+      JC kom;
+	  
+NETWORK
+TITLE = 1026 - [I20.1] czujnik "OETIKER_pozycja_opaska_lewa_hp" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X3;
+      A "A-T_del_msg_sensors_error";
+      L 1026;
+      JC kom;
+
+NETWORK
+TITLE = 1027 - [I21.1] czujnik "OETIKER_pozycja_opaska_prawa_hp" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X4;
+      A "A-T_del_msg_sensors_error";
+      L 1027;
+      JC kom;
+	  
+NETWORK
+TITLE = 1028 - [I21.1] czujnik "OETIKER_pozycja_opaska_prawa_hp" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X5;
+      A "A-T_del_msg_sensors_error";
+      L 1028;
+      JC kom;
+
+NETWORK
+TITLE = 1029 - [I20.2] czujnik "OETIKER_pozycja_opaska_lewa_wp" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X6;
+      A "A-T_del_msg_sensors_error";
+      L 1029;
+      JC kom;
+	  
+NETWORK
+TITLE = 1030 - [I20.2] czujnik "OETIKER_pozycja_opaska_lewa_wp" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X7;
+      A "A-T_del_msg_sensors_error";
+      L 1030;
+      JC kom;
+
+NETWORK
+TITLE = 1031 - [I21.2] czujnik "OETIKER_pozycja_opaska_prawa_wp" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X8;
+      A "A-T_del_msg_sensors_error";
+      L 1031;
+      JC kom;
+	  
+NETWORK
+TITLE = 1032 - [I21.2] czujnik "OETIKER_pozycja_opaska_prawa_wp" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X9;
+      A "A-T_del_msg_sensors_error";
+      L 1032;
+      JC kom;
+
+NETWORK
+TITLE = 1033 - [I20.3] czujnik "ST1-sen_zasuwka_lewo" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X10;
+      A "A-T_del_msg_sensors_error";
+      L 1033;
+      JC kom;
+	  
+NETWORK
+TITLE = 1034 - [I20.3] czujnik "ST1-sen_zasuwka_lewo" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X11;
+      A "A-T_del_msg_sensors_error";
+      L 1034;
+      JC kom;
+
+NETWORK
+TITLE = 1035 - [I21.3] czujnik "ST1-sen_zasuwka_prawo" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X12;
+      A "A-T_del_msg_sensors_error";
+      L 1035;
+      JC kom;
+	  
+NETWORK
+TITLE = 1036 - [I21.3] czujnik "ST1-sen_zasuwka_prawo" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X13;
+      A "A-T_del_msg_sensors_error";
+      L 1036;
+      JC kom;
+
+
+END_FUNCTION
+

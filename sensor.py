@@ -5,7 +5,8 @@ class Sensor:
         self.name = str(_sensor.NAME)
         self.namepl = str(_sensor.NAMEPL)
         self.typ = str(_typ)
-        self.msg = 0
+        self.msg_hp = 0
+        self_msg_wp = 0
 
         if str(_sensor.ADRES) != 'nan':
             self.adres = '%'+str(_sensor.ADRES)
