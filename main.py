@@ -1,6 +1,7 @@
 import pandas as pd
 from tag import Zawor
 from sensor import Sensor
+from operator import itemgetter
 import sys
 
 zawory = []
@@ -11,6 +12,7 @@ inne = []
 lista_tagow = []
 adresyI = []
 adresyQ = []
+adresyIQ = []
 
 
 def zapisz(_plik, _txt, _fold):
@@ -274,33 +276,42 @@ def generuj_plc_tags_excel(_zawory, _sensory, _safety, _przyciski, _inne):
     _lista = []
     _adresyI = []
     _adresyQ = []
+    _adresyIQ = []
     _tmp = ['True', 'True', 'True', '', '', '']
     for i in _zawory:
         _txt_hp += f'A "A-DBVALVES".{i.prefix}.{i.name}.out.in_hp\n'  
         if i.sensorHP != 'nan':
             _lista.append([i.get_sensorNameHP, 'io', 'Bool', i.sensorHP, i.get_sensorNameHPcomment]+_tmp)
             _adresyI.append(int(i.sensorHP[2:-2:]))
+            _adresyIQ.append([i.sensorHP[1:], i.get_sensorNameHPsmall])
         if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
             _lista.append([i.get_sensorNameHP2, 'io', 'Bool', i.sensorHP2, i.get_sensorNameHP2comment]+_tmp)
             _adresyI.append(int(i.sensorHP2[2:-2:]))
+            _adresyIQ.append([i.sensorHP2[1:], i.get_sensorNameHP2small])
         if i.sensorWP != 'nan':
             _lista.append([i.get_sensorNameWP, 'io', 'Bool', i.sensorWP, i.get_sensorNameWPcomment]+_tmp)
             _adresyI.append(int(i.sensorWP[2:-2:]))
+            _adresyIQ.append([i.sensorWP[1:], i.get_sensorNameWPsmall])
         if i.sensorWP2 != 'nan' and i.sensorWP2 != i.sensorWP:
             _lista.append([i.get_sensorNameWP2, 'io', 'Bool', i.sensorWP2, i.get_sensorNameWP2comment]+_tmp)
             _adresyI.append(int(i.sensorWP2[2:-2:]))
+            _adresyIQ.append([i.sensorWP2[1:], i.get_sensorNameWP2small])
         if i.outputHP != 'nan':
             _lista.append([i.get_outputNameHP, 'io', 'Bool', i.outputHP, i.get_outputNameHPcomment]+_tmp)
             _adresyQ.append(int(i.outputHP[2:-2:]))
+            _adresyIQ.append([i.outputHP[1:], i.get_outputNameHPsmall])
         if i.outputWP != 'nan':
             _lista.append([i.get_outputNameWP, 'io', 'Bool', i.outputWP, i.get_outputNameWPcomment]+_tmp)
             _adresyQ.append(int(i.outputWP[2:-2:]))
+            _adresyIQ.append([i.outputWP[1:], i.get_outputNameWPsmall])
         if i.outputIDLE != 'nan':
             _lista.append([i.get_outputNameIDLE, 'io', 'Bool', i.outputIDLE, i.get_outputNameIDLEcomment]+_tmp)
             _adresyQ.append(int(i.outputIDLE[2:-2:]))
+            _adresyIQ.append([i.outputIDLE[1:], i.get_outputNameIDLEsmall])
         if i.outputBRAKE != 'nan':
             _lista.append([i.get_outputNameBRAKE, 'io', 'Bool', i.outputBRAKE, i.get_outputNameBRAKEcomment]+_tmp)
             _adresyQ.append(int(i.outputBRAKE[2:-2:]))
+            _adresyIQ.append([i.outputBRAKE[1:], i.get_outputNameBRAKEsmall])
 
     _preparation_file = _preparation_file.replace('{VALVES_HP}', _txt_hp) 
     zapisz("30_preparation.txt", _preparation_file, 'out') 
@@ -309,21 +320,26 @@ def generuj_plc_tags_excel(_zawory, _sensory, _safety, _przyciski, _inne):
         if i.adres != 'nan':
             _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp)
             _adresyI.append(int(i.adres[2:-2:]))
+            _adresyIQ.append([i.adres[1:], i.get_sensorNameSmall])
     for i in _safety:
         if i.adres != 'nan':
             _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp)
             _adresyI.append(int(i.adres[2:-2:]))
+            _adresyIQ.append([i.adres[1:], i.get_sensorNameSmall])
     for i in _przyciski:
         if i.adres != 'nan':
             _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp) 
-            _adresyI.append(int(i.adres[2:-2:]))         
+            _adresyI.append(int(i.adres[2:-2:]))   
+            _adresyIQ.append([i.adres[1:], i.get_sensorNameSmall])      
     for i in _inne:
         if i.adres != 'nan':
             _lista.append([i.get_sensorName, 'io', 'Bool', i.adres, i.get_sensorNameComment]+_tmp) 
             if i.adres[1] == 'I':
-                _adresyI.append(int(i.adres[2:-2:]))      
+                _adresyI.append(int(i.adres[2:-2:])) 
+                _adresyIQ.append([i.adres[1:], i.get_sensorNameSmall])     
             elif i.adres[1] == 'Q':
-                _adresyQ.append(int(i.adres[2:-2:]))      
+                _adresyQ.append(int(i.adres[2:-2:]))  
+                _adresyIQ.append([i.adres[1:], i.get_sensorNameSmall])    
     _adresyI = sorted(set(_adresyI), key=int)
     _adresyQ = sorted(set(_adresyQ), key=int)
 
@@ -337,7 +353,7 @@ def generuj_plc_tags_excel(_zawory, _sensory, _safety, _przyciski, _inne):
     try:
         _df.to_excel("out/10_Tags.xlsx", sheet_name='PLC Tags', index=False)
         print(f'[OK] Wygenerowano Tags.xlsx')
-        return _adresyI, _adresyQ
+        return _adresyI, _adresyQ, _adresyIQ
     except IOError as e:
         print(f'[NOK] Nie wygenerowano Tags.xlsx')
         print(f'I/O error({e.errno}): {e.strerror}')
@@ -942,6 +958,37 @@ def generuj_hp_messages(_valves, _sensory, _przyciski):
     zapisz("32_messages.awl", _messages_data, 'out')
 
 
+def generuj_hmi_diag_msg(_adresyI, _adresyQ, _adresyIQ):
+    _dictIQ = {}
+    _txt = ''
+
+    for i in _adresyIQ:
+        _dictIQ[i[0]] = i[1]
+
+    for i in _adresyI:
+        for k in range(8):
+            _tag = f'I{i}.{k}'
+            if _tag in _dictIQ:
+                _opis = _dictIQ[_tag]
+            else:
+                _opis = ''
+
+            _txt += f'{_tag}: {_opis}\n'
+        _txt += '\n'
+
+    for i in _adresyQ:
+        for k in range(8):
+            _tag = f'Q{i}.{k}'
+            if _tag in _dictIQ:
+                _opis = _dictIQ[_tag]
+            else:
+                _opis = ''
+
+            _txt += f'{_tag}: {_opis}\n'
+        _txt += '\n'
+    zapisz("33_hmi_diag_msg.txt", _txt, 'out')
+
+
 def main(args):
     df = pd.read_excel(args, header=0, sheet_name='Mechanizmy')
     df_datas_parsing(df)   # Zmiana tekstu na małe/duże litery, usuwanie białych spacji
@@ -983,7 +1030,7 @@ def main(args):
     zapisz("30_preparation.txt", _preparation_file, 'out') 
 
     #generuj_tags_txt(zawory, sensory, safety, przyciski, inne)
-    adresyI, adresyQ = generuj_plc_tags_excel(zawory, sensory, safety, przyciski, inne)
+    adresyI, adresyQ, adresyIQ = generuj_plc_tags_excel(zawory, sensory, safety, przyciski, inne)
 
     generuj_dbvalves_txt(df)
     generuj_dbvalves_db(df)
@@ -999,7 +1046,8 @@ def main(args):
     generuj_valves_instances(zawory)
 
     generuj_sensors(licznik, sensory, safety, przyciski, adresyI, adresyQ)
-    generuj_hp_messages(zawory, sensory, przyciski)    
+    generuj_hp_messages(zawory, sensory, przyciski) 
+    generuj_hmi_diag_msg(adresyI, adresyQ, adresyIQ)   
 
     print('===== Koniec =====')
     return 0

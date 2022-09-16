@@ -211,3 +211,52 @@ class Zawor:
     def get_outputNameBRAKEcomment(self):
         # [1] BR-imitation IDLE
         return f'[{self.index}] {self.prefix}-{self.namepl} BRAKE RELEASE'
+
+# ---
+
+    @property
+    def get_sensorNameHPsmall(self):
+        # BR-vsen_imitation_HP_front
+        return f'{self.prefix}-sen_{self.namepl}_HP'
+
+
+    @property
+    def get_sensorNameHP2small(self):
+        # BR-vsen_imitation_HP_front
+        return f'{self.prefix}-sen_{self.namepl}_HP'
+
+
+    @property
+    def get_sensorNameWPsmall(self):
+        # BR-vsen_imitation_WP_front
+        return f'{self.prefix}-sen_{self.namepl}_WP'
+
+
+    @property
+    def get_sensorNameWP2small(self):
+        # BR-vsen_imitation_HP_front
+        return f'{self.prefix}-sen_{self.namepl}_WP'
+
+
+    @property
+    def get_outputNameHPsmall(self):
+        # BR-ez_imitation_HP_front
+        return f'{self.prefix}-ez_{self.namepl}_HP'
+
+
+    @property
+    def get_outputNameWPsmall(self):
+        # BR-ez_imitation_WP_front
+        return f'{self.prefix}-ez_{self.namepl}_WP'
+
+
+    @property
+    def get_outputNameIDLEsmall(self):
+        # BR-ez_imitation_IDLE
+        return f'{self.prefix}-ez_{self.namepl}_IDLE'
+
+
+    @property
+    def get_outputNameBRAKEsmall(self):
+        # BR-ez_imitation_BRAKE_RELEASE
+        return f'{self.prefix}-ez_{self.namepl}_BRAKE'

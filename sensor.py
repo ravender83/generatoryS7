@@ -34,4 +34,9 @@ class Sensor:
     @property
     def get_sensorNameCommentSmallEN(self):
         #nc - [I20.5] czujnik BR IMITATION
-        return f'[{self.adres[1:]}] {self.prefix}_{self.name}'                  
+        return f'[{self.adres[1:]}] {self.prefix}_{self.name}'     
+
+    @property
+    def get_sensorNameSmall(self):
+        # BR-vsen_imitation
+        return f'{self.prefix}_{self.namepl}'

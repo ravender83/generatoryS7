@@ -1,0 +1,108 @@
+I0.0: A-btn_start
+I0.1: SAFETY_cisnienie_ok
+I0.2: 
+I0.3: 
+I0.4: SAFETY_blokada
+I0.5: SAFETY_estop_ok
+I0.6: A-btn_panel_zielony
+I0.7: A-btn_panel_czerwony
+
+I1.0: Oetiker_zaciskanie_ok
+I1.1: Oetiker_zaciskanie_nok
+I1.2: A-btn_start_na_uchwycie
+I1.3: A-sen_skaner_lewo
+I1.4: A-sen_skaner_prawo
+I1.5: 
+I1.6: 
+I1.7: 
+
+I10.0: GN-sen_stelaz_sruba_lewa
+I10.1: GN-sen_docisk_HP
+I10.2: OETIKER_pozycja_2mm
+I10.3: GN-sen_generator_sruba
+I10.4: 
+I10.5: 
+I10.6: 
+I10.7: 
+
+I11.0: GN-sen_stelaz_sruba_prawa
+I11.1: GN-sen_docisk_WP
+I11.2: OETIKER_pozycja_4mm
+I11.3: OETIKER_pozycja_tensometr
+I11.4: 
+I11.5: 
+I11.6: 
+I11.7: 
+
+I20.0: OETIKER_pozycja_hp
+I20.1: OETIKER_pozycja_opaska_lewa_hp
+I20.2: OETIKER_pozycja_opaska_lewa_wp
+I20.3: ST1-sen_zasuwka_lewo
+I20.4: ST1-sen_blokada_lewa_HP
+I20.5: ST1-sen_blokada_prawa_HP
+I20.6: 
+I20.7: 
+
+I21.0: 
+I21.1: OETIKER_pozycja_opaska_prawa_hp
+I21.2: OETIKER_pozycja_opaska_prawa_wp
+I21.3: ST1-sen_zasuwka_prawo
+I21.4: ST1-sen_blokada_lewa_WP
+I21.5: ST1-sen_blokada_prawa_WP
+I21.6: 
+I21.7: 
+
+Q0.0: A-led_panel_bialy
+Q0.1: A-led_panel_zielony
+Q0.2: A-led_panel_czerwony
+Q0.3: A-led_start
+Q0.4: A-led_kolumna_zielony
+Q0.5: A-led_kolumna_czerwony
+Q0.6: A-led_kolumna_zolty
+Q0.7: A-rel_oswietlenie
+
+Q1.0: Oetiker_start
+Q1.1: Oetiker_program_00
+Q1.2: Oetiker_program_01
+Q1.3: Oetiker_program_02
+Q1.4: Oetiker_program_03
+Q1.5: 
+Q1.6: 
+Q1.7: GN-ez_docisk_WP
+
+Q10.0: 
+Q10.1: 
+Q10.2: 
+Q10.3: 
+Q10.4: 
+Q10.5: 
+Q10.6: 
+Q10.7: GN-ez_docisk_HP
+
+Q11.0: 
+Q11.1: 
+Q11.2: 
+Q11.3: 
+Q11.4: 
+Q11.5: 
+Q11.6: 
+Q11.7: GN-ez_docisk_IDLE
+
+Q20.0: 
+Q20.1: 
+Q20.2: 
+Q20.3: 
+Q20.4: 
+Q20.5: 
+Q20.6: ST1-ez_blokada_lewa_HP
+Q20.7: ST1-ez_blokada_prawa_HP
+
+Q21.0: 
+Q21.1: 
+Q21.2: 
+Q21.3: 
+Q21.4: 
+Q21.5: 
+Q21.6: ST1-ez_blokada_lewa_WP
+Q21.7: ST1-ez_blokada_prawa_WP
+
