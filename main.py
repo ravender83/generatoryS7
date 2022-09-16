@@ -424,7 +424,8 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             _lista_tagow.append('A-ALARMS_VALVES_err'+str(lduzy))  
             i.msg_wp2 = _msg + _index
             _txt_hp += f'{str(i.msg_wp2)}\t{_lista[-1:][0][1]}\n'            
-            _index += 1            
+            _index += 1       
+
     # ===== Sensory =======
     _tmp = ['<No value>', '0', '<No value>', '0', 'SENSOR', 'True', 'none']
     _columns = ['Name', 'Alarm text [pl-PL], Alarm text', 'FieldInfo [Alarm text]', 'Class', 'Trigger tag', 'Trigger bit', 'Acknowledgement tag', 'Acknowledgement bit', 'PLC acknowledgement tag', 'PLC acknowledgement bit', 'Group', 'Report', 'Info text [pl-PL], Info text']
@@ -795,25 +796,91 @@ def generuj_sensors(_licznik, _sensory, _safety, _buttons):
     zapisz("21_sensors.awl", _sensors_data, 'out')
 
 
-def generuj_hp_messages(_licznik, _sensory, _safety, _przyciski):
+def generuj_hp_messages(_valves, _sensory, _przyciski):
     _messages_data = otworz("A-HP_Messages.txt", 'templates')
     _message = otworz("A-HP_Messages_1.txt", 'templates')
 
-    # SENSORS 1
+    # VALVES 0
     _msg_szablon = ''
+    for i in _valves:
+        if i.msg_hp != 0:
+            _szablon = _message
+            _szablon = _szablon.replace('{NR}', str(i.msg_hp))
+            _szablon = _szablon.replace('{TYP}', 'VALVES')
+            _szablon = _szablon.replace('{TYP2}', 'err')
+            _szablon = _szablon.replace('{BYTE}', str(i.byteHP))
+            _szablon = _szablon.replace('{BIT}', str(i.bitHP))
+            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameHPcommentSmall[0:]} ({i.index}) jest nieaktywny')  
+            _msg_szablon += _szablon + '\n'
+
+        if i.msg_hp2 != 0:
+            _szablon = _message
+            _szablon = _szablon.replace('{NR}', str(i.msg_hp2))
+            _szablon = _szablon.replace('{TYP}', 'VALVES')
+            _szablon = _szablon.replace('{TYP2}', 'err')
+            _szablon = _szablon.replace('{BYTE}', str(i.byteHP2))
+            _szablon = _szablon.replace('{BIT}', str(i.bitHP2))
+            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameHP2commentSmall[0:]} ({i.index}) jest nieaktywny')  
+            _msg_szablon += _szablon + '\n'
+
+        if i.msg_wp != 0:
+            _szablon = _message
+            _szablon = _szablon.replace('{NR}', str(i.msg_wp))
+            _szablon = _szablon.replace('{TYP}', 'VALVES')
+            _szablon = _szablon.replace('{TYP2}', 'err')
+            _szablon = _szablon.replace('{BYTE}', str(i.byteWP))
+            _szablon = _szablon.replace('{BIT}', str(i.bitWP))
+            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameWPcommentSmall[0:]} ({i.index}) jest nieaktywny')  
+            _msg_szablon += _szablon + '\n'
+
+        if i.msg_wp2 != 0:
+            _szablon = _message
+            _szablon = _szablon.replace('{NR}', str(i.msg_wp2))
+            _szablon = _szablon.replace('{TYP}', 'VALVES')
+            _szablon = _szablon.replace('{TYP2}', 'err')
+            _szablon = _szablon.replace('{BYTE}', str(i.byteWP2))
+            _szablon = _szablon.replace('{BIT}', str(i.bitWP2))
+            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameWP2commentSmall[0:]} ({i.index}) jest nieaktywny')  
+            _msg_szablon += _szablon + '\n'
+
+    # SENSORS 1
     for i in _sensory:
         _szablon = _message
-        _szablon = _szablon.replace('{NR_HP}', str(i.msg_hp))
-        _szablon = _szablon.replace('{NR_WP}', str(i.msg_wp))
+        _szablon = _szablon.replace('{NR}', str(i.msg_hp))
         _szablon = _szablon.replace('{TYP}', 'SENSORS')
         _szablon = _szablon.replace('{TYP2}', 'sen')
-        _szablon = _szablon.replace('{BYTE_HP}', str(i.byteHP))
-        _szablon = _szablon.replace('{BIT_HP}', str(i.bitHP))
-        _szablon = _szablon.replace('{BYTE_WP}', str(i.byteWP))
-        _szablon = _szablon.replace('{BIT_WP}', str(i.bitWP))  
-        _szablon = _szablon.replace('{MESSAGE_HP}', f'{i.get_sensorNameComment} jest aktywny')  
-        _szablon = _szablon.replace('{MESSAGE_WP}', f'{i.get_sensorNameComment} jest nieaktywny')        
+        _szablon = _szablon.replace('{BYTE}', str(i.byteHP))
+        _szablon = _szablon.replace('{BIT}', str(i.bitHP))
+        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} jest aktywny')        
         _msg_szablon += _szablon + '\n'
+        _szablon = _message
+        _szablon = _szablon.replace('{NR}', str(i.msg_wp))
+        _szablon = _szablon.replace('{TYP}', 'SENSORS')
+        _szablon = _szablon.replace('{TYP2}', 'sen')
+        _szablon = _szablon.replace('{BYTE}', str(i.byteWP))
+        _szablon = _szablon.replace('{BIT}', str(i.bitWP))
+        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} jest nieaktywny')        
+        _msg_szablon += _szablon + '\n'
+
+    # SENSORS 3
+    for i in _przyciski:
+        _szablon = _message
+        _szablon = _szablon.replace('{NR}', str(i.msg_hp))
+        _szablon = _szablon.replace('{TYP}', 'SENSORS')
+        _szablon = _szablon.replace('{TYP2}', 'sen')
+        _szablon = _szablon.replace('{BYTE}', str(i.byteHP))
+        _szablon = _szablon.replace('{BIT}', str(i.bitHP))
+        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} jest aktywny')        
+        _msg_szablon += _szablon + '\n'
+        _szablon = _message
+        _szablon = _szablon.replace('{NR}', str(i.msg_wp))
+        _szablon = _szablon.replace('{TYP}', 'SENSORS')
+        _szablon = _szablon.replace('{TYP2}', 'sen')
+        _szablon = _szablon.replace('{BYTE}', str(i.byteWP))
+        _szablon = _szablon.replace('{BIT}', str(i.bitWP))
+        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} jest nieaktywny')        
+        _msg_szablon += _szablon + '\n'
+
     _messages_data = _messages_data.replace('{MSG}', _msg_szablon)
     zapisz("32_messages.awl", _messages_data, 'out')
 
@@ -875,7 +942,7 @@ def main(args):
     generuj_valves_instances(zawory)
 
     generuj_sensors(licznik, sensory, safety, przyciski)
-    generuj_hp_messages(licznik, sensory, safety, przyciski)    
+    generuj_hp_messages(zawory, sensory, przyciski)    
 
     print('===== Koniec =====')
     return 0
