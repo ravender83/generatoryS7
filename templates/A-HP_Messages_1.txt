@@ -1,7 +1,7 @@
 ﻿NETWORK
 TITLE = {NR} - {MESSAGE}
       A "A-ALARMS".{TYP}.{TYP2}{BYTE}.%X{BIT};
-      A "A-T_del_msg_sensors_error";
+      A "A-T_del_msg_{TYP}_error";
       L {NR};
       JC kom;
 	 

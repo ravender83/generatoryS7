@@ -866,16 +866,16 @@ def generuj_hp_messages(_valves, _sensory, _przyciski):
     for i in _przyciski:
         _szablon = _message
         _szablon = _szablon.replace('{NR}', str(i.msg_hp))
-        _szablon = _szablon.replace('{TYP}', 'SENSORS')
-        _szablon = _szablon.replace('{TYP2}', 'sen')
+        _szablon = _szablon.replace('{TYP}', 'BUTTONS')
+        _szablon = _szablon.replace('{TYP2}', 'btn')
         _szablon = _szablon.replace('{BYTE}', str(i.byteHP))
         _szablon = _szablon.replace('{BIT}', str(i.bitHP))
         _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} jest aktywny')        
         _msg_szablon += _szablon + '\n'
         _szablon = _message
         _szablon = _szablon.replace('{NR}', str(i.msg_wp))
-        _szablon = _szablon.replace('{TYP}', 'SENSORS')
-        _szablon = _szablon.replace('{TYP2}', 'sen')
+        _szablon = _szablon.replace('{TYP}', 'BUTTONS')
+        _szablon = _szablon.replace('{TYP2}', 'btn')
         _szablon = _szablon.replace('{BYTE}', str(i.byteWP))
         _szablon = _szablon.replace('{BIT}', str(i.bitWP))
         _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} jest nieaktywny')        
