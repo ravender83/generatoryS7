@@ -1,0 +1,2 @@
+﻿L "{TAG}";
+T "A-ALARMS".diag{TYP}[{NR}];

@@ -76,5 +76,34 @@ TITLE = GLOBAL ERROR
       O "A-ALARMS".OTHER.error;
       = "A-ALARMS".error;
 {SIGNALS}
+
+NETWORK
+TITLE = ======== DIAGNOSTIC =========
+
+NETWORK
+TITLE = Screen limits
+      CALL LIMIT
+      {value_type := 'Int'}
+      (  MN                          := 0 , 
+         IN                          := "A-ALARMS".diagin_ctrn.screen , 
+         MX                          := "A-ALARMS".diagin_ctrn.max , 
+         OUT                         := "A-ALARMS".diagin_ctrn.screen
+      );
+
+      CALL LIMIT
+      {value_type := 'Int'}
+      (  MN                          := 0 , 
+         IN                          := "A-ALARMS".diagout_ctrn.screen , 
+         MX                          := "A-ALARMS".diagout_ctrn.max , 
+         OUT                         := "A-ALARMS".diagout_ctrn.screen
+      );
+	  
+NETWORK
+TITLE = Inputs
+{DIAGIN}
+
+NETWORK
+TITLE = Outputs
+{DIAGOUT}
 END_FUNCTION
 

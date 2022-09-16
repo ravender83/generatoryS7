@@ -66,27 +66,27 @@ drv0 : UInt;
       diagin_ctrn : Struct
          screen : Int;
          max : Int;
-         b0 : Int; // {CIN_B0}
-         b1 : Int; // {CIN_B1}
-         b2 : Int; // {CIN_B2}
-         b3 : Int; // {CIN_B3}
-         b4 : Int; // {CIN_B4}
-         b5 : Int; // {CIN_B5}
-         b6 : Int; // {CIN_B6}
-         b7 : Int; // {CIN_B7}
+         b0 : Int;
+         b1 : Int;
+         b2 : Int;
+         b3 : Int;
+         b4 : Int;
+         b5 : Int;
+         b6 : Int;
+         b7 : Int;
       END_STRUCT;
       diagin : Array[0..6] of SInt;
       diagout_ctrn : Struct
          screen : Int;
          max : Int;
-         b0 : Int; // {COUT_B0}
-         b1 : Int; // {COUT_B1}
-         b2 : Int; // {COUT_B2}
-         b3 : Int; // {COUT_B3}
-         b4 : Int; // {COUT_B4}
-         b5 : Int; // {COUT_B5}
-         b6 : Int; // {COUT_B6}
-         b7 : Int; // {COUT_B7}
+         b0 : Int;
+         b1 : Int;
+         b2 : Int;
+         b3 : Int;
+         b4 : Int;
+         b5 : Int;
+         b6 : Int;
+         b7 : Int;
       END_STRUCT;
       diagout : Array[0..6] of SInt;	  
    END_VAR

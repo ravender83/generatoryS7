@@ -524,5 +524,40 @@ TITLE = [I1.2] A-btn_start_na_uchwycie
          out_error_wp                := "A-ALARMS".BUTTONS.btn0.%X7
       );
 
+
+NETWORK
+TITLE = ======== DIAGNOSTIC =========
+
+NETWORK
+TITLE = Inputs
+L "I0";
+T "A-ALARMS".diagin[1];
+L "I1";
+T "A-ALARMS".diagin[2];
+L "I10";
+T "A-ALARMS".diagin[3];
+L "I11";
+T "A-ALARMS".diagin[4];
+L "I20";
+T "A-ALARMS".diagin[5];
+L "I21";
+T "A-ALARMS".diagin[6];
+
+
+NETWORK
+TITLE = Outputs
+L "Q0";
+T "A-ALARMS".diagout[1];
+L "Q1";
+T "A-ALARMS".diagout[2];
+L "Q10";
+T "A-ALARMS".diagout[3];
+L "Q11";
+T "A-ALARMS".diagout[4];
+L "Q20";
+T "A-ALARMS".diagout[5];
+L "Q21";
+T "A-ALARMS".diagout[6];
+
 END_FUNCTION
 

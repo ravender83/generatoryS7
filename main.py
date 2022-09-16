@@ -740,10 +740,11 @@ def generuj_hmialarms_class():
     zapisz("12_alarm_class.txt", _txt, 'out')
 
 
-def generuj_sensors(_licznik, _sensory, _safety, _buttons):
+def generuj_sensors(_licznik, _sensory, _safety, _buttons, _adresyI, _adresyQ):
     _sensors_data = otworz("A-Sensors.txt", 'templates')
     _sensors1_data = otworz("A-Sensors_1.txt", 'templates')
     _sensors2_data = otworz("A-Sensors_2.txt", 'templates')  
+    _sensors3_data = otworz("A-Sensors_3.txt", 'templates')
 
     # VALVES 0
     _error_szablon = ''
@@ -825,6 +826,30 @@ def generuj_sensors(_licznik, _sensory, _safety, _buttons):
     zapisz("30_preparation.txt", _preparation_file, 'out')  
 
     _sensors_data = _sensors_data.replace('{SIGNALS}', _signals_szablon)
+
+    # Przypisanie bajtów diagnostycznych
+    _diag_szablon = '' 
+    _licznik = 1
+    for i in _adresyI:
+            _szablon = _sensors3_data
+            _szablon = _szablon.replace('{TYP}', 'in')
+            _szablon = _szablon.replace('{NR}', str(_licznik))
+            _szablon = _szablon.replace('{TAG}', 'I'+str(i))
+            _licznik += 1
+            _diag_szablon += _szablon + '\n'
+    _sensors_data = _sensors_data.replace('{DIAGIN}', _diag_szablon)
+
+    _diag_szablon = ''
+    _licznik = 1
+    for i in _adresyQ:
+            _szablon = _sensors3_data
+            _szablon = _szablon.replace('{TYP}', 'out')
+            _szablon = _szablon.replace('{NR}', str(_licznik))
+            _szablon = _szablon.replace('{TAG}', 'Q'+str(i))
+            _licznik += 1
+            _diag_szablon += _szablon + '\n'
+    _sensors_data = _sensors_data.replace('{DIAGOUT}', _diag_szablon)         
+
     zapisz("21_sensors.awl", _sensors_data, 'out')
 
 
@@ -973,7 +998,7 @@ def main(args):
     generuj_valves_outputs_stl(zawory)
     generuj_valves_instances(zawory)
 
-    generuj_sensors(licznik, sensory, safety, przyciski)
+    generuj_sensors(licznik, sensory, safety, przyciski, adresyI, adresyQ)
     generuj_hp_messages(zawory, sensory, przyciski)    
 
     print('===== Koniec =====')
