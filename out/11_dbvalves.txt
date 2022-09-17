@@ -1,10 +1,15 @@
 ----------- DBVALVES datablock structs-----------
-GN	Struct		False	True	True	True	False		
 ST1	Struct		False	True	True	True	False		
-
---- GN ---
-HOLDFACE	"Tstate"		False	True	True	True	False		[1] GN-docisk
+ST2	Struct		False	True	True	True	False		
 
 --- ST1 ---
-BLOCKADE_LEFT	"Tstate"		False	True	True	True	False		[2] ST1-blokada_lewa
-BLOCKADE_RIGHT	"Tstate"		False	True	True	True	False		[3] ST1-blokada_prawa
+MODULE	"Tstate"		False	True	True	True	False		[1] ST1-modul
+HANDLE	"Tstate"		False	True	True	True	False		[2] ST1-dzwignia
+PLUG	"Tstate"		False	True	True	True	False		[3] ST1-wtyczka
+
+--- ST2 ---
+AIRBLOW	"Tstate"		False	True	True	True	False		[4] ST2-przedmuch
+MEASUREMENT_GT2	"Tstate"		False	True	True	True	False		[5] ST2-pomiar_gt2
+PIN_PLUG	"Tstate"		False	True	True	True	False		[6] ST2-pin_wtyczka
+PIN_GENERATOR_LEFT	"Tstate"		False	True	True	True	False		[7] ST2-pin_generator_lewy
+PIN_GENERATOR_RIGHT	"Tstate"		False	True	True	True	False		[8] ST2-pin_generator_prawy

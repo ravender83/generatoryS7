@@ -4,311 +4,409 @@ VERSION : 0.1
 
 BEGIN
 NETWORK
-TITLE = 1001 - [I10.1] czujnik "GN-docisk" HP (1) jest nieaktywny
+TITLE = 1001 - [I10.2] czujnik "ST1-modul" HP (1) jest nieaktywny
       A "A-ALARMS".VALVES.err0.%X0;
       A "A-T_del_msg_VALVES_error";
       L 1001;
       JC kom;
 	 
 NETWORK
-TITLE = 1002 - [I11.1] czujnik "GN-docisk" WP (1) jest nieaktywny
+TITLE = 1002 - [I10.3] czujnik "ST1-modul" HP (1) jest nieaktywny
       A "A-ALARMS".VALVES.err0.%X1;
       A "A-T_del_msg_VALVES_error";
       L 1002;
       JC kom;
 	 
 NETWORK
-TITLE = 1003 - [I20.4] czujnik "ST1-blokada_lewa" HP (2) jest nieaktywny
+TITLE = 1003 - [I11.2] czujnik "ST1-modul" WP (1) jest nieaktywny
       A "A-ALARMS".VALVES.err0.%X2;
       A "A-T_del_msg_VALVES_error";
       L 1003;
       JC kom;
 	 
 NETWORK
-TITLE = 1004 - [I21.4] czujnik "ST1-blokada_lewa" WP (2) jest nieaktywny
+TITLE = 1004 - [I11.3] czujnik "ST1-modul" WP (1) jest nieaktywny
       A "A-ALARMS".VALVES.err0.%X3;
       A "A-T_del_msg_VALVES_error";
       L 1004;
       JC kom;
 	 
 NETWORK
-TITLE = 1005 - [I20.5] czujnik "ST1-blokada_prawa" HP (3) jest nieaktywny
+TITLE = 1005 - [I20.1] czujnik "ST1-dzwignia" HP (2) jest nieaktywny
       A "A-ALARMS".VALVES.err0.%X4;
       A "A-T_del_msg_VALVES_error";
       L 1005;
       JC kom;
 	 
 NETWORK
-TITLE = 1006 - [I21.5] czujnik "ST1-blokada_prawa" WP (3) jest nieaktywny
+TITLE = 1006 - [I21.1] czujnik "ST1-dzwignia" WP (2) jest nieaktywny
       A "A-ALARMS".VALVES.err0.%X5;
       A "A-T_del_msg_VALVES_error";
       L 1006;
       JC kom;
 	 
 NETWORK
-TITLE = 1007 - [I1.3] czujnik "A-sen_skaner_lewo" jest aktywny
-      A "A-ALARMS".SENSORS.sen0.%X0;
-      A "A-T_del_msg_SENSORS_error";
+TITLE = 1007 - [I20.2] czujnik "ST1-wtyczka" HP (3) jest nieaktywny
+      A "A-ALARMS".VALVES.err0.%X6;
+      A "A-T_del_msg_VALVES_error";
       L 1007;
       JC kom;
 	 
 NETWORK
-TITLE = 1008 - [I1.3] czujnik "A-sen_skaner_lewo" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen0.%X1;
-      A "A-T_del_msg_SENSORS_error";
+TITLE = 1008 - [I21.2] czujnik "ST1-wtyczka" WP (3) jest nieaktywny
+      A "A-ALARMS".VALVES.err0.%X7;
+      A "A-T_del_msg_VALVES_error";
       L 1008;
       JC kom;
 	 
 NETWORK
-TITLE = 1009 - [I1.4] czujnik "A-sen_skaner_prawo" jest aktywny
-      A "A-ALARMS".SENSORS.sen0.%X2;
-      A "A-T_del_msg_SENSORS_error";
+TITLE = 1009 - [I30.1] czujnik "ST2-pomiar_gt2" HP (5) jest nieaktywny
+      A "A-ALARMS".VALVES.err0.%X8;
+      A "A-T_del_msg_VALVES_error";
       L 1009;
       JC kom;
 	 
 NETWORK
-TITLE = 1010 - [I1.4] czujnik "A-sen_skaner_prawo" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen0.%X3;
-      A "A-T_del_msg_SENSORS_error";
+TITLE = 1010 - [I31.1] czujnik "ST2-pomiar_gt2" WP (5) jest nieaktywny
+      A "A-ALARMS".VALVES.err0.%X9;
+      A "A-T_del_msg_VALVES_error";
       L 1010;
       JC kom;
 	 
 NETWORK
-TITLE = 1011 - [I10.0] czujnik "GN-sen_stelaz_sruba_lewa" jest aktywny
-      A "A-ALARMS".SENSORS.sen0.%X4;
-      A "A-T_del_msg_SENSORS_error";
+TITLE = 1011 - [I30.2] czujnik "ST2-pin_wtyczka" HP (6) jest nieaktywny
+      A "A-ALARMS".VALVES.err0.%X10;
+      A "A-T_del_msg_VALVES_error";
       L 1011;
       JC kom;
 	 
 NETWORK
-TITLE = 1012 - [I10.0] czujnik "GN-sen_stelaz_sruba_lewa" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen0.%X5;
-      A "A-T_del_msg_SENSORS_error";
+TITLE = 1012 - [I31.2] czujnik "ST2-pin_wtyczka" WP (6) jest nieaktywny
+      A "A-ALARMS".VALVES.err0.%X11;
+      A "A-T_del_msg_VALVES_error";
       L 1012;
       JC kom;
 	 
 NETWORK
-TITLE = 1013 - [I11.0] czujnik "GN-sen_stelaz_sruba_prawa" jest aktywny
-      A "A-ALARMS".SENSORS.sen0.%X6;
-      A "A-T_del_msg_SENSORS_error";
+TITLE = 1013 - [I30.3] czujnik "ST2-pin_generator_lewy" HP (7) jest nieaktywny
+      A "A-ALARMS".VALVES.err0.%X12;
+      A "A-T_del_msg_VALVES_error";
       L 1013;
       JC kom;
 	 
 NETWORK
-TITLE = 1014 - [I11.0] czujnik "GN-sen_stelaz_sruba_prawa" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen0.%X7;
-      A "A-T_del_msg_SENSORS_error";
+TITLE = 1014 - [I31.3] czujnik "ST2-pin_generator_lewy" WP (7) jest nieaktywny
+      A "A-ALARMS".VALVES.err0.%X13;
+      A "A-T_del_msg_VALVES_error";
       L 1014;
       JC kom;
 	 
 NETWORK
-TITLE = 1015 - [I10.3] czujnik "GN-sen_generator_sruba" jest aktywny
-      A "A-ALARMS".SENSORS.sen0.%X8;
-      A "A-T_del_msg_SENSORS_error";
+TITLE = 1015 - [I30.4] czujnik "ST2-pin_generator_prawy" HP (8) jest nieaktywny
+      A "A-ALARMS".VALVES.err0.%X14;
+      A "A-T_del_msg_VALVES_error";
       L 1015;
       JC kom;
 	 
 NETWORK
-TITLE = 1016 - [I10.3] czujnik "GN-sen_generator_sruba" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen0.%X9;
-      A "A-T_del_msg_SENSORS_error";
+TITLE = 1016 - [I31.4] czujnik "ST2-pin_generator_prawy" WP (8) jest nieaktywny
+      A "A-ALARMS".VALVES.err0.%X15;
+      A "A-T_del_msg_VALVES_error";
       L 1016;
       JC kom;
 	 
 NETWORK
-TITLE = 1017 - [I20.0] czujnik "OETIKER_pozycja_hp" jest aktywny
-      A "A-ALARMS".SENSORS.sen0.%X10;
+TITLE = 1017 - [I10.0] czujnik "ST1-sen_sruba_01" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X0;
       A "A-T_del_msg_SENSORS_error";
       L 1017;
       JC kom;
 	 
 NETWORK
-TITLE = 1018 - [I20.0] czujnik "OETIKER_pozycja_hp" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen0.%X11;
+TITLE = 1018 - [I10.0] czujnik "ST1-sen_sruba_01" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X1;
       A "A-T_del_msg_SENSORS_error";
       L 1018;
       JC kom;
 	 
 NETWORK
-TITLE = 1019 - [I10.2] czujnik "OETIKER_pozycja_2mm" jest aktywny
-      A "A-ALARMS".SENSORS.sen0.%X12;
+TITLE = 1019 - [I11.0] czujnik "ST1-sen_sruba_02" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X2;
       A "A-T_del_msg_SENSORS_error";
       L 1019;
       JC kom;
 	 
 NETWORK
-TITLE = 1020 - [I10.2] czujnik "OETIKER_pozycja_2mm" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen0.%X13;
+TITLE = 1020 - [I11.0] czujnik "ST1-sen_sruba_02" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X3;
       A "A-T_del_msg_SENSORS_error";
       L 1020;
       JC kom;
 	 
 NETWORK
-TITLE = 1021 - [I11.2] czujnik "OETIKER_pozycja_4mm" jest aktywny
-      A "A-ALARMS".SENSORS.sen0.%X14;
+TITLE = 1021 - [I10.1] czujnik "ST1-sen_sruba_03" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X4;
       A "A-T_del_msg_SENSORS_error";
       L 1021;
       JC kom;
 	 
 NETWORK
-TITLE = 1022 - [I11.2] czujnik "OETIKER_pozycja_4mm" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen0.%X15;
+TITLE = 1022 - [I10.1] czujnik "ST1-sen_sruba_03" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X5;
       A "A-T_del_msg_SENSORS_error";
       L 1022;
       JC kom;
 	 
 NETWORK
-TITLE = 1023 - [I11.3] czujnik "OETIKER_pozycja_tensometr" jest aktywny
-      A "A-ALARMS".SENSORS.sen1.%X0;
+TITLE = 1023 - [I11.1] czujnik "ST1-sen_sruba_04" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X6;
       A "A-T_del_msg_SENSORS_error";
       L 1023;
       JC kom;
 	 
 NETWORK
-TITLE = 1024 - [I11.3] czujnik "OETIKER_pozycja_tensometr" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen1.%X1;
+TITLE = 1024 - [I11.1] czujnik "ST1-sen_sruba_04" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X7;
       A "A-T_del_msg_SENSORS_error";
       L 1024;
       JC kom;
 	 
 NETWORK
-TITLE = 1025 - [I20.1] czujnik "OETIKER_pozycja_opaska_lewa_hp" jest aktywny
-      A "A-ALARMS".SENSORS.sen1.%X2;
+TITLE = 1025 - [I10.4] czujnik "STA-sen_pakiet" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X8;
       A "A-T_del_msg_SENSORS_error";
       L 1025;
       JC kom;
 	 
 NETWORK
-TITLE = 1026 - [I20.1] czujnik "OETIKER_pozycja_opaska_lewa_hp" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen1.%X3;
+TITLE = 1026 - [I10.4] czujnik "STA-sen_pakiet" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X9;
       A "A-T_del_msg_SENSORS_error";
       L 1026;
       JC kom;
 	 
 NETWORK
-TITLE = 1027 - [I21.1] czujnik "OETIKER_pozycja_opaska_prawa_hp" jest aktywny
-      A "A-ALARMS".SENSORS.sen1.%X4;
+TITLE = 1027 - [I11.4] czujnik "STB-sen_pakiet" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X10;
       A "A-T_del_msg_SENSORS_error";
       L 1027;
       JC kom;
 	 
 NETWORK
-TITLE = 1028 - [I21.1] czujnik "OETIKER_pozycja_opaska_prawa_hp" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen1.%X5;
+TITLE = 1028 - [I11.4] czujnik "STB-sen_pakiet" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X11;
       A "A-T_del_msg_SENSORS_error";
       L 1028;
       JC kom;
 	 
 NETWORK
-TITLE = 1029 - [I20.2] czujnik "OETIKER_pozycja_opaska_lewa_wp" jest aktywny
-      A "A-ALARMS".SENSORS.sen1.%X6;
+TITLE = 1029 - [I10.5] czujnik "STA-sen_wtyczka" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X12;
       A "A-T_del_msg_SENSORS_error";
       L 1029;
       JC kom;
 	 
 NETWORK
-TITLE = 1030 - [I20.2] czujnik "OETIKER_pozycja_opaska_lewa_wp" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen1.%X7;
+TITLE = 1030 - [I10.5] czujnik "STA-sen_wtyczka" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X13;
       A "A-T_del_msg_SENSORS_error";
       L 1030;
       JC kom;
 	 
 NETWORK
-TITLE = 1031 - [I21.2] czujnik "OETIKER_pozycja_opaska_prawa_wp" jest aktywny
-      A "A-ALARMS".SENSORS.sen1.%X8;
+TITLE = 1031 - [I11.5] czujnik "STB-sen_wtyczka" jest aktywny
+      A "A-ALARMS".SENSORS.sen0.%X14;
       A "A-T_del_msg_SENSORS_error";
       L 1031;
       JC kom;
 	 
 NETWORK
-TITLE = 1032 - [I21.2] czujnik "OETIKER_pozycja_opaska_prawa_wp" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen1.%X9;
+TITLE = 1032 - [I11.5] czujnik "STB-sen_wtyczka" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen0.%X15;
       A "A-T_del_msg_SENSORS_error";
       L 1032;
       JC kom;
 	 
 NETWORK
-TITLE = 1033 - [I20.3] czujnik "ST1-sen_zasuwka_lewo" jest aktywny
-      A "A-ALARMS".SENSORS.sen1.%X10;
+TITLE = 1033 - [I10.6] czujnik "ST1-sen_gniazdo_00" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X0;
       A "A-T_del_msg_SENSORS_error";
       L 1033;
       JC kom;
 	 
 NETWORK
-TITLE = 1034 - [I20.3] czujnik "ST1-sen_zasuwka_lewo" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen1.%X11;
+TITLE = 1034 - [I10.6] czujnik "ST1-sen_gniazdo_00" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X1;
       A "A-T_del_msg_SENSORS_error";
       L 1034;
       JC kom;
 	 
 NETWORK
-TITLE = 1035 - [I21.3] czujnik "ST1-sen_zasuwka_prawo" jest aktywny
-      A "A-ALARMS".SENSORS.sen1.%X12;
+TITLE = 1035 - [I11.6] czujnik "ST1-sen_gniazdo_01" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X2;
       A "A-T_del_msg_SENSORS_error";
       L 1035;
       JC kom;
 	 
 NETWORK
-TITLE = 1036 - [I21.3] czujnik "ST1-sen_zasuwka_prawo" jest nieaktywny
-      A "A-ALARMS".SENSORS.sen1.%X13;
+TITLE = 1036 - [I11.6] czujnik "ST1-sen_gniazdo_01" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X3;
       A "A-T_del_msg_SENSORS_error";
       L 1036;
       JC kom;
 	 
 NETWORK
-TITLE = 1040 - [I0.0] przycisk "A-btn_start" jest aktywny
-      A "A-ALARMS".BUTTONS.btn0.%X0;
-      A "A-T_del_msg_BUTTONS_error";
+TITLE = 1037 - [I10.7] czujnik "ST1-sen_gniazdo_02" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X4;
+      A "A-T_del_msg_SENSORS_error";
+      L 1037;
+      JC kom;
+	 
+NETWORK
+TITLE = 1038 - [I10.7] czujnik "ST1-sen_gniazdo_02" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X5;
+      A "A-T_del_msg_SENSORS_error";
+      L 1038;
+      JC kom;
+	 
+NETWORK
+TITLE = 1039 - [I30.0] czujnik "A-sen_stol_00" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X6;
+      A "A-T_del_msg_SENSORS_error";
+      L 1039;
+      JC kom;
+	 
+NETWORK
+TITLE = 1040 - [I30.0] czujnik "A-sen_stol_00" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X7;
+      A "A-T_del_msg_SENSORS_error";
       L 1040;
       JC kom;
 	 
 NETWORK
-TITLE = 1041 - [I0.0] przycisk "A-btn_start" jest nieaktywny
-      A "A-ALARMS".BUTTONS.btn0.%X1;
-      A "A-T_del_msg_BUTTONS_error";
+TITLE = 1041 - [I31.0] czujnik "A-sen_stol_01" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X8;
+      A "A-T_del_msg_SENSORS_error";
       L 1041;
       JC kom;
 	 
 NETWORK
-TITLE = 1042 - [I0.6] przycisk "A-btn_panel_zielony" jest aktywny
-      A "A-ALARMS".BUTTONS.btn0.%X2;
-      A "A-T_del_msg_BUTTONS_error";
+TITLE = 1042 - [I31.0] czujnik "A-sen_stol_01" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X9;
+      A "A-T_del_msg_SENSORS_error";
       L 1042;
       JC kom;
 	 
 NETWORK
-TITLE = 1043 - [I0.6] przycisk "A-btn_panel_zielony" jest nieaktywny
-      A "A-ALARMS".BUTTONS.btn0.%X3;
-      A "A-T_del_msg_BUTTONS_error";
+TITLE = 1043 - [I20.0] czujnik "ST1-sen_skaner_lewo" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X10;
+      A "A-T_del_msg_SENSORS_error";
       L 1043;
       JC kom;
 	 
 NETWORK
-TITLE = 1044 - [I0.7] przycisk "A-btn_panel_czerwony" jest aktywny
-      A "A-ALARMS".BUTTONS.btn0.%X4;
-      A "A-T_del_msg_BUTTONS_error";
+TITLE = 1044 - [I20.0] czujnik "ST1-sen_skaner_lewo" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X11;
+      A "A-T_del_msg_SENSORS_error";
       L 1044;
       JC kom;
 	 
 NETWORK
-TITLE = 1045 - [I0.7] przycisk "A-btn_panel_czerwony" jest nieaktywny
-      A "A-ALARMS".BUTTONS.btn0.%X5;
-      A "A-T_del_msg_BUTTONS_error";
+TITLE = 1045 - [I21.0] czujnik "ST1-sen_skaner_prawo" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X12;
+      A "A-T_del_msg_SENSORS_error";
       L 1045;
       JC kom;
 	 
 NETWORK
-TITLE = 1046 - [I1.2] przycisk "A-btn_start_na_uchwycie" jest aktywny
-      A "A-ALARMS".BUTTONS.btn0.%X6;
-      A "A-T_del_msg_BUTTONS_error";
+TITLE = 1046 - [I21.0] czujnik "ST1-sen_skaner_prawo" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X13;
+      A "A-T_del_msg_SENSORS_error";
       L 1046;
       JC kom;
 	 
 NETWORK
-TITLE = 1047 - [I1.2] przycisk "A-btn_start_na_uchwycie" jest nieaktywny
-      A "A-ALARMS".BUTTONS.btn0.%X7;
-      A "A-T_del_msg_BUTTONS_error";
+TITLE = 1047 - [I1.1] czujnik "WEISS_na_pozycji" jest aktywny
+      A "A-ALARMS".SENSORS.sen1.%X14;
+      A "A-T_del_msg_SENSORS_error";
       L 1047;
+      JC kom;
+	 
+NETWORK
+TITLE = 1048 - [I1.1] czujnik "WEISS_na_pozycji" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen1.%X15;
+      A "A-T_del_msg_SENSORS_error";
+      L 1048;
+      JC kom;
+	 
+NETWORK
+TITLE = 1049 - [I1.2] czujnik "WEISS_alarm" jest aktywny
+      A "A-ALARMS".SENSORS.sen2.%X0;
+      A "A-T_del_msg_SENSORS_error";
+      L 1049;
+      JC kom;
+	 
+NETWORK
+TITLE = 1050 - [I1.2] czujnik "WEISS_alarm" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen2.%X1;
+      A "A-T_del_msg_SENSORS_error";
+      L 1050;
+      JC kom;
+	 
+NETWORK
+TITLE = 1051 - [I1.3] czujnik "WEISS_zezwolenie_na_start" jest aktywny
+      A "A-ALARMS".SENSORS.sen2.%X2;
+      A "A-T_del_msg_SENSORS_error";
+      L 1051;
+      JC kom;
+	 
+NETWORK
+TITLE = 1052 - [I1.3] czujnik "WEISS_zezwolenie_na_start" jest nieaktywny
+      A "A-ALARMS".SENSORS.sen2.%X3;
+      A "A-T_del_msg_SENSORS_error";
+      L 1052;
+      JC kom;
+	 
+NETWORK
+TITLE = 1059 - [I0.0] przycisk "A-btn_start" jest aktywny
+      A "A-ALARMS".BUTTONS.btn0.%X0;
+      A "A-T_del_msg_BUTTONS_error";
+      L 1059;
+      JC kom;
+	 
+NETWORK
+TITLE = 1060 - [I0.0] przycisk "A-btn_start" jest nieaktywny
+      A "A-ALARMS".BUTTONS.btn0.%X1;
+      A "A-T_del_msg_BUTTONS_error";
+      L 1060;
+      JC kom;
+	 
+NETWORK
+TITLE = 1061 - [I0.6] przycisk "A-btn_panel_zielony" jest aktywny
+      A "A-ALARMS".BUTTONS.btn0.%X2;
+      A "A-T_del_msg_BUTTONS_error";
+      L 1061;
+      JC kom;
+	 
+NETWORK
+TITLE = 1062 - [I0.6] przycisk "A-btn_panel_zielony" jest nieaktywny
+      A "A-ALARMS".BUTTONS.btn0.%X3;
+      A "A-T_del_msg_BUTTONS_error";
+      L 1062;
+      JC kom;
+	 
+NETWORK
+TITLE = 1063 - [I0.7] przycisk "A-btn_panel_czerwony" jest aktywny
+      A "A-ALARMS".BUTTONS.btn0.%X4;
+      A "A-T_del_msg_BUTTONS_error";
+      L 1063;
+      JC kom;
+	 
+NETWORK
+TITLE = 1064 - [I0.7] przycisk "A-btn_panel_czerwony" jest nieaktywny
+      A "A-ALARMS".BUTTONS.btn0.%X5;
+      A "A-T_del_msg_BUTTONS_error";
+      L 1064;
       JC kom;
 	 
 

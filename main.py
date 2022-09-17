@@ -4,6 +4,12 @@ from sensor import Sensor
 from operator import itemgetter
 import sys
 
+'''
+TODO
+1) Dodac wyswietlanie wartosci w przypadku kontroli NOK
+2) Dodac wykrywanie unikalności w przypadku roznych prefixow - Zrobiono 2022.09.17
+'''
+
 zawory = []
 sensory = []
 safety = []
@@ -119,6 +125,7 @@ def df_parsing(_df):
         exit()
     kierunek = ['l', 'r', 'u', 'd', 'f', 'b', 'o', 'c']
     if (_df['SIDE_HP'].isin(kierunek) == False).any():
+        print(_df['SIDE_HP'])
         print('[NOK] Parsowanie io kolumny SIDE_HP')
         print(set(_df.SIDE_HP.tolist()).difference(kierunek))
         input('Press enter to exit...')
@@ -132,7 +139,8 @@ def df_parsing(_df):
 
 
 def df_check_duplicates(_df):
-    if _df.NAME.is_unique:
+    _df['test'] = _df['PREFIX'] + _df['NAME']
+    if _df['test'].is_unique:
         print('[OK] Nazwy NAME są unikalne')
     else:
         print('[NOK] Nazwy NAME nie są unikalne')
@@ -140,7 +148,8 @@ def df_check_duplicates(_df):
         input('Press enter to exit...')
         exit()
 
-    if _df.NAMEPL.is_unique:
+    _df['test'] = _df['PREFIX'] + _df['NAMEPL']
+    if _df['test'].is_unique:
         print('[OK] Nazwy NAMEPL są unikalne')
     else:
         print('[NOK] Nazwy NAMEPL nie są unikalne')
@@ -184,7 +193,8 @@ def io_parsing(_df):
 
 
 def io_check_duplicates(_df):
-    if _df.NAME.is_unique:
+    _df['test'] = _df['PREFIX'] + _df['NAME']
+    if _df['test'].is_unique:
         print('[OK] Nazwy NAME są unikalne')
     else:
         print('[NOK] Nazwy NAME nie są unikalne')
@@ -192,7 +202,8 @@ def io_check_duplicates(_df):
         input('Press enter to exit...')
         exit()
 
-    if _df.NAMEPL.is_unique:
+    _df['test'] = _df['PREFIX'] + _df['NAMEPL']
+    if _df['test'].is_unique:
         print('[OK] Nazwy NAMEPL są unikalne')
     else:
         print('[NOK] Nazwy NAMEPL nie są unikalne')
@@ -1054,6 +1065,6 @@ def main(args):
 
 
 if __name__ == '__main__':
-    main('LK01.xlsx')
+    main('LK07.xlsx')
     # main(sys.argv)
 

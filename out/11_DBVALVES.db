@@ -8,15 +8,20 @@ NON_RETAIN
 //Blok danych stanowiący interface obsługi, diagnostyki i wizualizacji elektrozaworów i siłowników
    VAR 
       LAMP_TEST { S7_SetPoint := 'False'} : Bool;
-GN : Struct
-	HOLDFACE { S7_SetPoint := 'False'} : "Tstate";   // [1] GN docisk
-END_STRUCT;
 ST1 : Struct
-	BLOCKADE_LEFT { S7_SetPoint := 'False'} : "Tstate";   // [2] ST1 blokada_lewa
-	BLOCKADE_RIGHT { S7_SetPoint := 'False'} : "Tstate";   // [3] ST1 blokada_prawa
+	MODULE { S7_SetPoint := 'False'} : "Tstate";   // [1] ST1 modul
+	HANDLE { S7_SetPoint := 'False'} : "Tstate";   // [2] ST1 dzwignia
+	PLUG { S7_SetPoint := 'False'} : "Tstate";   // [3] ST1 wtyczka
+END_STRUCT;
+ST2 : Struct
+	AIRBLOW { S7_SetPoint := 'False'} : "Tstate";   // [4] ST2 przedmuch
+	MEASUREMENT_GT2 { S7_SetPoint := 'False'} : "Tstate";   // [5] ST2 pomiar_gt2
+	PIN_PLUG { S7_SetPoint := 'False'} : "Tstate";   // [6] ST2 pin_wtyczka
+	PIN_GENERATOR_LEFT { S7_SetPoint := 'False'} : "Tstate";   // [7] ST2 pin_generator_lewy
+	PIN_GENERATOR_RIGHT { S7_SetPoint := 'False'} : "Tstate";   // [8] ST2 pin_generator_prawy
 END_STRUCT;
 
-   io : Array[0..3] of "Tio";
+   io : Array[0..8] of "Tio";
    END_VAR
 
 

@@ -1,56 +1,83 @@
 I0.0: A-btn_start
 I0.1: SAFETY_cisnienie_ok
-I0.2: 
-I0.3: 
-I0.4: SAFETY_blokada
+I0.2: SAFETY_faza_ok
+I0.3: SAFETY_stol_ok
+I0.4: SAFETY_kurtyna_ok
 I0.5: SAFETY_estop_ok
 I0.6: A-btn_panel_zielony
 I0.7: A-btn_panel_czerwony
 
-I1.0: Oetiker_zaciskanie_ok
-I1.1: Oetiker_zaciskanie_nok
-I1.2: A-btn_start_na_uchwycie
-I1.3: A-sen_skaner_lewo
-I1.4: A-sen_skaner_prawo
+I1.0: SAFETY_drzwi_zamkniete
+I1.1: WEISS_na_pozycji
+I1.2: WEISS_alarm
+I1.3: WEISS_zezwolenie_na_start
+I1.4: 
 I1.5: 
 I1.6: 
 I1.7: 
 
-I10.0: GN-sen_stelaz_sruba_lewa
-I10.1: GN-sen_docisk_HP
-I10.2: OETIKER_pozycja_2mm
-I10.3: GN-sen_generator_sruba
-I10.4: 
-I10.5: 
-I10.6: 
-I10.7: 
+I2.0: PRIMER_pomiar_trwa
+I2.1: PRIMER_pomiar_zakonczono
+I2.2: PRIMER_pomiar_error
+I2.3: PRIMER_pomiar_mniejszy_rowny
+I2.4: PRIMER_pomiar_mniejszy
+I2.5: PRIMER_pomiar_rowny
+I2.6: PRIMER_pomiar_wiekszy
+I2.7: PRIMER_pomiar_wiekszy_rowny
 
-I11.0: GN-sen_stelaz_sruba_prawa
-I11.1: GN-sen_docisk_WP
-I11.2: OETIKER_pozycja_4mm
-I11.3: OETIKER_pozycja_tensometr
-I11.4: 
-I11.5: 
-I11.6: 
+I10.0: ST1-sen_sruba_01
+I10.1: ST1-sen_sruba_03
+I10.2: ST1-sen_modul_HP
+I10.3: ST1-sen_modul_HP
+I10.4: STA-sen_pakiet
+I10.5: STA-sen_wtyczka
+I10.6: ST1-sen_gniazdo_00
+I10.7: ST1-sen_gniazdo_02
+
+I11.0: ST1-sen_sruba_02
+I11.1: ST1-sen_sruba_04
+I11.2: ST1-sen_modul_WP
+I11.3: ST1-sen_modul_WP
+I11.4: STB-sen_pakiet
+I11.5: STB-sen_wtyczka
+I11.6: ST1-sen_gniazdo_01
 I11.7: 
 
-I20.0: OETIKER_pozycja_hp
-I20.1: OETIKER_pozycja_opaska_lewa_hp
-I20.2: OETIKER_pozycja_opaska_lewa_wp
-I20.3: ST1-sen_zasuwka_lewo
-I20.4: ST1-sen_blokada_lewa_HP
-I20.5: ST1-sen_blokada_prawa_HP
+I20.0: ST1-sen_skaner_lewo
+I20.1: ST1-sen_dzwignia_HP
+I20.2: ST1-sen_wtyczka_HP
+I20.3: 
+I20.4: 
+I20.5: 
 I20.6: 
 I20.7: 
 
-I21.0: 
-I21.1: OETIKER_pozycja_opaska_prawa_hp
-I21.2: OETIKER_pozycja_opaska_prawa_wp
-I21.3: ST1-sen_zasuwka_prawo
-I21.4: ST1-sen_blokada_lewa_WP
-I21.5: ST1-sen_blokada_prawa_WP
+I21.0: ST1-sen_skaner_prawo
+I21.1: ST1-sen_dzwignia_WP
+I21.2: ST1-sen_wtyczka_WP
+I21.3: 
+I21.4: 
+I21.5: 
 I21.6: 
 I21.7: 
+
+I30.0: A-sen_stol_00
+I30.1: ST2-sen_pomiar_gt2_HP
+I30.2: ST2-sen_pin_wtyczka_HP
+I30.3: ST2-sen_pin_generator_lewy_HP
+I30.4: ST2-sen_pin_generator_prawy_HP
+I30.5: 
+I30.6: 
+I30.7: 
+
+I31.0: A-sen_stol_01
+I31.1: ST2-sen_pomiar_gt2_WP
+I31.2: ST2-sen_pin_wtyczka_WP
+I31.3: ST2-sen_pin_generator_lewy_WP
+I31.4: ST2-sen_pin_generator_prawy_WP
+I31.5: 
+I31.6: 
+I31.7: 
 
 Q0.0: A-led_panel_bialy
 Q0.1: A-led_panel_zielony
@@ -59,50 +86,59 @@ Q0.3: A-led_start
 Q0.4: A-led_kolumna_zielony
 Q0.5: A-led_kolumna_czerwony
 Q0.6: A-led_kolumna_zolty
-Q0.7: A-rel_oswietlenie
+Q0.7: SAFETY_kurtyna_autostart
 
-Q1.0: Oetiker_start
-Q1.1: Oetiker_program_00
-Q1.2: Oetiker_program_01
-Q1.3: Oetiker_program_02
-Q1.4: Oetiker_program_03
-Q1.5: 
-Q1.6: 
-Q1.7: GN-ez_docisk_WP
+Q1.0: WEISS_obrot_start
+Q1.1: WEISS_obrot_stop
+Q1.2: WEISS_zwolnik_hamulec
+Q1.3: A-rel_splonka_lub_izolacja
+Q1.4: PRIMER-rel_pomiar_zezwolenie
+Q1.5: ISO-rel_pomiar_zezwolenie
+Q1.6: ISO-rel_pomiar_start
+Q1.7: A-rel_oswietlenie
 
-Q10.0: 
-Q10.1: 
-Q10.2: 
-Q10.3: 
-Q10.4: 
-Q10.5: 
-Q10.6: 
-Q10.7: GN-ez_docisk_HP
-
-Q11.0: 
-Q11.1: 
-Q11.2: 
-Q11.3: 
-Q11.4: 
-Q11.5: 
-Q11.6: 
-Q11.7: GN-ez_docisk_IDLE
+Q2.0: PRIMER_pomiar_start
+Q2.1: PRIMER_pomiar_reset
+Q2.2: PRIMER_transfer
+Q2.3: PRIMER_bin_00
+Q2.4: PRIMER_bin_01
+Q2.5: PRIMER_bin_02
+Q2.6: PRIMER_bin_03
+Q2.7: A-rel_doswietlacz_kamery
 
 Q20.0: 
 Q20.1: 
 Q20.2: 
 Q20.3: 
 Q20.4: 
-Q20.5: 
-Q20.6: ST1-ez_blokada_lewa_HP
-Q20.7: ST1-ez_blokada_prawa_HP
+Q20.5: ST1-ez_modul_HP
+Q20.6: ST1-ez_dzwignia_HP
+Q20.7: ST1-ez_wtyczka_HP
 
 Q21.0: 
 Q21.1: 
 Q21.2: 
 Q21.3: 
 Q21.4: 
-Q21.5: 
-Q21.6: ST1-ez_blokada_lewa_WP
-Q21.7: ST1-ez_blokada_prawa_WP
+Q21.5: ST1-ez_modul_WP
+Q21.6: ST1-ez_dzwignia_WP
+Q21.7: ST1-ez_wtyczka_WP
+
+Q40.0: 
+Q40.1: 
+Q40.2: 
+Q40.3: ST2-ez_przedmuch_WP
+Q40.4: ST2-ez_pomiar_gt2_HP
+Q40.5: ST2-ez_pin_wtyczka_HP
+Q40.6: ST2-ez_pin_generator_lewy_HP
+Q40.7: ST2-ez_pin_generator_prawy_HP
+
+Q41.0: 
+Q41.1: 
+Q41.2: 
+Q41.3: ST2-ez_pomiar_gt2_BRAKE
+Q41.4: ST2-ez_pomiar_gt2_WP
+Q41.5: ST2-ez_pin_wtyczka_WP
+Q41.6: ST2-ez_pin_generator_lewy_WP
+Q41.7: ST2-ez_pin_generator_prawy_WP
 

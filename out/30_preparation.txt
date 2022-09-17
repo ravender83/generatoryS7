@@ -2,29 +2,36 @@
 A "A-ALARMS".BUTTONS."A-btn_start".ok
 A "A-ALARMS".BUTTONS."A-btn_panel_green".ok
 A "A-ALARMS".BUTTONS."A-btn_panel_red".ok
-A "A-ALARMS".BUTTONS."A-btn_start_on_grip".ok
 
 // Mechanizmy
-A "A-DBVALVES".GN.holdface.out.in_hp
-A "A-DBVALVES".ST1.blockade_left.out.in_hp
-A "A-DBVALVES".ST1.blockade_right.out.in_hp
+A "A-DBVALVES".ST1.module.out.in_hp
+A "A-DBVALVES".ST1.handle.out.in_hp
+A "A-DBVALVES".ST1.plug.out.in_hp
+A "A-DBVALVES".ST2.airblow.out.in_hp
+A "A-DBVALVES".ST2.measurement_gt2.out.in_hp
+A "A-DBVALVES".ST2.pin_plug.out.in_hp
+A "A-DBVALVES".ST2.pin_generator_left.out.in_hp
+A "A-DBVALVES".ST2.pin_generator_right.out.in_hp
 
 // Czujniki
-A "A-ALARMS".SENSORS."A-sen_scanner_left".ok
-A "A-ALARMS".SENSORS."A-sen_scanner_right".ok
-A "A-ALARMS".SENSORS."GN-sen_frame_screw_left".ok
-A "A-ALARMS".SENSORS."GN-sen_frame_screw_right".ok
-A "A-ALARMS".SENSORS."GN-sen_generator_screw".ok
-A "A-ALARMS".SENSORS."OETIKER_position_hp".ok
-A "A-ALARMS".SENSORS."OETIKER_position_2mm".ok
-A "A-ALARMS".SENSORS."OETIKER_position_4mm".ok
-A "A-ALARMS".SENSORS."OETIKER_position_tensometer".ok
-A "A-ALARMS".SENSORS."OETIKER_position_band_left_hp".ok
-A "A-ALARMS".SENSORS."OETIKER_position_band_right_hp".ok
-A "A-ALARMS".SENSORS."OETIKER_position_band_left_wp".ok
-A "A-ALARMS".SENSORS."OETIKER_position_band_right_wp".ok
-A "A-ALARMS".SENSORS."ST1-sen_latch_left".ok
-A "A-ALARMS".SENSORS."ST1-sen_latch_right".ok
+A "A-ALARMS".SENSORS."ST1-sen_screw_01".ok
+A "A-ALARMS".SENSORS."ST1-sen_screw_02".ok
+A "A-ALARMS".SENSORS."ST1-sen_screw_03".ok
+A "A-ALARMS".SENSORS."ST1-sen_screw_04".ok
+A "A-ALARMS".SENSORS."STA-sen_package".ok
+A "A-ALARMS".SENSORS."STB-sen_package".ok
+A "A-ALARMS".SENSORS."STA-sen_plug".ok
+A "A-ALARMS".SENSORS."STB-sen_plug".ok
+A "A-ALARMS".SENSORS."ST1-sen_nest_00".ok
+A "A-ALARMS".SENSORS."ST1-sen_nest_01".ok
+A "A-ALARMS".SENSORS."ST1-sen_nest_02".ok
+A "A-ALARMS".SENSORS."A-sen_table_00".ok
+A "A-ALARMS".SENSORS."A-sen_table_01".ok
+A "A-ALARMS".SENSORS."ST1-sen_scanner_left".ok
+A "A-ALARMS".SENSORS."ST1-sen_scanner_right".ok
+A "A-ALARMS".SENSORS."WEISS_on_position".ok
+A "A-ALARMS".SENSORS."WEISS_alarm".ok
+A "A-ALARMS".SENSORS."WEISS_start_permitted".ok
 
 // Napędy
 // 
