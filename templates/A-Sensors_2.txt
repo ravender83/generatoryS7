@@ -9,11 +9,15 @@ TITLE = {TITLE_PL}
       A "Log_0";
       = #a;
 
+      A     "Log_0";
+      =     #neg;
+	  
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
          in_sensor                   := {ADRES} , 
-         in_show                     := False , 
+         in_direct                   := False , 
+		 in_vis_negation			 := #neg ,
          out_ok                      := "A-ALARMS".{TYP}."{SENSOR_EN}".ok , 
          out_show                    := "A-ALARMS".{TYP}."{SENSOR_EN}".show , 
          out_led                     := "A-ALARMS".{TYP}."{SENSOR_EN}".led , 

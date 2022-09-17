@@ -4,6 +4,7 @@ VERSION : 0.1
    VAR_TEMP 
       a : Bool;
       an : Bool;
+	  neg : Bool;
    END_VAR
 
 
@@ -15,7 +16,7 @@ TITLE = VALVES error
       = "A-ALARMS".VALVES.error;
 	  
 	  A     "A-ALARMS".VALVES.error;
-      L     s5t#5s;
+      L     s5t#100ms;
       SD    "A-T_del_msg_valves_error";
 NETWORK
 TITLE = SENSORS error
@@ -24,7 +25,7 @@ TITLE = SENSORS error
       = "A-ALARMS".SENSORS.error;
 	  
 	  A     "A-ALARMS".SENSORS.error;
-      L     s5t#5s;
+      L     s5t#2s;
       SD    "A-T_del_msg_sensors_error";	  
 NETWORK
 TITLE = SAFETY error
@@ -33,7 +34,7 @@ TITLE = SAFETY error
       = "A-ALARMS".SAFETY.error;
 	  
 	  A     "A-ALARMS".SAFETY.error;
-      L     s5t#5s;
+      L     s5t#2s;
       SD    "A-T_del_msg_safety_error";
 NETWORK
 TITLE = BUTTONS error
@@ -42,7 +43,7 @@ TITLE = BUTTONS error
       = "A-ALARMS".BUTTONS.error;
 	  
 	  A     "A-ALARMS".BUTTONS.error;
-      L     s5t#5s;
+      L     s5t#2s;
       SD    "A-T_del_msg_buttons_error";
 NETWORK
 TITLE = DRIVES error
@@ -53,7 +54,7 @@ TITLE = DRIVES error
       = "A-ALARMS".DRIVES.error;
 
       A     "A-ALARMS".DRIVES.error;
-      L     s5t#5s;
+      L     s5t#2s;
       SD    "A-T_del_msg_drives_error";
 NETWORK
 TITLE = OTHER error
@@ -64,7 +65,7 @@ TITLE = OTHER error
       = "A-ALARMS".OTHER.error;
 	  
       A     "A-ALARMS".OTHER.error;
-      L     s5t#5s;
+      L     s5t#2s;
       SD    "A-T_del_msg_other_error";	  
 NETWORK
 TITLE = GLOBAL ERROR
