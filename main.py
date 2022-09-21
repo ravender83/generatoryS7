@@ -58,32 +58,19 @@ def otworz(_plik, _fold):
 
 def df_datas_parsing(_df):
     # Zmiana nazw na male litery. Sprawdzenie braku duplikatów
-    _df.PREFIX = _df.PREFIX.dropna().astype(str).str.upper()
-    _df.PREFIX = _df.PREFIX.dropna().astype(str).str.strip()
-    _df.NAME = _df.NAME.dropna().astype(str).str.lower()
-    _df.NAME = _df.NAME.dropna().astype(str).str.strip()
-    _df.NAMEPL = _df.NAMEPL.dropna().astype(str).str.lower()
-    _df.NAMEPL = _df.NAMEPL.dropna().astype(str).str.strip()
-    _df.SIDE_HP = _df.SIDE_HP.dropna().astype(str).str.strip()
-    _df.SIDE_HP = _df.SIDE_HP.dropna().astype(str).str.lower().str[0]
-    _df.SIDE_WP = _df.SIDE_WP.dropna().astype(str).str.strip()
-    _df.SIDE_WP = _df.SIDE_WP.dropna().astype(str).str.lower().str[0]
-    _df.SENSOR_HP = _df.SENSOR_HP.dropna().astype(str).str.strip()
-    _df.SENSOR_HP = _df.SENSOR_HP.dropna().astype(str).str.upper()
-    _df.SENSOR_HP2 = _df.SENSOR_HP2.dropna().astype(str).str.strip()
-    _df.SENSOR_HP2 = _df.SENSOR_HP2.dropna().astype(str).str.upper()
-    _df.SENSOR_WP = _df.SENSOR_WP.dropna().astype(str).str.strip()
-    _df.SENSOR_WP = _df.SENSOR_WP.dropna().astype(str).str.upper()
-    _df.SENSOR_WP2 = _df.SENSOR_WP2.dropna().astype(str).str.strip()
-    _df.SENSOR_WP2 = _df.SENSOR_WP2.dropna().astype(str).str.upper()
-    _df.OUTPUT_HP = _df.OUTPUT_HP.dropna().astype(str).str.strip()
-    _df.OUTPUT_HP = _df.OUTPUT_HP.dropna().astype(str).str.upper()
-    _df.OUTPUT_WP = _df.OUTPUT_WP.dropna().astype(str).str.strip()
-    _df.OUTPUT_WP = _df.OUTPUT_WP.dropna().astype(str).str.upper()
-    _df.IDLE = _df.IDLE.dropna().astype(str).str.strip()
-    _df.IDLE = _df.IDLE.dropna().astype(str).str.upper()
-    _df.BRAKE_RELEASE = _df.BRAKE_RELEASE.dropna().astype(str).str.strip()
-    _df.BRAKE_RELEASE = _df.BRAKE_RELEASE.dropna().astype(str).str.upper()
+    _df.PREFIX = _df.PREFIX.dropna().astype(str).str.upper().str.strip()
+    _df.NAME = _df.NAME.dropna().astype(str).str.lower().str.strip()
+    _df.NAMEPL = _df.NAMEPL.dropna().astype(str).str.lower().str.strip()
+    _df.SIDE_HP = _df.SIDE_HP.dropna().astype(str).str.strip().str.lower().str[0]
+    _df.SIDE_WP = _df.SIDE_WP.dropna().astype(str).str.strip().str.lower().str[0]
+    _df.SENSOR_HP = _df.SENSOR_HP.dropna().astype(str).str.strip().str.upper()
+    _df.SENSOR_HP2 = _df.SENSOR_HP2.dropna().astype(str).str.strip().str.upper()
+    _df.SENSOR_WP = _df.SENSOR_WP.dropna().astype(str).str.strip().str.upper()
+    _df.SENSOR_WP2 = _df.SENSOR_WP2.dropna().astype(str).str.strip().str.upper()
+    _df.OUTPUT_HP = _df.OUTPUT_HP.dropna().astype(str).str.strip().str.upper()
+    _df.OUTPUT_WP = _df.OUTPUT_WP.dropna().astype(str).str.strip().str.upper()
+    _df.IDLE = _df.IDLE.dropna().astype(str).str.strip().str.upper()
+    _df.BRAKE_RELEASE = _df.BRAKE_RELEASE.dropna().astype(str).str.strip().str.upper()
     print('[OK] Parsowanie tekstu')
 
 
@@ -179,12 +166,9 @@ def io_datas_parsing(_df):
     # Zmiana nazw na male litery. Sprawdzenie braku duplikatów
     #_df.PREFIX = _df.PREFIX.dropna().astype(str).str.upper()
     _df.PREFIX = _df.PREFIX.dropna().astype(str).str.strip()
-    _df.NAME = _df.NAME.dropna().astype(str).str.lower()
-    _df.NAME = _df.NAME.dropna().astype(str).str.strip()
-    _df.NAMEPL = _df.NAMEPL.dropna().astype(str).str.lower()
-    _df.NAMEPL = _df.NAMEPL.dropna().astype(str).str.strip() 
-    _df.ADRES = _df.ADRES.dropna().astype(str).str.strip()
-    _df.ADRES = _df.ADRES.dropna().astype(str).str.upper()
+    _df.NAME = _df.NAME.dropna().astype(str).str.lower().str.strip()
+    _df.NAMEPL = _df.NAMEPL.dropna().astype(str).str.lower().str.strip()
+    _df.ADRES = _df.ADRES.dropna().astype(str).str.strip().str.upper()
     print('[OK] Parsowanie sensorów')
 
 
@@ -229,12 +213,9 @@ def io_check_duplicates(_df):
 
 
 def drv_datas_parsing(_df):
-    _df.NAME = _df.NAME.dropna().astype(str).str.upper()
-    _df.NAME = _df.NAME.dropna().astype(str).str.strip()
-    _df.TYPE = _df.TYPE.dropna().astype(str).str.upper()
-    _df.TYPE = _df.TYPE.dropna().astype(str).str.strip()
-    _df.PROFINET = _df.PROFINET.dropna().astype(str).str.lower()
-    _df.PROFINET = _df.PROFINET.dropna().astype(str).str.strip()
+    _df.NAME = _df.NAME.dropna().astype(str).str.upper().str.strip()
+    _df.TYPE = _df.TYPE.dropna().astype(str).str.upper().str.strip()
+    _df.PROFINET = _df.PROFINET.dropna().astype(str).str.lower().str.strip()
     print('[OK] Parsowanie napędów')
 
 
@@ -256,6 +237,8 @@ def generuj_tags_txt(_zawory, _sensory, _safety, _przyciski, _inne):
     for i in _zawory:
         _txt = _txt + f'{i.get_namepl}\n'
 
+    zapisz("10_tags.txt", _txt, 'out')
+'''
     _txt = _txt + '\n----------- IO TAGS -----------\n'
     # BR-vsen_imitation_HP_front BOOL I20.5 False True True True #nc - [I20.5] czujnik IMITACJA HP front
     _tmp = '\tFalse\tTrue\tTrue\tTrue\t'
@@ -304,7 +287,7 @@ def generuj_tags_txt(_zawory, _sensory, _safety, _przyciski, _inne):
             _txt = _txt + f'{_i}\n'
 
     zapisz("10_tags.txt", _txt, 'out')
-
+'''
 
 def generuj_plc_tags_excel(_zawory, _sensory, _safety, _przyciski, _inne):
     _preparation_file = otworz("30_preparation.txt", 'out')
