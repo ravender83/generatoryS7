@@ -63,12 +63,10 @@ class Zawor:
         self.sideHP = kierunek[_zawor.SIDE_HP]
         self.sideWP = kierunek[_zawor.SIDE_WP]
 
-
     @property
     def get_name(self):
         # [9] ST1 TAU_HOLDFAST_MOVEMENT
         return f'[{self.index}] {self.prefix} {self.name.replace("_", " ")}'.upper()
-
 
     @property
     def get_namepl(self):
@@ -82,42 +80,35 @@ class Zawor:
         # BR-vsen_imitation_HP_front
         return f'{self.prefix}-vsen_{self.name}_HP_{self.sideHP}'
 
-
     @property
     def get_sensorNameHP2(self):
         # BR-vsen_imitation_HP_front
         return f'{self.prefix}-vsen_{self.name}_HP2_{self.sideHP}'
-
 
     @property
     def get_sensorNameWP(self):
         # BR-vsen_imitation_WP_front
         return f'{self.prefix}-vsen_{self.name}_WP_{self.sideWP}'
 
-
     @property
     def get_sensorNameWP2(self):
         # BR-vsen_imitation_HP_front
         return f'{self.prefix}-vsen_{self.name}_WP2_{self.sideWP}'
-
 
     @property
     def get_outputNameHP(self):
         # BR-ez_imitation_HP_front
         return f'{self.prefix}-ez_{self.name}_HP_{self.sideHP}'
 
-
     @property
     def get_outputNameWP(self):
         # BR-ez_imitation_WP_front
         return f'{self.prefix}-ez_{self.name}_WP_{self.sideWP}'
 
-
     @property
     def get_outputNameIDLE(self):
         # BR-ez_imitation_IDLE
         return f'{self.prefix}-ez_{self.name}_IDLE'
-
 
     @property
     def get_outputNameBRAKE(self):
@@ -126,13 +117,11 @@ class Zawor:
 
     # ----- Komentarze tagów -----
 
-
     @property
     def get_sensorNameHPcomment(self):
         #nc - [I20.5] czujnik BR IMITACJA HP front
         #return f'#nc - [{self.sensorHP[1:]}] czujnik {self.prefix}-{self.namepl} HP {self.sideHP}'
         return f'[{self.sensorHP[1:]}] czujnik "{self.prefix}-{self.namepl}" HP {self.sideHP}'
-
 
     @property
     def get_sensorNameHP2comment(self):
@@ -140,13 +129,11 @@ class Zawor:
         #return f'#nc - [{self.sensorHP2[1:]}] czujnik {self.prefix}-{self.namepl} HP {self.sideHP}'
         return f'[{self.sensorHP2[1:]}] czujnik "{self.prefix}-{self.namepl}" HP {self.sideHP}'
 
-
     @property
     def get_sensorNameWPcomment(self):
         #nc - [I20.5] czujnik BR IMITACJA WP front
         #return f'#no - [{self.sensorWP[1:]}] czujnik {self.prefix}-{self.namepl} WP {self.sideWP}'
         return f'[{self.sensorWP[1:]}] czujnik "{self.prefix}-{self.namepl}" WP {self.sideWP}'
-
 
     @property
     def get_sensorNameWP2comment(self):
@@ -160,20 +147,17 @@ class Zawor:
         #return f'#nc - [{self.sensorHP[1:]}] czujnik {self.prefix}-{self.namepl} HP {self.sideHP}'
         return f'[{self.sensorHP[1:]}] czujnik "{self.prefix}-{self.namepl}" HP'
 
-
     @property
     def get_sensorNameHP2commentSmall(self):
         #nc - [I20.5] czujnik BR IMITACJA HP
         #return f'#nc - [{self.sensorHP2[1:]}] czujnik {self.prefix}-{self.namepl} HP {self.sideHP}'
         return f'[{self.sensorHP2[1:]}] czujnik "{self.prefix}-{self.namepl}" HP'
 
-
     @property
     def get_sensorNameWPcommentSmall(self):
         #nc - [I20.5] czujnik BR IMITACJA WP
         #return f'#no - [{self.sensorWP[1:]}] czujnik {self.prefix}-{self.namepl} WP {self.sideWP}'
         return f'[{self.sensorWP[1:]}] czujnik "{self.prefix}-{self.namepl}" WP'
-
 
     @property
     def get_sensorNameWP2commentSmall(self):
@@ -190,7 +174,6 @@ class Zawor:
             _tmp = ''
         return f'[{self.index}] {self.prefix}-{self.namepl} HP {self.sideHP} [{self.sensorHP[1:]}{_tmp}]'
 
-
     @property
     def get_outputNameWPcomment(self):
         # [1] BR-imitation WP FRONT [I20.5]
@@ -200,12 +183,10 @@ class Zawor:
             _tmp = ''
         return f'[{self.index}] {self.prefix}-{self.namepl} WP {self.sideWP} [{self.sensorWP[1:]}{_tmp}]'
 
-
     @property
     def get_outputNameIDLEcomment(self):
         # [1] BR-imitation IDLE
         return f'[{self.index}] {self.prefix}-{self.namepl} IDLE'
-
 
     @property
     def get_outputNameBRAKEcomment(self):
@@ -213,48 +194,40 @@ class Zawor:
         return f'[{self.index}] {self.prefix}-{self.namepl} BRAKE RELEASE'
 
 # ---
-
     @property
     def get_sensorNameHPsmall(self):
         # BR-vsen_imitation_HP_front
         return f'{self.prefix}-sen_{self.namepl}_HP'
-
 
     @property
     def get_sensorNameHP2small(self):
         # BR-vsen_imitation_HP_front
         return f'{self.prefix}-sen_{self.namepl}_HP'
 
-
     @property
     def get_sensorNameWPsmall(self):
         # BR-vsen_imitation_WP_front
         return f'{self.prefix}-sen_{self.namepl}_WP'
-
 
     @property
     def get_sensorNameWP2small(self):
         # BR-vsen_imitation_HP_front
         return f'{self.prefix}-sen_{self.namepl}_WP'
 
-
     @property
     def get_outputNameHPsmall(self):
         # BR-ez_imitation_HP_front
         return f'{self.prefix}-ez_{self.namepl}_HP'
-
 
     @property
     def get_outputNameWPsmall(self):
         # BR-ez_imitation_WP_front
         return f'{self.prefix}-ez_{self.namepl}_WP'
 
-
     @property
     def get_outputNameIDLEsmall(self):
         # BR-ez_imitation_IDLE
         return f'{self.prefix}-ez_{self.namepl}_IDLE'
-
 
     @property
     def get_outputNameBRAKEsmall(self):

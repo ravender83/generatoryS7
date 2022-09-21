@@ -13,7 +13,6 @@ class Sensor:
         else:
             self.adres = 'nan'
 
-
         # ----- Nazwy tagów -----
     @property
     def get_sensorName(self):
