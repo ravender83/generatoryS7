@@ -1,17 +1,20 @@
 import pandas as pd
+import math
 from tag import Zawor
 from sensor import Sensor
 from operator import itemgetter
 import sys
 
 '''
+DONE
+2) Dodac wykrywanie unikalności w przypadku roznych prefixow - Zrobiono 2022.09.17
+4) Dodać listę mechanizmów na listę obsługi panelu HMI - Zrobiono 2022.09.21
+5) Sprawdzić generowanie numeru MAX dla ekranów diagnostycznych. Linia 662 - Zrobiono 2022.09.21
+6) W przypadku zaworow jednocewkowych dorzucic zamiane NaN na numer wyjscia - Zrobiono 2022.09.21
+
 TODO
 1) Dodac wyswietlanie wartosci w przypadku kontroli NOK
-2) Dodac wykrywanie unikalności w przypadku roznych prefixow - Zrobiono 2022.09.17
 3) Dodac generowanie tagow sensorów hmi dla wizualizacji tych sensorów
-4) Dodać listę mechanizmów na listę obsługi panelu HMI
-5) Sprawdzić generowanie numeru MAX dla ekranów diagnostycznych. Linia 662. Zastosować zaokrągalnie góra
-6) W przypadku zaworow jednocewkowych dorzucic zamiane NaN na numer wyjscia
 '''
 
 zawory = []
@@ -656,12 +659,10 @@ def generuj_alarms_db(_licznik, _zawory, _sensory, _safety, _buttons, _adresyI, 
     _dbvalves_data = _dbvalves_data.replace('{BUTTONS2_STRUCT}', _txt)       
 
     _dbvalves_data = _dbvalves_data.replace('{DRIVES_STRUCT}', 'drv0 : UInt;\n')
-    print('dlugosc', len(_adresyI))
-    print('dlQ', len(_adresyQ))
     _dbvalves_data = _dbvalves_data.replace('{IN}', str(len(_adresyI)))
     _dbvalves_data = _dbvalves_data.replace('{OUT}', str(len(_adresyQ)))
-    _dbvalves_data = _dbvalves_data.replace('{IN_MAX}', str(int(len(_adresyI) / 9)))
-    _dbvalves_data = _dbvalves_data.replace('{OUT_MAX}', str(int(len(_adresyQ) / 9)))    
+    _dbvalves_data = _dbvalves_data.replace('{IN_MAX}', str(math.ceil(len(_adresyI) / 9)))
+    _dbvalves_data = _dbvalves_data.replace('{OUT_MAX}', str(math.ceil(len(_adresyQ) / 9)))
     zapisz("13_ALARMS.db", _dbvalves_data, 'out')
 
 
@@ -719,10 +720,10 @@ def generuj_valves_outputs_stl(_zawory):
         _szablon = _szablon.replace('{DBVALVE_TITLE_EN}', f'{i.prefix} {i.name.upper()}')
         _szablon = _szablon.replace('{DBVALVE}', f'{i.prefix}.{i.name.upper()}')
         _szablon = _szablon.replace('{INDEX}', f'{i.index}')
-        _szablon = szablon_nan(_szablon, '{in_sensor_hp}', i.sensorHP[1:], 'nan')
-        _szablon = szablon_nan(_szablon, '{in_sensor_hp2}', i.sensorHP2[1:], 'nan')
-        _szablon = szablon_nan(_szablon, '{in_sensor_wp}', i.sensorWP[1:], 'nan')
-        _szablon = szablon_nan(_szablon, '{in_sensor_wp2}', i.sensorWP2[1:], 'nan')
+        _szablon = szablon_nan(_szablon, '{in_sensor_hp}', i.sensorHP[1:], i.outputHP[1:])
+        _szablon = szablon_nan(_szablon, '{in_sensor_hp2}', i.sensorHP2[1:], i.outputHP[1:])
+        _szablon = szablon_nan(_szablon, '{in_sensor_wp}', i.sensorWP[1:], i.outputWP[1:])
+        _szablon = szablon_nan(_szablon, '{in_sensor_wp2}', i.sensorWP2[1:], i.outputWP[1:])
         _szablon = szablon_nan(_szablon, '{in_ez_hp}', i.outputHP[1:], f'"A-DBVALVES".{i.prefix}.{i.name.upper()}.test.HP_DUMMY')
         _szablon = szablon_nan(_szablon, '{in_ez_wp}', i.outputWP[1:], f'"A-DBVALVES".{i.prefix}.{i.name.upper()}.test.WP_DUMMY')
         _szablon = szablon_nan(_szablon, '{in_ez_idle}', i.outputIDLE[1:], f'"A-DBVALVES".{i.prefix}.{i.name.upper()}.test.IDLE_DUMMY')
@@ -1045,7 +1046,7 @@ def main(args):
     _preparation_file = otworz("30_preparation.txt", 'templates')
     zapisz("30_preparation.txt", _preparation_file, 'out') 
 
-    #generuj_tags_txt(zawory, sensory, safety, przyciski, inne)
+    generuj_tags_txt(zawory, sensory, safety, przyciski, inne)
     adresyI, adresyQ, adresyIQ = generuj_plc_tags_excel(zawory, sensory, safety, przyciski, inne)
 
     generuj_dbvalves_txt(df)
