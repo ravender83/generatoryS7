@@ -1,64 +1,133 @@
-1001	[I10.2] czujnik "ST1-modul" HP (1) jest nieaktywny
-1002	[I10.3] czujnik "ST1-modul" HP (1) jest nieaktywny
-1003	[I11.2] czujnik "ST1-modul" WP (1) jest nieaktywny
-1004	[I11.3] czujnik "ST1-modul" WP (1) jest nieaktywny
-1005	[I20.1] czujnik "ST1-dzwignia" HP (2) jest nieaktywny
-1006	[I21.1] czujnik "ST1-dzwignia" WP (2) jest nieaktywny
-1007	[I20.2] czujnik "ST1-wtyczka" HP (3) jest nieaktywny
-1008	[I21.2] czujnik "ST1-wtyczka" WP (3) jest nieaktywny
-1009	[I30.1] czujnik "ST2-pomiar_gt2" HP (5) jest nieaktywny
-1010	[I31.1] czujnik "ST2-pomiar_gt2" WP (5) jest nieaktywny
-1011	[I30.2] czujnik "ST2-pin_wtyczka" HP (6) jest nieaktywny
-1012	[I31.2] czujnik "ST2-pin_wtyczka" WP (6) jest nieaktywny
-1013	[I30.3] czujnik "ST2-pin_generator_lewy" HP (7) jest nieaktywny
-1014	[I31.3] czujnik "ST2-pin_generator_lewy" WP (7) jest nieaktywny
-1015	[I30.4] czujnik "ST2-pin_generator_prawy" HP (8) jest nieaktywny
-1016	[I31.4] czujnik "ST2-pin_generator_prawy" WP (8) jest nieaktywny
-1017	[I10.0] czujnik "ST1-sen_sruba_01" jest aktywny
-1018	[I10.0] czujnik "ST1-sen_sruba_01" jest nieaktywny
-1019	[I11.0] czujnik "ST1-sen_sruba_02" jest aktywny
-1020	[I11.0] czujnik "ST1-sen_sruba_02" jest nieaktywny
-1021	[I10.1] czujnik "ST1-sen_sruba_03" jest aktywny
-1022	[I10.1] czujnik "ST1-sen_sruba_03" jest nieaktywny
-1023	[I11.1] czujnik "ST1-sen_sruba_04" jest aktywny
-1024	[I11.1] czujnik "ST1-sen_sruba_04" jest nieaktywny
-1025	[I10.4] czujnik "STA-sen_pakiet" jest aktywny
-1026	[I10.4] czujnik "STA-sen_pakiet" jest nieaktywny
-1027	[I11.4] czujnik "STB-sen_pakiet" jest aktywny
-1028	[I11.4] czujnik "STB-sen_pakiet" jest nieaktywny
-1029	[I10.5] czujnik "STA-sen_wtyczka" jest aktywny
-1030	[I10.5] czujnik "STA-sen_wtyczka" jest nieaktywny
-1031	[I11.5] czujnik "STB-sen_wtyczka" jest aktywny
-1032	[I11.5] czujnik "STB-sen_wtyczka" jest nieaktywny
-1033	[I10.6] czujnik "ST1-sen_gniazdo_00" jest aktywny
-1034	[I10.6] czujnik "ST1-sen_gniazdo_00" jest nieaktywny
-1035	[I11.6] czujnik "ST1-sen_gniazdo_01" jest aktywny
-1036	[I11.6] czujnik "ST1-sen_gniazdo_01" jest nieaktywny
-1037	[I10.7] czujnik "ST1-sen_gniazdo_02" jest aktywny
-1038	[I10.7] czujnik "ST1-sen_gniazdo_02" jest nieaktywny
-1039	[I30.0] czujnik "A-sen_stol_00" jest aktywny
-1040	[I30.0] czujnik "A-sen_stol_00" jest nieaktywny
-1041	[I31.0] czujnik "A-sen_stol_01" jest aktywny
-1042	[I31.0] czujnik "A-sen_stol_01" jest nieaktywny
-1043	[I20.0] czujnik "ST1-sen_skaner_lewo" jest aktywny
-1044	[I20.0] czujnik "ST1-sen_skaner_lewo" jest nieaktywny
-1045	[I21.0] czujnik "ST1-sen_skaner_prawo" jest aktywny
-1046	[I21.0] czujnik "ST1-sen_skaner_prawo" jest nieaktywny
-1047	[I1.1] czujnik "WEISS_na_pozycji" jest aktywny
-1048	[I1.1] czujnik "WEISS_na_pozycji" jest nieaktywny
-1049	[I1.2] czujnik "WEISS_alarm" jest aktywny
-1050	[I1.2] czujnik "WEISS_alarm" jest nieaktywny
-1051	[I1.3] czujnik "WEISS_zezwolenie_na_start" jest aktywny
-1052	[I1.3] czujnik "WEISS_zezwolenie_na_start" jest nieaktywny
-1053	[I0.1]  "SAFETY_cisnienie_ok" jest nieaktywny
-1054	[I0.2]  "SAFETY_faza_ok" jest nieaktywny
-1055	[I0.3]  "SAFETY_stol_ok" jest nieaktywny
-1056	[I0.4]  "SAFETY_kurtyna_ok" jest nieaktywny
-1057	[I0.5]  "SAFETY_estop_ok" jest nieaktywny
-1058	[I1.0]  "SAFETY_drzwi_zamkniete" jest nieaktywny
-1059	[I0.0] przycisk "A-btn_start" jest aktywny
-1060	[I0.0] przycisk "A-btn_start" jest nieaktywny
-1061	[I0.6] przycisk "A-btn_panel_zielony" jest aktywny
-1062	[I0.6] przycisk "A-btn_panel_zielony" jest nieaktywny
-1063	[I0.7] przycisk "A-btn_panel_czerwony" jest aktywny
-1064	[I0.7] przycisk "A-btn_panel_czerwony" jest nieaktywny
+1001	[I50.1] czujnik "GN-blokada_sruby_lewy" HP (1) jest nieaktywny
+1002	[I51.1] czujnik "GN-blokada_sruby_lewy" WP (1) jest nieaktywny
+1003	[I50.2] czujnik "GN-blokada_sruby_srodek" HP (2) jest nieaktywny
+1004	[I51.2] czujnik "GN-blokada_sruby_srodek" WP (2) jest nieaktywny
+1005	[I50.3] czujnik "GN-blokada_sruby_prawy" HP (3) jest nieaktywny
+1006	[I51.3] czujnik "GN-blokada_sruby_prawy" WP (3) jest nieaktywny
+1007	[I50.4] czujnik "GN-zasuwka" HP (4) jest nieaktywny
+1008	[I70.5] czujnik "GN-zasuwka" WP (4) jest nieaktywny
+1009	[I60.0] czujnik "BR-pin_podnoszenie_01" HP (5) jest nieaktywny
+1010	[I61.0] czujnik "BR-pin_podnoszenie_01" WP (5) jest nieaktywny
+1011	[I60.2] czujnik "BR-pin_01" HP (6) jest nieaktywny
+1012	[I60.1] czujnik "BR-pin_podnoszenie_02" HP (7) jest nieaktywny
+1013	[I61.1] czujnik "BR-pin_podnoszenie_02" WP (7) jest nieaktywny
+1014	[I61.2] czujnik "BR-pin_02" HP (8) jest nieaktywny
+1015	[I70.0] czujnik "BR-pin_podnoszenie_03" HP (9) jest nieaktywny
+1016	[I71.0] czujnik "BR-pin_podnoszenie_03" WP (9) jest nieaktywny
+1017	[I70.2] czujnik "BR-pin_03" HP (10) jest nieaktywny
+1018	[I70.1] czujnik "BR-pin_podnoszenie_04" HP (11) jest nieaktywny
+1019	[I71.1] czujnik "BR-pin_podnoszenie_04" WP (11) jest nieaktywny
+1020	[I71.2] czujnik "BR-pin_04" HP (12) jest nieaktywny
+1021	[I60.4] czujnik "BR-blat5_przod" HP (13) jest nieaktywny
+1022	[I61.4] czujnik "BR-blat5_przod" WP (13) jest nieaktywny
+1023	[I60.5] czujnik "BR-blat_tyl_lewy" HP (14) jest nieaktywny
+1024	[I61.5] czujnik "BR-blat_tyl_lewy" WP (14) jest nieaktywny
+1025	[I70.4] czujnik "BR-blat_tyl_prawy" HP (15) jest nieaktywny
+1026	[I71.4] czujnik "BR-blat_tyl_prawy" WP (15) jest nieaktywny
+1027	[I20.0] czujnik "ST1-przesuw_stacji" HP (16) jest nieaktywny
+1028	[I21.0] czujnik "ST1-przesuw_stacji" WP (16) jest nieaktywny
+1029	[I20.1] czujnik "ST1-wysuw_miecza" HP (17) jest nieaktywny
+1030	[I21.1] czujnik "ST1-wysuw_miecza" WP (17) jest nieaktywny
+1031	[I20.2] czujnik "ST1-miecz" HP (18) jest nieaktywny
+1032	[I21.2] czujnik "ST1-miecz" WP (18) jest nieaktywny
+1033	[I150.0] czujnik "ST2-przesuw_stacji" HP (19) jest nieaktywny
+1034	[I151.0] czujnik "ST2-przesuw_stacji" WP (19) jest nieaktywny
+1035	[I150.1] czujnik "ST2-wysuw_miecza" HP (20) jest nieaktywny
+1036	[I151.1] czujnik "ST2-wysuw_miecza" WP (20) jest nieaktywny
+1037	[I150.2] czujnik "ST2-miecz" HP (21) jest nieaktywny
+1038	[I151.2] czujnik "ST2-miecz" WP (21) jest nieaktywny
+1039	[I30.0] czujnik "ST3-miecz" HP (22) jest nieaktywny
+1040	[I31.0] czujnik "ST3-miecz" WP (22) jest nieaktywny
+1041	[I30.1] czujnik "ST3-zderzak" HP (23) jest nieaktywny
+1042	[I31.1] czujnik "ST3-zderzak" WP (23) jest nieaktywny
+1043	[I30.2] czujnik "ST3-podnoszenie_miecza" HP (24) jest nieaktywny
+1044	[I31.2] czujnik "ST3-podnoszenie_miecza" HP (24) jest nieaktywny
+1045	[I30.3] czujnik "ST3-podnoszenie_miecza" WP (24) jest nieaktywny
+1046	[I160.0] czujnik "ST4-miecz" HP (25) jest nieaktywny
+1047	[I161.0] czujnik "ST4-miecz" WP (25) jest nieaktywny
+1048	[I160.1] czujnik "ST4-zderzak" HP (26) jest nieaktywny
+1049	[I161.1] czujnik "ST4-zderzak" WP (26) jest nieaktywny
+1050	[I160.2] czujnik "ST4-podnoszenie_miecza" HP (27) jest nieaktywny
+1051	[I161.2] czujnik "ST4-podnoszenie_miecza" HP (27) jest nieaktywny
+1052	[I160.3] czujnik "ST4-podnoszenie_miecza" WP (27) jest nieaktywny
+1053	[I40.2] czujnik "ST5-przesuw_stacji" HP (28) jest nieaktywny
+1054	[I41.2] czujnik "ST5-przesuw_stacji" WP (28) jest nieaktywny
+1055	[I41.0] czujnik "ST5-stacja_maly_skok" HP (29) jest nieaktywny
+1056	[I40.0] czujnik "ST5-stacja_maly_skok" WP (29) jest nieaktywny
+1057	[I41.1] czujnik "ST5-stacja_duzy_skok" HP (30) jest nieaktywny
+1058	[I40.1] czujnik "ST5-stacja_duzy_skok" WP (30) jest nieaktywny
+1059	[I40.3] czujnik "ST5-pin" HP (31) jest nieaktywny
+1060	[I170.2] czujnik "ST6-przesuw_stacji" HP (32) jest nieaktywny
+1061	[I171.2] czujnik "ST6-przesuw_stacji" WP (32) jest nieaktywny
+1062	[I171.0] czujnik "ST6-stacja_maly_skok" HP (33) jest nieaktywny
+1063	[I170.0] czujnik "ST6-stacja_maly_skok" WP (33) jest nieaktywny
+1064	[I171.1] czujnik "ST6-stacja_duzy_skok" HP (34) jest nieaktywny
+1065	[I170.1] czujnik "ST6-stacja_duzy_skok" WP (34) jest nieaktywny
+1066	[I170.3] czujnik "ST6-pin" HP (35) jest nieaktywny
+1067	[I140.0] czujnik "ST7-przesuw_miecza_1l" HP (36) jest nieaktywny
+1068	[I141.0] czujnik "ST7-przesuw_miecza_1l" WP (36) jest nieaktywny
+1069	[I140.2] czujnik "ST7-przesuw_miecza_1p" HP (37) jest nieaktywny
+1070	[I141.2] czujnik "ST7-przesuw_miecza_1p" WP (37) jest nieaktywny
+1071	[I140.1] czujnik "ST7-przesuw_dociskow" HP (38) jest nieaktywny
+1072	[I141.1] czujnik "ST7-przesuw_dociskow" WP (38) jest nieaktywny
+1073	[I120.0] czujnik "ST7-przesuw_miecza_y_2l" HP (39) jest nieaktywny
+1074	[I121.0] czujnik "ST7-przesuw_miecza_y_2l" WP (39) jest nieaktywny
+1075	[I120.1] czujnik "ST7-miecz_2l" HP (40) jest nieaktywny
+1076	[I121.1] czujnik "ST7-miecz_2l" WP (40) jest nieaktywny
+1077	[I130.0] czujnik "ST7-przesuw_miecza_y_2p" HP (41) jest nieaktywny
+1078	[I131.0] czujnik "ST7-przesuw_miecza_y_2p" WP (41) jest nieaktywny
+1079	[I130.1] czujnik "ST7-miecz_2p" HP (42) jest nieaktywny
+1080	[I131.1] czujnik "ST7-miecz_2p" WP (42) jest nieaktywny
+1081	[I120.2] czujnik "ST7-przesuw_miecza_x_3l" HP (43) jest nieaktywny
+1082	[I121.2] czujnik "ST7-przesuw_miecza_x_3l" WP (43) jest nieaktywny
+1083	[I120.3] czujnik "ST7-przesuw_miecza_y_3l" HP (44) jest nieaktywny
+1084	[I121.3] czujnik "ST7-przesuw_miecza_y_3l" WP (44) jest nieaktywny
+1085	[I120.4] czujnik "ST7-miecz_3l" HP (45) jest nieaktywny
+1086	[I121.4] czujnik "ST7-miecz_3l" WP (45) jest nieaktywny
+1087	[I130.2] czujnik "ST7-przesuw_miecza_x_3p" HP (46) jest nieaktywny
+1088	[I131.2] czujnik "ST7-przesuw_miecza_x_3p" WP (46) jest nieaktywny
+1089	[I130.3] czujnik "ST7-przesuw_miecza_y_3p" HP (47) jest nieaktywny
+1090	[I131.3] czujnik "ST7-przesuw_miecza_y_3p" WP (47) jest nieaktywny
+1091	[I130.4] czujnik "ST7-miecz_3p" HP (48) jest nieaktywny
+1092	[I131.4] czujnik "ST7-miecz_3p" WP (48) jest nieaktywny
+1093	[I130.5] czujnik "ST7-wysuw_grzebienia" HP (49) jest nieaktywny
+1094	[I131.5] czujnik "ST7-wysuw_grzebienia" WP (49) jest nieaktywny
+1095	[I120.5] czujnik "ST7-grzebien" HP (50) jest nieaktywny
+1096	[I121.5] czujnik "ST7-grzebien" WP (50) jest nieaktywny
+1097	[I41.3] czujnik "ST5-sen_obecnosc_poduszki" jest aktywny
+1098	[I41.3] czujnik "ST5-sen_obecnosc_poduszki" jest nieaktywny
+1099	[I171.3] czujnik "ST6-sen_obecnosc_poduszki" jest aktywny
+1100	[I171.3] czujnik "ST6-sen_obecnosc_poduszki" jest nieaktywny
+1101	[I50.0] czujnik "GN-sen_obecnosc_klipsa_lewy" jest aktywny
+1102	[I50.0] czujnik "GN-sen_obecnosc_klipsa_lewy" jest nieaktywny
+1103	[I51.0] czujnik "GN-sen_obecnosc_klipsa_prawy" jest aktywny
+1104	[I51.0] czujnik "GN-sen_obecnosc_klipsa_prawy" jest nieaktywny
+1105	[I51.4] czujnik "GN-sen_pozycja_skanera_lewo" jest aktywny
+1106	[I51.4] czujnik "GN-sen_pozycja_skanera_lewo" jest nieaktywny
+1107	[I71.5] czujnik "GN-sen_pozycja_skanera_prawo" jest aktywny
+1108	[I71.5] czujnik "GN-sen_pozycja_skanera_prawo" jest nieaktywny
+1109	[I50.5] czujnik "GN-sen_obecnosc_sruby_lewo" jest aktywny
+1110	[I50.5] czujnik "GN-sen_obecnosc_sruby_lewo" jest nieaktywny
+1111	[I51.5] czujnik "GN-sen_obecnosc_sruby_srodek" jest aktywny
+1112	[I51.5] czujnik "GN-sen_obecnosc_sruby_srodek" jest nieaktywny
+1113	[I50.6] czujnik "GN-sen_obecnosc_sruby_prawo" jest aktywny
+1114	[I50.6] czujnik "GN-sen_obecnosc_sruby_prawo" jest nieaktywny
+1115	[I60.3] czujnik "BR-sen_poduszka_na_pinie_01" jest aktywny
+1116	[I60.3] czujnik "BR-sen_poduszka_na_pinie_01" jest nieaktywny
+1117	[I61.3] czujnik "BR-sen_poduszka_na_pinie_02" jest aktywny
+1118	[I61.3] czujnik "BR-sen_poduszka_na_pinie_02" jest nieaktywny
+1119	[I70.3] czujnik "BR-sen_poduszka_na_pinie_03" jest aktywny
+1120	[I70.3] czujnik "BR-sen_poduszka_na_pinie_03" jest nieaktywny
+1121	[I71.3] czujnik "BR-sen_poduszka_na_pinie_04" jest aktywny
+1122	[I71.3] czujnik "BR-sen_poduszka_na_pinie_04" jest nieaktywny
+1123	[I0.1]  "SAFETY_cisnienie_ok" jest nieaktywny
+1124	[I0.2]  "SAFETY_estop_wcisniety" jest nieaktywny
+1125	[I0.3]  "SAFETY_drzwi_ok" jest nieaktywny
+1126	[I0.4]  "SAFETY_kurtyna_ok" jest nieaktywny
+1127	[I0.5]  "SAFETY_estop_ok" jest nieaktywny
+1128	[I0.0] przycisk "A-btn_start" jest aktywny
+1129	[I0.0] przycisk "A-btn_start" jest nieaktywny
+1130	[I0.6] przycisk "A-btn_panel_zielony" jest aktywny
+1131	[I0.6] przycisk "A-btn_panel_zielony" jest nieaktywny
+1132	[I0.7] przycisk "A-btn_panel_czerwony" jest aktywny
+1133	[I0.7] przycisk "A-btn_panel_czerwony" jest nieaktywny

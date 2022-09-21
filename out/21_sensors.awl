@@ -21,6 +21,31 @@ L "A-ALARMS".VALVES.err1;
 L 0;
 ==I;
 );
+A(;
+L "A-ALARMS".VALVES.err2;
+L 0;
+==I;
+);
+A(;
+L "A-ALARMS".VALVES.err3;
+L 0;
+==I;
+);
+A(;
+L "A-ALARMS".VALVES.err4;
+L 0;
+==I;
+);
+A(;
+L "A-ALARMS".VALVES.err5;
+L 0;
+==I;
+);
+A(;
+L "A-ALARMS".VALVES.err6;
+L 0;
+==I;
+);
       NOT;
       AN "A-Flags".MODE._NONE;
       = "A-ALARMS".VALVES.error;
@@ -37,11 +62,6 @@ L 0;
 );
 A(;
 L "A-ALARMS".SENSORS.sen1;
-L 0;
-==I;
-);
-A(;
-L "A-ALARMS".SENSORS.sen2;
 L 0;
 ==I;
 );
@@ -114,8 +134,8 @@ TITLE = GLOBAL ERROR
 NETWORK
 TITLE = ======== SENSORS =========
 NETWORK
-TITLE = [I10.0] ST1-sen_sruba_01
-//[I10.0] ST1-sen_screw_01
+TITLE = [I41.3] ST5-sen_obecnosc_poduszki
+//[I41.3] ST5-sen_bag_presence
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -130,18 +150,18 @@ TITLE = [I10.0] ST1-sen_sruba_01
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I10.0 , 
+         in_sensor                   := %I41.3 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."ST1-sen_screw_01".ok , 
-         out_show                    := "A-ALARMS".SENSORS."ST1-sen_screw_01".show , 
-         out_led                     := "A-ALARMS".SENSORS."ST1-sen_screw_01".led , 
+         out_ok                      := "A-ALARMS".SENSORS."ST5-sen_bag_presence".ok , 
+         out_show                    := "A-ALARMS".SENSORS."ST5-sen_bag_presence".show , 
+         out_led                     := "A-ALARMS".SENSORS."ST5-sen_bag_presence".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen0.%X0 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen0.%X1
       );
 NETWORK
-TITLE = [I11.0] ST1-sen_sruba_02
-//[I11.0] ST1-sen_screw_02
+TITLE = [I171.3] ST6-sen_obecnosc_poduszki
+//[I171.3] ST6-sen_bag_presence
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -156,18 +176,18 @@ TITLE = [I11.0] ST1-sen_sruba_02
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I11.0 , 
+         in_sensor                   := %I171.3 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."ST1-sen_screw_02".ok , 
-         out_show                    := "A-ALARMS".SENSORS."ST1-sen_screw_02".show , 
-         out_led                     := "A-ALARMS".SENSORS."ST1-sen_screw_02".led , 
+         out_ok                      := "A-ALARMS".SENSORS."ST6-sen_bag_presence".ok , 
+         out_show                    := "A-ALARMS".SENSORS."ST6-sen_bag_presence".show , 
+         out_led                     := "A-ALARMS".SENSORS."ST6-sen_bag_presence".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen0.%X2 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen0.%X3
       );
 NETWORK
-TITLE = [I10.1] ST1-sen_sruba_03
-//[I10.1] ST1-sen_screw_03
+TITLE = [I50.0] GN-sen_obecnosc_klipsa_lewy
+//[I50.0] GN-sen_clips_presence_left
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -182,18 +202,18 @@ TITLE = [I10.1] ST1-sen_sruba_03
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I10.1 , 
+         in_sensor                   := %I50.0 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."ST1-sen_screw_03".ok , 
-         out_show                    := "A-ALARMS".SENSORS."ST1-sen_screw_03".show , 
-         out_led                     := "A-ALARMS".SENSORS."ST1-sen_screw_03".led , 
+         out_ok                      := "A-ALARMS".SENSORS."GN-sen_clips_presence_left".ok , 
+         out_show                    := "A-ALARMS".SENSORS."GN-sen_clips_presence_left".show , 
+         out_led                     := "A-ALARMS".SENSORS."GN-sen_clips_presence_left".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen0.%X4 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen0.%X5
       );
 NETWORK
-TITLE = [I11.1] ST1-sen_sruba_04
-//[I11.1] ST1-sen_screw_04
+TITLE = [I51.0] GN-sen_obecnosc_klipsa_prawy
+//[I51.0] GN-sen_clips_presence_right
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -208,18 +228,18 @@ TITLE = [I11.1] ST1-sen_sruba_04
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I11.1 , 
+         in_sensor                   := %I51.0 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."ST1-sen_screw_04".ok , 
-         out_show                    := "A-ALARMS".SENSORS."ST1-sen_screw_04".show , 
-         out_led                     := "A-ALARMS".SENSORS."ST1-sen_screw_04".led , 
+         out_ok                      := "A-ALARMS".SENSORS."GN-sen_clips_presence_right".ok , 
+         out_show                    := "A-ALARMS".SENSORS."GN-sen_clips_presence_right".show , 
+         out_led                     := "A-ALARMS".SENSORS."GN-sen_clips_presence_right".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen0.%X6 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen0.%X7
       );
 NETWORK
-TITLE = [I10.4] STA-sen_pakiet
-//[I10.4] STA-sen_package
+TITLE = [I51.4] GN-sen_pozycja_skanera_lewo
+//[I51.4] GN-sen_scanner_position_left
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -234,18 +254,18 @@ TITLE = [I10.4] STA-sen_pakiet
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I10.4 , 
+         in_sensor                   := %I51.4 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."STA-sen_package".ok , 
-         out_show                    := "A-ALARMS".SENSORS."STA-sen_package".show , 
-         out_led                     := "A-ALARMS".SENSORS."STA-sen_package".led , 
+         out_ok                      := "A-ALARMS".SENSORS."GN-sen_scanner_position_left".ok , 
+         out_show                    := "A-ALARMS".SENSORS."GN-sen_scanner_position_left".show , 
+         out_led                     := "A-ALARMS".SENSORS."GN-sen_scanner_position_left".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen0.%X8 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen0.%X9
       );
 NETWORK
-TITLE = [I11.4] STB-sen_pakiet
-//[I11.4] STB-sen_package
+TITLE = [I71.5] GN-sen_pozycja_skanera_prawo
+//[I71.5] GN-sen_scanner_position_right
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -260,18 +280,18 @@ TITLE = [I11.4] STB-sen_pakiet
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I11.4 , 
+         in_sensor                   := %I71.5 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."STB-sen_package".ok , 
-         out_show                    := "A-ALARMS".SENSORS."STB-sen_package".show , 
-         out_led                     := "A-ALARMS".SENSORS."STB-sen_package".led , 
+         out_ok                      := "A-ALARMS".SENSORS."GN-sen_scanner_position_right".ok , 
+         out_show                    := "A-ALARMS".SENSORS."GN-sen_scanner_position_right".show , 
+         out_led                     := "A-ALARMS".SENSORS."GN-sen_scanner_position_right".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen0.%X10 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen0.%X11
       );
 NETWORK
-TITLE = [I10.5] STA-sen_wtyczka
-//[I10.5] STA-sen_plug
+TITLE = [I50.5] GN-sen_obecnosc_sruby_lewo
+//[I50.5] GN-sen_screw_presence_left
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -286,18 +306,18 @@ TITLE = [I10.5] STA-sen_wtyczka
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I10.5 , 
+         in_sensor                   := %I50.5 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."STA-sen_plug".ok , 
-         out_show                    := "A-ALARMS".SENSORS."STA-sen_plug".show , 
-         out_led                     := "A-ALARMS".SENSORS."STA-sen_plug".led , 
+         out_ok                      := "A-ALARMS".SENSORS."GN-sen_screw_presence_left".ok , 
+         out_show                    := "A-ALARMS".SENSORS."GN-sen_screw_presence_left".show , 
+         out_led                     := "A-ALARMS".SENSORS."GN-sen_screw_presence_left".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen0.%X12 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen0.%X13
       );
 NETWORK
-TITLE = [I11.5] STB-sen_wtyczka
-//[I11.5] STB-sen_plug
+TITLE = [I51.5] GN-sen_obecnosc_sruby_srodek
+//[I51.5] GN-sen_screw_presence_middle
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -312,18 +332,18 @@ TITLE = [I11.5] STB-sen_wtyczka
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I11.5 , 
+         in_sensor                   := %I51.5 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."STB-sen_plug".ok , 
-         out_show                    := "A-ALARMS".SENSORS."STB-sen_plug".show , 
-         out_led                     := "A-ALARMS".SENSORS."STB-sen_plug".led , 
+         out_ok                      := "A-ALARMS".SENSORS."GN-sen_screw_presence_middle".ok , 
+         out_show                    := "A-ALARMS".SENSORS."GN-sen_screw_presence_middle".show , 
+         out_led                     := "A-ALARMS".SENSORS."GN-sen_screw_presence_middle".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen0.%X14 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen0.%X15
       );
 NETWORK
-TITLE = [I10.6] ST1-sen_gniazdo_00
-//[I10.6] ST1-sen_nest_00
+TITLE = [I50.6] GN-sen_obecnosc_sruby_prawo
+//[I50.6] GN-sen_screw_presence_right
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -338,18 +358,18 @@ TITLE = [I10.6] ST1-sen_gniazdo_00
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I10.6 , 
+         in_sensor                   := %I50.6 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."ST1-sen_nest_00".ok , 
-         out_show                    := "A-ALARMS".SENSORS."ST1-sen_nest_00".show , 
-         out_led                     := "A-ALARMS".SENSORS."ST1-sen_nest_00".led , 
+         out_ok                      := "A-ALARMS".SENSORS."GN-sen_screw_presence_right".ok , 
+         out_show                    := "A-ALARMS".SENSORS."GN-sen_screw_presence_right".show , 
+         out_led                     := "A-ALARMS".SENSORS."GN-sen_screw_presence_right".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen1.%X0 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen1.%X1
       );
 NETWORK
-TITLE = [I11.6] ST1-sen_gniazdo_01
-//[I11.6] ST1-sen_nest_01
+TITLE = [I60.3] BR-sen_poduszka_na_pinie_01
+//[I60.3] BR-sen_bag_on_pin_01
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -364,18 +384,18 @@ TITLE = [I11.6] ST1-sen_gniazdo_01
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I11.6 , 
+         in_sensor                   := %I60.3 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."ST1-sen_nest_01".ok , 
-         out_show                    := "A-ALARMS".SENSORS."ST1-sen_nest_01".show , 
-         out_led                     := "A-ALARMS".SENSORS."ST1-sen_nest_01".led , 
+         out_ok                      := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_01".ok , 
+         out_show                    := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_01".show , 
+         out_led                     := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_01".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen1.%X2 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen1.%X3
       );
 NETWORK
-TITLE = [I10.7] ST1-sen_gniazdo_02
-//[I10.7] ST1-sen_nest_02
+TITLE = [I61.3] BR-sen_poduszka_na_pinie_02
+//[I61.3] BR-sen_bag_on_pin_02
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -390,18 +410,18 @@ TITLE = [I10.7] ST1-sen_gniazdo_02
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I10.7 , 
+         in_sensor                   := %I61.3 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."ST1-sen_nest_02".ok , 
-         out_show                    := "A-ALARMS".SENSORS."ST1-sen_nest_02".show , 
-         out_led                     := "A-ALARMS".SENSORS."ST1-sen_nest_02".led , 
+         out_ok                      := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_02".ok , 
+         out_show                    := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_02".show , 
+         out_led                     := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_02".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen1.%X4 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen1.%X5
       );
 NETWORK
-TITLE = [I30.0] A-sen_stol_00
-//[I30.0] A-sen_table_00
+TITLE = [I70.3] BR-sen_poduszka_na_pinie_03
+//[I70.3] BR-sen_bag_on_pin_03
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -416,18 +436,18 @@ TITLE = [I30.0] A-sen_stol_00
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I30.0 , 
+         in_sensor                   := %I70.3 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."A-sen_table_00".ok , 
-         out_show                    := "A-ALARMS".SENSORS."A-sen_table_00".show , 
-         out_led                     := "A-ALARMS".SENSORS."A-sen_table_00".led , 
+         out_ok                      := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_03".ok , 
+         out_show                    := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_03".show , 
+         out_led                     := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_03".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen1.%X6 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen1.%X7
       );
 NETWORK
-TITLE = [I31.0] A-sen_stol_01
-//[I31.0] A-sen_table_01
+TITLE = [I71.3] BR-sen_poduszka_na_pinie_04
+//[I71.3] BR-sen_bag_on_pin_04
       A "Log_0";
 //    O     "A-Flags".STATION.IN_HP_STEP
       O "A-Flags".MODE._NONE;
@@ -442,144 +462,14 @@ TITLE = [I31.0] A-sen_stol_01
       CALL "vor_Sensor"
       (  in_a                        := #a , 
          in_an                       := #an , 
-         in_sensor                   := %I31.0 , 
+         in_sensor                   := %I71.3 , 
          in_direct                   := False , 
 		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."A-sen_table_01".ok , 
-         out_show                    := "A-ALARMS".SENSORS."A-sen_table_01".show , 
-         out_led                     := "A-ALARMS".SENSORS."A-sen_table_01".led , 
+         out_ok                      := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_04".ok , 
+         out_show                    := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_04".show , 
+         out_led                     := "A-ALARMS".SENSORS."BR-sen_bag_on_pin_04".led , 
          out_error_hp                := "A-ALARMS".SENSORS.sen1.%X8 , 
          out_error_wp                := "A-ALARMS".SENSORS.sen1.%X9
-      );
-NETWORK
-TITLE = [I20.0] ST1-sen_skaner_lewo
-//[I20.0] ST1-sen_scanner_left
-      A "Log_0";
-//    O     "A-Flags".STATION.IN_HP_STEP
-      O "A-Flags".MODE._NONE;
-      = #an;
-
-      A "Log_0";
-      = #a;
-
-      A     "Log_0";
-      =     #neg;
-	  
-      CALL "vor_Sensor"
-      (  in_a                        := #a , 
-         in_an                       := #an , 
-         in_sensor                   := %I20.0 , 
-         in_direct                   := False , 
-		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."ST1-sen_scanner_left".ok , 
-         out_show                    := "A-ALARMS".SENSORS."ST1-sen_scanner_left".show , 
-         out_led                     := "A-ALARMS".SENSORS."ST1-sen_scanner_left".led , 
-         out_error_hp                := "A-ALARMS".SENSORS.sen1.%X10 , 
-         out_error_wp                := "A-ALARMS".SENSORS.sen1.%X11
-      );
-NETWORK
-TITLE = [I21.0] ST1-sen_skaner_prawo
-//[I21.0] ST1-sen_scanner_right
-      A "Log_0";
-//    O     "A-Flags".STATION.IN_HP_STEP
-      O "A-Flags".MODE._NONE;
-      = #an;
-
-      A "Log_0";
-      = #a;
-
-      A     "Log_0";
-      =     #neg;
-	  
-      CALL "vor_Sensor"
-      (  in_a                        := #a , 
-         in_an                       := #an , 
-         in_sensor                   := %I21.0 , 
-         in_direct                   := False , 
-		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."ST1-sen_scanner_right".ok , 
-         out_show                    := "A-ALARMS".SENSORS."ST1-sen_scanner_right".show , 
-         out_led                     := "A-ALARMS".SENSORS."ST1-sen_scanner_right".led , 
-         out_error_hp                := "A-ALARMS".SENSORS.sen1.%X12 , 
-         out_error_wp                := "A-ALARMS".SENSORS.sen1.%X13
-      );
-NETWORK
-TITLE = [I1.1] WEISS_na_pozycji
-//[I1.1] WEISS_on_position
-      A "Log_0";
-//    O     "A-Flags".STATION.IN_HP_STEP
-      O "A-Flags".MODE._NONE;
-      = #an;
-
-      A "Log_0";
-      = #a;
-
-      A     "Log_0";
-      =     #neg;
-	  
-      CALL "vor_Sensor"
-      (  in_a                        := #a , 
-         in_an                       := #an , 
-         in_sensor                   := %I1.1 , 
-         in_direct                   := False , 
-		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."WEISS_on_position".ok , 
-         out_show                    := "A-ALARMS".SENSORS."WEISS_on_position".show , 
-         out_led                     := "A-ALARMS".SENSORS."WEISS_on_position".led , 
-         out_error_hp                := "A-ALARMS".SENSORS.sen1.%X14 , 
-         out_error_wp                := "A-ALARMS".SENSORS.sen1.%X15
-      );
-NETWORK
-TITLE = [I1.2] WEISS_alarm
-//[I1.2] WEISS_alarm
-      A "Log_0";
-//    O     "A-Flags".STATION.IN_HP_STEP
-      O "A-Flags".MODE._NONE;
-      = #an;
-
-      A "Log_0";
-      = #a;
-
-      A     "Log_0";
-      =     #neg;
-	  
-      CALL "vor_Sensor"
-      (  in_a                        := #a , 
-         in_an                       := #an , 
-         in_sensor                   := %I1.2 , 
-         in_direct                   := False , 
-		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."WEISS_alarm".ok , 
-         out_show                    := "A-ALARMS".SENSORS."WEISS_alarm".show , 
-         out_led                     := "A-ALARMS".SENSORS."WEISS_alarm".led , 
-         out_error_hp                := "A-ALARMS".SENSORS.sen2.%X0 , 
-         out_error_wp                := "A-ALARMS".SENSORS.sen2.%X1
-      );
-NETWORK
-TITLE = [I1.3] WEISS_zezwolenie_na_start
-//[I1.3] WEISS_start_permitted
-      A "Log_0";
-//    O     "A-Flags".STATION.IN_HP_STEP
-      O "A-Flags".MODE._NONE;
-      = #an;
-
-      A "Log_0";
-      = #a;
-
-      A     "Log_0";
-      =     #neg;
-	  
-      CALL "vor_Sensor"
-      (  in_a                        := #a , 
-         in_an                       := #an , 
-         in_sensor                   := %I1.3 , 
-         in_direct                   := False , 
-		 in_vis_negation			 := #neg ,
-         out_ok                      := "A-ALARMS".SENSORS."WEISS_start_permitted".ok , 
-         out_show                    := "A-ALARMS".SENSORS."WEISS_start_permitted".show , 
-         out_led                     := "A-ALARMS".SENSORS."WEISS_start_permitted".led , 
-         out_error_hp                := "A-ALARMS".SENSORS.sen2.%X2 , 
-         out_error_wp                := "A-ALARMS".SENSORS.sen2.%X3
       );
 
 NETWORK
@@ -689,22 +579,54 @@ NETWORK
 TITLE = Inputs
 L "I0";
 T "A-ALARMS".diagin[1];
-L "I1";
-T "A-ALARMS".diagin[2];
-L "I2";
-T "A-ALARMS".diagin[3];
-L "I10";
-T "A-ALARMS".diagin[4];
-L "I11";
-T "A-ALARMS".diagin[5];
 L "I20";
-T "A-ALARMS".diagin[6];
+T "A-ALARMS".diagin[2];
 L "I21";
-T "A-ALARMS".diagin[7];
+T "A-ALARMS".diagin[3];
 L "I30";
-T "A-ALARMS".diagin[8];
+T "A-ALARMS".diagin[4];
 L "I31";
+T "A-ALARMS".diagin[5];
+L "I40";
+T "A-ALARMS".diagin[6];
+L "I41";
+T "A-ALARMS".diagin[7];
+L "I50";
+T "A-ALARMS".diagin[8];
+L "I51";
 T "A-ALARMS".diagin[9];
+L "I60";
+T "A-ALARMS".diagin[10];
+L "I61";
+T "A-ALARMS".diagin[11];
+L "I70";
+T "A-ALARMS".diagin[12];
+L "I71";
+T "A-ALARMS".diagin[13];
+L "I120";
+T "A-ALARMS".diagin[14];
+L "I121";
+T "A-ALARMS".diagin[15];
+L "I130";
+T "A-ALARMS".diagin[16];
+L "I131";
+T "A-ALARMS".diagin[17];
+L "I140";
+T "A-ALARMS".diagin[18];
+L "I141";
+T "A-ALARMS".diagin[19];
+L "I150";
+T "A-ALARMS".diagin[20];
+L "I151";
+T "A-ALARMS".diagin[21];
+L "I160";
+T "A-ALARMS".diagin[22];
+L "I161";
+T "A-ALARMS".diagin[23];
+L "I170";
+T "A-ALARMS".diagin[24];
+L "I171";
+T "A-ALARMS".diagin[25];
 
 
 NETWORK
@@ -713,16 +635,54 @@ L "Q0";
 T "A-ALARMS".diagout[1];
 L "Q1";
 T "A-ALARMS".diagout[2];
-L "Q2";
-T "A-ALARMS".diagout[3];
 L "Q20";
-T "A-ALARMS".diagout[4];
+T "A-ALARMS".diagout[3];
 L "Q21";
+T "A-ALARMS".diagout[4];
+L "Q30";
 T "A-ALARMS".diagout[5];
-L "Q40";
+L "Q31";
 T "A-ALARMS".diagout[6];
-L "Q41";
+L "Q40";
 T "A-ALARMS".diagout[7];
+L "Q41";
+T "A-ALARMS".diagout[8];
+L "Q50";
+T "A-ALARMS".diagout[9];
+L "Q51";
+T "A-ALARMS".diagout[10];
+L "Q140";
+T "A-ALARMS".diagout[11];
+L "Q141";
+T "A-ALARMS".diagout[12];
+L "Q150";
+T "A-ALARMS".diagout[13];
+L "Q151";
+T "A-ALARMS".diagout[14];
+L "Q160";
+T "A-ALARMS".diagout[15];
+L "Q161";
+T "A-ALARMS".diagout[16];
+L "Q170";
+T "A-ALARMS".diagout[17];
+L "Q171";
+T "A-ALARMS".diagout[18];
+L "Q3000";
+T "A-ALARMS".diagout[19];
+L "Q3001";
+T "A-ALARMS".diagout[20];
+L "Q3004";
+T "A-ALARMS".diagout[21];
+L "Q3005";
+T "A-ALARMS".diagout[22];
+L "Q3008";
+T "A-ALARMS".diagout[23];
+L "Q3009";
+T "A-ALARMS".diagout[24];
+L "Q3012";
+T "A-ALARMS".diagout[25];
+L "Q3013";
+T "A-ALARMS".diagout[26];
 
 END_FUNCTION
 

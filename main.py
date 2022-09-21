@@ -8,6 +8,10 @@ import sys
 TODO
 1) Dodac wyswietlanie wartosci w przypadku kontroli NOK
 2) Dodac wykrywanie unikalności w przypadku roznych prefixow - Zrobiono 2022.09.17
+3) Dodac generowanie tagow sensorów hmi dla wizualizacji tych sensorów
+4) Dodać listę mechanizmów na listę obsługi panelu HMI
+5) Sprawdzić generowanie numeru MAX dla ekranów diagnostycznych. Linia 662. Zastosować zaokrągalnie góra
+6) W przypadku zaworow jednocewkowych dorzucic zamiane NaN na numer wyjscia
 '''
 
 zawory = []
@@ -652,7 +656,8 @@ def generuj_alarms_db(_licznik, _zawory, _sensory, _safety, _buttons, _adresyI, 
     _dbvalves_data = _dbvalves_data.replace('{BUTTONS2_STRUCT}', _txt)       
 
     _dbvalves_data = _dbvalves_data.replace('{DRIVES_STRUCT}', 'drv0 : UInt;\n')
-
+    print('dlugosc', len(_adresyI))
+    print('dlQ', len(_adresyQ))
     _dbvalves_data = _dbvalves_data.replace('{IN}', str(len(_adresyI)))
     _dbvalves_data = _dbvalves_data.replace('{OUT}', str(len(_adresyQ)))
     _dbvalves_data = _dbvalves_data.replace('{IN_MAX}', str(int(len(_adresyI) / 9)))
@@ -1065,6 +1070,6 @@ def main(args):
 
 
 if __name__ == '__main__':
-    main('LK07.xlsx')
+    main('LK03.xlsx')
     # main(sys.argv)
 

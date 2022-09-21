@@ -1,83 +1,227 @@
 I0.0: A-btn_start
 I0.1: SAFETY_cisnienie_ok
-I0.2: SAFETY_faza_ok
-I0.3: SAFETY_stol_ok
+I0.2: SAFETY_estop_wcisniety
+I0.3: SAFETY_drzwi_ok
 I0.4: SAFETY_kurtyna_ok
 I0.5: SAFETY_estop_ok
 I0.6: A-btn_panel_zielony
 I0.7: A-btn_panel_czerwony
 
-I1.0: SAFETY_drzwi_zamkniete
-I1.1: WEISS_na_pozycji
-I1.2: WEISS_alarm
-I1.3: WEISS_zezwolenie_na_start
-I1.4: 
-I1.5: 
-I1.6: 
-I1.7: 
-
-I2.0: PRIMER_pomiar_trwa
-I2.1: PRIMER_pomiar_zakonczono
-I2.2: PRIMER_pomiar_error
-I2.3: PRIMER_pomiar_mniejszy_rowny
-I2.4: PRIMER_pomiar_mniejszy
-I2.5: PRIMER_pomiar_rowny
-I2.6: PRIMER_pomiar_wiekszy
-I2.7: PRIMER_pomiar_wiekszy_rowny
-
-I10.0: ST1-sen_sruba_01
-I10.1: ST1-sen_sruba_03
-I10.2: ST1-sen_modul_HP
-I10.3: ST1-sen_modul_HP
-I10.4: STA-sen_pakiet
-I10.5: STA-sen_wtyczka
-I10.6: ST1-sen_gniazdo_00
-I10.7: ST1-sen_gniazdo_02
-
-I11.0: ST1-sen_sruba_02
-I11.1: ST1-sen_sruba_04
-I11.2: ST1-sen_modul_WP
-I11.3: ST1-sen_modul_WP
-I11.4: STB-sen_pakiet
-I11.5: STB-sen_wtyczka
-I11.6: ST1-sen_gniazdo_01
-I11.7: 
-
-I20.0: ST1-sen_skaner_lewo
-I20.1: ST1-sen_dzwignia_HP
-I20.2: ST1-sen_wtyczka_HP
+I20.0: ST1-sen_przesuw_stacji_HP
+I20.1: ST1-sen_wysuw_miecza_HP
+I20.2: ST1-sen_miecz_HP
 I20.3: 
 I20.4: 
 I20.5: 
 I20.6: 
 I20.7: 
 
-I21.0: ST1-sen_skaner_prawo
-I21.1: ST1-sen_dzwignia_WP
-I21.2: ST1-sen_wtyczka_WP
+I21.0: ST1-sen_przesuw_stacji_WP
+I21.1: ST1-sen_wysuw_miecza_WP
+I21.2: ST1-sen_miecz_WP
 I21.3: 
 I21.4: 
 I21.5: 
 I21.6: 
 I21.7: 
 
-I30.0: A-sen_stol_00
-I30.1: ST2-sen_pomiar_gt2_HP
-I30.2: ST2-sen_pin_wtyczka_HP
-I30.3: ST2-sen_pin_generator_lewy_HP
-I30.4: ST2-sen_pin_generator_prawy_HP
+I30.0: ST3-sen_miecz_HP
+I30.1: ST3-sen_zderzak_HP
+I30.2: ST3-sen_podnoszenie_miecza_HP
+I30.3: ST3-sen_podnoszenie_miecza_WP
+I30.4: 
 I30.5: 
 I30.6: 
 I30.7: 
 
-I31.0: A-sen_stol_01
-I31.1: ST2-sen_pomiar_gt2_WP
-I31.2: ST2-sen_pin_wtyczka_WP
-I31.3: ST2-sen_pin_generator_lewy_WP
-I31.4: ST2-sen_pin_generator_prawy_WP
+I31.0: ST3-sen_miecz_WP
+I31.1: ST3-sen_zderzak_WP
+I31.2: ST3-sen_podnoszenie_miecza_HP
+I31.3: 
+I31.4: 
 I31.5: 
 I31.6: 
 I31.7: 
+
+I40.0: ST5-sen_stacja_maly_skok_WP
+I40.1: ST5-sen_stacja_duzy_skok_WP
+I40.2: ST5-sen_przesuw_stacji_HP
+I40.3: ST5-sen_pin_HP
+I40.4: 
+I40.5: 
+I40.6: 
+I40.7: 
+
+I41.0: ST5-sen_stacja_maly_skok_HP
+I41.1: ST5-sen_stacja_duzy_skok_HP
+I41.2: ST5-sen_przesuw_stacji_WP
+I41.3: ST5-sen_obecnosc_poduszki
+I41.4: 
+I41.5: 
+I41.6: 
+I41.7: 
+
+I50.0: GN-sen_obecnosc_klipsa_lewy
+I50.1: GN-sen_blokada_sruby_lewy_HP
+I50.2: GN-sen_blokada_sruby_srodek_HP
+I50.3: GN-sen_blokada_sruby_prawy_HP
+I50.4: GN-sen_zasuwka_HP
+I50.5: GN-sen_obecnosc_sruby_lewo
+I50.6: GN-sen_obecnosc_sruby_prawo
+I50.7: 
+
+I51.0: GN-sen_obecnosc_klipsa_prawy
+I51.1: GN-sen_blokada_sruby_lewy_WP
+I51.2: GN-sen_blokada_sruby_srodek_WP
+I51.3: GN-sen_blokada_sruby_prawy_WP
+I51.4: GN-sen_pozycja_skanera_lewo
+I51.5: GN-sen_obecnosc_sruby_srodek
+I51.6: 
+I51.7: 
+
+I60.0: BR-sen_pin_podnoszenie_01_HP
+I60.1: BR-sen_pin_podnoszenie_02_HP
+I60.2: BR-sen_pin_01_HP
+I60.3: BR-sen_poduszka_na_pinie_01
+I60.4: BR-sen_blat5_przod_HP
+I60.5: BR-sen_blat_tyl_lewy_HP
+I60.6: 
+I60.7: 
+
+I61.0: BR-sen_pin_podnoszenie_01_WP
+I61.1: BR-sen_pin_podnoszenie_02_WP
+I61.2: BR-sen_pin_02_HP
+I61.3: BR-sen_poduszka_na_pinie_02
+I61.4: BR-sen_blat5_przod_WP
+I61.5: BR-sen_blat_tyl_lewy_WP
+I61.6: 
+I61.7: 
+
+I70.0: BR-sen_pin_podnoszenie_03_HP
+I70.1: BR-sen_pin_podnoszenie_04_HP
+I70.2: BR-sen_pin_03_HP
+I70.3: BR-sen_poduszka_na_pinie_03
+I70.4: BR-sen_blat_tyl_prawy_HP
+I70.5: GN-sen_zasuwka_WP
+I70.6: 
+I70.7: 
+
+I71.0: BR-sen_pin_podnoszenie_03_WP
+I71.1: BR-sen_pin_podnoszenie_04_WP
+I71.2: BR-sen_pin_04_HP
+I71.3: BR-sen_poduszka_na_pinie_04
+I71.4: BR-sen_blat_tyl_prawy_WP
+I71.5: GN-sen_pozycja_skanera_prawo
+I71.6: 
+I71.7: 
+
+I120.0: ST7-sen_przesuw_miecza_y_2l_HP
+I120.1: ST7-sen_miecz_2l_HP
+I120.2: ST7-sen_przesuw_miecza_x_3l_HP
+I120.3: ST7-sen_przesuw_miecza_y_3l_HP
+I120.4: ST7-sen_miecz_3l_HP
+I120.5: ST7-sen_grzebien_HP
+I120.6: 
+I120.7: 
+
+I121.0: ST7-sen_przesuw_miecza_y_2l_WP
+I121.1: ST7-sen_miecz_2l_WP
+I121.2: ST7-sen_przesuw_miecza_x_3l_WP
+I121.3: ST7-sen_przesuw_miecza_y_3l_WP
+I121.4: ST7-sen_miecz_3l_WP
+I121.5: ST7-sen_grzebien_WP
+I121.6: 
+I121.7: 
+
+I130.0: ST7-sen_przesuw_miecza_y_2p_HP
+I130.1: ST7-sen_miecz_2p_HP
+I130.2: ST7-sen_przesuw_miecza_x_3p_HP
+I130.3: ST7-sen_przesuw_miecza_y_3p_HP
+I130.4: ST7-sen_miecz_3p_HP
+I130.5: ST7-sen_wysuw_grzebienia_HP
+I130.6: 
+I130.7: 
+
+I131.0: ST7-sen_przesuw_miecza_y_2p_WP
+I131.1: ST7-sen_miecz_2p_WP
+I131.2: ST7-sen_przesuw_miecza_x_3p_WP
+I131.3: ST7-sen_przesuw_miecza_y_3p_WP
+I131.4: ST7-sen_miecz_3p_WP
+I131.5: ST7-sen_wysuw_grzebienia_WP
+I131.6: 
+I131.7: 
+
+I140.0: ST7-sen_przesuw_miecza_1l_HP
+I140.1: ST7-sen_przesuw_dociskow_HP
+I140.2: ST7-sen_przesuw_miecza_1p_HP
+I140.3: 
+I140.4: 
+I140.5: 
+I140.6: 
+I140.7: 
+
+I141.0: ST7-sen_przesuw_miecza_1l_WP
+I141.1: ST7-sen_przesuw_dociskow_WP
+I141.2: ST7-sen_przesuw_miecza_1p_WP
+I141.3: 
+I141.4: 
+I141.5: 
+I141.6: 
+I141.7: 
+
+I150.0: ST2-sen_przesuw_stacji_HP
+I150.1: ST2-sen_wysuw_miecza_HP
+I150.2: ST2-sen_miecz_HP
+I150.3: 
+I150.4: 
+I150.5: 
+I150.6: 
+I150.7: 
+
+I151.0: ST2-sen_przesuw_stacji_WP
+I151.1: ST2-sen_wysuw_miecza_WP
+I151.2: ST2-sen_miecz_WP
+I151.3: 
+I151.4: 
+I151.5: 
+I151.6: 
+I151.7: 
+
+I160.0: ST4-sen_miecz_HP
+I160.1: ST4-sen_zderzak_HP
+I160.2: ST4-sen_podnoszenie_miecza_HP
+I160.3: ST4-sen_podnoszenie_miecza_WP
+I160.4: 
+I160.5: 
+I160.6: 
+I160.7: 
+
+I161.0: ST4-sen_miecz_WP
+I161.1: ST4-sen_zderzak_WP
+I161.2: ST4-sen_podnoszenie_miecza_HP
+I161.3: 
+I161.4: 
+I161.5: 
+I161.6: 
+I161.7: 
+
+I170.0: ST6-sen_stacja_maly_skok_WP
+I170.1: ST6-sen_stacja_duzy_skok_WP
+I170.2: ST6-sen_przesuw_stacji_HP
+I170.3: ST6-sen_pin_HP
+I170.4: 
+I170.5: 
+I170.6: 
+I170.7: 
+
+I171.0: ST6-sen_stacja_maly_skok_HP
+I171.1: ST6-sen_stacja_duzy_skok_HP
+I171.2: ST6-sen_przesuw_stacji_WP
+I171.3: ST6-sen_obecnosc_poduszki
+I171.4: 
+I171.5: 
+I171.6: 
+I171.7: 
 
 Q0.0: A-led_panel_bialy
 Q0.1: A-led_panel_zielony
@@ -88,57 +232,228 @@ Q0.5: A-led_kolumna_czerwony
 Q0.6: A-led_kolumna_zolty
 Q0.7: SAFETY_kurtyna_autostart
 
-Q1.0: WEISS_obrot_start
-Q1.1: WEISS_obrot_stop
-Q1.2: WEISS_zwolnik_hamulec
-Q1.3: A-rel_splonka_lub_izolacja
-Q1.4: PRIMER-rel_pomiar_zezwolenie
-Q1.5: ISO-rel_pomiar_zezwolenie
-Q1.6: ISO-rel_pomiar_start
-Q1.7: A-rel_oswietlenie
-
-Q2.0: PRIMER_pomiar_start
-Q2.1: PRIMER_pomiar_reset
-Q2.2: PRIMER_transfer
-Q2.3: PRIMER_bin_00
-Q2.4: PRIMER_bin_01
-Q2.5: PRIMER_bin_02
-Q2.6: PRIMER_bin_03
-Q2.7: A-rel_doswietlacz_kamery
+Q1.0: ST1-ez_wysuw_miecza_IDLE
+Q1.1: ST2-ez_wysuw_miecza_IDLE
+Q1.2: GN-ez_zasuwka_IDLE
+Q1.3: 
+Q1.4: 
+Q1.5: 
+Q1.6: 
+Q1.7: 
 
 Q20.0: 
 Q20.1: 
 Q20.2: 
 Q20.3: 
 Q20.4: 
-Q20.5: ST1-ez_modul_HP
-Q20.6: ST1-ez_dzwignia_HP
-Q20.7: ST1-ez_wtyczka_HP
+Q20.5: ST1-ez_przesuw_stacji_HP
+Q20.6: ST1-ez_wysuw_miecza_HP
+Q20.7: ST1-ez_miecz_HP
 
 Q21.0: 
 Q21.1: 
 Q21.2: 
 Q21.3: 
 Q21.4: 
-Q21.5: ST1-ez_modul_WP
-Q21.6: ST1-ez_dzwignia_WP
-Q21.7: ST1-ez_wtyczka_WP
+Q21.5: ST1-ez_przesuw_stacji_WP
+Q21.6: ST1-ez_wysuw_miecza_WP
+Q21.7: ST1-ez_miecz_WP
+
+Q30.0: 
+Q30.1: 
+Q30.2: 
+Q30.3: 
+Q30.4: 
+Q30.5: ST3-ez_miecz_HP
+Q30.6: ST3-ez_zderzak_HP
+Q30.7: ST3-ez_podnoszenie_miecza_HP
+
+Q31.0: 
+Q31.1: 
+Q31.2: 
+Q31.3: 
+Q31.4: 
+Q31.5: ST3-ez_miecz_WP
+Q31.6: ST3-ez_zderzak_WP
+Q31.7: ST3-ez_podnoszenie_miecza_WP
 
 Q40.0: 
 Q40.1: 
 Q40.2: 
-Q40.3: ST2-ez_przedmuch_WP
-Q40.4: ST2-ez_pomiar_gt2_HP
-Q40.5: ST2-ez_pin_wtyczka_HP
-Q40.6: ST2-ez_pin_generator_lewy_HP
-Q40.7: ST2-ez_pin_generator_prawy_HP
+Q40.3: 
+Q40.4: ST5-ez_stacja_maly_skok_WP
+Q40.5: ST5-ez_stacja_duzy_skok_WP
+Q40.6: ST5-ez_przesuw_stacji_HP
+Q40.7: ST5-ez_pin_HP
 
 Q41.0: 
 Q41.1: 
 Q41.2: 
-Q41.3: ST2-ez_pomiar_gt2_BRAKE
-Q41.4: ST2-ez_pomiar_gt2_WP
-Q41.5: ST2-ez_pin_wtyczka_WP
-Q41.6: ST2-ez_pin_generator_lewy_WP
-Q41.7: ST2-ez_pin_generator_prawy_WP
+Q41.3: 
+Q41.4: ST5-ez_stacja_maly_skok_HP
+Q41.5: ST5-ez_stacja_duzy_skok_HP
+Q41.6: ST5-ez_przesuw_stacji_WP
+Q41.7: ST5-ez_pin_WP
+
+Q50.0: 
+Q50.1: 
+Q50.2: 
+Q50.3: 
+Q50.4: 
+Q50.5: 
+Q50.6: 
+Q50.7: GN-ez_zasuwka_HP
+
+Q51.0: 
+Q51.1: 
+Q51.2: 
+Q51.3: 
+Q51.4: 
+Q51.5: 
+Q51.6: 
+Q51.7: GN-ez_zasuwka_WP
+
+Q140.0: 
+Q140.1: 
+Q140.2: 
+Q140.3: 
+Q140.4: 
+Q140.5: ST7-ez_przesuw_miecza_1l_HP
+Q140.6: ST7-ez_przesuw_dociskow_HP
+Q140.7: ST7-ez_przesuw_miecza_1p_HP
+
+Q141.0: 
+Q141.1: 
+Q141.2: 
+Q141.3: 
+Q141.4: 
+Q141.5: ST7-ez_przesuw_miecza_1l_WP
+Q141.6: ST7-ez_przesuw_dociskow_WP
+Q141.7: ST7-ez_przesuw_miecza_1p_WP
+
+Q150.0: 
+Q150.1: 
+Q150.2: 
+Q150.3: 
+Q150.4: 
+Q150.5: ST2-ez_przesuw_stacji_HP
+Q150.6: ST2-ez_wysuw_miecza_HP
+Q150.7: ST2-ez_miecz_HP
+
+Q151.0: 
+Q151.1: 
+Q151.2: 
+Q151.3: 
+Q151.4: 
+Q151.5: ST2-ez_przesuw_stacji_WP
+Q151.6: ST2-ez_wysuw_miecza_WP
+Q151.7: ST2-ez_miecz_WP
+
+Q160.0: 
+Q160.1: 
+Q160.2: 
+Q160.3: 
+Q160.4: 
+Q160.5: ST4-ez_miecz_HP
+Q160.6: ST4-ez_zderzak_HP
+Q160.7: ST4-ez_podnoszenie_miecza_HP
+
+Q161.0: 
+Q161.1: 
+Q161.2: 
+Q161.3: 
+Q161.4: 
+Q161.5: ST4-ez_miecz_WP
+Q161.6: ST4-ez_zderzak_WP
+Q161.7: ST4-ez_podnoszenie_miecza_WP
+
+Q170.0: 
+Q170.1: 
+Q170.2: 
+Q170.3: 
+Q170.4: ST6-ez_stacja_maly_skok_WP
+Q170.5: ST6-ez_stacja_duzy_skok_WP
+Q170.6: ST6-ez_przesuw_stacji_HP
+Q170.7: ST6-ez_pin_HP
+
+Q171.0: 
+Q171.1: 
+Q171.2: 
+Q171.3: 
+Q171.4: ST6-ez_stacja_maly_skok_HP
+Q171.5: ST6-ez_stacja_duzy_skok_HP
+Q171.6: ST6-ez_przesuw_stacji_WP
+Q171.7: ST6-ez_pin_WP
+
+Q3000.0: GN-ez_blokada_sruby_lewy_WP
+Q3000.1: 
+Q3000.2: GN-ez_blokada_sruby_srodek_WP
+Q3000.3: 
+Q3000.4: GN-ez_blokada_sruby_prawy_WP
+Q3000.5: 
+Q3000.6: BR-ez_pin_01_WP
+Q3000.7: 
+
+Q3001.0: BR-ez_pin_02_WP
+Q3001.1: 
+Q3001.2: BR-ez_pin_03_WP
+Q3001.3: 
+Q3001.4: BR-ez_pin_04_WP
+Q3001.5: 
+Q3001.6: 
+Q3001.7: 
+
+Q3004.0: BR-ez_pin_podnoszenie_01_WP
+Q3004.1: BR-ez_pin_podnoszenie_01_HP
+Q3004.2: BR-ez_pin_podnoszenie_02_WP
+Q3004.3: BR-ez_pin_podnoszenie_02_HP
+Q3004.4: BR-ez_blat5_przod_WP
+Q3004.5: BR-ez_blat5_przod_HP
+Q3004.6: BR-ez_blat_tyl_lewy_WP
+Q3004.7: BR-ez_blat_tyl_lewy_HP
+
+Q3005.0: BR-ez_blat_tyl_prawy_WP
+Q3005.1: BR-ez_blat_tyl_prawy_HP
+Q3005.2: BR-ez_pin_podnoszenie_03_WP
+Q3005.3: BR-ez_pin_podnoszenie_03_HP
+Q3005.4: BR-ez_pin_podnoszenie_04_WP
+Q3005.5: BR-ez_pin_podnoszenie_04_HP
+Q3005.6: 
+Q3005.7: 
+
+Q3008.0: ST7-ez_przesuw_miecza_y_2l_WP
+Q3008.1: ST7-ez_przesuw_miecza_y_2l_HP
+Q3008.2: ST7-ez_miecz_2l_WP
+Q3008.3: ST7-ez_miecz_2l_HP
+Q3008.4: ST7-ez_przesuw_miecza_x_3l_WP
+Q3008.5: ST7-ez_przesuw_miecza_x_3l_HP
+Q3008.6: ST7-ez_przesuw_miecza_y_3l_WP
+Q3008.7: ST7-ez_przesuw_miecza_y_3l_HP
+
+Q3009.0: ST7-ez_miecz_3l_WP
+Q3009.1: ST7-ez_miecz_3l_HP
+Q3009.2: ST7-ez_grzebien_WP
+Q3009.3: ST7-ez_grzebien_HP
+Q3009.4: 
+Q3009.5: 
+Q3009.6: 
+Q3009.7: 
+
+Q3012.0: ST7-ez_przesuw_miecza_y_2p_WP
+Q3012.1: ST7-ez_przesuw_miecza_y_2p_HP
+Q3012.2: ST7-ez_miecz_2p_WP
+Q3012.3: ST7-ez_miecz_2p_HP
+Q3012.4: ST7-ez_przesuw_miecza_x_3p_WP
+Q3012.5: ST7-ez_przesuw_miecza_x_3p_HP
+Q3012.6: ST7-ez_przesuw_miecza_y_3p_WP
+Q3012.7: ST7-ez_przesuw_miecza_y_3p_HP
+
+Q3013.0: ST7-ez_miecz_3p_WP
+Q3013.1: ST7-ez_miecz_3p_HP
+Q3013.2: ST7-ez_wysuw_grzebienia_WP
+Q3013.3: ST7-ez_wysuw_grzebienia_HP
+Q3013.4: 
+Q3013.5: 
+Q3013.6: 
+Q3013.7: 
 
