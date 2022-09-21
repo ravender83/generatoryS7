@@ -1,0 +1,78 @@
+----------- DBVALVES datablock structs-----------
+BR	Struct		False	True	True	True	False		
+GN	Struct		False	True	True	True	False		
+ST1	Struct		False	True	True	True	False		
+ST2	Struct		False	True	True	True	False		
+ST3	Struct		False	True	True	True	False		
+ST4	Struct		False	True	True	True	False		
+ST5	Struct		False	True	True	True	False		
+ST6	Struct		False	True	True	True	False		
+ST7	Struct		False	True	True	True	False		
+
+--- BR ---
+PIN_RISING_01	"Tstate"		False	True	True	True	False		[5] BR-pin_podnoszenie_01
+PIN_01	"Tstate"		False	True	True	True	False		[6] BR-pin_01
+PIN_RISING_02	"Tstate"		False	True	True	True	False		[7] BR-pin_podnoszenie_02
+PIN_02	"Tstate"		False	True	True	True	False		[8] BR-pin_02
+PIN_RISING_03	"Tstate"		False	True	True	True	False		[9] BR-pin_podnoszenie_03
+PIN_03	"Tstate"		False	True	True	True	False		[10] BR-pin_03
+PIN_RISING_04	"Tstate"		False	True	True	True	False		[11] BR-pin_podnoszenie_04
+PIN_04	"Tstate"		False	True	True	True	False		[12] BR-pin_04
+TABLE5_FRONT	"Tstate"		False	True	True	True	False		[13] BR-blat5_przod
+TABLE_REAR_LEFT	"Tstate"		False	True	True	True	False		[14] BR-blat_tyl_lewy
+TABLE_REAR_RIGHT	"Tstate"		False	True	True	True	False		[15] BR-blat_tyl_prawy
+
+--- GN ---
+SCREW_LOCK_LEFT	"Tstate"		False	True	True	True	False		[1] GN-blokada_sruby_lewy
+SCREW_LOCK_MIDDLE	"Tstate"		False	True	True	True	False		[2] GN-blokada_sruby_srodek
+SCREW_LOCK_RIGHT	"Tstate"		False	True	True	True	False		[3] GN-blokada_sruby_prawy
+LATCH	"Tstate"		False	True	True	True	False		[4] GN-zasuwka
+
+--- ST1 ---
+STATION_MOVEMENT	"Tstate"		False	True	True	True	False		[16] ST1-przesuw_stacji
+SWORD_SLIDE_OUT	"Tstate"		False	True	True	True	False		[17] ST1-wysuw_miecza
+SWORD	"Tstate"		False	True	True	True	False		[18] ST1-miecz
+
+--- ST2 ---
+STATION_MOVEMENT	"Tstate"		False	True	True	True	False		[19] ST2-przesuw_stacji
+SWORD_SLIDE_OUT	"Tstate"		False	True	True	True	False		[20] ST2-wysuw_miecza
+SWORD	"Tstate"		False	True	True	True	False		[21] ST2-miecz
+
+--- ST3 ---
+SWORD	"Tstate"		False	True	True	True	False		[22] ST3-miecz
+BUMPER	"Tstate"		False	True	True	True	False		[23] ST3-zderzak
+SWORD_RISING	"Tstate"		False	True	True	True	False		[24] ST3-podnoszenie_miecza
+
+--- ST4 ---
+SWORD	"Tstate"		False	True	True	True	False		[25] ST4-miecz
+BUMPER	"Tstate"		False	True	True	True	False		[26] ST4-zderzak
+SWORD_RISING	"Tstate"		False	True	True	True	False		[27] ST4-podnoszenie_miecza
+
+--- ST5 ---
+STATION_MOVEMENT	"Tstate"		False	True	True	True	False		[28] ST5-przesuw_stacji
+STATION_SMALL_STEP	"Tstate"		False	True	True	True	False		[29] ST5-stacja_maly_skok
+STATION_BIG_STEP	"Tstate"		False	True	True	True	False		[30] ST5-stacja_duzy_skok
+PIN	"Tstate"		False	True	True	True	False		[31] ST5-pin
+
+--- ST6 ---
+STATION_MOVEMENT	"Tstate"		False	True	True	True	False		[32] ST6-przesuw_stacji
+STATION_SMALL_STEP	"Tstate"		False	True	True	True	False		[33] ST6-stacja_maly_skok
+STATION_BIG_STEP	"Tstate"		False	True	True	True	False		[34] ST6-stacja_duzy_skok
+PIN	"Tstate"		False	True	True	True	False		[35] ST6-pin
+
+--- ST7 ---
+SWORD_1L_MOVEMENT	"Tstate"		False	True	True	True	False		[36] ST7-przesuw_miecza_1l
+SWORD_1R_MOVEMENT	"Tstate"		False	True	True	True	False		[37] ST7-przesuw_miecza_1p
+HOLDFAST_MOVEMENT	"Tstate"		False	True	True	True	False		[38] ST7-przesuw_dociskow
+SWORD_Y_2L_MOVEMENT	"Tstate"		False	True	True	True	False		[39] ST7-przesuw_miecza_y_2l
+SWORD_2L	"Tstate"		False	True	True	True	False		[40] ST7-miecz_2l
+SWORD_Y_2R_MOVEMENT	"Tstate"		False	True	True	True	False		[41] ST7-przesuw_miecza_y_2p
+SWORD_2R	"Tstate"		False	True	True	True	False		[42] ST7-miecz_2p
+SWORD_X_3L_MOVEMENT	"Tstate"		False	True	True	True	False		[43] ST7-przesuw_miecza_x_3l
+SWORD_Y_3L_MOVEMENT	"Tstate"		False	True	True	True	False		[44] ST7-przesuw_miecza_y_3l
+SWORD_3L	"Tstate"		False	True	True	True	False		[45] ST7-miecz_3l
+SWORD_X_3R_MOVEMENT	"Tstate"		False	True	True	True	False		[46] ST7-przesuw_miecza_x_3p
+SWORD_Y_3R_MOVEMENT	"Tstate"		False	True	True	True	False		[47] ST7-przesuw_miecza_y_3p
+SWORD_3R	"Tstate"		False	True	True	True	False		[48] ST7-miecz_3p
+COMB_SLIDE_OUT	"Tstate"		False	True	True	True	False		[49] ST7-wysuw_grzebienia
+COMB	"Tstate"		False	True	True	True	False		[50] ST7-grzebien

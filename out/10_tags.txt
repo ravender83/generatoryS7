@@ -1,0 +1,326 @@
+----------- VALVES -----------
+[1] GN SCREW LOCK LEFT
+[2] GN SCREW LOCK MIDDLE
+[3] GN SCREW LOCK RIGHT
+[4] GN LATCH
+[5] BR PIN RISING 01
+[6] BR PIN 01
+[7] BR PIN RISING 02
+[8] BR PIN 02
+[9] BR PIN RISING 03
+[10] BR PIN 03
+[11] BR PIN RISING 04
+[12] BR PIN 04
+[13] BR TABLE5 FRONT
+[14] BR TABLE REAR LEFT
+[15] BR TABLE REAR RIGHT
+[16] ST1 STATION MOVEMENT
+[17] ST1 SWORD SLIDE OUT
+[18] ST1 SWORD
+[19] ST2 STATION MOVEMENT
+[20] ST2 SWORD SLIDE OUT
+[21] ST2 SWORD
+[22] ST3 SWORD
+[23] ST3 BUMPER
+[24] ST3 SWORD RISING
+[25] ST4 SWORD
+[26] ST4 BUMPER
+[27] ST4 SWORD RISING
+[28] ST5 STATION MOVEMENT
+[29] ST5 STATION SMALL STEP
+[30] ST5 STATION BIG STEP
+[31] ST5 PIN
+[32] ST6 STATION MOVEMENT
+[33] ST6 STATION SMALL STEP
+[34] ST6 STATION BIG STEP
+[35] ST6 PIN
+[36] ST7 SWORD 1L MOVEMENT
+[37] ST7 SWORD 1R MOVEMENT
+[38] ST7 HOLDFAST MOVEMENT
+[39] ST7 SWORD Y 2L MOVEMENT
+[40] ST7 SWORD 2L
+[41] ST7 SWORD Y 2R MOVEMENT
+[42] ST7 SWORD 2R
+[43] ST7 SWORD X 3L MOVEMENT
+[44] ST7 SWORD Y 3L MOVEMENT
+[45] ST7 SWORD 3L
+[46] ST7 SWORD X 3R MOVEMENT
+[47] ST7 SWORD Y 3R MOVEMENT
+[48] ST7 SWORD 3R
+[49] ST7 COMB SLIDE OUT
+[50] ST7 COMB
+
+----------- ZAWORY -----------
+[1] GN BLOKADA SRUBY LEWY
+[2] GN BLOKADA SRUBY SRODEK
+[3] GN BLOKADA SRUBY PRAWY
+[4] GN ZASUWKA
+[5] BR PIN PODNOSZENIE 01
+[6] BR PIN 01
+[7] BR PIN PODNOSZENIE 02
+[8] BR PIN 02
+[9] BR PIN PODNOSZENIE 03
+[10] BR PIN 03
+[11] BR PIN PODNOSZENIE 04
+[12] BR PIN 04
+[13] BR BLAT5 PRZOD
+[14] BR BLAT TYL LEWY
+[15] BR BLAT TYL PRAWY
+[16] ST1 PRZESUW STACJI
+[17] ST1 WYSUW MIECZA
+[18] ST1 MIECZ
+[19] ST2 PRZESUW STACJI
+[20] ST2 WYSUW MIECZA
+[21] ST2 MIECZ
+[22] ST3 MIECZ
+[23] ST3 ZDERZAK
+[24] ST3 PODNOSZENIE MIECZA
+[25] ST4 MIECZ
+[26] ST4 ZDERZAK
+[27] ST4 PODNOSZENIE MIECZA
+[28] ST5 PRZESUW STACJI
+[29] ST5 STACJA MALY SKOK
+[30] ST5 STACJA DUZY SKOK
+[31] ST5 PIN
+[32] ST6 PRZESUW STACJI
+[33] ST6 STACJA MALY SKOK
+[34] ST6 STACJA DUZY SKOK
+[35] ST6 PIN
+[36] ST7 PRZESUW MIECZA 1L
+[37] ST7 PRZESUW MIECZA 1P
+[38] ST7 PRZESUW DOCISKOW
+[39] ST7 PRZESUW MIECZA Y 2L
+[40] ST7 MIECZ 2L
+[41] ST7 PRZESUW MIECZA Y 2P
+[42] ST7 MIECZ 2P
+[43] ST7 PRZESUW MIECZA X 3L
+[44] ST7 PRZESUW MIECZA Y 3L
+[45] ST7 MIECZ 3L
+[46] ST7 PRZESUW MIECZA X 3P
+[47] ST7 PRZESUW MIECZA Y 3P
+[48] ST7 MIECZ 3P
+[49] ST7 WYSUW GRZEBIENIA
+[50] ST7 GRZEBIEN
+
+----------- IO TAGS -----------
+GN-vsen_screw_lock_left_HP_open	BOOL	%I50.1	False	True	True	True		[I50.1] czujnik "GN-blokada_sruby_lewy" HP open
+GN-vsen_screw_lock_left_WP_close	BOOL	%I51.1	False	True	True	True		[I51.1] czujnik "GN-blokada_sruby_lewy" WP close
+GN-ez_screw_lock_left_WP_close	BOOL	%Q3000.0	False	True	True	True		[1] GN-blokada_sruby_lewy WP close [I51.1]
+GN-vsen_screw_lock_middle_HP_open	BOOL	%I50.2	False	True	True	True		[I50.2] czujnik "GN-blokada_sruby_srodek" HP open
+GN-vsen_screw_lock_middle_WP_close	BOOL	%I51.2	False	True	True	True		[I51.2] czujnik "GN-blokada_sruby_srodek" WP close
+GN-ez_screw_lock_middle_WP_close	BOOL	%Q3000.2	False	True	True	True		[2] GN-blokada_sruby_srodek WP close [I51.2]
+GN-vsen_screw_lock_right_HP_open	BOOL	%I50.3	False	True	True	True		[I50.3] czujnik "GN-blokada_sruby_prawy" HP open
+GN-vsen_screw_lock_right_WP_close	BOOL	%I51.3	False	True	True	True		[I51.3] czujnik "GN-blokada_sruby_prawy" WP close
+GN-ez_screw_lock_right_WP_close	BOOL	%Q3000.4	False	True	True	True		[3] GN-blokada_sruby_prawy WP close [I51.3]
+GN-vsen_latch_HP_left	BOOL	%I50.4	False	True	True	True		[I50.4] czujnik "GN-zasuwka" HP left
+GN-vsen_latch_WP_right	BOOL	%I70.5	False	True	True	True		[I70.5] czujnik "GN-zasuwka" WP right
+GN-ez_latch_HP_left	BOOL	%Q50.7	False	True	True	True		[4] GN-zasuwka HP left [I50.4]
+GN-ez_latch_WP_right	BOOL	%Q51.7	False	True	True	True		[4] GN-zasuwka WP right [I70.5]
+GN-ez_latch_IDLE	BOOL	%Q1.2	False	True	True	True		[4] GN-zasuwka IDLE
+BR-vsen_pin_rising_01_HP_down	BOOL	%I60.0	False	True	True	True		[I60.0] czujnik "BR-pin_podnoszenie_01" HP down
+BR-vsen_pin_rising_01_WP_up	BOOL	%I61.0	False	True	True	True		[I61.0] czujnik "BR-pin_podnoszenie_01" WP up
+BR-ez_pin_rising_01_HP_down	BOOL	%Q3004.1	False	True	True	True		[5] BR-pin_podnoszenie_01 HP down [I60.0]
+BR-ez_pin_rising_01_WP_up	BOOL	%Q3004.0	False	True	True	True		[5] BR-pin_podnoszenie_01 WP up [I61.0]
+BR-vsen_pin_01_HP_down	BOOL	%I60.2	False	True	True	True		[I60.2] czujnik "BR-pin_01" HP down
+BR-ez_pin_01_WP_up	BOOL	%Q3000.6	False	True	True	True		[6] BR-pin_01 WP up [an]
+BR-vsen_pin_rising_02_HP_down	BOOL	%I60.1	False	True	True	True		[I60.1] czujnik "BR-pin_podnoszenie_02" HP down
+BR-vsen_pin_rising_02_WP_up	BOOL	%I61.1	False	True	True	True		[I61.1] czujnik "BR-pin_podnoszenie_02" WP up
+BR-ez_pin_rising_02_HP_down	BOOL	%Q3004.3	False	True	True	True		[7] BR-pin_podnoszenie_02 HP down [I60.1]
+BR-ez_pin_rising_02_WP_up	BOOL	%Q3004.2	False	True	True	True		[7] BR-pin_podnoszenie_02 WP up [I61.1]
+BR-vsen_pin_02_HP_down	BOOL	%I61.2	False	True	True	True		[I61.2] czujnik "BR-pin_02" HP down
+BR-ez_pin_02_WP_up	BOOL	%Q3001.0	False	True	True	True		[8] BR-pin_02 WP up [an]
+BR-vsen_pin_rising_03_HP_down	BOOL	%I70.0	False	True	True	True		[I70.0] czujnik "BR-pin_podnoszenie_03" HP down
+BR-vsen_pin_rising_03_WP_up	BOOL	%I71.0	False	True	True	True		[I71.0] czujnik "BR-pin_podnoszenie_03" WP up
+BR-ez_pin_rising_03_HP_down	BOOL	%Q3005.3	False	True	True	True		[9] BR-pin_podnoszenie_03 HP down [I70.0]
+BR-ez_pin_rising_03_WP_up	BOOL	%Q3005.2	False	True	True	True		[9] BR-pin_podnoszenie_03 WP up [I71.0]
+BR-vsen_pin_03_HP_down	BOOL	%I70.2	False	True	True	True		[I70.2] czujnik "BR-pin_03" HP down
+BR-ez_pin_03_WP_up	BOOL	%Q3001.2	False	True	True	True		[10] BR-pin_03 WP up [an]
+BR-vsen_pin_rising_04_HP_down	BOOL	%I70.1	False	True	True	True		[I70.1] czujnik "BR-pin_podnoszenie_04" HP down
+BR-vsen_pin_rising_04_WP_up	BOOL	%I71.1	False	True	True	True		[I71.1] czujnik "BR-pin_podnoszenie_04" WP up
+BR-ez_pin_rising_04_HP_down	BOOL	%Q3005.5	False	True	True	True		[11] BR-pin_podnoszenie_04 HP down [I70.1]
+BR-ez_pin_rising_04_WP_up	BOOL	%Q3005.4	False	True	True	True		[11] BR-pin_podnoszenie_04 WP up [I71.1]
+BR-vsen_pin_04_HP_down	BOOL	%I71.2	False	True	True	True		[I71.2] czujnik "BR-pin_04" HP down
+BR-ez_pin_04_WP_up	BOOL	%Q3001.4	False	True	True	True		[12] BR-pin_04 WP up [an]
+BR-vsen_table5_front_HP_up	BOOL	%I60.4	False	True	True	True		[I60.4] czujnik "BR-blat5_przod" HP up
+BR-vsen_table5_front_WP_down	BOOL	%I61.4	False	True	True	True		[I61.4] czujnik "BR-blat5_przod" WP down
+BR-ez_table5_front_HP_up	BOOL	%Q3004.5	False	True	True	True		[13] BR-blat5_przod HP up [I60.4]
+BR-ez_table5_front_WP_down	BOOL	%Q3004.4	False	True	True	True		[13] BR-blat5_przod WP down [I61.4]
+BR-vsen_table_rear_left_HP_up	BOOL	%I60.5	False	True	True	True		[I60.5] czujnik "BR-blat_tyl_lewy" HP up
+BR-vsen_table_rear_left_WP_down	BOOL	%I61.5	False	True	True	True		[I61.5] czujnik "BR-blat_tyl_lewy" WP down
+BR-ez_table_rear_left_HP_up	BOOL	%Q3004.7	False	True	True	True		[14] BR-blat_tyl_lewy HP up [I60.5]
+BR-ez_table_rear_left_WP_down	BOOL	%Q3004.6	False	True	True	True		[14] BR-blat_tyl_lewy WP down [I61.5]
+BR-vsen_table_rear_right_HP_up	BOOL	%I70.4	False	True	True	True		[I70.4] czujnik "BR-blat_tyl_prawy" HP up
+BR-vsen_table_rear_right_WP_down	BOOL	%I71.4	False	True	True	True		[I71.4] czujnik "BR-blat_tyl_prawy" WP down
+BR-ez_table_rear_right_HP_up	BOOL	%Q3005.1	False	True	True	True		[15] BR-blat_tyl_prawy HP up [I70.4]
+BR-ez_table_rear_right_WP_down	BOOL	%Q3005.0	False	True	True	True		[15] BR-blat_tyl_prawy WP down [I71.4]
+ST1-vsen_station_movement_HP_left	BOOL	%I20.0	False	True	True	True		[I20.0] czujnik "ST1-przesuw_stacji" HP left
+ST1-vsen_station_movement_WP_right	BOOL	%I21.0	False	True	True	True		[I21.0] czujnik "ST1-przesuw_stacji" WP right
+ST1-ez_station_movement_HP_left	BOOL	%Q20.5	False	True	True	True		[16] ST1-przesuw_stacji HP left [I20.0]
+ST1-ez_station_movement_WP_right	BOOL	%Q21.5	False	True	True	True		[16] ST1-przesuw_stacji WP right [I21.0]
+ST1-vsen_sword_slide_out_HP_left	BOOL	%I20.1	False	True	True	True		[I20.1] czujnik "ST1-wysuw_miecza" HP left
+ST1-vsen_sword_slide_out_WP_right	BOOL	%I21.1	False	True	True	True		[I21.1] czujnik "ST1-wysuw_miecza" WP right
+ST1-ez_sword_slide_out_HP_left	BOOL	%Q20.6	False	True	True	True		[17] ST1-wysuw_miecza HP left [I20.1]
+ST1-ez_sword_slide_out_WP_right	BOOL	%Q21.6	False	True	True	True		[17] ST1-wysuw_miecza WP right [I21.1]
+ST1-ez_sword_slide_out_IDLE	BOOL	%Q1.0	False	True	True	True		[17] ST1-wysuw_miecza IDLE
+ST1-vsen_sword_HP_up	BOOL	%I20.2	False	True	True	True		[I20.2] czujnik "ST1-miecz" HP up
+ST1-vsen_sword_WP_down	BOOL	%I21.2	False	True	True	True		[I21.2] czujnik "ST1-miecz" WP down
+ST1-ez_sword_HP_up	BOOL	%Q20.7	False	True	True	True		[18] ST1-miecz HP up [I20.2]
+ST1-ez_sword_WP_down	BOOL	%Q21.7	False	True	True	True		[18] ST1-miecz WP down [I21.2]
+ST2-vsen_station_movement_HP_left	BOOL	%I150.0	False	True	True	True		[I150.0] czujnik "ST2-przesuw_stacji" HP left
+ST2-vsen_station_movement_WP_right	BOOL	%I151.0	False	True	True	True		[I151.0] czujnik "ST2-przesuw_stacji" WP right
+ST2-ez_station_movement_HP_left	BOOL	%Q150.5	False	True	True	True		[19] ST2-przesuw_stacji HP left [I150.0]
+ST2-ez_station_movement_WP_right	BOOL	%Q151.5	False	True	True	True		[19] ST2-przesuw_stacji WP right [I151.0]
+ST2-vsen_sword_slide_out_HP_left	BOOL	%I150.1	False	True	True	True		[I150.1] czujnik "ST2-wysuw_miecza" HP left
+ST2-vsen_sword_slide_out_WP_right	BOOL	%I151.1	False	True	True	True		[I151.1] czujnik "ST2-wysuw_miecza" WP right
+ST2-ez_sword_slide_out_HP_left	BOOL	%Q150.6	False	True	True	True		[20] ST2-wysuw_miecza HP left [I150.1]
+ST2-ez_sword_slide_out_WP_right	BOOL	%Q151.6	False	True	True	True		[20] ST2-wysuw_miecza WP right [I151.1]
+ST2-ez_sword_slide_out_IDLE	BOOL	%Q1.1	False	True	True	True		[20] ST2-wysuw_miecza IDLE
+ST2-vsen_sword_HP_up	BOOL	%I150.2	False	True	True	True		[I150.2] czujnik "ST2-miecz" HP up
+ST2-vsen_sword_WP_down	BOOL	%I151.2	False	True	True	True		[I151.2] czujnik "ST2-miecz" WP down
+ST2-ez_sword_HP_up	BOOL	%Q150.7	False	True	True	True		[21] ST2-miecz HP up [I150.2]
+ST2-ez_sword_WP_down	BOOL	%Q151.7	False	True	True	True		[21] ST2-miecz WP down [I151.2]
+ST3-vsen_sword_HP_close	BOOL	%I30.0	False	True	True	True		[I30.0] czujnik "ST3-miecz" HP close
+ST3-vsen_sword_WP_open	BOOL	%I31.0	False	True	True	True		[I31.0] czujnik "ST3-miecz" WP open
+ST3-ez_sword_HP_close	BOOL	%Q30.5	False	True	True	True		[22] ST3-miecz HP close [I30.0]
+ST3-ez_sword_WP_open	BOOL	%Q31.5	False	True	True	True		[22] ST3-miecz WP open [I31.0]
+ST3-vsen_bumper_HP_open	BOOL	%I30.1	False	True	True	True		[I30.1] czujnik "ST3-zderzak" HP open
+ST3-vsen_bumper_WP_close	BOOL	%I31.1	False	True	True	True		[I31.1] czujnik "ST3-zderzak" WP close
+ST3-ez_bumper_HP_open	BOOL	%Q30.6	False	True	True	True		[23] ST3-zderzak HP open [I30.1]
+ST3-ez_bumper_WP_close	BOOL	%Q31.6	False	True	True	True		[23] ST3-zderzak WP close [I31.1]
+ST3-vsen_sword_rising_HP_down	BOOL	%I30.2	False	True	True	True		[I30.2] czujnik "ST3-podnoszenie_miecza" HP down
+ST3-vsen_sword_rising_HP2_down	BOOL	%I31.2	False	True	True	True		[I31.2] czujnik "ST3-podnoszenie_miecza" HP down
+ST3-vsen_sword_rising_WP_up	BOOL	%I30.3	False	True	True	True		[I30.3] czujnik "ST3-podnoszenie_miecza" WP up
+ST3-ez_sword_rising_HP_down	BOOL	%Q30.7	False	True	True	True		[24] ST3-podnoszenie_miecza HP down [I30.2, I31.2]
+ST3-ez_sword_rising_WP_up	BOOL	%Q31.7	False	True	True	True		[24] ST3-podnoszenie_miecza WP up [I30.3]
+ST4-vsen_sword_HP_close	BOOL	%I160.0	False	True	True	True		[I160.0] czujnik "ST4-miecz" HP close
+ST4-vsen_sword_WP_open	BOOL	%I161.0	False	True	True	True		[I161.0] czujnik "ST4-miecz" WP open
+ST4-ez_sword_HP_close	BOOL	%Q160.5	False	True	True	True		[25] ST4-miecz HP close [I160.0]
+ST4-ez_sword_WP_open	BOOL	%Q161.5	False	True	True	True		[25] ST4-miecz WP open [I161.0]
+ST4-vsen_bumper_HP_open	BOOL	%I160.1	False	True	True	True		[I160.1] czujnik "ST4-zderzak" HP open
+ST4-vsen_bumper_WP_close	BOOL	%I161.1	False	True	True	True		[I161.1] czujnik "ST4-zderzak" WP close
+ST4-ez_bumper_HP_open	BOOL	%Q160.6	False	True	True	True		[26] ST4-zderzak HP open [I160.1]
+ST4-ez_bumper_WP_close	BOOL	%Q161.6	False	True	True	True		[26] ST4-zderzak WP close [I161.1]
+ST4-vsen_sword_rising_HP_down	BOOL	%I160.2	False	True	True	True		[I160.2] czujnik "ST4-podnoszenie_miecza" HP down
+ST4-vsen_sword_rising_HP2_down	BOOL	%I161.2	False	True	True	True		[I161.2] czujnik "ST4-podnoszenie_miecza" HP down
+ST4-vsen_sword_rising_WP_up	BOOL	%I160.3	False	True	True	True		[I160.3] czujnik "ST4-podnoszenie_miecza" WP up
+ST4-ez_sword_rising_HP_down	BOOL	%Q160.7	False	True	True	True		[27] ST4-podnoszenie_miecza HP down [I160.2, I161.2]
+ST4-ez_sword_rising_WP_up	BOOL	%Q161.7	False	True	True	True		[27] ST4-podnoszenie_miecza WP up [I160.3]
+ST5-vsen_station_movement_HP_right	BOOL	%I40.2	False	True	True	True		[I40.2] czujnik "ST5-przesuw_stacji" HP right
+ST5-vsen_station_movement_WP_front	BOOL	%I41.2	False	True	True	True		[I41.2] czujnik "ST5-przesuw_stacji" WP front
+ST5-ez_station_movement_HP_right	BOOL	%Q40.6	False	True	True	True		[28] ST5-przesuw_stacji HP right [I40.2]
+ST5-ez_station_movement_WP_front	BOOL	%Q41.6	False	True	True	True		[28] ST5-przesuw_stacji WP front [I41.2]
+ST5-vsen_station_small_step_HP_down	BOOL	%I41.0	False	True	True	True		[I41.0] czujnik "ST5-stacja_maly_skok" HP down
+ST5-vsen_station_small_step_WP_up	BOOL	%I40.0	False	True	True	True		[I40.0] czujnik "ST5-stacja_maly_skok" WP up
+ST5-ez_station_small_step_HP_down	BOOL	%Q41.4	False	True	True	True		[29] ST5-stacja_maly_skok HP down [I41.0]
+ST5-ez_station_small_step_WP_up	BOOL	%Q40.4	False	True	True	True		[29] ST5-stacja_maly_skok WP up [I40.0]
+ST5-vsen_station_big_step_HP_down	BOOL	%I41.1	False	True	True	True		[I41.1] czujnik "ST5-stacja_duzy_skok" HP down
+ST5-vsen_station_big_step_WP_up	BOOL	%I40.1	False	True	True	True		[I40.1] czujnik "ST5-stacja_duzy_skok" WP up
+ST5-ez_station_big_step_HP_down	BOOL	%Q41.5	False	True	True	True		[30] ST5-stacja_duzy_skok HP down [I41.1]
+ST5-ez_station_big_step_WP_up	BOOL	%Q40.5	False	True	True	True		[30] ST5-stacja_duzy_skok WP up [I40.1]
+ST5-vsen_pin_HP_down	BOOL	%I40.3	False	True	True	True		[I40.3] czujnik "ST5-pin" HP down
+ST5-ez_pin_HP_down	BOOL	%Q40.7	False	True	True	True		[31] ST5-pin HP down [I40.3]
+ST5-ez_pin_WP_up	BOOL	%Q41.7	False	True	True	True		[31] ST5-pin WP up [an]
+ST6-vsen_station_movement_HP_right	BOOL	%I170.2	False	True	True	True		[I170.2] czujnik "ST6-przesuw_stacji" HP right
+ST6-vsen_station_movement_WP_front	BOOL	%I171.2	False	True	True	True		[I171.2] czujnik "ST6-przesuw_stacji" WP front
+ST6-ez_station_movement_HP_right	BOOL	%Q170.6	False	True	True	True		[32] ST6-przesuw_stacji HP right [I170.2]
+ST6-ez_station_movement_WP_front	BOOL	%Q171.6	False	True	True	True		[32] ST6-przesuw_stacji WP front [I171.2]
+ST6-vsen_station_small_step_HP_down	BOOL	%I171.0	False	True	True	True		[I171.0] czujnik "ST6-stacja_maly_skok" HP down
+ST6-vsen_station_small_step_WP_up	BOOL	%I170.0	False	True	True	True		[I170.0] czujnik "ST6-stacja_maly_skok" WP up
+ST6-ez_station_small_step_HP_down	BOOL	%Q171.4	False	True	True	True		[33] ST6-stacja_maly_skok HP down [I171.0]
+ST6-ez_station_small_step_WP_up	BOOL	%Q170.4	False	True	True	True		[33] ST6-stacja_maly_skok WP up [I170.0]
+ST6-vsen_station_big_step_HP_down	BOOL	%I171.1	False	True	True	True		[I171.1] czujnik "ST6-stacja_duzy_skok" HP down
+ST6-vsen_station_big_step_WP_up	BOOL	%I170.1	False	True	True	True		[I170.1] czujnik "ST6-stacja_duzy_skok" WP up
+ST6-ez_station_big_step_HP_down	BOOL	%Q171.5	False	True	True	True		[34] ST6-stacja_duzy_skok HP down [I171.1]
+ST6-ez_station_big_step_WP_up	BOOL	%Q170.5	False	True	True	True		[34] ST6-stacja_duzy_skok WP up [I170.1]
+ST6-vsen_pin_HP_down	BOOL	%I170.3	False	True	True	True		[I170.3] czujnik "ST6-pin" HP down
+ST6-ez_pin_HP_down	BOOL	%Q170.7	False	True	True	True		[35] ST6-pin HP down [I170.3]
+ST6-ez_pin_WP_up	BOOL	%Q171.7	False	True	True	True		[35] ST6-pin WP up [an]
+ST7-vsen_sword_1l_movement_HP_right	BOOL	%I140.0	False	True	True	True		[I140.0] czujnik "ST7-przesuw_miecza_1l" HP right
+ST7-vsen_sword_1l_movement_WP_front	BOOL	%I141.0	False	True	True	True		[I141.0] czujnik "ST7-przesuw_miecza_1l" WP front
+ST7-ez_sword_1l_movement_HP_right	BOOL	%Q140.5	False	True	True	True		[36] ST7-przesuw_miecza_1l HP right [I140.0]
+ST7-ez_sword_1l_movement_WP_front	BOOL	%Q141.5	False	True	True	True		[36] ST7-przesuw_miecza_1l WP front [I141.0]
+ST7-vsen_sword_1r_movement_HP_right	BOOL	%I140.2	False	True	True	True		[I140.2] czujnik "ST7-przesuw_miecza_1p" HP right
+ST7-vsen_sword_1r_movement_WP_front	BOOL	%I141.2	False	True	True	True		[I141.2] czujnik "ST7-przesuw_miecza_1p" WP front
+ST7-ez_sword_1r_movement_HP_right	BOOL	%Q140.7	False	True	True	True		[37] ST7-przesuw_miecza_1p HP right [I140.2]
+ST7-ez_sword_1r_movement_WP_front	BOOL	%Q141.7	False	True	True	True		[37] ST7-przesuw_miecza_1p WP front [I141.2]
+ST7-vsen_holdfast_movement_HP_right	BOOL	%I140.1	False	True	True	True		[I140.1] czujnik "ST7-przesuw_dociskow" HP right
+ST7-vsen_holdfast_movement_WP_front	BOOL	%I141.1	False	True	True	True		[I141.1] czujnik "ST7-przesuw_dociskow" WP front
+ST7-ez_holdfast_movement_HP_right	BOOL	%Q140.6	False	True	True	True		[38] ST7-przesuw_dociskow HP right [I140.1]
+ST7-ez_holdfast_movement_WP_front	BOOL	%Q141.6	False	True	True	True		[38] ST7-przesuw_dociskow WP front [I141.1]
+ST7-vsen_sword_y_2l_movement_HP_right	BOOL	%I120.0	False	True	True	True		[I120.0] czujnik "ST7-przesuw_miecza_y_2l" HP right
+ST7-vsen_sword_y_2l_movement_WP_front	BOOL	%I121.0	False	True	True	True		[I121.0] czujnik "ST7-przesuw_miecza_y_2l" WP front
+ST7-ez_sword_y_2l_movement_HP_right	BOOL	%Q3008.1	False	True	True	True		[39] ST7-przesuw_miecza_y_2l HP right [I120.0]
+ST7-ez_sword_y_2l_movement_WP_front	BOOL	%Q3008.0	False	True	True	True		[39] ST7-przesuw_miecza_y_2l WP front [I121.0]
+ST7-vsen_sword_2l_HP_up	BOOL	%I120.1	False	True	True	True		[I120.1] czujnik "ST7-miecz_2l" HP up
+ST7-vsen_sword_2l_WP_down	BOOL	%I121.1	False	True	True	True		[I121.1] czujnik "ST7-miecz_2l" WP down
+ST7-ez_sword_2l_HP_up	BOOL	%Q3008.3	False	True	True	True		[40] ST7-miecz_2l HP up [I120.1]
+ST7-ez_sword_2l_WP_down	BOOL	%Q3008.2	False	True	True	True		[40] ST7-miecz_2l WP down [I121.1]
+ST7-vsen_sword_y_2r_movement_HP_right	BOOL	%I130.0	False	True	True	True		[I130.0] czujnik "ST7-przesuw_miecza_y_2p" HP right
+ST7-vsen_sword_y_2r_movement_WP_front	BOOL	%I131.0	False	True	True	True		[I131.0] czujnik "ST7-przesuw_miecza_y_2p" WP front
+ST7-ez_sword_y_2r_movement_HP_right	BOOL	%Q3012.1	False	True	True	True		[41] ST7-przesuw_miecza_y_2p HP right [I130.0]
+ST7-ez_sword_y_2r_movement_WP_front	BOOL	%Q3012.0	False	True	True	True		[41] ST7-przesuw_miecza_y_2p WP front [I131.0]
+ST7-vsen_sword_2r_HP_up	BOOL	%I130.1	False	True	True	True		[I130.1] czujnik "ST7-miecz_2p" HP up
+ST7-vsen_sword_2r_WP_down	BOOL	%I131.1	False	True	True	True		[I131.1] czujnik "ST7-miecz_2p" WP down
+ST7-ez_sword_2r_HP_up	BOOL	%Q3012.3	False	True	True	True		[42] ST7-miecz_2p HP up [I130.1]
+ST7-ez_sword_2r_WP_down	BOOL	%Q3012.2	False	True	True	True		[42] ST7-miecz_2p WP down [I131.1]
+ST7-vsen_sword_x_3l_movement_HP_left	BOOL	%I120.2	False	True	True	True		[I120.2] czujnik "ST7-przesuw_miecza_x_3l" HP left
+ST7-vsen_sword_x_3l_movement_WP_right	BOOL	%I121.2	False	True	True	True		[I121.2] czujnik "ST7-przesuw_miecza_x_3l" WP right
+ST7-ez_sword_x_3l_movement_HP_left	BOOL	%Q3008.5	False	True	True	True		[43] ST7-przesuw_miecza_x_3l HP left [I120.2]
+ST7-ez_sword_x_3l_movement_WP_right	BOOL	%Q3008.4	False	True	True	True		[43] ST7-przesuw_miecza_x_3l WP right [I121.2]
+ST7-vsen_sword_y_3l_movement_HP_right	BOOL	%I120.3	False	True	True	True		[I120.3] czujnik "ST7-przesuw_miecza_y_3l" HP right
+ST7-vsen_sword_y_3l_movement_WP_front	BOOL	%I121.3	False	True	True	True		[I121.3] czujnik "ST7-przesuw_miecza_y_3l" WP front
+ST7-ez_sword_y_3l_movement_HP_right	BOOL	%Q3008.7	False	True	True	True		[44] ST7-przesuw_miecza_y_3l HP right [I120.3]
+ST7-ez_sword_y_3l_movement_WP_front	BOOL	%Q3008.6	False	True	True	True		[44] ST7-przesuw_miecza_y_3l WP front [I121.3]
+ST7-vsen_sword_3l_HP_up	BOOL	%I120.4	False	True	True	True		[I120.4] czujnik "ST7-miecz_3l" HP up
+ST7-vsen_sword_3l_WP_down	BOOL	%I121.4	False	True	True	True		[I121.4] czujnik "ST7-miecz_3l" WP down
+ST7-ez_sword_3l_HP_up	BOOL	%Q3009.1	False	True	True	True		[45] ST7-miecz_3l HP up [I120.4]
+ST7-ez_sword_3l_WP_down	BOOL	%Q3009.0	False	True	True	True		[45] ST7-miecz_3l WP down [I121.4]
+ST7-vsen_sword_x_3r_movement_HP_right	BOOL	%I130.2	False	True	True	True		[I130.2] czujnik "ST7-przesuw_miecza_x_3p" HP right
+ST7-vsen_sword_x_3r_movement_WP_left	BOOL	%I131.2	False	True	True	True		[I131.2] czujnik "ST7-przesuw_miecza_x_3p" WP left
+ST7-ez_sword_x_3r_movement_HP_right	BOOL	%Q3012.5	False	True	True	True		[46] ST7-przesuw_miecza_x_3p HP right [I130.2]
+ST7-ez_sword_x_3r_movement_WP_left	BOOL	%Q3012.4	False	True	True	True		[46] ST7-przesuw_miecza_x_3p WP left [I131.2]
+ST7-vsen_sword_y_3r_movement_HP_right	BOOL	%I130.3	False	True	True	True		[I130.3] czujnik "ST7-przesuw_miecza_y_3p" HP right
+ST7-vsen_sword_y_3r_movement_WP_front	BOOL	%I131.3	False	True	True	True		[I131.3] czujnik "ST7-przesuw_miecza_y_3p" WP front
+ST7-ez_sword_y_3r_movement_HP_right	BOOL	%Q3012.7	False	True	True	True		[47] ST7-przesuw_miecza_y_3p HP right [I130.3]
+ST7-ez_sword_y_3r_movement_WP_front	BOOL	%Q3012.6	False	True	True	True		[47] ST7-przesuw_miecza_y_3p WP front [I131.3]
+ST7-vsen_sword_3r_HP_up	BOOL	%I130.4	False	True	True	True		[I130.4] czujnik "ST7-miecz_3p" HP up
+ST7-vsen_sword_3r_WP_down	BOOL	%I131.4	False	True	True	True		[I131.4] czujnik "ST7-miecz_3p" WP down
+ST7-ez_sword_3r_HP_up	BOOL	%Q3013.1	False	True	True	True		[48] ST7-miecz_3p HP up [I130.4]
+ST7-ez_sword_3r_WP_down	BOOL	%Q3013.0	False	True	True	True		[48] ST7-miecz_3p WP down [I131.4]
+ST7-vsen_comb_slide_out_HP_right	BOOL	%I130.5	False	True	True	True		[I130.5] czujnik "ST7-wysuw_grzebienia" HP right
+ST7-vsen_comb_slide_out_WP_front	BOOL	%I131.5	False	True	True	True		[I131.5] czujnik "ST7-wysuw_grzebienia" WP front
+ST7-ez_comb_slide_out_HP_right	BOOL	%Q3013.3	False	True	True	True		[49] ST7-wysuw_grzebienia HP right [I130.5]
+ST7-ez_comb_slide_out_WP_front	BOOL	%Q3013.2	False	True	True	True		[49] ST7-wysuw_grzebienia WP front [I131.5]
+ST7-vsen_comb_HP_up	BOOL	%I120.5	False	True	True	True		[I120.5] czujnik "ST7-grzebien" HP up
+ST7-vsen_comb_WP_down	BOOL	%I121.5	False	True	True	True		[I121.5] czujnik "ST7-grzebien" WP down
+ST7-ez_comb_HP_up	BOOL	%Q3009.3	False	True	True	True		[50] ST7-grzebien HP up [I120.5]
+ST7-ez_comb_WP_down	BOOL	%Q3009.2	False	True	True	True		[50] ST7-grzebien WP down [I121.5]
+ST5-sen_bag_presence	BOOL	%I41.3	False	True	True	True		[I41.3] czujnik "ST5-sen_obecnosc_poduszki"
+ST6-sen_bag_presence	BOOL	%I171.3	False	True	True	True		[I171.3] czujnik "ST6-sen_obecnosc_poduszki"
+GN-sen_clips_presence_left	BOOL	%I50.0	False	True	True	True		[I50.0] czujnik "GN-sen_obecnosc_klipsa_lewy"
+GN-sen_clips_presence_right	BOOL	%I51.0	False	True	True	True		[I51.0] czujnik "GN-sen_obecnosc_klipsa_prawy"
+GN-sen_scanner_position_left	BOOL	%I51.4	False	True	True	True		[I51.4] czujnik "GN-sen_pozycja_skanera_lewo"
+GN-sen_scanner_position_right	BOOL	%I71.5	False	True	True	True		[I71.5] czujnik "GN-sen_pozycja_skanera_prawo"
+GN-sen_screw_presence_left	BOOL	%I50.5	False	True	True	True		[I50.5] czujnik "GN-sen_obecnosc_sruby_lewo"
+GN-sen_screw_presence_middle	BOOL	%I51.5	False	True	True	True		[I51.5] czujnik "GN-sen_obecnosc_sruby_srodek"
+GN-sen_screw_presence_right	BOOL	%I50.6	False	True	True	True		[I50.6] czujnik "GN-sen_obecnosc_sruby_prawo"
+BR-sen_bag_on_pin_01	BOOL	%I60.3	False	True	True	True		[I60.3] czujnik "BR-sen_poduszka_na_pinie_01"
+BR-sen_bag_on_pin_02	BOOL	%I61.3	False	True	True	True		[I61.3] czujnik "BR-sen_poduszka_na_pinie_02"
+BR-sen_bag_on_pin_03	BOOL	%I70.3	False	True	True	True		[I70.3] czujnik "BR-sen_poduszka_na_pinie_03"
+BR-sen_bag_on_pin_04	BOOL	%I71.3	False	True	True	True		[I71.3] czujnik "BR-sen_poduszka_na_pinie_04"
+SAFETY_pressure_ok	BOOL	%I0.1	False	True	True	True		[I0.1]  "SAFETY_cisnienie_ok"
+SAFETY_estop_pressed	BOOL	%I0.2	False	True	True	True		[I0.2]  "SAFETY_estop_wcisniety"
+SAFETY_doors_ok	BOOL	%I0.3	False	True	True	True		[I0.3]  "SAFETY_drzwi_ok"
+SAFETY_curtain_ok	BOOL	%I0.4	False	True	True	True		[I0.4]  "SAFETY_kurtyna_ok"
+SAFETY_estop_ok	BOOL	%I0.5	False	True	True	True		[I0.5]  "SAFETY_estop_ok"
+A-btn_start	BOOL	%I0.0	False	True	True	True		[I0.0] przycisk "A-btn_start"
+A-btn_panel_green	BOOL	%I0.6	False	True	True	True		[I0.6] przycisk "A-btn_panel_zielony"
+A-btn_panel_red	BOOL	%I0.7	False	True	True	True		[I0.7] przycisk "A-btn_panel_czerwony"
+A-led_panel_white	BOOL	%Q0.0	False	True	True	True		[Q0.0]  "A-led_panel_bialy"
+A-led_panel_green	BOOL	%Q0.1	False	True	True	True		[Q0.1]  "A-led_panel_zielony"
+A-led_panel_red	BOOL	%Q0.2	False	True	True	True		[Q0.2]  "A-led_panel_czerwony"
+A-led_start	BOOL	%Q0.3	False	True	True	True		[Q0.3]  "A-led_start"
+A-led_column_green	BOOL	%Q0.4	False	True	True	True		[Q0.4]  "A-led_kolumna_zielony"
+A-led_column_red	BOOL	%Q0.5	False	True	True	True		[Q0.5]  "A-led_kolumna_czerwony"
+A-led_column_yellow	BOOL	%Q0.6	False	True	True	True		[Q0.6]  "A-led_kolumna_zolty"
+SAFETY_curtain_autostart	BOOL	%Q0.7	False	True	True	True		[Q0.7]  "SAFETY_kurtyna_autostart"
