@@ -2,7 +2,7 @@ import pandas as pd
 import math
 from tag import Zawor
 from sensor import Sensor
-from operator import itemgetter
+from drive import Drive
 import sys
 
 '''
@@ -23,9 +23,6 @@ safety = []
 przyciski = []
 inne = []
 lista_tagow = []
-adresyI = []
-adresyQ = []
-adresyIQ = []
 
 
 def zapisz(_plik, _txt, _fold):
@@ -226,6 +223,26 @@ def io_check_duplicates(_df):
     else:
         print('[NOK] Adresy I/Q nie są unikalne')
         print(_dfio[_dfio.duplicated(keep=False)])
+        input('Press enter to exit...')
+        exit()
+
+
+def drv_datas_parsing(_df):
+    _df.NAME = _df.NAME.dropna().astype(str).str.upper()
+    _df.NAME = _df.NAME.dropna().astype(str).str.strip()
+    _df.TYPE = _df.TYPE.dropna().astype(str).str.upper()
+    _df.TYPE = _df.TYPE.dropna().astype(str).str.strip()
+    _df.PROFINET = _df.PROFINET.dropna().astype(str).str.lower()
+    _df.PROFINET = _df.PROFINET.dropna().astype(str).str.strip()
+    print('[OK] Parsowanie napędów')
+
+
+def drv_check_duplicates(_df):
+    if _df['NAME'].is_unique:
+        print('[OK] Nazwy NAME napędów są unikalne')
+    else:
+        print('[NOK] Nazwy NAME napędów nie są unikalne')
+        print(_df[_df.duplicated(subset=['NAME'], keep=False)].NAME)
         input('Press enter to exit...')
         exit()
 
@@ -1007,6 +1024,10 @@ def generuj_hmi_diag_msg(_adresyI, _adresyQ, _adresyIQ):
 
 
 def main(args):
+    adresyI = []
+    adresyQ = []
+    adresyIQ = []
+
     df = pd.read_excel(args, header=0, sheet_name='Mechanizmy')
     df_datas_parsing(df)   # Zmiana tekstu na małe/duże litery, usuwanie białych spacji
     df_parsing(df)  # Sprawdzenie, czy kolumny zawierają prawidłowe I oraz Q
@@ -1027,7 +1048,10 @@ def main(args):
     io_datas_parsing(iq)   # Zmiana tekstu na małe/duże litery, usuwanie białych spacji
     #TUTAJ DODAC PARSOWANIE DLA I oraz Q
     #CHECK powinno uwzględniać też prefix
-    #io_check_duplicates(iq)    # Sprawdzenie duplikatów adresów      
+    #io_check_duplicates(iq)    # Sprawdzenie duplikatów adresów
+    drv = pd.read_excel(args, header=0, sheet_name='Drives')
+    drv_datas_parsing(drv)
+    drv_check_duplicates(drv)
 
     # Generowanie listy obiektów mechanizmow
     for index, row in df.iterrows():
