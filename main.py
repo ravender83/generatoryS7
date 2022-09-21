@@ -22,6 +22,7 @@ sensory = []
 safety = []
 przyciski = []
 inne = []
+napedy = []
 lista_tagow = []
 
 
@@ -1065,7 +1066,11 @@ def main(args):
     for index, row in btn.iterrows():
         przyciski.append(Sensor(row, 'przycisk')) 
     for index, row in iq.iterrows():
-        inne.append(Sensor(row, ''))       
+        inne.append(Sensor(row, ''))
+
+    # Generowanie listy obiektów napędów
+    for index, row in drv.iterrows():
+        napedy.append(Drive(row))
 
     _preparation_file = otworz("30_preparation.txt", 'templates')
     zapisz("30_preparation.txt", _preparation_file, 'out') 

@@ -3,4 +3,4 @@ class Drive:
 
         self.name = str(_drive.NAME)
         self.typ = str(_drive.TYPE)
-        self.profi = str(_drive.PROFINET)
+        self.profinet = str(_drive.PROFINET)
