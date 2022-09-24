@@ -1,4 +1,4 @@
-﻿DATA_BLOCK "A-DBVALVES"
+﻿DATA_BLOCK "A-DBVALVES_new"
 TITLE = DBVALVES
 { S7_Optimized_Access := 'TRUE' }
 AUTHOR : PiotrSlezak

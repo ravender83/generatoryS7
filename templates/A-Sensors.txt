@@ -1,4 +1,4 @@
-﻿FUNCTION "A-Sensors" : Void
+﻿FUNCTION "A-Sensors_new" : Void
 { S7_Optimized_Access := 'TRUE' }
 VERSION : 0.1
    VAR_TEMP 

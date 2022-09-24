@@ -1,4 +1,4 @@
-﻿DATA_BLOCK "A-ALARMS"
+﻿DATA_BLOCK "A-ALARMS_new"
 TITLE = ALARMS
 { S7_Optimized_Access := 'TRUE' }
 AUTHOR : PiotrSlezak

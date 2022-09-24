@@ -1,4 +1,4 @@
-﻿FUNCTION "A-Outputs_valves" : Void
+﻿FUNCTION "A-Outputs_valves_new" : Void
 TITLE = Output_valves
 { S7_Optimized_Access := 'TRUE' }
 AUTHOR : PiotrSlezak
