@@ -420,7 +420,7 @@ def generuj_dbvalves_db(_df):
 
     _dbvalves_data = _dbvalves_data.replace('{STRUCT}', _txt)
     _dbvalves_data = _dbvalves_data.replace('{ILOSC}', str(len(_df)))
-    zapisz("11_DBVALVES.db", _dbvalves_data, 'out')
+    zapisz("11_DBVALVES_n.db", _dbvalves_data, 'out')
 
 
 def zliczaj(_lduzy, _lmaly):
@@ -664,7 +664,7 @@ def generuj_alarms_db(_licznik, _zawory, _sensory, _safety, _buttons, _adresyI, 
     _dbvalves_data = _dbvalves_data.replace('{OUT}', str(len(_adresyQ)))
     _dbvalves_data = _dbvalves_data.replace('{IN_MAX}', str(math.ceil(len(_adresyI) / 9)))
     _dbvalves_data = _dbvalves_data.replace('{OUT_MAX}', str(math.ceil(len(_adresyQ) / 9)))
-    zapisz("13_ALARMS.db", _dbvalves_data, 'out')
+    zapisz("13_ALARMS_n.db", _dbvalves_data, 'out')
 
 
 def szablon_nan(aktualny_szablon, co, na_co, alternatywa):
@@ -748,11 +748,11 @@ def generuj_valves_outputs_stl(_zawory):
         _members_szablon += _szablon
 
     _valves_data = _valves_data.replace('{ALL_STRUCTS}', _members_szablon)
-    zapisz("19_valve_outputs.awl", _valves_data, 'out')
+    zapisz("19_valve_outputs_n.awl", _valves_data, 'out')
 
 
 def generuj_valves_instances(_zawory):
-    _valves_data = otworz("DBVALVES_INST.db", 'templates')
+    _valves_data = otworz("DBVALVES_INST_n.db", 'templates')
 
     _members_szablon = ''
     for i in _zawory:
@@ -761,7 +761,7 @@ def generuj_valves_instances(_zawory):
         #_members_szablon += _szablon
         _members_szablon="{}{}".format(_members_szablon,_szablon)
 
-    zapisz("20_valve_instance.db", _members_szablon, 'out')    
+    zapisz("20_valve_instance_n.db", _members_szablon, 'out')    
 
 
 def generuj_hmialarms_class():
@@ -884,7 +884,7 @@ def generuj_sensors(_licznik, _sensory, _safety, _buttons, _adresyI, _adresyQ):
             _diag_szablon += _szablon + '\n'
     _sensors_data = _sensors_data.replace('{DIAGOUT}', _diag_szablon)         
 
-    zapisz("21_sensors.awl", _sensors_data, 'out')
+    zapisz("21_sensors_n.awl", _sensors_data, 'out')
 
 
 def generuj_hp_messages(_valves, _sensory, _przyciski):
@@ -973,7 +973,7 @@ def generuj_hp_messages(_valves, _sensory, _przyciski):
         _msg_szablon += _szablon + '\n'
 
     _messages_data = _messages_data.replace('{MSG}', _msg_szablon)
-    zapisz("32_messages.awl", _messages_data, 'out')
+    zapisz("32_messages_n.awl", _messages_data, 'out')
 
 
 def generuj_hmi_diag_msg(_adresyI, _adresyQ, _adresyIQ):
