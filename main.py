@@ -752,7 +752,7 @@ def generuj_valves_outputs_stl(_zawory):
 
 
 def generuj_valves_instances(_zawory):
-    _valves_data = otworz("DBVALVES_INST_n.db", 'templates')
+    _valves_data = otworz("DBVALVES_INST.db", 'templates')
 
     _members_szablon = ''
     for i in _zawory:
