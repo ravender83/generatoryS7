@@ -1,0 +1,10 @@
+﻿DATA_BLOCK "INST_{DBVALVE_TITLE}"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+NON_RETAIN
+"3STATE_PISTON_with_brake"
+
+BEGIN
+
+END_DATA_BLOCK
+

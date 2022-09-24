@@ -1,0 +1,12 @@
+// Przyciski
+{BUTTONS_HP}
+// Mechanizmy
+{VALVES_HP}
+// Czujniki
+{SENSORS_HP}
+// Napędy
+{DRIVES_HP}
+// Inne
+{OTHERS_HP}
+O     "Log_1"
+=     "A-Flags".STATION.IN_HP

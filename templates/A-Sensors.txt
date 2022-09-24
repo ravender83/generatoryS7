@@ -1,0 +1,224 @@
+﻿FUNCTION "A-Sensors" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      a : Bool;
+      an : Bool;
+	  neg : Bool;
+   END_VAR
+
+
+BEGIN
+NETWORK
+TITLE = VALVES error
+{VALVES_error}      NOT;
+      AN "A-Flags".MODE._NONE;
+      = "A-ALARMS".VALVES.error;
+	  
+	  A     "A-ALARMS".VALVES.error;
+      L     s5t#100ms;
+      SD    "A-T_del_msg_valves_error";
+NETWORK
+TITLE = SENSORS error
+{SENSORS_error}      NOT;
+      AN "A-Flags".MODE._NONE;
+      = "A-ALARMS".SENSORS.error;
+	  
+	  A     "A-ALARMS".SENSORS.error;
+      L     s5t#2s;
+      SD    "A-T_del_msg_sensors_error";	  
+NETWORK
+TITLE = SAFETY error
+{SAFETY_error}      NOT;
+      AN "A-Flags".MODE._NONE;
+      = "A-ALARMS".SAFETY.error;
+	  
+	  A     "A-ALARMS".SAFETY.error;
+      L     s5t#2s;
+      SD    "A-T_del_msg_safety_error";
+NETWORK
+TITLE = BUTTONS error
+{BUTTONS_error}      NOT;
+      AN "A-Flags".MODE._NONE;
+      = "A-ALARMS".BUTTONS.error;
+	  
+	  A     "A-ALARMS".BUTTONS.error;
+      L     s5t#2s;
+      SD    "A-T_del_msg_buttons_error";
+NETWORK
+TITLE = DRIVES error
+//{DRIVES_error}
+//      NOT;
+      A "Log_0";
+      AN "A-Flags".MODE._NONE;
+      = "A-ALARMS".DRIVES.error;
+
+      A     "A-ALARMS".DRIVES.error;
+      L     s5t#2s;
+      SD    "A-T_del_msg_drives_error";
+NETWORK
+TITLE = OTHER error
+//{OTHER_error}
+//      NOT;
+      A "Log_0";
+      AN "A-Flags".MODE._NONE;
+      = "A-ALARMS".OTHER.error;
+	  
+      A     "A-ALARMS".OTHER.error;
+      L     s5t#2s;
+      SD    "A-T_del_msg_other_error";	  
+NETWORK
+TITLE = GLOBAL ERROR
+      O "A-ALARMS".VALVES.error;
+      O "A-ALARMS".SENSORS.error;
+      O "A-ALARMS".SAFETY.error;
+      O "A-ALARMS".BUTTONS.error;
+      O "A-ALARMS".DRIVES.error;
+      O "A-ALARMS".OTHER.error;
+      = "A-ALARMS".error;
+{SIGNALS}
+
+NETWORK
+TITLE = ======== DIAGNOSTIC =========
+
+NETWORK
+TITLE = Screen limits
+      CALL LIMIT
+      {value_type := 'Int'}
+      (  MN                          := 0 , 
+         IN                          := "A-ALARMS".diagin_ctrn.screen , 
+         MX                          := "A-ALARMS".diagin_ctrn.max , 
+         OUT                         := "A-ALARMS".diagin_ctrn.screen
+      );
+
+      CALL LIMIT
+      {value_type := 'Int'}
+      (  MN                          := 0 , 
+         IN                          := "A-ALARMS".diagout_ctrn.screen , 
+         MX                          := "A-ALARMS".diagout_ctrn.max , 
+         OUT                         := "A-ALARMS".diagout_ctrn.screen
+      );
+
+NETWORK
+TITLE = Calculate byte offset
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 1;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b0;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 2;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b1;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 3;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b2;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 4;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b3;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 5;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b4;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 6;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b5;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 7;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b6;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 8;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b7;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 1;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b0;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 2;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b1;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 3;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b2;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 4;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b3;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 5;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b4;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 6;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b5;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 7;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b6;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 8;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b7;
+	  
+NETWORK
+TITLE = Inputs
+{DIAGIN}
+
+NETWORK
+TITLE = Outputs
+{DIAGOUT}
+END_FUNCTION
+
