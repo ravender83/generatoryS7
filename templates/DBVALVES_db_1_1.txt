@@ -1,1 +1,0 @@
-﻿{DBVALVE} { S7_SetPoint := 'False'} : "Tstate";   // [{INDEX}] {PREFIX} {DBVALVEPL}

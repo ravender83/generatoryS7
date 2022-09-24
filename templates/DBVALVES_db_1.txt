@@ -1,3 +1,0 @@
-﻿{PREFIX} : Struct
- {VALVES}
-END_STRUCT;

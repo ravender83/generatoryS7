@@ -1,1 +1,0 @@
-"{SENSOR}" { S7_SetPoint := 'False'} : "Tsensor";   // {COMMENT}
