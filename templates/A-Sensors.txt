@@ -98,6 +98,120 @@ TITLE = Screen limits
          MX                          := "A-ALARMS".diagout_ctrn.max , 
          OUT                         := "A-ALARMS".diagout_ctrn.screen
       );
+
+NETWORK
+TITLE = Calculate byte offset
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 1;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b0;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 2;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b1;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 3;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b2;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 4;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b3;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 5;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b4;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 6;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b5;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 7;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b6;
+
+      L "A-ALARMS".diagin_ctrn.screen;
+      L 8;
+      *I;
+      L 8;
+      +I;
+      T "A-ALARMS".diagin_ctrn.b7;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 1;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b0;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 2;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b1;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 3;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b2;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 4;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b3;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 5;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b4;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 6;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b5;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 7;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b6;
+
+      L "A-ALARMS".diagout_ctrn.screen;
+      L 8;
+      *I;
+      L 8;
+      +I;
+      T "A-ALARMS".diagout_ctrn.b7;
 	  
 NETWORK
 TITLE = Inputs
