@@ -4,16 +4,37 @@ TITLE = [{INDEX}] {DBVALVE_TITLE} - HP
       O "A-DBVALVES".{DBVALVE}.test.fp_HP;
 //    O     "A-Flags".STATION.IN_HP_STEP
       = "A-DBVALVES".{DBVALVE}.in.move_hp;
+	  
+// Interlock hp
+      A     "A-DBVALVES".{DBVALVE}.in.move_hp;
+	  A(;
+      AN    "Log_1";
+	  );
+      =     "A-DBVALVES".{DBVALVE}.interlock.hp_active;
 NETWORK
 TITLE = [{INDEX}] {DBVALVE_TITLE} - WP
 //[{INDEX}] {DBVALVE_TITLE_EN} - WP
       O "A-DBVALVES".{DBVALVE}.test.fp_WP;
       = "A-DBVALVES".{DBVALVE}.in.move_wp;
+	  
+// Interlock wp
+      A     "A-DBVALVES".{DBVALVE}.in.move_wp;
+	  A(;
+      AN    "Log_1";
+	  );
+      =     "A-DBVALVES".{DBVALVE}.interlock.wp_active;  
 NETWORK
 TITLE = [{INDEX}] {DBVALVE_TITLE} - IDLE
 //[{INDEX}] {DBVALVE_TITLE_EN} - IDLE
       O "A-DBVALVES".{DBVALVE}.test.fp_IDLE;
       = "A-DBVALVES".{DBVALVE}.in.move_idle;
+	  
+// Interlock idle
+      A     "A-DBVALVES".{DBVALVE}.in.move_idle;
+	  A(;
+      AN    "Log_1";
+	  );
+      =     "A-DBVALVES".{DBVALVE}.interlock.idle_active;	  
 NETWORK
 TITLE = [{INDEX}] {DBVALVE_TITLE}
 //[{INDEX}] {DBVALVE_TITLE_EN}
@@ -23,6 +44,9 @@ TITLE = [{INDEX}] {DBVALVE_TITLE}
          in_move_hp                  := "A-DBVALVES".{DBVALVE}.in.move_hp , 
          in_move_wp                  := "A-DBVALVES".{DBVALVE}.in.move_wp , 
          in_move_idle                := "A-DBVALVES".{DBVALVE}.in.move_idle , 
+         in_interlock_hp             := "A-DBVALVES".{DBVALVE}.interlock.hp_active , 
+         in_interlock_wp             := "A-DBVALVES".{DBVALVE}.interlock.wp_active , 
+         in_interlock_idle           := "A-DBVALVES".{DBVALVE}.interlock.idle_active , 		 
          in_sensor_hp1               := {in_sensor_hp} , 
          in_sensor_hp2               := {in_sensor_hp2} , 
          in_sensor_wp1               := {in_sensor_wp} , 
@@ -34,7 +58,9 @@ TITLE = [{INDEX}] {DBVALVE_TITLE}
          out_brake                   := {brake} , 
          out_alarm_hp                := "A-DBVALVES".{DBVALVE}.out.alarm_hp , 
          out_alarm_wp                := "A-DBVALVES".{DBVALVE}.out.alarm_wp , 
+		 out_alarm_idle              := "A-DBVALVES".{DBVALVE}.out.alarm_idle , 
          out_diag_status             := "A-DBVALVES".{DBVALVE}.out.diag_status , 
+		 out_interlock_show          := "A-DBVALVES".{DBVALVE}.interlock.active ,
          in_ez_hp                    := {in_ez_hp} , 
          in_ez_wp                    := {in_ez_wp} , 
          in_ez_idle                  := {in_ez_idle}
