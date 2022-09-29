@@ -4,7 +4,7 @@ TITLE = Output_valves
 AUTHOR : PiotrSlezak
 FAMILY : Vorster
 VERSION : 0.1
-//Funkcja sterująca mechanizmami. Diagnostyka czujników, luzowanie, obsługa hamulca i wizualizacja stanów
+//Funkcja sterujaca mechanizmami. Diagnostyka czujnikow, luzowanie, obsluga hamulca i wizualizacja stanow
    VAR_TEMP 
       dummy : Bool;
       brake : Bool;

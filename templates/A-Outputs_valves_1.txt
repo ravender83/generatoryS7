@@ -6,11 +6,17 @@ TITLE = [{INDEX}] {DBVALVE_TITLE} - HP
       = "A-DBVALVES".{DBVALVE}.in.move_hp;
 	  
 // Interlock hp
-      A     "A-DBVALVES".{DBVALVE}.in.move_hp;
-	  A(;
-      AN    "Log_1";
-	  );
-      =     "A-DBVALVES".{DBVALVE}.interlock.hp_active;
+      L     0;
+      T     "A-DBVALVES".io[{INDEX}].interlock_hp;
+	  
+//{INTERLOCK_HP{INDEX}}
+	  
+      A(;
+      L     "A-DBVALVES".io[{INDEX}].interlock_hp;
+      L     0;
+      <>I;
+      );
+      =     "A-DBVALVES".{DBVALVE}.interlock.hp_active;	  
 NETWORK
 TITLE = [{INDEX}] {DBVALVE_TITLE} - WP
 //[{INDEX}] {DBVALVE_TITLE_EN} - WP
@@ -18,11 +24,17 @@ TITLE = [{INDEX}] {DBVALVE_TITLE} - WP
       = "A-DBVALVES".{DBVALVE}.in.move_wp;
 	  
 // Interlock wp
-      A     "A-DBVALVES".{DBVALVE}.in.move_wp;
-	  A(;
-      AN    "Log_1";
-	  );
-      =     "A-DBVALVES".{DBVALVE}.interlock.wp_active;  
+      L     0;
+      T     "A-DBVALVES".io[{INDEX}].interlock_wp;
+	  
+//{INTERLOCK_WP{INDEX}}
+	  
+      A(;
+      L     "A-DBVALVES".io[{INDEX}].interlock_wp;
+      L     0;
+      <>I;
+      );
+      =     "A-DBVALVES".{DBVALVE}.interlock.wp_active; 
 NETWORK
 TITLE = [{INDEX}] {DBVALVE_TITLE} - IDLE
 //[{INDEX}] {DBVALVE_TITLE_EN} - IDLE
@@ -30,10 +42,16 @@ TITLE = [{INDEX}] {DBVALVE_TITLE} - IDLE
       = "A-DBVALVES".{DBVALVE}.in.move_idle;
 	  
 // Interlock idle
-      A     "A-DBVALVES".{DBVALVE}.in.move_idle;
-	  A(;
-      AN    "Log_1";
-	  );
+      L     0;
+      T     "A-DBVALVES".io[{INDEX}].interlock_idle;
+	  
+//{INTERLOCK_IDLE{INDEX}}
+	  
+      A(;
+      L     "A-DBVALVES".io[{INDEX}].interlock_idle;
+      L     0;
+      <>I;
+      );
       =     "A-DBVALVES".{DBVALVE}.interlock.idle_active;	  
 NETWORK
 TITLE = [{INDEX}] {DBVALVE_TITLE}
@@ -96,6 +114,11 @@ TITLE = [{INDEX}] {DBVALVE_TITLE}
       R "A-DBVALVES".{DBVALVE}.test.fp_HP;
       R "A-DBVALVES".{DBVALVE}.test.fp_WP;
       R "A-DBVALVES".{DBVALVE}.test.fp_IDLE;
+	  
+	  O    "A-DBVALVES".{DBVALVE}.interlock.hp_active;
+	  O    "A-DBVALVES".{DBVALVE}.interlock.wp_active;
+	  O    "A-DBVALVES".{DBVALVE}.interlock.idle_active;
+	  =    "A-DBVALVES".io[{INDEX}].interlock_vis;
 NETWORK
 TITLE = -
 

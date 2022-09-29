@@ -5,11 +5,12 @@ AUTHOR : PiotrSlezak
 FAMILY : Vorster
 VERSION : 0.2
 NON_RETAIN
-//Blok danych stanowiący interface obsługi, diagnostyki i wizualizacji elektrozaworów i siłowników
+//Blok danych stanowiacy interface obslugi, diagnostyki i wizualizacji elektrozaworow i siLownikow
    VAR 
       LAMP_TEST { S7_SetPoint := 'False'} : Bool;
 {STRUCT}
    io : Array[0..{ILOSC}] of "Tio";
+   interlock : String[5];
    END_VAR
 
 

@@ -1,0 +1,5 @@
+A     "A-DBVALVES".{DBVALVE}.in.move_{TYP};
+A(;
+{LINE}
+);
+=     "A-DBVALVES".io[{INDEX}].interlock_{TYP}.%X{NR};
