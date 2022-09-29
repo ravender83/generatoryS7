@@ -1,0 +1,3 @@
+A "A-DBVALVES".{DBVALVE}.in.move_{TYP};
+{KOD} {TAG}
+= "A-DBVALVES".io[{INDEX}].interlock_{TYP}.%X{NR};
