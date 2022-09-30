@@ -2745,7 +2745,7 @@ TITLE = [23] ST3 ZDERZAK - HP
 //[23] ST3 BUMPER - HP
       O "A-DBVALVES".ST3.BUMPER.test.fp_HP;
 //    O     "A-Flags".STATION.IN_HP_STEP
-      A "A-DBVALVES".ST3.SWORD_RISING.out.in_wp;// @i
+      A "A-DBVALVES".ST3.SWORD_RISING.out.in_wp;// @563
       = "A-DBVALVES".ST3.BUMPER.in.move_hp;
 
 // Interlock hp
@@ -2764,7 +2764,7 @@ NETWORK
 TITLE = [23] ST3 ZDERZAK - WP
 //[23] ST3 BUMPER - WP
       O "A-DBVALVES".ST3.BUMPER.test.fp_WP;
-      A "A-DBVALVES".ST3.SWORD_RISING.out.in_wp;// @i
+      A "A-DBVALVES".ST3.SWORD_RISING.out.in_wp;// @12
       = "A-DBVALVES".ST3.BUMPER.in.move_wp;
 
 // Interlock wp
@@ -4855,8 +4855,8 @@ TITLE = [40] ST7L MIECZ_RUCHOMY_PRZEJAZD - HP
 //[40] ST7L SWORD_MOBILE_SLIDE - HP
       O "A-DBVALVES".ST7L.SWORD_MOBILE_SLIDE.test.fp_HP;
 //    O     "A-Flags".STATION.IN_HP_STEP
-      A "A-DBVALVES".ST7L.SWORD_MOBILE.out.in_hp;// @i
-      A "A-DBVALVES".ST7L.SWORD_STRAIGHT.out.in_wp;// @i
+      A "A-DBVALVES".ST7L.SWORD_MOBILE.out.in_hp;// @13
+      A "A-DBVALVES".ST7L.SWORD_STRAIGHT.out.in_wp;// @54
       = "A-DBVALVES".ST7L.SWORD_MOBILE_SLIDE.in.move_hp;
 
 // Interlock hp
