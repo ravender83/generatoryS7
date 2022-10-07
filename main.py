@@ -431,10 +431,17 @@ def zliczaj(_lduzy, _lmaly):
     return _lduzy, _lmaly
 
 
-def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
+def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski, _lang):
     _txt_hp = ''
     _msg = 1000
     _index = 1
+
+    if _lang == 'pl':
+        nonactive = 'jest nieaktywny'
+        active = 'jest aktywny'
+    else:
+        nonactive = 'is not active'
+        active = 'is active'        
 
     _lista = []
     _lista_tagow = []
@@ -445,7 +452,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
     lmaly = 0
     for i in _zawory:
         if i.sensorHP != 'nan':
-            _lista.append([f'valve_{i.sensorHP[1:]}_hp', f'{i.get_sensorNameHPcommentSmall[0:]} ({i.index}) jest nieaktywny', '', 'VALVE',
+            _lista.append([f'valve_{i.sensorHP[1:]}_hp', f'{i.get_sensorNameHPcommentSmall[0:]} ({i.index}) {nonactive}', '', 'VALVE',
                            'A-ALARMS_VALVES_err'+str(lduzy), f'{str(lmaly)}'] + _tmp)
             i.byteHP = lduzy
             i.bitHP = lmaly
@@ -456,7 +463,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             _index += 1
 
         if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
-            _lista.append([f'valve_{i.sensorHP2[1:]}_hp2', f'{i.get_sensorNameHP2commentSmall[0:]} ({i.index}) jest nieaktywny', '', 'VALVE',
+            _lista.append([f'valve_{i.sensorHP2[1:]}_hp2', f'{i.get_sensorNameHP2commentSmall[0:]} ({i.index}) {nonactive}', '', 'VALVE',
                            'A-ALARMS_VALVES_err' + str(lduzy), f'{str(lmaly)}'] + _tmp)
             i.byteHP2 = lduzy
             i.bitHP2 = lmaly            
@@ -467,7 +474,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             _index += 1        
 
         if i.sensorWP != 'nan':
-            _lista.append([f'valve_{i.sensorWP[1:]}_wp', f'{i.get_sensorNameWPcommentSmall[0:]} ({i.index}) jest nieaktywny', '', 'VALVE',
+            _lista.append([f'valve_{i.sensorWP[1:]}_wp', f'{i.get_sensorNameWPcommentSmall[0:]} ({i.index}) {nonactive}', '', 'VALVE',
                            'A-ALARMS_VALVES_err'+str(lduzy), f'{str(lmaly)}'] + _tmp)
             i.byteWP = lduzy
             i.bitWP = lmaly            
@@ -478,7 +485,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             _index += 1            
 
         if i.sensorWP2 != 'nan' and i.sensorWP2 != i.sensorWP:
-            _lista.append([f'valve_{i.sensorWP2[1:]}_wp2', f'{i.get_sensorNameWP2commentSmall[0:]} ({i.index}) jest nieaktywny', '', 'VALVE',
+            _lista.append([f'valve_{i.sensorWP2[1:]}_wp2', f'{i.get_sensorNameWP2commentSmall[0:]} ({i.index}) {nonactive}', '', 'VALVE',
                            'A-ALARMS_VALVES_err' + str(lduzy), f'{str(lmaly)}'] + _tmp)
             i.byteWP2 = lduzy
             i.bitWP2 = lmaly            
@@ -495,7 +502,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
     lmaly_sensor = 0
     for i in _sensory:
         if i.adres != 'nan':
-            _lista.append([f'sen_{i.adres[1:]}_hp', f'{i.get_sensorNameComment} jest aktywny', '', 'SENSOR',
+            _lista.append([f'sen_{i.adres[1:]}_hp', f'{i.get_sensorNameComment} {active}', '', 'SENSOR',
                            'A-ALARMS_SENSORS_sen'+str(lduzy_sensor), f'{str(lmaly_sensor)}'] + _tmp)
             i.byteHP = lduzy_sensor
             i.bitHP = lmaly_sensor            
@@ -506,7 +513,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             _index += 1                
 
         if i.adres != 'nan':
-            _lista.append([f'sen_{i.adres[1:]}_wp', f'{i.get_sensorNameComment} jest nieaktywny', '', 'SENSOR',
+            _lista.append([f'sen_{i.adres[1:]}_wp', f'{i.get_sensorNameComment} {nonactive}', '', 'SENSOR',
                            'A-ALARMS_SENSORS_sen'+str(lduzy_sensor), f'{str(lmaly_sensor)}'] + _tmp)
             i.byteWP = lduzy_sensor
             i.bitWP = lmaly_sensor              
@@ -523,7 +530,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
     lmaly_safety = 0
     for i in _safety:
         if i.adres != 'nan':
-            _lista.append([f'safe_{i.adres[1:]}_hp', f'{i.get_sensorNameComment} jest nieaktywny', '', 'SAFETY',
+            _lista.append([f'safe_{i.adres[1:]}_hp', f'{i.get_sensorNameComment} {nonactive}', '', 'SAFETY',
                            'A-ALARMS_SAFETY_sft'+str(lduzy_safety), f'{str(lmaly_safety)}'] + _tmp)
             i.byteWP = lduzy_safety
             i.bitWP = lmaly_safety              
@@ -539,7 +546,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
     lmaly_button = 0
     for i in _przyciski:
         if i.adres != 'nan':
-            _lista.append([f'btn_{i.adres[1:]}_hp', f'{i.get_sensorNameComment} jest aktywny', '', 'BUTTON',
+            _lista.append([f'btn_{i.adres[1:]}_hp', f'{i.get_sensorNameComment} {active}', '', 'BUTTON',
                            'A-ALARMS_BUTTONS_btn'+str(lduzy_button), f'{str(lmaly_button)}'] + _tmp)
             i.byteHP = lduzy_button
             i.bitHP = lmaly_button               
@@ -549,7 +556,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski):
             _txt_hp += f'{str(i.msg_hp)}\t{_lista[-1:][0][1]}\n'            
             _index += 1 
         if i.adres != 'nan':
-            _lista.append([f'btn_{i.adres[1:]}_wp', f'{i.get_sensorNameComment} jest nieaktywny', '', 'BUTTON',
+            _lista.append([f'btn_{i.adres[1:]}_wp', f'{i.get_sensorNameComment} {nonactive}', '', 'BUTTON',
                            'A-ALARMS_BUTTONS_btn'+str(lduzy_button), f'{str(lmaly_button)}'] + _tmp)
             i.byteWP = lduzy_button
             i.bitWP = lmaly_button              
@@ -887,9 +894,16 @@ def generuj_sensors(_licznik, _sensory, _safety, _buttons, _adresyI, _adresyQ):
     zapisz("21_sensors.awl", _sensors_data, 'out')
 
 
-def generuj_hp_messages(_valves, _sensory, _przyciski):
+def generuj_hp_messages(_valves, _sensory, _przyciski, _lang):
     _messages_data = otworz("A-HP_Messages.txt", 'templates')
     _message = otworz("A-HP_Messages_1.txt", 'templates')
+
+    if _lang == 'pl':
+        nonactive = 'jest nieaktywny'
+        active = 'jest aktywny'
+    else:
+        nonactive = 'is not active'
+        active = 'is active'  
 
     # VALVES 0
     _msg_szablon = ''
@@ -901,7 +915,7 @@ def generuj_hp_messages(_valves, _sensory, _przyciski):
             _szablon = _szablon.replace('{TYP2}', 'err')
             _szablon = _szablon.replace('{BYTE}', str(i.byteHP))
             _szablon = _szablon.replace('{BIT}', str(i.bitHP))
-            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameHPcommentSmall[0:]} ({i.index}) jest nieaktywny')  
+            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameHPcommentSmall[0:]} ({i.index}) {nonactive}')  
             _msg_szablon += _szablon + '\n'
 
         if i.msg_hp2 != 0:
@@ -911,7 +925,7 @@ def generuj_hp_messages(_valves, _sensory, _przyciski):
             _szablon = _szablon.replace('{TYP2}', 'err')
             _szablon = _szablon.replace('{BYTE}', str(i.byteHP2))
             _szablon = _szablon.replace('{BIT}', str(i.bitHP2))
-            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameHP2commentSmall[0:]} ({i.index}) jest nieaktywny')  
+            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameHP2commentSmall[0:]} ({i.index}) {nonactive}')  
             _msg_szablon += _szablon + '\n'
 
         if i.msg_wp != 0:
@@ -921,7 +935,7 @@ def generuj_hp_messages(_valves, _sensory, _przyciski):
             _szablon = _szablon.replace('{TYP2}', 'err')
             _szablon = _szablon.replace('{BYTE}', str(i.byteWP))
             _szablon = _szablon.replace('{BIT}', str(i.bitWP))
-            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameWPcommentSmall[0:]} ({i.index}) jest nieaktywny')  
+            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameWPcommentSmall[0:]} ({i.index}) {nonactive}')  
             _msg_szablon += _szablon + '\n'
 
         if i.msg_wp2 != 0:
@@ -931,7 +945,7 @@ def generuj_hp_messages(_valves, _sensory, _przyciski):
             _szablon = _szablon.replace('{TYP2}', 'err')
             _szablon = _szablon.replace('{BYTE}', str(i.byteWP2))
             _szablon = _szablon.replace('{BIT}', str(i.bitWP2))
-            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameWP2commentSmall[0:]} ({i.index}) jest nieaktywny')  
+            _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameWP2commentSmall[0:]} ({i.index}) {nonactive}')  
             _msg_szablon += _szablon + '\n'
 
     # SENSORS 1
@@ -942,7 +956,7 @@ def generuj_hp_messages(_valves, _sensory, _przyciski):
         _szablon = _szablon.replace('{TYP2}', 'sen')
         _szablon = _szablon.replace('{BYTE}', str(i.byteHP))
         _szablon = _szablon.replace('{BIT}', str(i.bitHP))
-        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} jest aktywny')        
+        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} {active}')        
         _msg_szablon += _szablon + '\n'
         _szablon = _message
         _szablon = _szablon.replace('{NR}', str(i.msg_wp))
@@ -950,7 +964,7 @@ def generuj_hp_messages(_valves, _sensory, _przyciski):
         _szablon = _szablon.replace('{TYP2}', 'sen')
         _szablon = _szablon.replace('{BYTE}', str(i.byteWP))
         _szablon = _szablon.replace('{BIT}', str(i.bitWP))
-        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} jest nieaktywny')        
+        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} {nonactive}')        
         _msg_szablon += _szablon + '\n'
 
     # SENSORS 3
@@ -961,7 +975,7 @@ def generuj_hp_messages(_valves, _sensory, _przyciski):
         _szablon = _szablon.replace('{TYP2}', 'btn')
         _szablon = _szablon.replace('{BYTE}', str(i.byteHP))
         _szablon = _szablon.replace('{BIT}', str(i.bitHP))
-        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} jest aktywny')        
+        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} {active}')        
         _msg_szablon += _szablon + '\n'
         _szablon = _message
         _szablon = _szablon.replace('{NR}', str(i.msg_wp))
@@ -969,7 +983,7 @@ def generuj_hp_messages(_valves, _sensory, _przyciski):
         _szablon = _szablon.replace('{TYP2}', 'btn')
         _szablon = _szablon.replace('{BYTE}', str(i.byteWP))
         _szablon = _szablon.replace('{BIT}', str(i.bitWP))
-        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} jest nieaktywny')        
+        _szablon = _szablon.replace('{MESSAGE}', f'{i.get_sensorNameComment} {nonactive}')        
         _msg_szablon += _szablon + '\n'
 
     _messages_data = _messages_data.replace('{MSG}', _msg_szablon)
@@ -1007,7 +1021,7 @@ def generuj_hmi_diag_msg(_adresyI, _adresyQ, _adresyIQ):
     zapisz("33_hmi_diag_msg.txt", _txt, 'out')
 
 
-def main(args):
+def main(args, lang):
     adresyI = []
     adresyQ = []
     adresyIQ = []
@@ -1033,27 +1047,37 @@ def main(args):
     #TUTAJ DODAC PARSOWANIE DLA I oraz Q
     #CHECK powinno uwzględniać też prefix
     #io_check_duplicates(iq)    # Sprawdzenie duplikatów adresów
+    '''
     drv = pd.read_excel(args, header=0, sheet_name='Drives')
     drv_datas_parsing(drv)
     drv_check_duplicates(drv)
+    '''
+    if lang == 'pl':
+        sen = 'czujnik'
+        butn = 'przycisk'
+    else:
+        sen = 'sensor'
+        butn = 'button'
 
     # Generowanie listy obiektów mechanizmow
     for index, row in df.iterrows():
-        zawory.append(Zawor(index+1, row))
+        zawory.append(Zawor(index+1, row, lang))
 
     # Generowanie listy obiektów sensorów
     for index, row in io.iterrows():
-        sensory.append(Sensor(row, 'czujnik'))    
+        sensory.append(Sensor(row, sen, lang))    
     for index, row in sft.iterrows():
-        safety.append(Sensor(row, ''))   
+        safety.append(Sensor(row, '', lang))   
     for index, row in btn.iterrows():
-        przyciski.append(Sensor(row, 'przycisk')) 
+        przyciski.append(Sensor(row, butn, lang)) 
     for index, row in iq.iterrows():
-        inne.append(Sensor(row, ''))
+        inne.append(Sensor(row, '', lang))
 
     # Generowanie listy obiektów napędów
+    '''
     for index, row in drv.iterrows():
         napedy.append(Drive(row))
+    '''
 
     _preparation_file = otworz("30_preparation.txt", 'templates')
     zapisz("30_preparation.txt", _preparation_file, 'out') 
@@ -1066,7 +1090,7 @@ def main(args):
 
     generuj_hmialarms_class()
 
-    licznik = generuj_hmialarms_excel(zawory, sensory, safety, przyciski)
+    licznik = generuj_hmialarms_excel(zawory, sensory, safety, przyciski, lang)
     generuj_hmialarms_tagi_excel(lista_tagow)
     generuj_alarms_db(licznik, zawory, sensory, safety, przyciski, adresyI, adresyQ)
 
@@ -1075,7 +1099,7 @@ def main(args):
     generuj_valves_instances(zawory)
 
     generuj_sensors(licznik, sensory, safety, przyciski, adresyI, adresyQ)
-    generuj_hp_messages(zawory, sensory, przyciski) 
+    generuj_hp_messages(zawory, sensory, przyciski, lang) 
     generuj_hmi_diag_msg(adresyI, adresyQ, adresyIQ)   
 
     print('===== Koniec =====')
@@ -1083,6 +1107,6 @@ def main(args):
 
 
 if __name__ == '__main__':
-    main('LK03.xlsx')
-    # main(sys.argv)
+    main('KM01.xlsx', 'en')
+    # main(sys.argv) pl en
 

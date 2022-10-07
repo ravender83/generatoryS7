@@ -1,9 +1,12 @@
 class Sensor:
-    def __init__(self, _sensor, _typ):
+    def __init__(self, _sensor, _typ, _lang):
 
         self.prefix = str(_sensor.PREFIX)
         self.name = str(_sensor.NAME)
-        self.namepl = str(_sensor.NAMEPL)
+        if _lang == 'pl':
+            self.namepl = str(_sensor.NAMEPL)
+        else:
+            self.namepl = str(_sensor.NAME)
         self.typ = str(_typ)
         self.msg_hp = 0
         self_msg_wp = 0
