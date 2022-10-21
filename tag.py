@@ -24,6 +24,8 @@ class Zawor:
         self.msg_hp2 = 0
         self.msg_wp = 0
         self.msg_wp2 = 0
+        self.msg_pl = str(_zawor.MSG_PL)
+        self.msg_en = str(_zawor.MSG_EN)
 
         if str(_zawor.SENSOR_HP) != 'nan':
             self.sensorHP = '%'+str(_zawor.SENSOR_HP)
