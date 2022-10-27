@@ -451,10 +451,17 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski, _lang):
     lduzy = 0
     lmaly = 0
     for i in _zawory:
+        if _lang == 'pl':
+            _msg_hp = i.msg_pl_hp
+            _msg_wp = i.msg_pl_wp
+        else:
+            _msg_hp = i.msg_en_hp
+            _msg_wp = i.msg_en_wp
+
         if i.sensorHP != 'nan':
             #_lista.append([f'valve_{i.sensorHP[1:]}_hp', f'{i.get_sensorNameHPcommentSmall[0:]} ({i.index}) {nonactive}', '', 'VALVE',
             #               'A-ALARMS_VALVES_err'+str(lduzy), f'{str(lmaly)}'] + _tmp)
-            _lista.append([f'valve_{i.sensorHP[1:]}_hp', f'[{i.sensorHP[1:]}] {i.msg_pl}', '', 'VALVE', 'A-ALARMS_VALVES_err'+str(lduzy), f'{str(lmaly)}'] + _tmp)            
+            _lista.append([f'valve_{i.sensorHP[1:]}_hp', f'[{i.sensorHP[1:]}] {i.msg_hp}', '', 'VALVE', 'A-ALARMS_VALVES_err'+str(lduzy), f'{str(lmaly)}'] + _tmp)            
             i.byteHP = lduzy
             i.bitHP = lmaly
             lduzy, lmaly = zliczaj(lduzy, lmaly)
@@ -466,7 +473,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski, _lang):
         if i.sensorHP2 != 'nan' and i.sensorHP2 != i.sensorHP:
             #_lista.append([f'valve_{i.sensorHP2[1:]}_hp2', f'{i.get_sensorNameHP2commentSmall[0:]} ({i.index}) {nonactive}', '', 'VALVE',
             #               'A-ALARMS_VALVES_err' + str(lduzy), f'{str(lmaly)}'] + _tmp)
-            _lista.append([f'valve_{i.sensorHP2[1:]}_hp2', f'[{i.sensorHP2[1:]}] {i.msg_pl}', '', 'VALVE', 'A-ALARMS_VALVES_err' + str(lduzy), f'{str(lmaly)}'] + _tmp)            
+            _lista.append([f'valve_{i.sensorHP2[1:]}_hp2', f'[{i.sensorHP2[1:]}] {i.msg_hp}', '', 'VALVE', 'A-ALARMS_VALVES_err' + str(lduzy), f'{str(lmaly)}'] + _tmp)            
             i.byteHP2 = lduzy
             i.bitHP2 = lmaly            
             lduzy, lmaly = zliczaj(lduzy, lmaly)
@@ -478,7 +485,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski, _lang):
         if i.sensorWP != 'nan':
             #_lista.append([f'valve_{i.sensorWP[1:]}_wp', f'{i.get_sensorNameWPcommentSmall[0:]} ({i.index}) {nonactive}', '', 'VALVE',
             #               'A-ALARMS_VALVES_err'+str(lduzy), f'{str(lmaly)}'] + _tmp)
-            _lista.append([f'valve_{i.sensorWP[1:]}_wp', f'[{i.sensorWP[1:]}] {i.msg_pl}', '', 'VALVE', 'A-ALARMS_VALVES_err'+str(lduzy), f'{str(lmaly)}'] + _tmp)            
+            _lista.append([f'valve_{i.sensorWP[1:]}_wp', f'[{i.sensorWP[1:]}] {i.msg_wp}', '', 'VALVE', 'A-ALARMS_VALVES_err'+str(lduzy), f'{str(lmaly)}'] + _tmp)            
             i.byteWP = lduzy
             i.bitWP = lmaly            
             lduzy, lmaly = zliczaj(lduzy, lmaly)
@@ -490,7 +497,7 @@ def generuj_hmialarms_excel(_zawory, _sensory, _safety, _przyciski, _lang):
         if i.sensorWP2 != 'nan' and i.sensorWP2 != i.sensorWP:
             #_lista.append([f'valve_{i.sensorWP2[1:]}_wp2', f'{i.get_sensorNameWP2commentSmall[0:]} ({i.index}) {nonactive}', '', 'VALVE',
             #               'A-ALARMS_VALVES_err' + str(lduzy), f'{str(lmaly)}'] + _tmp)
-            _lista.append([f'valve_{i.sensorWP2[1:]}_wp2', f'[{i.sensorWP2[1:]}] {i.msg_pl}', '', 'VALVE', 'A-ALARMS_VALVES_err' + str(lduzy), f'{str(lmaly)}'] + _tmp)            
+            _lista.append([f'valve_{i.sensorWP2[1:]}_wp2', f'[{i.sensorWP2[1:]}] {i.msg_wp}', '', 'VALVE', 'A-ALARMS_VALVES_err' + str(lduzy), f'{str(lmaly)}'] + _tmp)            
             i.byteWP2 = lduzy
             i.bitWP2 = lmaly            
             lduzy, lmaly = zliczaj(lduzy, lmaly)  
