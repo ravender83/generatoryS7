@@ -4,7 +4,7 @@ from tag import Zawor
 from sensor import Sensor
 from drive import Drive
 import sys
-
+#t
 '''
 DONE
 2) Dodac wykrywanie unikalności w przypadku roznych prefixow - Zrobiono 2022.09.17
